@@ -41,6 +41,7 @@ namespace MISA.cukCuk
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
