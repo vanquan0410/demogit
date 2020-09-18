@@ -1,0 +1,92 @@
+﻿.sidebar .menu {
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: #0973b9;
+    overflow:scroll;
+}
+
+.menu .menu-item {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #5fb0e6;
+    border-bottom: 1px solid #063858;
+    height: 40px;
+    padding-left: 5px;
+}
+
+.menu .menu-item-icon {
+    width: 19px;
+    height: 17px;
+    background-image: url('../../content/img/Images/iconMenu.png');
+    background-repeat: no-repeat;
+    align-self: center;
+    margin-left: 5px;
+    background-position-x: -6px;
+}
+
+.menu-item .overview-icon {
+    background-position-y: -6px;
+}
+
+.menu-item .report-icon {
+    background-position-y: -194px;
+    background-position-x:-3px !important;
+}
+
+.menu-item .purchase-icon {
+    background-position-y: -380px;
+}
+
+.menu-item .warehouse-icon {
+    background-position-y: -44px;
+}
+
+.menu-item .cash-fund-icon {
+    background-position-y: -82.5px;
+}
+
+.menu-item .deposit-funds-icon {
+    background-position-y: -44px;
+}
+
+.menu-item .cost-icon {
+    background-position-y: -502px;
+}
+
+.menu-item .promotion-icon {
+    background-position-y: -120px;
+    background-position-x: -4px !important;
+}
+.menu-item .menu-icon {
+    background-position-y: -458px;
+    
+}
+.menu-item .cacel-bill-icon {
+   
+}
+.menu-item .category-icon{
+
+}
+.menu-item .setting-system-icon {
+    background-position-y: -235px;
+    background-position-x: -4px !important;
+}
+.menu-item .help-icon{
+
+}
+.menu-item .phone-icon{
+
+}
+.menu .menu-item-text {
+    color: #ffffff;
+    align-self: center;
+    margin-left: 12px;
+}
+.menu .menu-icon{
+
+}
+
+.menu .menu-item:hover {
+    background-color: #ff6a00;
+    cursor: pointer;
+}
