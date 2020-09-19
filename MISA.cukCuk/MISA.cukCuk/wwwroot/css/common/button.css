@@ -1,0 +1,51 @@
+﻿button {
+    cursor: pointer;
+}
+
+    button:focus {
+        outline: none;
+        border: 1px solid #1e32d0;
+    }
+
+
+    button .btn-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/Images/IconSprite.png');
+    }
+
+        button .btn-icon.btn-icon-add {
+            background-position: -1px -2416px;
+        }
+
+        button .btn-icon.btn-icon-duplicate {
+            background-position: -1px -1888px;
+        }
+
+        button .btn-icon.btn-icon-edit {
+            background-position: 0 -1872px;
+        }
+
+        button .btn-icon.btn-icon-delete {
+            background-position: -1px -2048px;
+        }
+
+        button .btn-icon.btn-icon-refresh {
+            background-position: 0 -2586px;
+        }
+
+    button .btn-text {
+        margin-left: 4px;
+    }
+
+.ct-btn {
+    display: flex;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: buttonface;
+    border-image: initial;
+    justify-content: center;
+    padding: 4px;
+    min-width: 75px;
+}

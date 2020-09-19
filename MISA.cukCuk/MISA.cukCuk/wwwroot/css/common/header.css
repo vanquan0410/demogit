@@ -1,0 +1,64 @@
+﻿body {
+}
+.main .header {
+    height: 50px;
+    width: 100%;
+    background-color: #0973b9;
+    display:flex;
+}
+.header .header-left{
+    width:300px;
+    height:100%;
+
+}
+.header .header-right{
+    width:calc(100% - 300px);
+    height:100%;
+    
+}
+.header-right .header-content{
+    float:right;
+    padding:10px;
+    color:#fff;
+}
+.header-right .notification {
+    width: 20px;
+    height: 20px;
+    background-image: url('/content/img/Images/planet-earth (1).png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 3px;
+}
+.header-right .person-icon {
+    background-image: url('/content/img/Images/EmployeeImage.png');
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 3px;
+    margin-top: 3px;
+}
+.header-right .icon-down {
+    width: 20px;
+    height: 15px;
+    background-image: url('/content/img/Images/iconMenu.png');
+    background-position-y: -264px;
+    background-position-x: -3px;
+    background-repeat: no-repeat;
+    /* background-position: center;*/
+    margin-top: 3px;
+}
+.header-right .header-right-name {
+    margin-top: 3px;
+}
+.header-right .language {
+    margin-right: 25px;
+    margin-top: 3px;
+}
+.header .header-left select {
+    width: 100%;
+    height: 80%;
+    background-color: #224a65;
+    color: #fff;
+    margin-top: 5px;
+}

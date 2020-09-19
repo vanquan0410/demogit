@@ -1,0 +1,31 @@
+﻿body {
+
+}
+.content-header{
+    width:100%;
+    height:60px;
+    display:flex;
+    background-color:#fff;
+}
+    .content-header .content-header-main {
+        margin-top: -16px;
+        margin-left:15px;
+    }
+    .content-header .content-header-icon {
+        width: 35px;
+        height: 10px;
+        background-position: center;
+        background-image: url('../../content/img/Images/grid/page-last.png');
+        background-repeat: no-repeat;
+        margin-top: 21px;
+    }
+    .content-header .content-header-sub {
+        margin-top: -7px;
+        color:#0094ff;
+    }
+
+.content-body {
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: orangered;
+}

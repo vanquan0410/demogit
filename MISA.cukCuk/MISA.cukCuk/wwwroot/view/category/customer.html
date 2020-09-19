@@ -6,6 +6,10 @@
     <link href="/css/layout/main.css" rel="stylesheet" />
     <link href="/css/layout/sidebar.css" rel="stylesheet" />
     <link href="/css/common/menu.css" rel="stylesheet" />
+    <link href="/css/common/header.css" rel="stylesheet" />
+    <link href="/css/layout/customer.css" rel="stylesheet" />
+    <link href="/css/common/toolbar.css" rel="stylesheet" />
+    <link href="/css/common/button.css" rel="stylesheet" />
 </head>
 <body>
     <div class="sidebar">
@@ -73,8 +77,55 @@
         </div>
     </div>
     <div class="main">
-       <div class="header">header</div>
-        <div class="content">content</div>
+       <div class="header">
+           <div class="header-left">
+               <select>
+                   <option>Nhà hàng Bảo Trang 1</option>
+                   <option>Nhà hàng Bảo Trang 1</option>
+                   <option>Nhà hàng Bảo Trang 1</option>
+                   <option>Nhà hàng Bảo Trang 1</option>
+               </select>
+           </div>
+           <div class="header-right">
+               <div class="header-content icon-down"></div>
+               <div class="header-content header-right-name">Cao Bảo Trang</div>
+               <div class="header-content person-icon"></div>
+               <div class="header-content notification"></div>
+               <div class="header-content language">R2.0</div>
+           </div>
+       </div>
+        <div class="content">
+            <div class="content-header">
+                <div class="content-header-main"><h1>Danh mục</h1></div>
+                <div class="content-header-icon"></div>
+                <div class="content-header-sub"><h2>Khách hàng</h2></div>
+            </div>
+            <div class="content-body">
+                <div class="toolbar">
+                    <button id="btnAdd">
+                        <div class="btn-icon btn-icon-add"></div>
+                        <dic class="btn-text">Thêm</dic>
+                    </button>
+                    <button id="btnDuplicate">
+                        <div class="btn-icon btn-icon-duplicate"></div>
+                        <dic class="btn-text">Nhân bản</dic>
+                    </button>
+                    <button id="btnEdit">
+                        <div class="btn-icon btn-icon-edit"></div>
+                        <dic class="btn-text">Sửa</dic>
+                    </button>
+                    <button id="btnDelete">
+                        <div class="btn-icon btn-icon-delete"></div>
+                        <dic class="btn-text">Xóa</dic>
+                    </button>
+                    <button id="btnRefresh">
+                        <div class="btn-icon btn-icon-refresh"></div>
+                        <dic class="btn-text">Nạp</dic>
+                    </button>
+                </div>
+                <div class="gird"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

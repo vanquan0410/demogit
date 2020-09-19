@@ -7,15 +7,9 @@
     background-color:#00ff21;
     height:100vh;
 }
-.main .header{
-    height:50px;
-    width:100%;
-    background-color:#808080;
-}
 
     .main .content {
         width: 100%;
         height: calc(100% - 50px);
-        background-color: #0026ff;
-        ư
+        background-color: #0026ff;    
     }
