@@ -4,12 +4,11 @@
 }
 .main{
     width:calc(100% - 200px);
-    background-color:#00ff21;
     height:100vh;
+    position:relative;
 }
 
     .main .content {
         width: 100%;
         height: calc(100% - 50px);
-        background-color: #0026ff;    
     }

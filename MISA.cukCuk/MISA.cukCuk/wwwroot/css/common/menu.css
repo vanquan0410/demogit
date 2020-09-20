@@ -2,12 +2,12 @@
     width: 100%;
     height: calc(100% - 50px);
     background-color: #0973b9;
-    overflow:scroll;
+    /*overflow:scroll;*/
 }
 
 .menu .menu-item {
     display: flex;
-    width: 100%;
+    width: 97%;
     border-top: 1px solid #5fb0e6;
     border-bottom: 1px solid #063858;
     height: 40px;

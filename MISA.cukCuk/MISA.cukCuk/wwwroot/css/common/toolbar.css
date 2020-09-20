@@ -1,18 +1,16 @@
-﻿body {
-}
-.content-body .toolbar{
-    width:100%;
-    height:30px;
-    background-color:#b6ff00;
-    display:flex;
+﻿
+.content-body .toolbar {
+    width: calc(100% - 2px);
+    height: 30px;
+    background-color: #dcded8;
+    display: flex;
 }
 
 .toolbar {
     display: flex;
     width: calc(100% - 4px);
     height: 25px;
-    border: 1px solid #ccc;
-    padding: 2px;
+    border-bottom:1px solid #808080;
     background: #ededed;
 }
 

@@ -38,14 +38,3 @@
         margin-left: 4px;
     }
 
-.ct-btn {
-    display: flex;
-    background-color: #fff;
-    border-width: 1px;
-    border-style: solid;
-    border-color: buttonface;
-    border-image: initial;
-    justify-content: center;
-    padding: 4px;
-    min-width: 75px;
-}

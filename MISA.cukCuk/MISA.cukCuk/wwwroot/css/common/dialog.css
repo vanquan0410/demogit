@@ -1,0 +1,115 @@
+﻿.form-dialog {
+    position: absolute;
+    width: 700px;
+    height: 400px;
+    background-color: #0973b9;
+    top: 180px;
+    left: 450px;
+    right: 20px;
+    bottom: 20px;
+    display:none;
+
+    /*dialog header*/
+}
+    .form-dialog .dialog-titlebar {
+        width: 100%;
+        height: 42px;
+        background-color: #0973b9;
+        display: flex;
+        color: #ffffff;
+    }
+.dialog-titlebar .dialog-titlebar-text {
+    align-self: center;
+    padding: 10px;
+}
+.dialog-titlebar .dialog-titlebar-icon {
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../content/img/Images/cancel.png');
+    margin-left: 572px;
+    align-self: center;
+}
+.dialog-titlebar-icon:hover{
+    cursor:pointer;
+    background-color:#808080;   
+}
+/*dialog body*/
+.form-dialog .dialog-content {
+    width: 98%;
+    height: calc(100% - 60px);
+    padding:9px;    
+
+   /* background-color: #00ff21;*/
+}
+    .dialog-content .dialog-body{
+       
+        width:100%;
+        height:calc(100% - 35px);
+        background-color:#ffffff;
+    }
+    .dialog-body .dialog-information{
+        border-bottom:0px;
+    }
+   
+.dialog-body table {
+    width: 100%;
+    height: 100%;
+    border-right: 0px;
+}
+.dialog-informaton tbody tr {
+    width: 100px;
+    height: 40px;
+}
+.lable{
+    width: 20%;
+  
+}
+
+td input{
+    height: 25px;
+    width:50%;
+}
+
+/*dialog footer*/
+.dialog-content .dialog-footer {
+   
+    height: 35px;
+    display:flex;
+    margin-left:385px;
+    background-color:#ffffff;
+
+}
+.dialog-button button:hover {
+    outline: none;
+    border: 2px solid #1e32d0;
+    /*background-color:#ff0000;*/
+}
+.dialog-footer .dialog-add {
+    width:100px;
+    height:100%;
+    
+}
+.dialog-add #btnAdd {
+    width: 100px;
+    height: 100%;
+    background-image: url('../../content/img/Images/vector-smart-object.png');
+    background-repeat: no-repeat;
+    background-color: #9f9999;
+}
+.dialog-edit #btnEdit {
+    width: 100px;
+    height: 100%;
+    background-image: url('../../content/img/Images/vector-smart-object.png');
+    background-repeat: no-repeat;
+    background-color: #9f9999;
+}
+.dialog-cancel #btnCancel {
+    width: 100px;
+    height: 100%;
+    background-image: url('../../content/img/Images/cancel-invoice.png');
+    background-repeat: no-repeat;
+    background-color: #9f9999;
+}
+
