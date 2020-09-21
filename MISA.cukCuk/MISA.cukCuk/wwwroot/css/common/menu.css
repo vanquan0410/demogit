@@ -13,7 +13,7 @@
     height: 40px;
     padding-left: 5px;
 }
-
+/*menu icon*/
 .menu .menu-item-icon {
     width: 19px;
     height: 17px;
@@ -31,6 +31,7 @@
 .menu-item .report-icon {
     background-position-y: -194px;
     background-position-x:-3px !important;
+    height:22px;
 }
 
 .menu-item .purchase-icon {
@@ -42,11 +43,14 @@
 }
 
 .menu-item .cash-fund-icon {
-    background-position-y: -82.5px;
+    background-position-y: -80.5px;
+    height: 20px;
 }
 
 .menu-item .deposit-funds-icon {
-    background-position-y: -44px;
+    background-position-y: 0px;
+    background-position-x: 1px;
+    background-image:url('../../content/img/Images/icon-deposit.png');
 }
 
 .menu-item .cost-icon {
@@ -54,12 +58,16 @@
 }
 
 .menu-item .promotion-icon {
-    background-position-y: -120px;
+    height: 25px;
+    background-position-y: -118px;
     background-position-x: -4px !important;
 }
 .menu-item .menu-icon {
-    background-position-y: -458px;
-    
+    background-image: url('../../content/img/Images/vector-smart-object.png');
+    width: 20px;
+    height: 22px;
+    background-position-x: 0px;
+    background-position-y: 0px;
 }
 .menu-item .cacel-bill-icon {
     background-image: url(../../content/img/Images/cancel-invoice.png);
@@ -67,7 +75,7 @@
     background-position-y: 3px;
     background-position-x: 0px;
     width: 20px;
-    height: 26px;
+    height: 28px;
 }
 .menu .category-icon {
     background-image: url('../../content/img/Images/icon-left-header.png');
@@ -77,14 +85,21 @@
 .menu-item .setting-system-icon {
     background-position-y: -236px;
     background-position-x: -4px !important;
+    width: 21px;
+    height: 19px;
+
 }
 .menu-item .help-icon {
     background-image: url(../../content/img/Images/iconHelp.png);
     background-repeat: no-repeat;
     background-position-y: 0px;
     background-position-x: 0px;
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
+}
+.menu-item .drop-help-icon {
+    background-position-y: -274px;
+    margin-left: 70px;
 }
 .menu-item .phone-icon {
     background-image: url('../../content/img/Images/icon-subscriber.png');
@@ -92,6 +107,7 @@
     background-position-y: -1px;
     background-position-x: -3px
 }
+/*menu text*/
 .menu .menu-item-text {
     color: #ffffff;
     align-self: center;

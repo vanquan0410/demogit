@@ -20,7 +20,7 @@
         width: 35px;
         height: 10px;
         background-position: center;
-        background-image: url('../../content/img/Images/grid/page-last.png');
+        background-image: url('/content/img/Images/grid/page-last.png');
         background-repeat: no-repeat;
         margin-top: 21px;
     }

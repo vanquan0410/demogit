@@ -14,6 +14,7 @@
         background-position-y: 1px;
      
     }
+/*paging icon*/
     .paging .page-first {
         background-image: url('../../content/img/Images/grid/page-first.png');
         background-repeat:no-repeat;

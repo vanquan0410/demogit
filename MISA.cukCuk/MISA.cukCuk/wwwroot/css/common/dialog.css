@@ -17,7 +17,7 @@
     border: 3px solid #0973b9;
     border-radius: 3px;
     width: 647px;
-    height: 490px;
+    height: 390px;
     background-color: #fff;
     top: calc(50% - 200px);
     left: calc(50% - 300px);
@@ -81,14 +81,14 @@
 }
 
 td input{
-    height: 25px;
+    height: 15px;
     width:80%;
 }
-td select{
-    height:100%;
-    width:85%;
+td select {
+    height: 100%;
+    width: 84%;
 }
-td #txtSoDT,#txtTenCongty,txtDiaChi{
+td #txtTenCongty,#txtDiaChi{
     width:93%;
 }
 
@@ -96,8 +96,12 @@ td #txtSoDT,#txtTenCongty,txtDiaChi{
 .dialog-content .dialog-footer {
     height: 35px;
     display: flex;
-    margin-left: 315px;
+    margin-left: 355px;
     background-color: #ffffff;
+    padding-top: 9px;
+}
+.dialog-footer .dialog-button {
+    margin: 5px;
 }
 #dialog-btnadd {
     background: url(../../content/img/Images/IconSprite.png) no-repeat -1px -767px;
@@ -106,14 +110,16 @@ td #txtSoDT,#txtTenCongty,txtDiaChi{
 }
 #dialog-btnedit {
     background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1134px;
-    width: 125px;
+    width: 105px;
     height: 22px;
 }
 #dialog-btncancel {
-    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1966px;
-    width: 92px;
+    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1967px;
+    width: 75px;
     height: 22px;
 }
+
+
     /*.dialog-button button:hover {
     outline: none;
     border: 2px solid #1e32d0;*/
@@ -146,5 +152,7 @@ td #txtSoDT,#txtTenCongty,txtDiaChi{
     background-repeat: no-repeat;
     background-color: #9f9999;
 }*/
-
+.required-error{
+    border:2px solid #ff0000;
+}
 

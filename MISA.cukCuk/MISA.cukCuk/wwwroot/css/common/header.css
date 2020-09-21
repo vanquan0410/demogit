@@ -1,16 +1,22 @@
 ﻿body {
 }
+@font-face {
+    font-family: 'fontello';
+    src: url('../../content/font/fontello.woff') format('woff');
+}
 .main .header {
     height: 50px;
     width: 100%;
     background-color: #0973b9;
     display:flex;
 }
+/*header left*/
 .header .header-left{
     width:300px;
     height:100%;
 
 }
+/*header right*/
 .header .header-right{
     width:calc(100% - 300px);
     height:100%;
@@ -22,12 +28,24 @@
     color:#fff;
 }
 .header-right .notification {
+   /* font-family:fontello;
     width: 20px;
     height: 20px;
     background-image: url('/content/img/Images/planet-earth (1).png');
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 3px;
+    margin-top: 3px;*/
+}
+.fas.fa-globe-asia{
+    font-size:25px;
+}
+.header-right .notification .notification-index {
+    position:absolute;
+    background-color: red;
+    margin-left: 13px;
+    margin-top: -30px;
+    width: 14px;
+    height: 18px;
 }
 .header-right .person-icon {
     background-image: url('/content/img/Images/EmployeeImage.png');
@@ -42,7 +60,7 @@
     width: 20px;
     height: 15px;
     background-image: url('/content/img/Images/iconMenu.png');
-    background-position-y: -264px;
+    background-position-y: -261px;
     background-position-x: -3px;
     background-repeat: no-repeat;
     /* background-position: center;*/

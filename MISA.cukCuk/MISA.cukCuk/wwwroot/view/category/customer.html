@@ -7,12 +7,14 @@
     <link href="/css/layout/sidebar.css" rel="stylesheet" />
     <link href="/css/common/menu.css" rel="stylesheet" />
     <link href="/css/common/header.css" rel="stylesheet" />
-    <link href="/css/layout/customer.css" rel="stylesheet" />
     <link href="/css/common/toolbar.css" rel="stylesheet" />
     <link href="/css/common/button.css" rel="stylesheet" />
     <link href="/css/common/paging.css" rel="stylesheet" />
-    <link href="../../css/common/gird.css" rel="stylesheet" />
-    <link href="../../css/common/dialog.css" rel="stylesheet" />
+    <link href="/css/common/gird.css" rel="stylesheet" />
+    <link href="/css/common/dialog.css" rel="stylesheet" />
+    <link href="/css/page/category/customer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
 </head>
 <body>
     <!--sidebar-->
@@ -30,6 +32,7 @@
             <div class="menu-item">
                 <div class="menu-item-icon report-icon"></div>
                 <div class="menu-item-text">Báo cáo</div>
+                <div class="menu-item-icon drop-help-icon"></div>
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon purchase-icon"></div>
@@ -54,6 +57,7 @@
             <div class="menu-item">
                 <div class="menu-item-icon promotion-icon"></div>
                 <div class="menu-item-text">Khuyến mại</div>
+                <div style="color: #ff0000;padding-left: 29px;">new</div>
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon menu-icon"></div>
@@ -74,6 +78,7 @@
             <div class="menu-item">
                 <div class="menu-item-icon help-icon"></div>
                 <div class="menu-item-text">Trợ giúp</div>
+                <div class="menu-item-icon drop-help-icon"></div>
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon phone-icon"></div>
@@ -97,7 +102,10 @@
                 <div class="header-content icon-down"></div>
                 <div class="header-content header-right-name">Cao Bảo Trang</div>
                 <div class="header-content person-icon"></div>
-                <div class="header-content notification"></div>
+                <div class="header-content notification">
+                    <i class="fas fa-globe-asia"></i>
+                    <div class="notification-index">2</div>
+                </div>
                 <div class="header-content language">R2.0</div>
             </div>
         </div>
@@ -151,7 +159,7 @@
                                     <td>trần thi bánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002222</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -160,7 +168,7 @@
                                     <td>tran thi a</td>
                                     <td>cong ty rickit</td>
                                     <td>002289</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1997</td>
                                 </tr>
@@ -169,7 +177,7 @@
                                     <td>Trần thi anh</td>
                                     <td>công ty rickit</td>
                                     <td>002286</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1996</td>
                                 </tr>
@@ -187,25 +195,25 @@
                                     <td>Trần thị bánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002223</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/2000</td>
                                 </tr>
                                 <tr>
                                     <td>KH006</td>
-                                    <td>tran thi a</td>
+                                    <td>Trần thị cánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002265</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
                                 <tr>
                                     <td>KH007</td>
-                                    <td>tran thi a</td>
+                                    <td>Trần thị tánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002434</td>
-                                    <td>ha noi</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -261,9 +269,9 @@
                         <tbody>
                             <tr>
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td><input type="text" /></td>
+                                <td><input type="text" required id="txtcustomerCode"/></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><input type="text" /></td>
+                                <td><input type="text" required id="txtcustomerName"/></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
@@ -276,11 +284,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="lable">Mã thẻ thành viên</td>
-                                <td><input type="text" /></td>
-                                
-                            </tr>
+                          
                             <tr>
                                 <td class="lable">Nhóm khách hàng</td>
                                 <td>
@@ -293,22 +297,22 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số Điện thoai</td>
-                                <td  colspan="3"><input type="text" id="txtSoDT"/></td>
+                                <td><input type="text" id="txtdienThoai"/></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
-                                <td><input type="date" /></td>
+                                <td><input type="date" id="txtngaySinh"/></td>
                             </tr>
                             <tr>
                                 <td class="lable">Tên công ty</td>
-                                <td  colspan="3"><input type="text" id="txtTenCongty"/></td>
+                                <td  colspan="3"><input type="text" id="txtTenCongty" /></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã số thuế</td>
-                                <td><input type="text" /></td>
+                                <td><input type="text" id="txtcodeThue"/></td>
 
                                 <td class="lable">Email</td>
-                                <td><input type="text" /></td>
+                                <td><input type="text" id="txtemail"/></td>
                             </tr>
                             <tr>
                                 <td class="lable">Địa chỉ</td>
@@ -317,7 +321,7 @@
                             <tr>
                                 <td class="lable">Ghi chú</td>
                                 <td colspan="3">
-                                    <textarea id="txtGhichu" rows="1" cols="65"></textarea>
+                                    <textarea id="txtGhichu" rows="2" cols="65"></textarea>
                                 </td>
                             </tr>
                             
@@ -330,17 +334,17 @@
                     <!-- <div class="dialog-add dialog-button"><button id="btnAdd">Cất</button></div>
     <div class="dialog-edit dialog-button"><button id="btnEdit">Sửa</button></div>
     <div class="dialog-cancel dialog-button"><button id="btnCancel">Hủy bỏ</button></div>-->
-                    <button id="dialog-btnadd">
+                    <button id="dialog-btnadd" class="dialog-button">
                         <div class="dialog-footer-add dialog-footer-icon"></div>
                         <div class="dialog-footer-text">Cất</div>
                     </button>
 
-                    <button id="dialog-btnedit">
+                    <button id="dialog-btnedit" class="dialog-button">
                         <div class="dialog-footer-edit dialog-footer-icon"></div>
                         <div class="dialog-footer-text">Cất và thêm</div>
                     </button>
 
-                    <button id="dialog-btncancel">
+                    <button id="dialog-btncancel" class="dialog-button">
                         <div class="dialog-footer-cancel dialog-footer-icon"></div>
                         <div class="dialog-footer-text">Hủy bỏ</div>
                     </button>
