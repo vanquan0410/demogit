@@ -1,6 +1,9 @@
 ﻿body {
-  margin:0px;
-  display:flex;
+    margin: 0px;
+    display: flex;
+    font-family: 'fontello','Tahoma_Bold','Tahoma_Regular';
+    font-size:15px;
+
 }
 .main{
     width:calc(100% - 200px);
@@ -12,3 +15,16 @@
         width: 100%;
         height: calc(100% - 50px);
     }
+
+@font-face {
+    font-family: 'fontello';
+    src: url('../../content/font/fontello.woff') format('woff');
+}
+@font-face {
+    font-family: 'Tahoma_Bold';
+    src: url('../../content/font/Tahoma_Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Tahoma_Regular';
+    src: url('../../content/font/Tahoma_Regular.woff') format('woff');
+}

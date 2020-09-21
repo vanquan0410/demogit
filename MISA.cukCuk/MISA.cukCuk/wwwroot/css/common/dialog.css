@@ -1,15 +1,28 @@
-﻿.form-dialog {
+﻿.dialog-modal {
+    /* display: none;*/
+    display: none;
     position: absolute;
-    width: 700px;
-    height: 400px;
-    background-color: #0973b9;
-    top: 180px;
-    left: 450px;
-    right: 20px;
-    bottom: 20px;
-    display:none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8080806e;
+    opacity: 1;
+}
 
-    /*dialog header*/
+.form-dialog {
+    /* display: none;*/
+    display: none;
+    position: absolute;
+    border: 3px solid #0973b9;
+    border-radius: 3px;
+    width: 647px;
+    height: 490px;
+    background-color: #fff;
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    right: 0;
+    bottom: 0;
 }
     .form-dialog .dialog-titlebar {
         width: 100%;
@@ -28,7 +41,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('../../content/img/Images/cancel.png');
-    margin-left: 572px;
+    margin-left: 510px;
     align-self: center;
 }
 .dialog-titlebar-icon:hover{
@@ -39,9 +52,9 @@
 .form-dialog .dialog-content {
     width: 98%;
     height: calc(100% - 60px);
-    padding:9px;    
-
-   /* background-color: #00ff21;*/
+    padding: 9px;
+    font-family: emoji;
+    /* background-color: #00ff21;*/
 }
     .dialog-content .dialog-body{
        
@@ -69,23 +82,43 @@
 
 td input{
     height: 25px;
-    width:50%;
+    width:80%;
+}
+td select{
+    height:100%;
+    width:85%;
+}
+td #txtSoDT,#txtTenCongty,txtDiaChi{
+    width:93%;
 }
 
 /*dialog footer*/
 .dialog-content .dialog-footer {
-   
     height: 35px;
-    display:flex;
-    margin-left:385px;
-    background-color:#ffffff;
-
+    display: flex;
+    margin-left: 315px;
+    background-color: #ffffff;
 }
-.dialog-button button:hover {
+#dialog-btnadd {
+    background: url(../../content/img/Images/IconSprite.png) no-repeat -1px -767px;
+    width: 70px;
+    height: 22px;
+}
+#dialog-btnedit {
+    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1134px;
+    width: 125px;
+    height: 22px;
+}
+#dialog-btncancel {
+    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1966px;
+    width: 92px;
+    height: 22px;
+}
+    /*.dialog-button button:hover {
     outline: none;
-    border: 2px solid #1e32d0;
+    border: 2px solid #1e32d0;*/
     /*background-color:#ff0000;*/
-}
+    /*}
 .dialog-footer .dialog-add {
     width:100px;
     height:100%;
@@ -94,10 +127,11 @@ td input{
 .dialog-add #btnAdd {
     width: 100px;
     height: 100%;
-    background-image: url('../../content/img/Images/vector-smart-object.png');
+     background-image: url('../../content/img/Images/vector-smart-object.png');
     background-repeat: no-repeat;
-    background-color: #9f9999;
-}
+    background-color: #9f9999;*/
+    /*  background: url('../../content/img/Images/IconSprite.png') no-repeat -1px -2416px;*/
+    /*}
 .dialog-edit #btnEdit {
     width: 100px;
     height: 100%;
@@ -111,5 +145,6 @@ td input{
     background-image: url('../../content/img/Images/cancel-invoice.png');
     background-repeat: no-repeat;
     background-color: #9f9999;
-}
+}*/
+
 

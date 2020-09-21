@@ -148,7 +148,7 @@
                             <tbody>
                                 <tr>
                                     <td>KH001</td>
-                                    <td>tran thi a</td>
+                                    <td>trần thi bánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002222</td>
                                     <td>ha noi</td>
@@ -159,17 +159,62 @@
                                     <td>KH002</td>
                                     <td>tran thi a</td>
                                     <td>cong ty rickit</td>
-                                    <td>002222</td>
+                                    <td>002289</td>
+                                    <td>ha noi</td>
+                                    <td>0989788776</td>
+                                    <td>04/1/1997</td>
+                                </tr>
+                                <tr>
+                                    <td>KH003</td>
+                                    <td>Trần thi anh</td>
+                                    <td>công ty rickit</td>
+                                    <td>002286</td>
+                                    <td>ha noi</td>
+                                    <td>0989788776</td>
+                                    <td>04/1/1996</td>
+                                </tr>
+                                <tr>
+                                    <td>KH004</td>
+                                    <td>Nguyễn văn tèo</td>
+                                    <td>công ty rickit</td>
+                                    <td>002235</td>
+                                    <td>Hà nội</td>
+                                    <td>0989788776</td>
+                                    <td>05/1/1998</td>
+                                </tr>
+                                <tr>
+                                    <td>KH005</td>
+                                    <td>Trần thị bánh</td>
+                                    <td>cong ty rickit</td>
+                                    <td>002223</td>
+                                    <td>ha noi</td>
+                                    <td>0989788776</td>
+                                    <td>04/1/2000</td>
+                                </tr>
+                                <tr>
+                                    <td>KH006</td>
+                                    <td>tran thi a</td>
+                                    <td>cong ty rickit</td>
+                                    <td>002265</td>
                                     <td>ha noi</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
                                 <tr>
-                                    <td>KH003</td>
+                                    <td>KH007</td>
                                     <td>tran thi a</td>
                                     <td>cong ty rickit</td>
-                                    <td>002222</td>
+                                    <td>002434</td>
                                     <td>ha noi</td>
+                                    <td>0989788776</td>
+                                    <td>04/1/1999</td>
+                                </tr>
+                                <tr>
+                                    <td>KH008</td>
+                                    <td>Tống văn tèo</td>
+                                    <td>cong ty rickit</td>
+                                    <td>002254</td>
+                                    <td>Hà nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -178,67 +223,128 @@
                     </div>
                     <!--paging-->
                     <div class="paging">
+                        <div class="paging-content page-first"></div>
+                        <div class="paging-content page-prev"></div>
+                        <div class="paging-content" style=" font-size: 16px; width: 50px;">
+                           Trang
+                        </div>
+                        <div class="paging-content">
+                            <input type="text" value="1" />
+                        </div>
                         <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
-                        <div class="paging-content"></div>
+                        <div class="paging-content page-next"></div>
+                        <div class="paging-content page-last"></div>
+                        <div class="paging-content refresh"></div>
+                        <div class="paging-content" style="width:87px;font-size:16px">
+                            Số bản ghi
+                        </div>
+                        <div class="paging-content">
+                            <select>
+                                <option>25</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--Form thông tin chi tiết-->
-    <div class="form-dialog">
-        <div class="dialog-titlebar">
-            <div class="dialog-titlebar-text">Khách hàng</div>
-            <div class="dialog-titlebar-icon" id="btnCancel"></div>
-        </div>
-        <div class="dialog-content">
-            <div class="dialog-body">
-                <table class="dialog-information">
-                    <tbody>
-                        <tr>
-                            <td class="lable">Mã khách hàng</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Tên khách hàng</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Tên công ty</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Mã số thuế</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Địa chỉ</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Điện thoại</td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td class="lable">Ngày sinh</td>
-                            <td><input type="date" /></td>
-                        </tr>
-                    </tbody>
-
-                </table>
+    <div class="dialog-modal">
+        <div class="form-dialog">
+            <div class="dialog-titlebar">
+                <div class="dialog-titlebar-text">Khách hàng</div>
+                <div class="dialog-titlebar-icon" id="btnCancel"></div>
             </div>
-            <div class="dialog-footer">
-                <div class="dialog-add dialog-button"><button id="btnAdd">Cất</button></div>
-                <div class="dialog-edit dialog-button"><button id="btnEdit">Sửa</button></div>
-                <div class="dialog-cancel dialog-button"><button id="btnCancel">Hủy bỏ</button></div>
+            <div class="dialog-content">
+                <div class="dialog-body">
+                    <table class="dialog-information">
+                        <tbody>
+                            <tr>
+                                <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
+                                <td><input type="text" /></td>
+                                <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Mã thẻ thành viên</td>
+                                <td><input type="text" /></td>
+                                <td class="lable">Hạng thẻ</td>
+                                <td>
+                                    <select>
+                                        <option>Thẻ VIP</option>
+                                        <option>Thẻ thường</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Mã thẻ thành viên</td>
+                                <td><input type="text" /></td>
+                                
+                            </tr>
+                            <tr>
+                                <td class="lable">Nhóm khách hàng</td>
+                                <td>
+                                    <select>
+                                        <option>Khách hàng tiềm năng</option>
+                                        <option>Khách hàng không tiềm năng</option>
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Số Điện thoai</td>
+                                <td  colspan="3"><input type="text" id="txtSoDT"/></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Ngày sinh</td>
+                                <td><input type="date" /></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Tên công ty</td>
+                                <td  colspan="3"><input type="text" id="txtTenCongty"/></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Mã số thuế</td>
+                                <td><input type="text" /></td>
+
+                                <td class="lable">Email</td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Địa chỉ</td>
+                                <td  colspan="3"><input type="text" id="txtDiaChi" /></td>
+                            </tr>
+                            <tr>
+                                <td class="lable">Ghi chú</td>
+                                <td colspan="3">
+                                    <textarea id="txtGhichu" rows="1" cols="65"></textarea>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+
+                    </table>
+                </div>
+<!--dialog footer-->
+                <div class="dialog-footer">
+                    <!-- <div class="dialog-add dialog-button"><button id="btnAdd">Cất</button></div>
+    <div class="dialog-edit dialog-button"><button id="btnEdit">Sửa</button></div>
+    <div class="dialog-cancel dialog-button"><button id="btnCancel">Hủy bỏ</button></div>-->
+                    <button id="dialog-btnadd">
+                        <div class="dialog-footer-add dialog-footer-icon"></div>
+                        <div class="dialog-footer-text">Cất</div>
+                    </button>
+
+                    <button id="dialog-btnedit">
+                        <div class="dialog-footer-edit dialog-footer-icon"></div>
+                        <div class="dialog-footer-text">Cất và thêm</div>
+                    </button>
+
+                    <button id="dialog-btncancel">
+                        <div class="dialog-footer-cancel dialog-footer-icon"></div>
+                        <div class="dialog-footer-text">Hủy bỏ</div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

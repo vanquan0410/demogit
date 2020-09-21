@@ -5,6 +5,7 @@
     padding:10px;
     height:96%;
 }
+/*phan  header*/
 .content-header{
     width:100%;
     height:60px;
@@ -28,16 +29,20 @@
         color:#0094ff;
     }
 
+/*phan body*/
 .content-body {
-    position:relative;
+    position: relative;
     height: calc(100% - 60px);
-    border:1px solid #808080;
+    border: 1px solid #d9d9d9;
+    background-color: #fbf8f8;
 }
-.content-body .gird-content{
-   
-}
-.content-body .paging{
-    width:100%;
-    height:10px;
-    background-color:#808080;
-}
+    .content-body .gird-content {
+        height: calc(100% - 70px);
+    }
+/*footer paging*/
+    .content-body .paging {
+        width: 100%;
+        height: 10px;
+        background-color: #fbf8f8;
+        font-family: initial;
+    }

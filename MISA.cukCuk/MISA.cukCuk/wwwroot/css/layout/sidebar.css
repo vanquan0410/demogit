@@ -5,7 +5,7 @@
 .sidebar{
     width:200px;
     background-color:#0094ff;
-    height:100vh;
+    /*height:100vh;*/
 }
     .sidebar .logo {
         height: 50px;

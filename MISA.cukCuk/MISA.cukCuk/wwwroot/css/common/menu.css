@@ -62,20 +62,35 @@
     
 }
 .menu-item .cacel-bill-icon {
-   
+    background-image: url(../../content/img/Images/cancel-invoice.png);
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+    background-position-x: 0px;
+    width: 20px;
+    height: 26px;
 }
-.menu-item .category-icon{
-
+.menu .category-icon {
+    background-image: url('../../content/img/Images/icon-left-header.png');
+    background-repeat: no-repeat;
+    background-position-y: -2px;
 }
 .menu-item .setting-system-icon {
-    background-position-y: -235px;
+    background-position-y: -236px;
     background-position-x: -4px !important;
 }
-.menu-item .help-icon{
-
+.menu-item .help-icon {
+    background-image: url(../../content/img/Images/iconHelp.png);
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    background-position-x: 0px;
+    width: 22px;
+    height: 22px;
 }
-.menu-item .phone-icon{
-
+.menu-item .phone-icon {
+    background-image: url('../../content/img/Images/icon-subscriber.png');
+    background-repeat: no-repeat;
+    background-position-y: -1px;
+    background-position-x: -3px
 }
 .menu .menu-item-text {
     color: #ffffff;

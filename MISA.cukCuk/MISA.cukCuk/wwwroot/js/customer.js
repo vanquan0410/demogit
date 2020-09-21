@@ -1,12 +1,18 @@
 ﻿$(document).ready(function () {
 /*  loadData();*/
-    alert("hello");
     $('#btnAdd').click(function () {
         $('.form-dialog').show();
+        $('.dialog-modal').show();
     })
 
     $('#btnCancel').click(function () {
         $('.form-dialog').hide();
+        $('.dialog-modal').hide();
+    })
+    $('#dialog-btncancel').click(function () {
+        debugger
+        $('.form-dialog').hide();
+        $('.dialog-modal').hide();
     })
   /*  var employee = new employeejs();*/
    
@@ -28,5 +34,6 @@ class customerjs {
 
     showDialogDetail() {
         $('.form-dialog').show();
+        $('.dialog-modal').show();
     }
 }
