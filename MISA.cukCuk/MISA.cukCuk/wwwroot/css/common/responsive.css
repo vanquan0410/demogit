@@ -1,0 +1,30 @@
+@media only screen and (max-width: 900px) {
+    body {
+      
+    }
+    .sidebar{
+        /* display: none; */
+        width: 32px;
+    }
+    .main{
+        width: 100%;
+    }
+    .header-content{
+        display: none;
+    }
+    .icon-down{
+        display: block;
+    }
+    .menu-item-text{
+        display: none;
+    }
+    .menu-item-icon{
+        display: block;
+    }
+    .drop-help-icon{
+        display: none;
+    }
+    #denger{
+        display: none;
+    }
+  }

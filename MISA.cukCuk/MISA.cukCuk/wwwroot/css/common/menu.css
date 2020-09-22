@@ -1,8 +1,9 @@
-﻿.sidebar .menu {
+﻿/* phan menu */
+.sidebar .menu {
     width: 100%;
     height: calc(100% - 50px);
     background-color: #0973b9;
-    /*overflow:scroll;*/
+    overflow-y:scroll;
 }
 
 .menu .menu-item {
@@ -120,4 +121,9 @@
 .menu .menu-item:hover {
     background-color: #ff6a00;
     cursor: pointer;
+}
+
+.sidebar .menu::-webkit-scrollbar{
+    width: 0px;
+    background-color: darkgray;
 }

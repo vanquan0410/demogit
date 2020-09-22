@@ -17,6 +17,10 @@
     /*  var employee = new employeejs();*/
     debugger;
     var customer = new customerjs();
+        debugger
+    if (document.getElementById('#dialog-btncancel').hasFocus()) {
+        document.getElementById('txtcustomerCode').focus();
+    }
 
 
 });
@@ -34,9 +38,17 @@ class customerjs {
         $('#dialog-btncancel').click(this.btnCancelOnClick.bind(this));
         $("input[required]").blur(this.checkrequired);
         $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
+        $('#dialog-btncancel').focus(this.showfocusdetail);
+        $("table").on("click", "tbody tr", this.rowOnClick);
+    }
+    showfocusdetail(){
+        document.getElementById('txtcustomerCode').focus();
     }
     btnAddOnClick() {
+        debugger
+       
         this.showDialogDetail();
+        document.getElementById('txtcustomerCode').focus();
     }
     btnCancelOnClick() {
         this.hideDialogDetail();
@@ -45,6 +57,7 @@ class customerjs {
     showDialogDetail() {
         $('.form-dialog').show();
         $('.dialog-modal').show();
+        
     }
 /*an dialog*/
     hideDialogDetail() {
@@ -109,6 +122,10 @@ class customerjs {
             this.loadata();
             this.hideDialogDetail();
         }
+    }
+    rowOnClick(sender){
+        $(this).addClass("row-selected");
+        $(this).siblings().removeClass("row-selected");
     }
     
 }

@@ -5,6 +5,7 @@
     button:focus {
         outline: none;
         border: 1px solid #1e32d0;
+        /* cursor: pointer; */
     }
 
 

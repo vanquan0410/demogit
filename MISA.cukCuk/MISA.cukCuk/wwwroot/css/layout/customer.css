@@ -1,9 +1,7 @@
-﻿body {
-
-}
+﻿
 .container{
     padding:10px;
-    height:98%;
+    height:99%;
 }
 /*phan  header*/
 .content-header{
@@ -46,3 +44,5 @@
         background-color: #fbf8f8;
         font-family: initial;
     }
+
+
