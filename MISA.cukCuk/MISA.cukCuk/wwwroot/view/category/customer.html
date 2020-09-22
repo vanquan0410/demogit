@@ -41,7 +41,7 @@
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon warehouse-icon"></div>
-                <div class="menu-item-text">kho</div>
+                <div class="menu-item-text">Kho</div>
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon cash-fund-icon"></div>
@@ -101,7 +101,7 @@
             </div>
             <div class="header-right">
                 <div class="header-content icon-down"></div>
-                <div class="header-content header-right-name">Cao Bảo Trang</div>
+                <div class="header-content header-right-name">Đàm Văn Quân</div>
                 <div class="header-content person-icon"></div>
                 <div class="header-content notification">
                     <i class="fas fa-globe-asia"></i>
@@ -145,13 +145,13 @@
                         <table class="tbListcustomer" width="100%" border="1">
                             <thead>
                                 <tr>
-                                    <th>Mã khách hàng</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Tên công ty</th>
-                                    <th>Mã số thuế</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Ngày sinh</th>
+                                    <th id="titlecode">Mã khách hàng</th>
+                                    <th id="titlename">Tên khách hàng</th>
+                                    <th id="titlecompany">Tên công ty</th>
+                                    <th id="title-thue">Mã số thuế</th>
+                                    <th id="titleaddress">Địa chỉ</th>
+                                    <th id="titlephone">Số điện thoại</th>
+                                    <th id="titlebirthday">Ngày sinh</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -160,7 +160,7 @@
                                     <td>trần thi bánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002222</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -169,7 +169,7 @@
                                     <td>tran thi a</td>
                                     <td>cong ty rickit</td>
                                     <td>002289</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1997</td>
                                 </tr>
@@ -178,7 +178,7 @@
                                     <td>Trần thi anh</td>
                                     <td>công ty rickit</td>
                                     <td>002286</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1996</td>
                                 </tr>
@@ -187,7 +187,7 @@
                                     <td>Nguyễn văn tèo</td>
                                     <td>công ty rickit</td>
                                     <td>002235</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>05/1/1998</td>
                                 </tr>
@@ -196,7 +196,7 @@
                                     <td>Trần thị bánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002223</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/2000</td>
                                 </tr>
@@ -205,7 +205,7 @@
                                     <td>Trần thị cánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002265</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -214,7 +214,7 @@
                                     <td>Trần thị tánh</td>
                                     <td>cong ty rickit</td>
                                     <td>002434</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -223,7 +223,7 @@
                                     <td>Tống văn tèo</td>
                                     <td>cong ty rickit</td>
                                     <td>002254</td>
-                                    <td>Hà nội</td>
+                                    <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
                                     <td>0989788776</td>
                                     <td>04/1/1999</td>
                                 </tr>
@@ -270,59 +270,65 @@
                         <tbody>
                             <tr>
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td><input type="text" required id="txtcustomerCode" /></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtcustomerCode" /></div></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><input type="text" required id="txtcustomerName"/></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtcustomerName"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
-                                <td><input type="text" /></td>
+                                <td><div class="dialog-in"><input type="text" /></div></td>
                                 <td class="lable">Hạng thẻ</td>
                                 <td>
-                                    <select>
+                                    <div class="dialog-in">
+                                    <select id="sel-card">
                                         <option>Thẻ VIP</option>
                                         <option>Thẻ thường</option>
                                     </select>
+                                </div>
                                 </td>
                             </tr>
                           
                             <tr>
                                 <td class="lable">Nhóm khách hàng</td>
                                 <td>
+                                    <div class="dialog-in">
                                     <select>
                                         <option>Khách hàng tiềm năng</option>
                                         <option>Khách hàng không tiềm năng</option>
                                     </select>
+                                </div>
 
                                 </td>
                             </tr>
                             <tr>
                                 <td class="lable">Số Điện thoai</td>
-                                <td><input type="text" id="txtdienThoai"/></td>
+                                <td><div class="dialog-in"><input type="text" id="txtdienThoai"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
-                                <td><input type="date" id="txtngaySinh"/></td>
+                                <td><div class="dialog-in"><input type="date" id="txtngaySinh"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Tên công ty</td>
-                                <td  colspan="3"><input type="text" id="txtTenCongty" /></td>
+                                <td  colspan="3"><div class="dialog-in"><input type="text" id="txtTenCongty" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã số thuế</td>
-                                <td><input type="text" id="txtcodeThue"/></td>
+                                <td><div class="dialog-in"><input type="text" id="txtcodeThue"/></div></td>
 
                                 <td class="lable">Email</td>
-                                <td><input type="text" id="txtemail"/></td>
+                                <td><div class="dialog-in"><input type="text" id="txtemail"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Địa chỉ</td>
-                                <td  colspan="3"><input type="text" id="txtDiaChi" /></td>
+                                <td  colspan="3"><div class="dialog-in"><input type="text" id="txtDiaChi" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ghi chú</td>
                                 <td colspan="3">
+                                    <div class="dialog-in">
                                     <textarea id="txtGhichu" rows="2" cols="65"></textarea>
+                                </div>
                                 </td>
                             </tr>
                             

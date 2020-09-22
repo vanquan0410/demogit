@@ -2,7 +2,7 @@
 }
 @font-face {
     font-family: 'fontello';
-    src: url('../../content/font/fontello.woff') format('woff');
+    src: url('/content/font/fontello.woff') format('woff');
 }
 .main .header {
     height: 50px;

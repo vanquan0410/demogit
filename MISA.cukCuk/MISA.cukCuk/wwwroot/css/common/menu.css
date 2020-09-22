@@ -18,7 +18,7 @@
 .menu .menu-item-icon {
     width: 19px;
     height: 17px;
-    background-image: url('../../content/img/Images/iconMenu.png');
+    background-image: url('/content/img/Images/iconMenu.png');
     background-repeat: no-repeat;
     align-self: center;
     margin-left: 5px;
@@ -51,7 +51,7 @@
 .menu-item .deposit-funds-icon {
     background-position-y: 0px;
     background-position-x: 1px;
-    background-image:url('../../content/img/Images/icon-deposit.png');
+    background-image:url('/content/img/Images/icon-deposit.png');
 }
 
 .menu-item .cost-icon {
@@ -64,14 +64,14 @@
     background-position-x: -4px !important;
 }
 .menu-item .menu-icon {
-    background-image: url('../../content/img/Images/vector-smart-object.png');
+    background-image: url('/content/img/Images/vector-smart-object.png');
     width: 20px;
     height: 22px;
     background-position-x: 0px;
     background-position-y: 0px;
 }
 .menu-item .cacel-bill-icon {
-    background-image: url(../../content/img/Images/cancel-invoice.png);
+    background-image: url(/content/img/Images/cancel-invoice.png);
     background-repeat: no-repeat;
     background-position-y: 3px;
     background-position-x: 0px;
@@ -79,7 +79,7 @@
     height: 28px;
 }
 .menu .category-icon {
-    background-image: url('../../content/img/Images/icon-left-header.png');
+    background-image: url('/content/img/Images/icon-left-header.png');
     background-repeat: no-repeat;
     background-position-y: -2px;
 }
@@ -91,7 +91,7 @@
 
 }
 .menu-item .help-icon {
-    background-image: url(../../content/img/Images/iconHelp.png);
+    background-image: url(/content/img/Images/iconHelp.png);
     background-repeat: no-repeat;
     background-position-y: 0px;
     background-position-x: 0px;
@@ -103,7 +103,7 @@
     margin-left: 70px;
 }
 .menu-item .phone-icon {
-    background-image: url('../../content/img/Images/icon-subscriber.png');
+    background-image: url('/content/img/Images/icon-subscriber.png');
     background-repeat: no-repeat;
     background-position-y: -1px;
     background-position-x: -3px

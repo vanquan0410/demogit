@@ -1,8 +1,8 @@
 sua lai table content ngay khoang cach nao cần bé thì bé
-font-chữ chinh phải đồng nhất
-form-dialog boder can phai dong nhat
-sua lai ten
-khoang cach giữa content va body
+font-chữ chinh phải đồng nhất ok
+form-dialog boder can phai dong nhat  
+sua lai ten    ok
+khoang cach duoi giữa content va body
 hover vao table can nhat dan
 chinh sửa lại khaongr cách va kich thước button trong file dialog 
 sửa lai tổ chức code cái nào ko cần thì xóa đi

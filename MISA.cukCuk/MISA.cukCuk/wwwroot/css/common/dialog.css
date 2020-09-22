@@ -17,7 +17,7 @@
     position: absolute;
     border: 3px solid #0973b9;
     border-radius: 3px;
-    width: 647px;
+    width: 654px;
     height: 390px;
     background-color: #fff;
     top: calc(50% - 200px);
@@ -27,7 +27,7 @@
 }
     .form-dialog .dialog-titlebar {
         width: 100%;
-        height: 42px;
+        height: 27px;
         background-color: #0973b9;
         display: flex;
         color: #ffffff;
@@ -41,8 +41,8 @@
     height: 20px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('../../content/img/Images/cancel.png');
-    margin-left: 510px;
+    background-image: url('/content/img/Images/cancel.png');
+    margin-left: 530px;
     align-self: center;
 }
 .dialog-titlebar-icon:hover{
@@ -54,7 +54,7 @@
     width: 98%;
     height: calc(100% - 60px);
     padding: 9px;
-    font-family: emoji;
+    /* font-family: emoji; */
     /* background-color: #00ff21;*/
 }
     .dialog-content .dialog-body{
@@ -68,7 +68,7 @@
     }
    
 .dialog-body table {
-    width: 104%;
+    width: 100%;
     height: 100%;
     border-right: 0px;
 }
@@ -80,49 +80,98 @@
     width: 20%;
   
 }
-
+input{
+    outline: 1px;
+    
+}
+input:focus{
+     outline: 0px; 
+    border: 1px solid blue;
+    border-radius: 0%;
+    /* height: 100%; */
+}
 td input{
     height: 19px;
     width: 80%;
 }
+.dialog-in #txtcustomerName,#txtemail{
+    width: 95%;
+}
+td input[type="date" i]{
+    height: 22px;
+}
 td select {
-    height: 23px;
-    width: 84%;
+    height: 25px;
+    width: 82%;
+}
+select:focus{
+    outline: 0px; 
+    border: 1px solid blue;
+    border-radius: 0%;
+}
+.dialog-in #sel-card{
+    width: 97.5%;
 }
 td #txtTenCongty,#txtDiaChi{
-    width:93%;
+    width:98.5%;
 }
 td #txtGhichu{
-    width: 93.5%;
+    width: 98%;
 }
-
+input[type="text" i] {
+    padding: 1px 2px;
+}
+.dialog-body input{
+    padding: 0px;
+}
+.dialog-body input:focus{
+   border-radius:0% ;
+   /* padding: 0px; */
+   padding: 1px 1px;
+   /* height: 15;
+   width: 100%;; */
+}
+.dialog-body .dialog-in{
+    height: 15px;
+}
 /*dialog footer*/
 .dialog-content .dialog-footer {
     height: 35px;
     display: flex;
-    margin-left: 355px;
+    margin-left: 330px;
     background-color: #ffffff;
-    padding-top: 9px;
+    padding-top: 23px;
 }
 .dialog-footer .dialog-button {
     margin: 5px;
+    height: 25px !important;
 }
 #dialog-btnadd {
 
-    background: url(../../content/img/Images/IconSprite.png) no-repeat -1px -767px;
-    width: 70px;
+    /* background: url(/content/img/Images/IconSprite.png) no-repeat -1px -767px; */
+    width: 78px;
     height: 20px; 
+    background-image: url('/content/img/Images/diskette.png');
+    background-repeat:no-repeat ;
+    background-position-x: 3px;
+    background-position-y: 3px;
     /* background: url(../../content/img/Images/diskette.png) no-repeat -1px -0px; */
 }
 #dialog-btnedit {
-    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1134px;
-    width: 105px;
-    height: 20px;
+    width: 130px;
+    height: 20px; 
+    background-image: url('/content/img/Images/add.png');
+    background-repeat:no-repeat ;
+    background-position-x: 3px;
+    background-position-y: 3px;
 }
 #dialog-btncancel {
-    background: url(../../content/img/Images/IconSprite.png) no-repeat 0 -1967px;
-    width: 75px;
-    height: 20px;
+    width: 100px;
+    height: 20px; 
+    background-image: url('/content/img/Images/cance.png');
+    background-repeat:no-repeat ;
+    background-position-x: 3px;
+    background-position-y: 3px;
 }
 
 .dialog-footer button {
@@ -146,6 +195,7 @@ td #txtGhichu{
         background-color: #ffffff;
         cursor: pointer;
     }
+    
     /*.dialog-button button:hover {
     outline: none;
     border: 2px solid #1e32d0;*/
@@ -180,6 +230,6 @@ td #txtGhichu{
 }*/
 /* add class error */
 .required-error{
-    border:2px solid #ff0000;
+    border:1px solid #ff0000;
 }
 

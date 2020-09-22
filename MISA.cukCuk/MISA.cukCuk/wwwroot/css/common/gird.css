@@ -29,12 +29,12 @@ table {
     background-color: rgb(239,239,239);
 }
     .gird-content table {
-        font-family: system-ui;
+        /* font-family: system-ui; */
     }
    
 
      .gird-content table tbody tr:nth-child(even){
-        background-color:#cecece;
+        background-color:#f1f1f1;
     } 
     .gird-content table tbody tr:hover {
         background-color: #437698;
@@ -42,5 +42,30 @@ table {
     }
 
     .gird-content table tbody .row-selected{
-        background-color:#808080 !important;
+        background-color:hsla(0, 11%, 70%, 0.863)nt;
     } 
+.gird-content #titlecode{
+    width: 7%;
+}
+.gird-content #titlename{
+    width: 20%;
+}
+.gird-content #titlecompany{
+    width: 15%;
+}
+.gird-content #title-thue{
+    width: 7%;
+}
+.gird-content #titleaddress{
+    width: 30%;
+}
+.gird-content #titlephone{
+    width: 10%;
+}
+.gird-content #titlebirthday{
+    width: 10%;
+    text-align: center;
+}
+.gird-content #titlebirthday td{
+    text-align: center !important;
+}
