@@ -38,7 +38,7 @@ class customerjs {
         $('#dialog-btncancel').click(this.btnCancelOnClick.bind(this));
         $("input[required]").blur(this.checkrequired);
         $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
-        $('#dialog-btncancel').focus(this.showfocusdetail);
+        $('#dialog-btnfocus').focus(this.showfocusdetail);
         $("table").on("click", "tbody tr", this.rowOnClick);
     }
     showfocusdetail(){

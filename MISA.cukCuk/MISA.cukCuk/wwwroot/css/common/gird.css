@@ -8,7 +8,7 @@
 table {
     border-collapse: collapse;
     width: 100%;
-    border-color: #d9d9d9;
+    border-color: #a9a9a9;
     border-style: solid;
     border-left: 0px !important;
     
@@ -18,11 +18,14 @@ table {
 .gird-content table {
     width: 100%;
     border-collapse: collapse;
+    border-right:none ;
     /* overflow: scroll; */
 }
 
     .gird-content table td, th {
         padding: 4px;
+        border: 1px solid #a9a9a9;
+        border-top: none;
     }
 
 .gird-content table thead {
@@ -44,6 +47,26 @@ table {
     .gird-content table tbody .row-selected{
         background-color:hsla(0, 11%, 70%, 0.863)nt;
     } 
+    /* .gird-content table tr td:last-child,th:last-child{
+        border-right: 0px;
+    } */
+    /* .gird-content table:last-child{
+        border-right: 0px !important;
+    }
+    .gird-content table:first-child{
+        border-left: 0px !important;
+    } */
+    /* .gird-content table tr td,th{
+        border-color: #d9d9d9;
+    } */
+    .gird-content table td:last-child, th:last-child{
+        border-right: none;
+        text-align: center;
+    }
+
+    .gird-content table td:first-child, th:first-child{
+        border-left: none;
+    }
 .gird-content #titlecode{
     width: 7%;
 }
