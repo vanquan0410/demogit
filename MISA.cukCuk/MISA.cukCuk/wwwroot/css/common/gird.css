@@ -45,7 +45,7 @@ table {
     }
 
     .gird-content table tbody .row-selected{
-        background-color:hsla(0, 11%, 70%, 0.863)nt;
+        background-color:#437698 !important;
     } 
     /* .gird-content table tr td:last-child,th:last-child{
         border-right: 0px;

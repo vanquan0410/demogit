@@ -16,7 +16,6 @@
         })*/
     /*  var employee = new employeejs();*/
     var customer = new customerjs();
-        debugger
     if (document.getElementById('#dialog-btncancel').hasFocus()) {
         document.getElementById('txtcustomerCode').focus();
     }
@@ -30,7 +29,6 @@ class customerjs {
         this.initevent();
         this.loadata();
         this.shortCustomerName();
-       /* this.loaddata();*/
     }
     initevent() {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
@@ -39,6 +37,7 @@ class customerjs {
         $("input[required]").blur(this.checkrequired);
         $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showfocusdetail);
+        debugger
         $("table").on("click", "tbody tr", this.rowOnClick);
         
     }
@@ -46,8 +45,6 @@ class customerjs {
         document.getElementById('txtcustomerCode').focus();
     }
     btnAddOnClick() {
-        debugger
-       
         this.showDialogDetail();
         document.getElementById('txtcustomerCode').focus();
     }
@@ -108,15 +105,8 @@ class customerjs {
 
         })
     }
-    hideLength(item){
-        debugger
-        var text=item;
-        if(text.length==1){
-            alert("check");
-        }
-    }
+
     btnSaveOnClick() {
-        debugger;
         var inputrequired = $("[required]");
         var isValid = true;
         $.each(inputrequired, function (index, input) {
@@ -143,6 +133,7 @@ class customerjs {
         }
     }
     rowOnClick(sender){
+        debugger
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
     }
