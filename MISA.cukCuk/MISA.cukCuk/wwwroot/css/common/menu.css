@@ -37,6 +37,9 @@
 
 .menu-item .purchase-icon {
     background-position-y: -380px;
+    background-position-x: -4px;
+    width: 20px;
+    height: 17px;
 }
 
 .menu-item .warehouse-icon {
@@ -68,7 +71,7 @@
     width: 20px;
     height: 22px;
     background-position-x: 0px;
-    background-position-y: 0px;
+    background-position-y: -1px;
 }
 .menu-item .cacel-bill-icon {
     background-image: url(/content/img/Images/cancel-invoice.png);
@@ -114,10 +117,6 @@
     align-self: center;
     margin-left: 12px;
 }
-.menu .menu-icon{
-
-}
-
 .menu .menu-item:hover {
     background-color: #ff6a00;
     cursor: pointer;

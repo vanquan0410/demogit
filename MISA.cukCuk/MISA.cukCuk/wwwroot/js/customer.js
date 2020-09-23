@@ -15,7 +15,6 @@
             $('.dialog-modal').hide();
         })*/
     /*  var employee = new employeejs();*/
-    debugger;
     var customer = new customerjs();
         debugger
     if (document.getElementById('#dialog-btncancel').hasFocus()) {
@@ -30,6 +29,7 @@ class customerjs {
         debugger
         this.initevent();
         this.loadata();
+        this.shortCustomerName();
        /* this.loaddata();*/
     }
     initevent() {
@@ -40,6 +40,7 @@ class customerjs {
         $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showfocusdetail);
         $("table").on("click", "tbody tr", this.rowOnClick);
+        
     }
     showfocusdetail(){
         document.getElementById('txtcustomerCode').focus();
@@ -84,17 +85,35 @@ class customerjs {
     loadata() {
         /*$('.tbListcustomer tbody').empty();*/
         $.each(data, function (index, item) {
+             // this.hideLength(item.customerName);
+             if(item.diaChi.length>31){
+
+               var address=item.diaChi.slice(0,31)+"...";
+            }
+            else{
+                var address=item.diaChi;
+            }
             var trHTML = $(`<tr>
                         <td>`+ item.customerCode + `</td>
                         <td>`+ item.customerName + `</td>
                         <td>`+ item.companyName + `</td>
                         <td>`+ item.codeThue + `</td>
-                        <td>`+ item.diaChi + `</td>
+                        <td title="`+item.diaChi+`">`+ address + `</td>
                         <td>`+ item.dienThoai + `</td>
                         <td>`+ item.ngaySinh + `</td>
                     </tr>`);
+                    // this.hideLength(item.customerName);
+                   
             $('.tbListcustomer tbody').append(trHTML);
+
         })
+    }
+    hideLength(item){
+        debugger
+        var text=item;
+        if(text.length==1){
+            alert("check");
+        }
     }
     btnSaveOnClick() {
         debugger;
@@ -136,8 +155,18 @@ var data = [
         email: "abc@gmail.com",
         companyName: "cong ty rickit",
         codeThue: "1234",
-        diaChi: "ha noi",
-        dienThoai: "016598562",
+        diaChi: "Thượng Mỗ - Đan Phượng - Hà Nội",
+        dienThoai: "0165985629",
         ngaySinh:"01/10/1999"
-    }
+    },
+    {
+        customerCode: "Kh11",
+        customerName: "Trần thị tý",
+        email: "tyabc@gmail.com",
+        companyName: "cong ty rickit",
+        codeThue: "1234",
+        diaChi: "so nha gi đó Thôn an sơn ngõ thượng cát Thượng Mỗ - Đan Phượng - Hà Nội",
+        dienThoai: "0165985629",
+        ngaySinh:"01/10/1999"
+    },
 ]

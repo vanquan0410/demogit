@@ -40,6 +40,12 @@
         background-image: url('/content/img/Images/grid/sort_desc.png');
         background-repeat: no-repeat;
     }
+    .paging .hd-pop{
+        background-image: url('/content/img/Images/grid/hd-pop.png');
+        background-repeat: no-repeat;
+        background-position-x: 12px;
+        background-position-y: 7px;
+    }
 .paging-content input {
     width: 35px;
     height: 15px;
@@ -47,5 +53,21 @@
 .paging-content:hover{
     cursor:pointer;
    
+}
+.paging-content input{
+    width: 100%;
+    height: 98.5%;
+    padding: 0px;
+    
+}
+.paging-content select{
+    width: 100%;
+    height: 100%;
+
+}
+.paging-content input:focus{
+    outline: 0px; 
+    border: 1px solid #0973b9;
+    border-radius: 0%;
 }
    

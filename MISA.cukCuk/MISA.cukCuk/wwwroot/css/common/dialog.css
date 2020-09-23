@@ -47,7 +47,7 @@
 }
 .dialog-titlebar-icon:hover{
     cursor:pointer;
-    background-color:#808080;   
+    background-color:#0973b9;   
 }
 /*dialog body*/
 .form-dialog .dialog-content {
@@ -86,13 +86,13 @@ input{
 }
 input:focus{
      outline: 0px; 
-    border: 1px solid blue;
+    border: 1px solid #0973b9;
     border-radius: 0%;
     /* height: 100%; */
 }
 .dialog-in textarea:focus{
     outline: 0px; 
-    border: 1px solid blue;
+    border: 1px solid #0973b9;
     border-radius: 0%;
 }
 td input{
@@ -111,7 +111,7 @@ td select {
 }
 select:focus{
     outline: 0px; 
-    border: 1px solid blue;
+    border: 1px solid 0973b9;
     border-radius: 0%;
 }
 .dialog-in #sel-card{
@@ -190,13 +190,13 @@ input[type="text" i] {
 }
 
     .dialog-footer button:hover {
-        border-color: #1e32d0;
+        border-color: #0973b9;
         background-color: #ffffff;
         cursor: pointer;
     }
 
     .dialog-footer button:focus {
-        border-color: #1e32d0;
+        border-color: #0973b9;
         background-color: #ffffff;
         cursor: pointer;
     }
