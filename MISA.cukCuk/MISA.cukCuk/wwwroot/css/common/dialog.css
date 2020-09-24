@@ -87,7 +87,7 @@ input{
 input:focus{
      outline: 0px; 
     border: 1px solid #0973b9;
-    border-radius: 0%;
+
     /* height: 100%; */
 }
 .dialog-in textarea:focus{
@@ -127,7 +127,13 @@ input[type="text" i] {
     padding: 1px 2px;
 }
 .dialog-body input{
+    border:1px solid #ccc;
+    height: 19px;
+    width: 80%;
     padding: 0px;
+    outline: none;
+    padding: 1px 1px;
+   
 }
 .dialog-body input:focus{
    border-radius:0% ;
@@ -135,6 +141,7 @@ input[type="text" i] {
    padding: 1px 1px;
    /* height: 15;
    width: 100%;; */
+   border-color: #0973b9;
 }
 .dialog-body .dialog-in{
     height: 15px;
@@ -143,9 +150,10 @@ input[type="text" i] {
 .dialog-content .dialog-footer {
     height: 35px;
     display: flex;
-    margin-left: 330px;
+    /* margin-left: 330px; */
     background-color: #ffffff;
     padding-top: 23px;
+    
 }
 .dialog-footer .dialog-button {
     margin: 5px;
@@ -179,14 +187,14 @@ input[type="text" i] {
     background-position-y: 3px;
 }
 
-.dialog-footer button {
+.dialog-footer  button {
     /* display: flex; */
     /* align-items: center; */
     /* height: 100%; */
     border-radius: unset;
     border-style: solid;
     border-width: 1px;
-    border-color: #0000002b;;
+    border-color: #1614142b;;
 }
 
     .dialog-footer button:hover {
@@ -196,11 +204,16 @@ input[type="text" i] {
     }
 
     .dialog-footer button:focus {
-        border-color: #0973b9;
+        border-color: #0973b9 !important;
         background-color: #ffffff;
         cursor: pointer;
     }
-    
+    .dialog-footer .dialog-footer-left{
+
+    }
+    .dialog-footer .dialog-footer-right{
+        margin-left: 226px;
+    }
     /*.dialog-button button:hover {
     outline: none;
     border: 2px solid #1e32d0;*/
@@ -235,7 +248,7 @@ input[type="text" i] {
 }*/
 /* add class error */
 .required-error{
-    border:1px solid #ff0000;
+    border:1px solid #ff0000 !important;
     /* border-color:red ; */
     height: 19px;
     width: 80%;

@@ -80,30 +80,43 @@ class customerjs {
     }
 /*load data*/
     loadata() {
-        /*$('.tbListcustomer tbody').empty();*/
-        $.each(data, function (index, item) {
-             // this.hideLength(item.customerName);
-             if(item.diaChi.length>31){
+        $.ajax({
+            url: "/api/customer",
+            method: "get",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (response) {
+            debugger
+            $.each(response, function (index, item) {
+                // this.hideLength(item.customerName);
+                if (item.address.length > 31) {
 
-               var address=item.diaChi.slice(0,31)+"...";
-            }
-            else{
-                var address=item.diaChi;
-            }
-            var trHTML = $(`<tr>
+                    var address = item.address.slice(0, 31) + "...";
+                }
+                else {
+                    var address = item.address;
+                }
+                var trHTML = $(`<tr>
                         <td>`+ item.customerCode + `</td>
                         <td>`+ item.customerName + `</td>
                         <td>`+ item.companyName + `</td>
-                        <td>`+ item.codeThue + `</td>
-                        <td title="`+item.diaChi+`">`+ address + `</td>
-                        <td>`+ item.dienThoai + `</td>
-                        <td>`+ item.ngaySinh + `</td>
+                        <td>`+ item.code + `</td>
+                        <td title="`+ item.address + `">` + address + `</td>
+                        <td>`+ item.phone + `</td>
+                        <td>`+ item.date + `</td>
                     </tr>`);
-                    // this.hideLength(item.customerName);
-                   
-            $('.tbListcustomer tbody').append(trHTML);
+                // this.hideLength(item.customerName);
 
+                $('.tbListcustomer tbody').append(trHTML);
+
+            })
+            alert("connect thanh cong");
+        }).fail(function (response) {
+            alert("connect fail");
         })
+        /*$('.tbListcustomer tbody').empty();*/
+       
     }
 
     btnSaveOnClick() {
