@@ -85,6 +85,7 @@
     background-image: url('/content/img/Images/icon-left-header.png');
     background-repeat: no-repeat;
     background-position-y: -2px;
+    background-position-x: -1px;
 }
 .menu-item .setting-system-icon {
     background-position-y: -236px;
@@ -112,6 +113,10 @@
     background-position-x: -3px
 }
 /*menu text*/
+.menu .menu-item:hover{
+    cursor: pointer;
+    
+}
 .menu .menu-item-text {
     color: #ffffff;
     align-self: center;
@@ -124,5 +129,5 @@
 
 .sidebar .menu::-webkit-scrollbar{
     width: 0px;
-    background-color: darkgray;
+    /* background-color: darkgray; */
 }

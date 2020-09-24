@@ -1,7 +1,7 @@
 ﻿
 .container{
     padding:10px;
-    height:99%;
+    height:98.2%;
 }
 /*phan  header*/
 .content-header{
@@ -14,13 +14,19 @@
         margin-top: -16px;
        
     }
-    .content-header .content-header-icon {
+    /* .content-header .content-header-icon {
         width: 35px;
         height: 10px;
         background-position: center;
         background-image: url('/content/img/Images/grid/page-last.png');
         background-repeat: no-repeat;
         margin-top: 21px;
+    } */
+    .content-header .content-header-icon i{
+        font-size: 30px;
+        color: #0094ff;
+        padding: 10px;
+        
     }
     .content-header .content-header-sub {
         margin-top: -7px;
@@ -35,7 +41,7 @@
     background-color: #fbf8f8;
     top: 1px;
     right: 1px;
-    left: 1px;
+    left: 0.5px;
     bottom: 1px;
 }
     .content-body .gird-content {

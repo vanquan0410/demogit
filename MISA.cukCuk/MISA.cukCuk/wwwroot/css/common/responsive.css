@@ -4,7 +4,8 @@
     }
     .sidebar{
         /* display: none; */
-        width: 32px;
+        width: 36px;
+        
     }
     .main{
         width: 100%;
@@ -26,5 +27,8 @@
     }
     #denger{
         display: none;
+    }
+    .container{
+        height: 98%;
     }
   }

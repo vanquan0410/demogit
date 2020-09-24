@@ -1,9 +1,9 @@
-sua lai table content ngay khoang cach nao cần bé thì bé
+sua lai table content ngay khoang cach nao cần bé thì bé ok
 font-chữ chinh phải đồng nhất ok
-form-dialog boder can phai dong nhat  
+form-dialog boder can phai dong nhat  ok
 sua lai ten    ok
-khoang cach duoi giữa content va body
-hover vao table can nhat dan
-chinh sửa lại khaongr cách va kich thước button trong file dialog 
-sửa lai tổ chức code cái nào ko cần thì xóa đi
-sủa lại tên kho trong menu
+khoang cach duoi giữa content va  ok
+hover vao table can nhat dan ok
+chinh sửa lại khaongr cách va kich thước button trong file dialog ok
+sửa lai tổ chức code cái nào ko cần thì xóa đi ok
+sủa lại tên kho trong menu ok

@@ -26,11 +26,12 @@
     bottom: 0;
 }
     .form-dialog .dialog-titlebar {
-        width: 100%;
+        width: 100.5%;
         height: 27px;
         background-color: #0973b9;
         display: flex;
         color: #ffffff;
+        margin-left: -2px;
     }
 .dialog-titlebar .dialog-titlebar-text {
     align-self: center;
@@ -54,6 +55,7 @@
     width: 98%;
     height: calc(100% - 60px);
     padding: 9px;
+    padding-top: 5px;
     /* font-family: emoji; */
     /* background-color: #00ff21;*/
 }
@@ -106,22 +108,28 @@ td input[type="date" i]{
     height: 22px;
 }
 td select {
+    border:1px solid #ccc;
     height: 25px;
     width: 82%;
 }
 select:focus{
     outline: 0px; 
-    border: 1px solid 0973b9;
+    border: 1px solid #0973b9;
     border-radius: 0%;
 }
 .dialog-in #sel-card{
-    width: 97.5%;
+    width: 97%;
 }
 td #txtTenCongty,#txtDiaChi{
     width:98.5%;
 }
 td #txtGhichu{
+    border:1px solid #ccc;
     width: 98%;
+}
+td #txtGhichu:focus{
+    border:1px solid #0973b9;
+    
 }
 input[type="text" i] {
     padding: 1px 2px;
@@ -187,6 +195,16 @@ input[type="text" i] {
     background-position-y: 3px;
 }
 
+#dialog-btnhelp{
+    width: 88px;
+    height: 20px; 
+    margin-left: 0px;
+    background-image: url('/content/img/Images/iconHelp.png');
+    background-repeat:no-repeat ;
+    background-position-x: 3px;
+    background-position-y: 1px;
+
+}
 .dialog-footer  button {
     /* display: flex; */
     /* align-items: center; */
@@ -212,7 +230,7 @@ input[type="text" i] {
 
     }
     .dialog-footer .dialog-footer-right{
-        margin-left: 226px;
+        margin-left: 195px;
     }
     /*.dialog-button button:hover {
     outline: none;
@@ -252,7 +270,7 @@ input[type="text" i] {
     /* border-color:red ; */
     height: 19px;
     width: 80%;
-    padding: 0px;
+   
     outline: none;
     padding: 1px 1px !important;
 }

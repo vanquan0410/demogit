@@ -1,20 +1,4 @@
 ﻿$(document).ready(function () {
-    /**//*  loadData();*//*
-        $('#btnAdd').click(function () {
-            $('.form-dialog').show();
-            $('.dialog-modal').show();
-        })
-    
-        $('#btnCancel').click(function () {
-            $('.form-dialog').hide();
-            $('.dialog-modal').hide();
-        })
-        $('#dialog-btncancel').click(function () {
-            debugger
-            $('.form-dialog').hide();
-            $('.dialog-modal').hide();
-        })*/
-    /*  var employee = new employeejs();*/
     var customer = new customerjs();
     if (document.getElementById('#dialog-btncancel').hasFocus()) {
         document.getElementById('txtcustomerCode').focus();
@@ -30,6 +14,10 @@ class customerjs {
         this.loadata();
         this.shortCustomerName();
     }
+    /**
+     * Thực hiện gán các sự kiện
+     * createdBy: DVQuan(24/9/2020)
+     */
     initevent() {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
@@ -44,20 +32,34 @@ class customerjs {
     showfocusdetail(){
         document.getElementById('txtcustomerCode').focus();
     }
+    /**
+     * sự kiên khi click vao button -> show dialog
+     * createdBy: DVQuan(24/9/2020)
+     */
     btnAddOnClick() {
         this.showDialogDetail();
         document.getElementById('txtcustomerCode').focus();
     }
+    /**
+     * sự kiên khi click vao button cancel-> ẩn dialog
+     * createdBy: DVQuan(24/9/2020)
+     */
     btnCancelOnClick() {
         this.hideDialogDetail();
     }
-/*hien dialog */
+/**
+ * sự kiện hiện dialog
+ * createdBy: DVQuan(24/9/2020)
+ */
     showDialogDetail() {
         $('.form-dialog').show();
         $('.dialog-modal').show();
         
     }
-/*an dialog*/
+/**
+ * sự kiện ẩn dialog
+ * createBy: DVQuan(24/9/2020)
+ */
     hideDialogDetail() {
         $('.form-dialog').hide();
         $('.dialog-modal').hide();
@@ -78,7 +80,10 @@ class customerjs {
             return;
         }
     }
-/*load data*/
+/**
+ * sự kiện load data
+ * createdBy: DVQuan(24/9/2020)
+ */
     loadata() {
         $.ajax({
             url: "/api/customer",
@@ -101,10 +106,10 @@ class customerjs {
                         <td>`+ item.customerCode + `</td>
                         <td>`+ item.customerName + `</td>
                         <td>`+ item.companyName + `</td>
-                        <td>`+ item.code + `</td>
+                        <td>`+ item.code.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + `</td>
                         <td title="`+ item.address + `">` + address + `</td>
                         <td>`+ item.phone + `</td>
-                        <td>`+ item.date + `</td>
+                        <td>`+ commonjs.formatDate(item.date) + `</td>
                     </tr>`);
                 // this.hideLength(item.customerName);
 
@@ -113,12 +118,15 @@ class customerjs {
             })
             alert("connect thanh cong");
         }).fail(function (response) {
-            alert("connect fail");
+            // alert("connect fail");
         })
         /*$('.tbListcustomer tbody').empty();*/
        
     }
-
+    /**
+     * Sự kiện thêm customer mới
+     * createBy: DVQuan(24/9/2020)
+     */
     btnSaveOnClick() {
         var inputrequired = $("[required]");
         var isValid = true;
@@ -145,6 +153,11 @@ class customerjs {
             this.hideDialogDetail();
         }
     }
+    /**
+     * sự kiện click vào table thì lấy id tương ứng
+     * @param {object} sender 
+     * createBy: DVQuan(24/9/2020)
+     */
     rowOnClick(sender){
         debugger
         $(this).addClass("row-selected");
@@ -152,6 +165,10 @@ class customerjs {
     }
     
 }
+/**
+ * dữ liệu fake
+ * createBy: DVQuan(24/9/2020)
+ */
 var data = [
     {
         customerCode: "kh10",
