@@ -22,6 +22,7 @@ class customerjs {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btncancel').click(this.btnCancelOnClick.bind(this));
+        $('#btnEdit').click(this.btnEditOnClick.bind(this));
         $("input[required]").blur(this.checkrequired);
         $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showfocusdetail);
@@ -85,6 +86,7 @@ class customerjs {
  * createdBy: DVQuan(24/9/2020)
  */
     loadata() {
+        $('.tbListcustomer tbody').empty();
         $.ajax({
             url: "/api/customer",
             method: "get",
@@ -102,17 +104,21 @@ class customerjs {
                 else {
                     var address = item.address;
                 }
-                var trHTML = $(`<tr>
+                var trHTML = $(`<tr data-id=` + item['customerID'] + `>
                         <td>`+ item.customerCode + `</td>
                         <td>`+ item.customerName + `</td>
                         <td>`+ item.companyName + `</td>
                         <td>`+ item.code.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + `</td>
                         <td title="`+ item.address + `">` + address + `</td>
                         <td>`+ item.phone + `</td>
-                        <td>`+ commonjs.formatDate(item.date) + `</td>
+                        <td>`+ item.date + `</td>
                     </tr>`);
-                // this.hideLength(item.customerName);
 
+                trHTML.data("id", item['customerID']);
+                //mac dinh   chon ban ghi dau tien trong ds
+                $('table#tbListCustomer tbody tr').first().addClass('row-selected');
+                debugger;
+                // this.hideLength(item.customerName);
                 $('.tbListcustomer tbody').append(trHTML);
 
             })
@@ -152,6 +158,36 @@ class customerjs {
             this.loadata();
             this.hideDialogDetail();
         }
+    }
+    btnEditOnClick(seder) {
+        debugger
+       
+        var rowSelected = $('tr.row-selected');
+        if (rowSelected && rowSelected.length == 1) {
+            var customerID = $('tr.row-selected').data('id');
+            $.ajax({
+                url: "/api/customer/" + customerID,
+                method: "get",
+               // data: "",
+                datatype: "json",
+                contenttype: "application/json"
+            }).done(function (res) {
+                var customer = res;
+                $('#txtcustomerCode').val(customer['customerCode']);
+                $('#txtcustomerName').val(customer['customerName']);
+                $('#txtdienThoai').val(customer['phone']);
+                $('#txtngaySinh').val(customer['date']);
+                $('#txtTenCongty').val(customer['companyName']);
+                $('#txtcodeThue').val(customer['code']);
+                $('#txtemail').val(customer['customerCode']);
+                $('#txtDiaChi').val(customer['address']);
+
+            }).fail(function (res) {
+
+            })
+        }
+        this.showDialogDetail();
+       
     }
     /**
      * sự kiện click vào table thì lấy id tương ứng

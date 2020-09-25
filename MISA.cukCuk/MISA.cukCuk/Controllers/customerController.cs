@@ -41,22 +41,24 @@ namespace MISA.cukCuk.Controllers
 
         // GET api/<customerController>/5
         [HttpGet("{customerId}")]
-        public string Get(String customerId)
+        public CustomerModel Get(Guid customerId)
         {
-           /* var customer =;*/
-            return null;
+            var customer =CustomerModel.listCustomer.Where(c=>c.customerID == customerId).FirstOrDefault();
+            return customer;
         }
 
         // POST api/<customerController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
+           
         }
 
         // PUT api/<customerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public String Put(int id, [FromBody] string value)
         {
+            return value;
         }
 
         // DELETE api/<customerController>/5
