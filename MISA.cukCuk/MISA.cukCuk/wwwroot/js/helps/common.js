@@ -2,7 +2,7 @@ var commonjs={
     /**
      * hàm định dạng tiền tệ
      * @param {number} money 
-     * createdBy: DVQuan(24/9/2020)
+     * author: DVQuan(24/9/2020)
      */
     formatMoney(money){
         if(money||money==0){
@@ -13,7 +13,7 @@ var commonjs={
     /**
      * hàm định dạng ngày tháng
      * @param {date} date 
-     * createdBy: DVQuan
+     * author: DVQuan
      */
     formatDate(date) {
         if (date && !isNaN(date.getDate())) {

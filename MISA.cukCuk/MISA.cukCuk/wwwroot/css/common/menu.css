@@ -121,6 +121,7 @@
     color: #ffffff;
     align-self: center;
     margin-left: 12px;
+    text-decoration:none;
 }
 .menu .menu-item:hover {
     background-color: #ff6a00;
@@ -130,4 +131,7 @@
 .sidebar .menu::-webkit-scrollbar{
     width: 0px;
     /* background-color: darkgray; */
+}
+.menu-item a{
+    text-decoration:none;
 }
