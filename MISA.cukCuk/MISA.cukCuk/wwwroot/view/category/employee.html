@@ -14,6 +14,7 @@
     <link href="/css/common/dialog.css" rel="stylesheet" />
     <link href="/css/page/category/customer.css" rel="stylesheet" />
     <link href="/css/common/responsive.css" rel="stylesheet" />
+    <link href="/css/page/category/employee.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
@@ -156,19 +157,18 @@
                         </button>
                     </div>
                     <div class="gird-content">
-                        <table class="tbListcustomer" width="100%" border="1">
+                        <table class="tblistemployee" width="100%" border="1" id="tbListData">
                             <thead>
                                 <tr>
-                                    <th width="100px">Mã nhân viên</th>
-                                    <th>Tên nhân viên</th>
-                                    <th width="100px">Giới tính</th>
-                                    <th width="100px">Ngày sinh</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Email</th>
-                                    <th>Vị trí</th>
-                                    <th>Phòng ban</th>
-                                    <th>Mức lương</th>
-                                    <th>Tình trạng công việc</th>
+                                    <th fieldName="EmployeeCode" width="100px" id="titleCode">Mã nhân viên</th>
+                                    <th fieldName="Fullname" id="titleName">Tên nhân viên</th>
+                                    <th fieldName="Gender" width="100px" id="titleGender">Giới tính</th>
+                                    <th  format="Date" fieldName="DateOfBirth" width="100px" id="titleDateOfBirth">Ngày sinh</th>
+                                    <th format="Phone" fieldName="Phone" id="titlePhone">Số điện thoại</th>
+                                    <th fieldName="Email" id="titleEmail">Email</th>
+                                    <th fieldName="DepartmentName" id="titleDepartmentName">Phòng ban</th>
+                                    <th format="Money" fieldName="Salary" id="titleMoney">Mức lương</th>
+                                    <th fieldName="WorkStatus" id="titleWorkStatus">Tình trạng công việc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -219,7 +219,7 @@
     <div class="dialog-modal">
         <div class="form-dialog">
             <div class="dialog-titlebar">
-                <div class="dialog-titlebar-text">Khách hàng</div>
+                <div class="dialog-titlebar-text">Nhân viên</div>
                 <div class="dialog-titlebar-icon" id="btnCancel"></div>
             </div>
             <div class="dialog-content">
@@ -227,32 +227,34 @@
                     <table class="dialog-information">
                         <tbody>
                             <tr>
-                                <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtcustomerCode" /></div></td>
-                                <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtcustomerName" /></div></td>
+                                <td class="lable">Mã Nhân viên <span style="color:#ff0000">(*)</span></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtEmployeeCode" /></div></td>
+                                <td>Tên nhân viên<span style="color:#ff0000">(*)</span></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtEmployeeName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
                                 <td><div class="dialog-in"><input type="text" /></div></td>
-                                <td class="lable">Hạng thẻ</td>
+                                <td class="lable">Giới tính</td>
                                 <td>
-                                    <div class="dialog-in">
-                                        <select id="sel-card">
-                                            <option>Thẻ VIP</option>
-                                            <option>Thẻ thường</option>
-                                        </select>
+                                    <div class="dialog-in" style="display:flex">
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male">Nam</label><br>
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female">Nữ</label><br>
+                                        <input type="radio" id="other" name="gender" value="other">
+                                        <label for="other">Other</label>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="lable">Nhóm khách hàng</td>
+                                <td class="lable">Tình trạng công việc</td>
                                 <td>
                                     <div class="dialog-in">
                                         <select>
-                                            <option>Khách hàng tiềm năng</option>
-                                            <option>Khách hàng không tiềm năng</option>
+                                            <option>Đang làm việc</option>
+                                            <option>Nghỉ việc</option>
                                         </select>
                                     </div>
 
@@ -260,32 +262,32 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số Điện thoai</td>
-                                <td><div class="dialog-in"><input type="text" id="txtdienThoai" /></div></td>
+                                <td><div class="dialog-in"><input type="text" id="txtPhone" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
-                                <td><div class="dialog-in"><input type="date" id="txtngaySinh" /></div></td>
+                                <td><div class="dialog-in"><input type="date" id="txtDate" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Tên công ty</td>
-                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtTenCongty" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtCompanyName" /></div></td>
                             </tr>
                             <tr>
-                                <td class="lable">Mã số thuế</td>
-                                <td><div class="dialog-in"><input type="text" id="txtcodeThue" /></div></td>
+                                <td class="lable">Mức lương</td>
+                                <td><div class="dialog-in"><input type="text" id="txtSalary" /></div></td>
 
                                 <td class="lable">Email</td>
-                                <td><div class="dialog-in"><input type="text" id="txtemail" /></div></td>
+                                <td><div class="dialog-in"><input type="text" id="txtEmail" /></div></td>
                             </tr>
                             <tr>
-                                <td class="lable">Địa chỉ</td>
-                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtDiaChi" /></div></td>
+                                <td class="lable">Phòng ban</td>
+                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtDepartmentName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ghi chú</td>
                                 <td colspan="3">
                                     <div class="dialog-in">
-                                        <textarea id="txtGhichu" rows="2" cols="65"></textarea>
+                                        <textarea id="txtNote" rows="2" cols="65"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -297,23 +299,23 @@
                 <!--dialog footer-->
                 <div class="dialog-footer">
                     <div class="dialog-footer-left">
-                        <button id="dialog-btnhelp" class="dialog-button">
+                        <button id="dialog-btnHelp" class="dialog-button">
                             <div class="dialog-footer-help dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Giúp</div>
                         </button>
                     </div>
                     <div class="dialog-footer-right">
-                        <button id="dialog-btnadd" class="dialog-button">
+                        <button id="dialog-btnAdd" class="dialog-button">
                             <div class="dialog-footer-add dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Cất</div>
                         </button>
 
-                        <button id="dialog-btnedit" class="dialog-button">
+                        <button id="dialog-btnEdit" class="dialog-button">
                             <div class="dialog-footer-edit dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Cất và thêm</div>
                         </button>
 
-                        <button id="dialog-btncancel" class="dialog-button">
+                        <button id="dialog-btnCancel" class="dialog-button">
                             <div class="dialog-footer-cancel dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Hủy bỏ</div>
                         </button>

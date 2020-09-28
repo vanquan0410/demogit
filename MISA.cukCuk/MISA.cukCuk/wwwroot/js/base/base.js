@@ -4,11 +4,13 @@
 
 });
 /**
- * Object JS quản lý các sự kiện cho danh mục khách hàng
+ * object cha quản lý danh mục
+ * author:DVQuan(28/9/2020)
  * */
 class BaseJS {
     constructor(name) {
         try {
+
             this.getData();
             this.loadData();
             this.initEvents();
@@ -21,13 +23,15 @@ class BaseJS {
      * Thực hiện gán các sự kiện
      * author: DVQuan(24/9/2020)
      */
-    initEvent() {
+    initEvents() {
+        debugger
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
-        $('#dialog-btncancel').click(this.btnCancelOnClick.bind(this));
+        $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
+        $('#btnDelete').click(this.btnDeleteOnClick(this));
         $("input[required]").blur(this.checkrequired);
-        $('#dialog-btnadd').click(this.btnSaveOnClick.bind(this));
+        $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showfocusdetail);
         debugger
         $("table").on("click", "tbody tr", this.rowOnClick);
@@ -37,29 +41,68 @@ class BaseJS {
         this.Data = [];
     }
     makeTrHTML(obj) {
-
     }
     /**
-     * sự kiện loaddata
+     * sự kiện load data
      * author:DVQuan(27/9/2020)
      * */
     loadData() {
         debugger;
-        try {
+            try {
+                debugger
+                //đọc thông tin các cột dữ liệu
+                var fields = $('table#tbListData thead th');
+                //lấy dữ liệu
+                var data = this.Data;
+                var seft = this;
+                //đọc dữ liệu:
+                $.each(data, function (index, obj) {
+                    var tr = $(`<tr></tr>`);
+                    $.each(fields, function (index, field) {
+                        var fieldName = $(field).attr('fieldName');
+                        var value = obj[fieldName];
+                        //nếu dữ liệu trống thì sẽ thay thế bằng ***
+                        if (value == null || !value) {
+                            value = "*****";
+                            td = $(`<td>` + value + `</td>`);
+                        }
+                        var formatName = $(field).attr('format');
+                        var td = $(`<td>` + value + `</td>`);
+                        if (formatName == "Money") {
+                            var valueMoney = commonjs.formatMoney(value);
+                            td = $(`<td>` + valueMoney + `</td>`);
+                            td.addClass("format-money");
+                        }
+                        else if (formatName) {
+                            td.addClass("format");
+                        }
+                        if (formatName == "Address") {
+                            td.addClass("format-address");
+                            if (value.length > 40) {
+                                var address = value.slice(0, 40) + "...";
+                                td = $(`<td title="` + value + `">` + address + `</td>`);
+                            }
+                            else {
+                                td = $(`<td>` + value + `</td>`);
+                            }
+                        }
+                        // định dạng type date
+                       /* if (formatName == "Date") {
+                            var valueDate = commonjs.formatDate(value);
+                            td = $(`<td>` + valueDate + `</td>`);
+                            td.addClass("format");
+                        }*/
+                        $(tr).append(td);
+                    })
+                    //Biding dữ liệu lên UI
+                    /* var trHTML = seft.makeTrHTML(obj);*/
+                    $("#tbListData tbody").append(tr);
+                })
+            } catch (e) {
+                console.log("error");
+            }
 
-            var data = this.Data;
-            var seft = this;
-
-            $.each(data, function (index, obj) {
-                var trHTML = seft.makeTrHTML(obj);
-                $("#tbListData tbody").append(trHTML);
-            })
-        } catch (e) {
-            console.log("error");
-        }
     }
-
-   
 
     // #region even click
 
@@ -68,8 +111,9 @@ class BaseJS {
      * createdBy: DVQuan(24/9/2020)
      */
     btnAddOnClick() {
+        debugger
         this.showDialogDetail();
-        document.getElementById('txtcustomerCode').focus();
+        document.getElementById('txtCustomerCode').focus();
     }
     /**
      * sự kiên khi click vao button cancel-> ẩn dialog
@@ -86,8 +130,13 @@ class BaseJS {
 
     //#region event-show-hide-dialog
     showfocusdetail() {
-        document.getElementById('txtcustomerCode').focus();
+        document.getElementById('txtCustomerCode').focus();
     }
+
+    /**
+     * sự kiện ẩn dialog
+     * author:DVQuan(28/9/2020)
+     * */
     showDialogDetail() {
         $('.form-dialog').show();
         $('.dialog-modal').show();
@@ -101,14 +150,20 @@ class BaseJS {
         $('.form-dialog').hide();
         $('.dialog-modal').hide();
     }
-    //#endregion event show-hide dialog
+    //#endregion event show-hide-dialog
+
+    /**
+     * sự kiện kiểm tra trường nhập dữ liệu không được để trống
+     * authr: DVQuan(28/9/2020)
+     * 
+     * */
     checkrequired() {
 
         var value = this.value;
         if (!value) {
             $(this).addClass('required-error');
             //$(this).focus();
-            $(this).attr("title", "Ban phai nhap thong tin nay");
+            $(this).attr("title", "Ban phải nhập thông tin này");
             return;
         }
         else {
@@ -119,7 +174,7 @@ class BaseJS {
         }
     }
     /**
-     * Sự kiện thêm customer mới
+     * Sự kiện thêm một bản ghi mới
      * createBy: DVQuan(24/9/2020)
      */
     btnSaveOnClick() {
@@ -134,20 +189,25 @@ class BaseJS {
         })
         if (isValid) {
             var customer = {};
-            customer.customerCode = $("#txtcustomerCode").val();
-            customer.customerName = $("#txtcustomerName").val();
-            customer.email = $("#txtemail").val();
-            customer.companyName = $("#txtTenCongty").val();
-            customer.codeThue = $("#txtcodeThue").val();
-            customer.diaChi = $("#txtDiaChi").val();
-            customer.dienThoai = $("#txtdienThoai").val();
+            customer.customerCode = $("#txtCustomerCode").val();
+            customer.customerName = $("#txtCustomerName").val();
+            customer.email = $("#txtEmail").val();
+            customer.companyName = $("#txtCompanyName").val();
+            customer.codeThue = $("#txtMoney").val();
+            customer.diaChi = $("#txtAddress").val();
+            customer.dienThoai = $("#txtPhone").val();
             debugger
-            customer.ngaySinh = $("#txtngaySinh").val();
+            customer.ngaySinh = $("#txtDate").val();
             data.push(customer);
             this.loadata();
             this.hideDialogDetail();
         }
     }
+    /**
+     * sự kiện sửa 1 bản ghi mới
+     * author: DVQuan(28/9/2020)
+     * @param {any} seder
+     */
     btnEditOnClick(seder) {
         debugger
 
@@ -162,14 +222,14 @@ class BaseJS {
                 contenttype: "application/json"
             }).done(function (res) {
                 var customer = res;
-                $('#txtcustomerCode').val(customer['customerCode']);
-                $('#txtcustomerName').val(customer['customerName']);
-                $('#txtdienThoai').val(customer['phone']);
-                $('#txtngaySinh').val(customer['date']);
-                $('#txtTenCongty').val(customer['companyName']);
-                $('#txtcodeThue').val(customer['code']);
-                $('#txtemail').val(customer['customerCode']);
-                $('#txtDiaChi').val(customer['address']);
+                $('#txtCustomerCode').val(customer['customerCode']);
+                $('#txtCustomerName').val(customer['customerName']);
+                $('#txtPhone').val(customer['phone']);
+                $('#txtDate').val(customer['date']);
+                $('#txtCompanyName').val(customer['companyName']);
+                $('#txtMoney').val(customer['code']);
+                $('#txtEmail').val(customer['email']);
+                $('#txtAddress').val(customer['address']);
 
             }).fail(function (res) {
 
@@ -178,6 +238,16 @@ class BaseJS {
         this.showDialogDetail();
 
     }
+    /**
+     * sự kiện xóa 1 bản ghi trong trường dữ liệu
+     * author:DVQuan(28/9/2020)
+     * */
+    btnDeleteOnClick() {
+        $.each(this.Data, function (index, value) {
+
+        })
+    }
+
     /**
      * sự kiện click vào table thì lấy id tương ứng
      * @param {object} sender 

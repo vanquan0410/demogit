@@ -52,7 +52,7 @@
 }
 /*dialog body*/
 .form-dialog .dialog-content {
-    width: 98%;
+    width: 98.3%;
     height: calc(100% - 60px);
     padding: 9px;
     padding-top: 5px;
@@ -98,10 +98,10 @@ input:focus{
     border-radius: 0%;
 }
 td input{
-    height: 19px;
+    height: 20px;
     width: 80%;
 }
-.dialog-in #txtcustomerName,#txtemail{
+.dialog-in #txtCustomerName,#txtEmail{
     width: 95%;
 }
 td input[type="date" i]{
@@ -120,14 +120,14 @@ select:focus{
 .dialog-in #sel-card{
     width: 97%;
 }
-td #txtTenCongty,#txtDiaChi{
-    width:98.5%;
+td #txtCompanyName,#txtAddress{
+    width:98.3%;
 }
-td #txtGhichu{
+td #txtNote{
     border:1px solid #ccc;
-    width: 98%;
+    width: 97.9%;
 }
-td #txtGhichu:focus{
+td #txtNote:focus{
     border:1px solid #0973b9;
     
 }
@@ -167,7 +167,7 @@ input[type="text" i] {
     margin: 5px;
     height: 25px !important;
 }
-#dialog-btnadd {
+#dialog-btnAdd {
 
     /* background: url(/content/img/Images/IconSprite.png) no-repeat -1px -767px; */
     width: 78px;
@@ -178,7 +178,7 @@ input[type="text" i] {
     background-position-y: 3px;
     /* background: url(../../content/img/Images/diskette.png) no-repeat -1px -0px; */
 }
-#dialog-btnedit {
+#dialog-btnEdit {
     width: 130px;
     height: 20px; 
     background-image: url('/content/img/Images/add.png');
@@ -186,7 +186,7 @@ input[type="text" i] {
     background-position-x: 3px;
     background-position-y: 3px;
 }
-#dialog-btncancel {
+#dialog-btnCancel {
     width: 100px;
     height: 20px; 
     background-image: url('/content/img/Images/cance.png');
@@ -195,7 +195,7 @@ input[type="text" i] {
     background-position-y: 3px;
 }
 
-#dialog-btnhelp{
+#dialog-btnHelp{
     width: 88px;
     height: 20px; 
     margin-left: 0px;

@@ -1,0 +1,57 @@
+﻿.tblistemployee #titleCode{
+    width:7%;
+}
+.tblistemployee #titleName{
+    width:12%
+}
+.tblistemployee #titleGender{
+    width:3%;
+}
+.tblistemployee #titleDateOfBirth{
+    width:8%;
+}
+.tblistemployee #titlePhone{
+    width:8%;
+}
+.tblistemployee #titleEmail{
+    width:13%;
+}
+.tblistemployee #titleDepartmentName{
+    width:10%;
+}
+.tblistemployee #titleMoney{
+    width:10%;
+}
+.tblistemployee #titleWorkStatus{
+    width:10%;
+}
+/*.dialog-in input[type="radio"]{
+    width:20px;
+}
+*/
+.dialog-modal .form-dialog {
+    width: 640px;
+}
+.dialog-footer .dialog-footer-right {
+    margin-left: 186px;
+}
+.dialog-in #txtDepartmentName {
+    width: 98.6%;
+}
+.dialog-in #txtEmail, #txtEmployeeName {
+    width: 96.3%;
+}
+.dialog-body input { 
+    width: 96%; 
+}
+td #txtCompanyName {
+    width: 98.7%;
+}
+
+td #txtNote {
+    width: 98.2%;
+}
+td select {
+   
+    width: 98%;
+}

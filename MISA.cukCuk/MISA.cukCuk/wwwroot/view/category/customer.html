@@ -159,13 +159,13 @@
                         <table class="tbListcustomer" width="100%" border="1" id="tbListData">
                             <thead>
                                 <tr>
-                                    <th fieldName="CustomerCode" id="titlecode">Mã khách hàng</th>
-                                    <th fieldName="Fullname" id="titlename">Tên khách hàng</th>
-                                    <th fieldName="CompanyName" id="titlecompany">Tên công ty</th>
-                                    <th fieldName="" id="title-thue">Mã số thuế</th>
-                                    <th fieldName="" id="titleaddress">Địa chỉ</th>
-                                    <th fieldName="" id="titlephone">Số điện thoại</th>
-                                    <th fieldName="" id="titlebirthday">Ngày sinh</th>
+                                    <th fieldName="CustomerCode" id="titleCode">Mã khách hàng</th>
+                                    <th fieldName="FullName" id="titleName">Tên khách hàng</th>
+                                    <th fieldName="CompanyName" id="titleCompany">Tên công ty</th>
+                                    <th format="Date" fieldName="DateOfBirth" id="titleBirthday">Ngày sinh</th>
+                                    <th format="Phone" fieldName="Phone" id="titlePhone">Số điện thoại</th>
+                                    <th format="Address" fieldName="Address" id="titleaddress">Địa chỉ</th>
+                                    <th format="Money" fieldName="Money" id="title-Money">Số tiền nợ</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,10 +173,10 @@
                                     <td>KH001</td>
                                     <td>trần thi bánh</td>
                                     <td>cong ty rickit</td>
-                                    <td>002222</td>
+                                    <td style="text-align:center">04/1/1999</td>
+                                    <td style="text-align:center">0989788776</td>
                                     <td>Thượng Mỗ - Đan Phượng - Hà Nội</td>
-                                    <td>0989788776</td>
-                                    <td>04/1/1999</td>
+                                    <td style="text-align:right">222.200.000</td>
                                 </tr>
 
                             </tbody>
@@ -235,9 +235,9 @@
                         <tbody>
                             <tr>
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtcustomerCode" /></div></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtCustomerCode" /></div></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtcustomerName" /></div></td>
+                                <td><div class="dialog-in"><input type="text" required id="txtCustomerName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
@@ -266,33 +266,33 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="lable">Số Điện thoai</td>
-                                <td><div class="dialog-in"><input type="text" id="txtdienThoai" /></div></td>
+                                <td class="lable">Số điện thoai</td>
+                                <td><div class="dialog-in"><input type="text" id="txtPhone" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
-                                <td><div class="dialog-in"><input type="date" id="txtngaySinh" /></div></td>
+                                <td><div class="dialog-in"><input type="date" id="txtDate" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Tên công ty</td>
-                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtTenCongty" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtCompanyName" /></div></td>
                             </tr>
                             <tr>
-                                <td class="lable">Mã số thuế</td>
-                                <td><div class="dialog-in"><input type="text" id="txtcodeThue" /></div></td>
+                                <td class="lable">Số tiền nợ</td>
+                                <td><div class="dialog-in"><input type="text" id="txtMoney" /></div></td>
 
                                 <td class="lable">Email</td>
-                                <td><div class="dialog-in"><input type="text" id="txtemail" /></div></td>
+                                <td><div class="dialog-in"><input type="text" id="txtEmail" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Địa chỉ</td>
-                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtDiaChi" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtAddress" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ghi chú</td>
                                 <td colspan="3">
                                     <div class="dialog-in">
-                                        <textarea id="txtGhichu" rows="2" cols="65"></textarea>
+                                        <textarea id="txtNote" rows="2" cols="65"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -306,32 +306,32 @@
 
                 <div class="dialog-footer">
                     <div class="dialog-footer-left">
-                        <button id="dialog-btnhelp" class="dialog-button">
+                        <button id="dialog-btnHelp" class="dialog-button">
                             <div class="dialog-footer-help dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Giúp</div>
                         </button>
                     </div>
                     <div class="dialog-footer-right">
-                        <button id="dialog-btnadd" class="dialog-button">
+                        <button id="dialog-btnAdd" class="dialog-button">
                             <div class="dialog-footer-add dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Cất</div>
                         </button>
 
-                        <button id="dialog-btnedit" class="dialog-button">
+                        <button id="dialog-btnEdit" class="dialog-button">
                             <div class="dialog-footer-edit dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Cất và thêm</div>
                         </button>
 
-                        <button id="dialog-btncancel" class="dialog-button">
+                        <button id="dialog-btnCancel" class="dialog-button">
                             <div class="dialog-footer-cancel dialog-footer-icon"></div>
                             <div class="dialog-footer-text">Hủy bỏ</div>
                         </button>
                     </div>
                 </div>
-
+                
             </div>
         </div>
-        <button id="dialog-btnfocus" style="width: 0px;height: 0px;background: white;border: none;">
+        <button id="dialog-btnfocus" style="width: 0px;height: 0px;background: #8080806e;border: none;">
         </button>
     </div>
 

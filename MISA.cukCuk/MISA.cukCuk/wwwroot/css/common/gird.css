@@ -16,7 +16,7 @@ table {
 }
 
 .gird-content table {
-    width: 126%;
+    width: 100%;
     border-collapse: collapse;
     border-right:none ;
     /* overflow: scroll; */
@@ -56,34 +56,43 @@ table {
     } */
     .gird-content table td:last-child, th:last-child{
         border-right: none;
-        text-align: center;
+       /*text-align: right;*/
     }
 
     .gird-content table td:first-child, th:first-child{
         border-left: none;
     }
-.gird-content #titlecode{
-    width: 7%;
-}
-.gird-content #titlename{
-    width: 15%;
-}
-.gird-content #titlecompany{
-    width: 20%;
-}
-.gird-content #title-thue{
-    width: 7%;
-}
-.gird-content #titleaddress{
-    width: 30%;
-}
-.gird-content #titlephone{
+.gird-content #titleCode{
     width: 10%;
 }
-.gird-content #titlebirthday{
+.gird-content #titleName{
+    width: 13%;
+}
+.gird-content #titleCompany{
+    width: 20%;
+}
+.gird-content #title-Money{
+    width: 10%;
+}
+.gird-content #titleAddress{
+    width: 30%;
+}
+.gird-content #titlePhone{
+    width: 10%;
+}
+.gird-content #titleBirthday{
     width: 10%;
     text-align: center;
 }
-.gird-content #titlebirthday td{
+.gird-content #titleBirthday td{
     text-align: center !important;
+}
+.format {
+    text-align: center !important;
+}
+.format-money{
+    text-align:right;
+}
+.format-address{
+    text-align:left;
 }
