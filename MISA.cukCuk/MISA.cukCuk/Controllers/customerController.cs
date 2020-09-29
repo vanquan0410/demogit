@@ -43,7 +43,7 @@ namespace MISA.cukCuk.Controllers
         [HttpGet("{customerId}")]
         public CustomerModel Get(Guid customerId)
         {
-            var customer =CustomerModel.listCustomer.Where(c=>c.customerID == customerId).FirstOrDefault();
+            var customer =CustomerModel.listCustomer.Where(c=>c.CustomerID == customerId).FirstOrDefault();
             return customer;
         }
 

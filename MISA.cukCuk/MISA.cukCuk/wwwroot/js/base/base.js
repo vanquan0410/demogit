@@ -3,10 +3,10 @@
     baseJS = new BaseJS();
 
 });
-/**
+/**********************************************
  * object cha quản lý danh mục
  * author:DVQuan(28/9/2020)
- * */
+ * ********************************************/
 class BaseJS {
     constructor(name) {
         try {
@@ -19,17 +19,18 @@ class BaseJS {
 
         }
     }
-    /**
+    /******************************************
      * Thực hiện gán các sự kiện
      * author: DVQuan(24/9/2020)
-     */
+     ******************************************/
     initEvents() {
         debugger
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
-        $('#btnDelete').click(this.btnDeleteOnClick(this));
+        $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
+        $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));
         $("input[required]").blur(this.checkrequired);
         $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showfocusdetail);
@@ -42,22 +43,27 @@ class BaseJS {
     }
     makeTrHTML(obj) {
     }
-    /**
+    /****************************************
      * sự kiện load data
      * author:DVQuan(27/9/2020)
-     * */
+     ***************************************/
     loadData() {
         debugger;
             try {
                 debugger
                 //đọc thông tin các cột dữ liệu
                 var fields = $('table#tbListData thead th');
+                var filedID = $('table#tbListData tr')[0];
                 //lấy dữ liệu
                 var data = this.Data;
                 var seft = this;
                 //đọc dữ liệu:
                 $.each(data, function (index, obj) {
-                    var tr = $(`<tr></tr>`);
+                    debugger
+                    var id = $(filedID).attr('fieldID');
+                    debugger
+                    var tr = $(`<tr fieldID=`+obj[id]+`></tr>`);
+                    
                     $.each(fields, function (index, field) {
                         var fieldName = $(field).attr('fieldName');
                         var value = obj[fieldName];
@@ -68,6 +74,7 @@ class BaseJS {
                         }
                         var formatName = $(field).attr('format');
                         var td = $(`<td>` + value + `</td>`);
+                        //nếu dữ liệu là money thì định dạng theo money
                         if (formatName == "Money") {
                             var valueMoney = commonjs.formatMoney(value);
                             td = $(`<td>` + valueMoney + `</td>`);
@@ -87,11 +94,14 @@ class BaseJS {
                             }
                         }
                         // định dạng type date
+                        //không cần vì có thể xử lý ở service trả về một chuỗi
                        /* if (formatName == "Date") {
+                            debugger
                             var valueDate = commonjs.formatDate(value);
                             td = $(`<td>` + valueDate + `</td>`);
                             td.addClass("format");
-                        }*/
+                        }
+                       */
                         $(tr).append(td);
                     })
                     //Biding dữ liệu lên UI
@@ -106,26 +116,35 @@ class BaseJS {
 
     // #region even click
 
-    /**
+    /**************************************************
      * sự kiên khi click vao button thêm mới -> show dialog
      * createdBy: DVQuan(24/9/2020)
-     */
+     **************************************************/
     btnAddOnClick() {
         debugger
         this.showDialogDetail();
         document.getElementById('txtCustomerCode').focus();
     }
-    /**
+    /****************************************************
      * sự kiên khi click vao button cancel-> ẩn dialog
      * createdBy: DVQuan(24/9/2020)
-     */
+     ****************************************************/
     btnCancelOnClick() {
         this.hideDialogDetail();
     }
     /**
+     * khi click vao button Refresh -> load lại toàn bộ dữ liệu
+     * author: DVQuan(29/9/2020)
+     * */
+    btnRefreshOnclick() {
+        debugger
+        this.loadData();
+    }
+    /**************************************************
      * sự kiện hiện dialog
      * createdBy: DVQuan(24/9/2020)
-     */
+     **************************************************/
+
     // #endregion even click
 
     //#region event-show-hide-dialog
@@ -133,30 +152,30 @@ class BaseJS {
         document.getElementById('txtCustomerCode').focus();
     }
 
-    /**
-     * sự kiện ẩn dialog
+    /**************************************************
+     * sự kiện show dialog
      * author:DVQuan(28/9/2020)
-     * */
+     **************************************************/
     showDialogDetail() {
         $('.form-dialog').show();
         $('.dialog-modal').show();
 
     }
-    /**
+    /************************************************
      * sự kiện ẩn dialog
      * createBy: DVQuan(24/9/2020)
-     */
+     ************************************************/
     hideDialogDetail() {
         $('.form-dialog').hide();
         $('.dialog-modal').hide();
     }
     //#endregion event show-hide-dialog
 
-    /**
+    /***********************************************
      * sự kiện kiểm tra trường nhập dữ liệu không được để trống
-     * authr: DVQuan(28/9/2020)
+     * author: DVQuan(28/9/2020)
      * 
-     * */
+     ***********************************************/
     checkrequired() {
 
         var value = this.value;
@@ -173,10 +192,10 @@ class BaseJS {
             return;
         }
     }
-    /**
+    /**********************************************
      * Sự kiện thêm một bản ghi mới
      * createBy: DVQuan(24/9/2020)
-     */
+     *********************************************/
     btnSaveOnClick() {
         var inputrequired = $("[required]");
         var isValid = true;
@@ -210,10 +229,10 @@ class BaseJS {
      */
     btnEditOnClick(seder) {
         debugger
-
         var rowSelected = $('tr.row-selected');
         if (rowSelected && rowSelected.length == 1) {
-            var customerID = $('tr.row-selected').data('id');
+            debugger
+            var customerID = $('tr.row-selected').attr('fieldID');
             $.ajax({
                 url: "/api/customer/" + customerID,
                 method: "get",
@@ -221,15 +240,24 @@ class BaseJS {
                 datatype: "json",
                 contenttype: "application/json"
             }).done(function (res) {
-                var customer = res;
-                $('#txtCustomerCode').val(customer['customerCode']);
-                $('#txtCustomerName').val(customer['customerName']);
+                //thực hiện binding dữ liệu lên form chi tiết
+                var fields = $('table.dialog-information tbody tr td')
+                $.each(fields, function (index, data) {
+                    if (fieldName) {
+                        var fieldName = $(data).attr('fieldName');
+                        $(fieldName).val(res[fieldName]);
+                    }
+                   
+                })
+               /* var customer = res;
+                $('#txtCustomerCode').val(customer['CustomerCode']);
+                $('#txtCustomerName').val(customer['FullName']);
                 $('#txtPhone').val(customer['phone']);
-                $('#txtDate').val(customer['date']);
-                $('#txtCompanyName').val(customer['companyName']);
-                $('#txtMoney').val(customer['code']);
-                $('#txtEmail').val(customer['email']);
-                $('#txtAddress').val(customer['address']);
+                $('#txtDate').val(customer['DateOfBirth']);
+                $('#txtCompanyName').val(customer['CompanyName']);
+                $('#txtMoney').val(customer['Money']);
+                $('#txtEmail').val(customer['Email']);
+                $('#txtAddress').val(customer['Address']);*/
 
             }).fail(function (res) {
 
@@ -242,6 +270,8 @@ class BaseJS {
      * sự kiện xóa 1 bản ghi trong trường dữ liệu
      * author:DVQuan(28/9/2020)
      * */
+
+    //TODO đang thực hiện build chức năng xóa dở dang
     btnDeleteOnClick() {
         $.each(this.Data, function (index, value) {
 
@@ -249,7 +279,7 @@ class BaseJS {
     }
 
     /**
-     * sự kiện click vào table thì lấy id tương ứng
+     * sự kiện click vào table thì đổi màu dòng được chọn
      * @param {object} sender 
      * createBy: DVQuan(24/9/2020)
      */

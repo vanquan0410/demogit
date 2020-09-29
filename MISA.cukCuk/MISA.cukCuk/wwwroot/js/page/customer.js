@@ -4,7 +4,6 @@
 
 /**
  * Object JS quản lý các sự kiện cho danh mục khách hàng
- * 
  * */
 class CustomerJS extends BaseJS {
     constructor(name) {
@@ -26,7 +25,8 @@ class CustomerJS extends BaseJS {
             contenttype: "application/json"
         }).done(function (response) {
             res.Data = response;
-            console.log("thanh cong")
+            console.log("thanh cong");
+            //load lai data khi co data từ server trả về
             res.loadData();
         }).fail(function (response) {
             res.Data = null;
@@ -34,6 +34,12 @@ class CustomerJS extends BaseJS {
        /* this.Data = data;*/
         debugger
     }
+
+    /**
+     * định dạng lại dòng dữ liệu của customer
+     * author: DVQuan(24/9/2020)
+     * @param {any} item
+     */
     makeTrHTML(item) {
         debugger
         var trHTML = $(`<tr>
@@ -47,13 +53,25 @@ class CustomerJS extends BaseJS {
                     </tr>`);
         return trHTML;
     }
+    selectRow() {
+        var values = [];
+        var fields = $('table.dialog-information tbody tr td');
+        $.each(fields, function (index, item) {
+            var filedName = $(item).attr('fieldName');
+            if (filedName) {
+                values = values.push(filedName);
+            }
+        })
+
+
+    }
 }
 
 /**
  * data fake
- * author: DVQuan
+ * author: DVQuan(20/9/2020)
  * */
-/*var data = [
+var dataa = [
     {
         CustomerCode: "KH2",
         Fullname: "trần van teo",
@@ -76,4 +94,3 @@ class CustomerJS extends BaseJS {
     },
 ]
 
-*/

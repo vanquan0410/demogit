@@ -29,7 +29,7 @@ for (var i = 0; i < 10; i++) {
         EmployeeCode: "kh00" + i + 1,
         Fullname:"Dam Van Quan",
         Gender: "nam",
-        DateOfBirth: new Date('1999-01-01'),
+        DateOfBirth:'1999-01-01',
         Phone: "0987887678",
         DepartmentName: "Phong cong nghe",
         Email: "abc@gmail.com",

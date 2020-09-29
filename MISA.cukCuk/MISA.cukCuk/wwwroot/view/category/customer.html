@@ -158,7 +158,7 @@
                     <div class="gird-content">
                         <table class="tbListcustomer" width="100%" border="1" id="tbListData">
                             <thead>
-                                <tr>
+                                <tr fieldID="CustomerID">
                                     <th fieldName="CustomerCode" id="titleCode">Mã khách hàng</th>
                                     <th fieldName="FullName" id="titleName">Tên khách hàng</th>
                                     <th fieldName="CompanyName" id="titleCompany">Tên công ty</th>
@@ -235,9 +235,9 @@
                         <tbody>
                             <tr>
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtCustomerCode" /></div></td>
+                                <td fieldName="CustomerCode"><div class="dialog-in"><input type="text" required id="txtCustomerCode"/></div></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input type="text" required id="txtCustomerName" /></div></td>
+                                <td fieldName="FullName"><div class="dialog-in"><input type="text" required id="txtCustomerName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>

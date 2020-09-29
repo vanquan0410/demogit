@@ -13,9 +13,10 @@ var commonjs={
     /**
      * hàm định dạng ngày tháng
      * @param {date} date 
-     * author: DVQuan
+     * author: DVQuan(24/9/2020)
      */
     formatDate(date) {
+        debugger
         if (date && !isNaN(date.getDate())) {
             var day = date.getDate();
             var month = date.getMonth() + 1;

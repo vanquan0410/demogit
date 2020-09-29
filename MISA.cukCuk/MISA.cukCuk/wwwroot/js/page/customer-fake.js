@@ -173,15 +173,16 @@ class customerjs {
                 datatype: "json",
                 contenttype: "application/json"
             }).done(function (res) {
-                var customer = res;
-                $('#txtcustomerCode').val(customer['customerCode']);
+                var item = res;
+                var fieldName
+               /* $('#txtcustomerCode').val(customer['customerCode']);
                 $('#txtcustomerName').val(customer['customerName']);
                 $('#txtdienThoai').val(customer['phone']);
                 $('#txtngaySinh').val(customer['date']);
                 $('#txtTenCongty').val(customer['companyName']);
                 $('#txtcodeThue').val(customer['code']);
                 $('#txtemail').val(customer['customerCode']);
-                $('#txtDiaChi').val(customer['address']);
+                $('#txtDiaChi').val(customer['address']);*/
 
             }).fail(function (res) {
 
