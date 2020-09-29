@@ -17,10 +17,6 @@ class CustomerJS extends BaseJS {
     * */
     getData() {
         /* this.Data = data;*/
-        this.Data = this.load();
-        
-    }
-    load() {
         var res = this;
         $.ajax({
             url: "/api/customer",
@@ -30,12 +26,14 @@ class CustomerJS extends BaseJS {
             contenttype: "application/json"
         }).done(function (response) {
             res.Data = response;
-            alert("connect thanh cong")
+            console.log("thanh cong")
+            res.loadData();
         }).fail(function (response) {
-            this.Data = null;
+            res.Data = null;
         })
+       /* this.Data = data;*/
+        debugger
     }
-
     makeTrHTML(item) {
         debugger
         var trHTML = $(`<tr>
@@ -55,7 +53,7 @@ class CustomerJS extends BaseJS {
  * data fake
  * author: DVQuan
  * */
-var data = [
+/*var data = [
     {
         CustomerCode: "KH2",
         Fullname: "trần van teo",
@@ -78,3 +76,4 @@ var data = [
     },
 ]
 
+*/
