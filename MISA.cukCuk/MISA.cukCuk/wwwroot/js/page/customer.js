@@ -11,7 +11,7 @@ class CustomerJS extends BaseJS {
         super();
     }
     showFocusDetail() {
-        document.getElementById('txtCustomerCode').focus();
+        $('#txtCustomerCode').focus();
     }
     /**
     * lấy dữ liệu fake
@@ -42,7 +42,7 @@ class CustomerJS extends BaseJS {
      * định dạng lại dòng dữ liệu của customer
      * author: DVQuan(24/9/2020)
      * @param {any} item
-     */
+     * */
     makeTrHTML(item) {
         debugger
         var trHTML = $(`<tr>
@@ -56,15 +56,16 @@ class CustomerJS extends BaseJS {
                     </tr>`);
         return trHTML;
     }
+
     /**
-     * lưu trữ dữ liệu xuống 
+     * lưu trữ dữ liệu xuống DB
      * author: DVQuan(30/9/2020)
      * @param {any} customer
      * @param {any} POST
-     */
+     * */
     saveToDB(customer, POST) {
         console.log(customer);
-        console.log(aa);
+        console.log(POST);
         var self = this;
         debugger
         $.ajax({
@@ -83,7 +84,8 @@ class CustomerJS extends BaseJS {
                 self.loadData();
                 alert('them thanh cong');
             }
-        }).fail(function () {
+        }).fail(function (res) {
+            console.log(res);
             alert('that bai');
         })
     }

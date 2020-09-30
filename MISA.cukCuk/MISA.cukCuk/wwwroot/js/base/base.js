@@ -3,10 +3,9 @@
     baseJS = new BaseJS();
 
 });
-/**********************************************
+/**
  * object cha quản lý danh mục
- * author:DVQuan(28/9/2020)
- * ********************************************/
+ */
 class BaseJS {
     constructor(name) {
         try {
@@ -19,10 +18,10 @@ class BaseJS {
 
         }
     }
-    /******************************************
+    /**
      * Thực hiện gán các sự kiện
      * author: DVQuan(24/9/2020)
-     ******************************************/
+     */
     initEvents() {
         debugger
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
@@ -38,8 +37,9 @@ class BaseJS {
         $("table").on("click", "tbody tr", this.rowOnClick);
 
     }
+
     /**
-     * lớp con sẽ override và mặ định focus vào trường dữ liệu mà nó mọng muốn
+     * lớp con sẽ override và mặc định focus vào trường dữ liệu mà nó mọng muốn
      * author:DVQuan(30/9/2020)
      * */
     showFocusDetail() {
@@ -49,7 +49,7 @@ class BaseJS {
     /**
      * lớp con sẽ override lại hàm này và getData theo ý muốn của nó
      * author:DVQuan(30/9/2020)
-     * */
+     */
     getData() {
         this.Data = [];
     }
@@ -57,23 +57,25 @@ class BaseJS {
     /**
      * lớp con sẽ override lại hàm này và save lại theo ý muốn của nó
      * author:DVQuan
-     * @param {any} obj
-     * @param {any} method //xác định xem là post or put
+     * @param {any} obj một mảng của đối tượng
+     * @param {any} method xác định xem là post or put
      */
     saveToDB(obj, method) {
 
     }
+
     /**
-     * lớp con sẽ override lại và 
+     * lớp con sẽ override lại và make lai trHTML theo ý muốn của nó
      * @param {any} obj
      */
     makeTrHTML(obj) {
+
     }
 
-    /****************************************
+    /**
      * sự kiện load data
      * author:DVQuan(27/9/2020)
-     ***************************************/
+     */
     loadData() {
             try {
                 //đọc thông tin các cột dữ liệu
@@ -90,13 +92,13 @@ class BaseJS {
                     var tr = $(`<tr fieldID=`+obj[id]+`></tr>`);
                     $.each(fields, function (index, field) {
                         var fieldName = $(field).attr('fieldName');
+                        var formatName = $(field).attr('format');
                         var value = obj[fieldName];
                         //nếu dữ liệu trống thì sẽ thay thế bằng ""
                         if (value == null || !value) {
                             value = "";
                             td = $(`<td>` + value + `</td>`);
                         }
-                        var formatName = $(field).attr('format');
                         var td = $(`<td>` + value + `</td>`);
                         //nếu dữ liệu là money thì định dạng theo money
                         if (formatName == "Money") {
@@ -138,7 +140,7 @@ class BaseJS {
 
     // #region even-click
 
-    /*
+    /**
      * sự kiên khi click vao button thêm mới -> show dialog
      * createdBy: DVQuan(24/9/2020)
      */
@@ -147,7 +149,7 @@ class BaseJS {
         this.showFocusDetail();
     }
 
-    /*
+    /**
      * sự kiên khi click vao button cancel-> ẩn dialog
      * createdBy: DVQuan(24/9/2020)
      */
@@ -163,70 +165,51 @@ class BaseJS {
         this.loadData();
     }
 
-    // #endregion even-click
+    // #endregion
 
     //#region event-show-hide-dialog
 
-    /**************************************************
+    /**
      * sự kiện show dialog
      * author:DVQuan(28/9/2020)
-     **************************************************/
+     */
     showDialogDetail() {
         $('.form-dialog').show();
         $('.dialog-modal').show();
     }
 
-    /************************************************
+    /**
      * sự kiện ẩn dialog
      * createBy: DVQuan(24/9/2020)
-     ************************************************/
+     */
     hideDialogDetail() {
         $('.form-dialog').hide();
         $('.dialog-modal').hide();
     }
 
-    //#endregion event show-hide-dialog
+    //#endregion
 
-    /***********************************************
-     * sự kiện kiểm tra trường nhập dữ liệu không được để trống
-     * author: DVQuan(28/9/2020)
-     * 
-     ***********************************************/
-    checkRequired() {
-        var value = this.value;
-        if (!value) {
-            $(this).addClass('required-error');
-            //$(this).focus();
-            $(this).attr("title", "Ban phải nhập thông tin này");
-            return;
-        }
-        else {
-            $(this).removeClass('required-error');
-            //$(this).focus();
-            $(this).removeAttr("title");
-            return;
-        }
-    }
-
-    /**********************************************
+    //#region event-them-sua-xoa
+    /**
      * Sự kiện lưu một bản ghi mới
      * createBy: DVQuan(24/9/2020)
-     *********************************************/
+     */
     btnSaveOnClick() {
         var inputRequired = $("[required]");
         var isValid = true;
+        debugger
         $.each(inputRequired, function (index, input) {
-
             var valid = $(input).trigger("blur");
             if (isValid && valid.hasClass("required-error")) {
                 isValid = false;
             }
         })
-        var self = this;
-        var method = "POST";
-        if (self.FormType == "Edit") {
-            method = "PUT";
-        }
+        if (isValid) {
+            var self = this;
+            var method = "POST";
+            if (self.FormType == "Edit") {
+                method = "PUT";
+            }
             var obj = {};
             var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
             $.each(fields, function (index, field) {
@@ -240,7 +223,9 @@ class BaseJS {
                 }
             })
             this.saveToDB(obj, method);
+        }
     }
+
     /**
      * sự kiện sửa 1 bản ghi mới
      * author: DVQuan(28/9/2020)
@@ -273,18 +258,37 @@ class BaseJS {
             })
         }
         this.showDialogDetail();
-
     }
 
     /**
      * sự kiện xóa 1 bản ghi trong trường dữ liệu
      * author:DVQuan(28/9/2020)
-     * */
+     */
     //TODO đang thực hiện build chức năng xóa dở dang
     btnDeleteOnClick() {
         $.each(this.Data, function (index, value) {
 
         })
+    }
+
+    //#endregion
+
+    /**
+    * vadilate kiểm tra trường nhập dữ liệu không được để trống
+    * author: DVQuan(28/9/2020)
+    */
+    checkRequired() {
+        var value = this.value;
+        if (!value) {
+            $(this).addClass('required-error');
+            $(this).attr("title", "Ban phải nhập thông tin này");
+            return;
+        }
+        else {
+            $(this).removeClass('required-error');
+            $(this).removeAttr("title");
+            return;
+        }
     }
 
     /**
@@ -298,11 +302,12 @@ class BaseJS {
         $(this).siblings().removeClass("row-selected");
     }
 }
+
 /**
  * dữ liệu fake
  * createBy: DVQuan(24/9/2020)
  */
-var data = [
+/*var data = [
     {
         customerCode: "kh10",
         customerName: "tran van teo",
@@ -326,3 +331,4 @@ var data = [
 ]
 
 
+*/

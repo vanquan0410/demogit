@@ -206,13 +206,10 @@ input[type="text" i] {
 
 }
 .dialog-footer  button {
-    /* display: flex; */
-    /* align-items: center; */
-    /* height: 100%; */
     border-radius: unset;
     border-style: solid;
     border-width: 1px;
-    border-color: #1614142b;;
+    border-color: #1614142b;
 }
 
     .dialog-footer button:hover {
@@ -232,45 +229,10 @@ input[type="text" i] {
     .dialog-footer .dialog-footer-right{
         margin-left: 199px;
     }
-    /*.dialog-button button:hover {
-    outline: none;
-    border: 2px solid #1e32d0;*/
-    /*background-color:#ff0000;*/
-    /*}
-.dialog-footer .dialog-add {
-    width:100px;
-    height:100%;
-    
-}
-.dialog-add #btnAdd {
-    width: 100px;
-    height: 100%;
-     background-image: url('../../content/img/Images/vector-smart-object.png');
-    background-repeat: no-repeat;
-    background-color: #9f9999;*/
-    /*  background: url('../../content/img/Images/IconSprite.png') no-repeat -1px -2416px;*/
-    /*}
-.dialog-edit #btnEdit {
-    width: 100px;
-    height: 100%;
-    background-image: url('../../content/img/Images/vector-smart-object.png');
-    background-repeat: no-repeat;
-    background-color: #9f9999;
-}
-.dialog-cancel #btnCancel {
-    width: 100px;
-    height: 100%;
-    background-image: url('../../content/img/Images/cancel-invoice.png');
-    background-repeat: no-repeat;
-    background-color: #9f9999;
-}*/
-/* add class error */
-.required-error{
-    border:1px solid #ff0000 !important;
-    /* border-color:red ; */
+.dialog-body .required-error{
+    border:1px solid #ff0000;
     height: 19px;
     width: 80%;
-   
     outline: none;
     padding: 1px 1px !important;
 }
