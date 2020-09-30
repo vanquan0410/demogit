@@ -136,23 +136,23 @@
                     <div class="toolbar">
                         <button id="btnAdd">
                             <div class="btn-icon btn-icon-add"></div>
-                            <dic class="btn-text">Thêm</dic>
+                            <div class="btn-text">Thêm</div>
                         </button>
                         <button id="btnDuplicate">
                             <div class="btn-icon btn-icon-duplicate"></div>
-                            <dic class="btn-text">Nhân bản</dic>
+                            <div class="btn-text">Nhân bản</div>
                         </button>
                         <button id="btnEdit">
                             <div class="btn-icon btn-icon-edit"></div>
-                            <dic class="btn-text">Sửa</dic>
+                            <div class="btn-text">Sửa</div>
                         </button>
                         <button id="btnDelete">
                             <div class="btn-icon btn-icon-delete"></div>
-                            <dic class="btn-text">Xóa</dic>
+                            <div class="btn-text">Xóa</div>
                         </button>
                         <button id="btnRefresh">
                             <div class="btn-icon btn-icon-refresh"></div>
-                            <dic class="btn-text">Nạp</dic>
+                            <div class="btn-text">Nạp</div>
                         </button>
                     </div>
                     <div class="gird-content">
@@ -186,11 +186,11 @@
                     <div class="paging">
                         <div class="paging-content page-first"></div>
                         <div class="paging-content page-prev"></div>
-                        <div class="paging-content" style=" font-size: 16px; width: 50px;color: #4a4a4a;">
+                        <div class="paging-content" style="font-size: 15px; width: 50px; color: #4a4a4a;">
                             Trang
                         </div>
                         <div class="paging-content">
-                            <div style="width: 25px;height: 13px;margin-top: 1px;">
+                            <div style=" width: 39px; height: 23px; margin-top: -4px;">
                                 <input type="text" value="1" />
                             </div>
                         </div>
@@ -198,22 +198,14 @@
                         <div class="paging-content page-next"></div>
                         <div class="paging-content page-last"></div>
                         <div class="paging-content refresh"></div>
-                        <div class="paging-content" style="width:87px;font-size:16px;color: #4a4a4a;">
+                        <div class="paging-content" style="width:87px;font-size:15px;color: #4a4a4a;">
                             Số bản ghi
                         </div>
                         <div class="paging-content">
-                            <div style="width: 25px;height: 13px;margin-top: 1px;">
+                            <div style="width: 39px; height: 23px; margin-top: -4px;">
                                 <input type="text" value="1" />
                             </div>
                         </div>
-                        <!-- <div class="paging-content">
-                                <div style="width: 51px;height: 21px;    margin-top: -1px;">
-                                <select>
-                                    <option>25</option>
-                                </select>
-                            </div>
-                        </div>-->
-
                         <div class="paging-content hd-pop">
 
                         </div>
@@ -235,9 +227,9 @@
                         <tbody>
                             <tr>
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
-                                <td fieldName="CustomerCode"><div class="dialog-in"><input type="text" required id="txtCustomerCode"/></div></td>
+                                <td><div class="dialog-in"><input fieldName="CustomerCode" type="text" required id="txtCustomerCode"/></div></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td fieldName="FullName"><div class="dialog-in"><input type="text" required id="txtCustomerName" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="FullName" type="text" required id="txtCustomerName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
@@ -267,11 +259,11 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số điện thoai</td>
-                                <td><div class="dialog-in"><input type="text" id="txtPhone" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="Phone" type="text" id="txtPhone" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
-                                <td><div class="dialog-in"><input type="date" id="txtDate" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="DateOfBirth" type="date" id="txtDate" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Tên công ty</td>
@@ -279,14 +271,14 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số tiền nợ</td>
-                                <td><div class="dialog-in"><input type="text" id="txtMoney" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
 
                                 <td class="lable">Email</td>
-                                <td><div class="dialog-in"><input type="text" id="txtEmail" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="Email" type="text" id="txtEmail" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Địa chỉ</td>
-                                <td colspan="3"><div class="dialog-in"><input type="text" id="txtAddress" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input fieldName="Address" type="text" id="txtAddress" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ghi chú</td>

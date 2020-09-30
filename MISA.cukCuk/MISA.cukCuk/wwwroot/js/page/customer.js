@@ -10,6 +10,9 @@ class CustomerJS extends BaseJS {
         debugger
         super();
     }
+    showFocusDetail() {
+        document.getElementById('txtCustomerCode').focus();
+    }
     /**
     * lấy dữ liệu fake
     * author:DVQuan
@@ -19,7 +22,7 @@ class CustomerJS extends BaseJS {
         var res = this;
         $.ajax({
             url: "/api/customer",
-            method: "get",
+            method: "GET",
             data: "",
             datatype: "json",
             contenttype: "application/json"
@@ -53,17 +56,36 @@ class CustomerJS extends BaseJS {
                     </tr>`);
         return trHTML;
     }
-    selectRow() {
-        var values = [];
-        var fields = $('table.dialog-information tbody tr td');
-        $.each(fields, function (index, item) {
-            var filedName = $(item).attr('fieldName');
-            if (filedName) {
-                values = values.push(filedName);
+    /**
+     * lưu trữ dữ liệu xuống 
+     * author: DVQuan(30/9/2020)
+     * @param {any} customer
+     * @param {any} POST
+     */
+    saveToDB(customer, POST) {
+        console.log(customer);
+        console.log(aa);
+        var self = this;
+        debugger
+        $.ajax({
+            url: "/api/customer",
+            method:POST,
+            data: JSON.stringify(customer),
+            contenttype: "application/json",
+            datatype: "json",      
+            async: false
+        }).done(function (res) {
+            debugger;
+            if (res) {
+                self.btnCancelOnClick();
+                debugger
+                self.getData();
+                self.loadData();
+                alert('them thanh cong');
             }
+        }).fail(function () {
+            alert('that bai');
         })
-
-
     }
 }
 

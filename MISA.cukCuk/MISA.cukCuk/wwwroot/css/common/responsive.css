@@ -1,4 +1,4 @@
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     body {
       
     }
@@ -6,6 +6,9 @@
         /* display: none; */
         width: 36px;
         
+    }
+    .sidebar .logo{
+
     }
     .main{
         width: 100%;

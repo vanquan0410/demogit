@@ -1,5 +1,4 @@
-﻿body {
-}
+﻿
 @font-face {
     font-family: 'fontello';
     src: url('/content/font/fontello.woff') format('woff');
@@ -26,15 +25,6 @@
     float:right;
     padding:10px;
     color:#fff;
-}
-.header-right .notification {
-   /* font-family:fontello;
-    width: 20px;
-    height: 20px;
-    background-image: url('/content/img/Images/planet-earth (1).png');
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 3px;*/
 }
 .fas.fa-globe-asia{
     font-size:25px;

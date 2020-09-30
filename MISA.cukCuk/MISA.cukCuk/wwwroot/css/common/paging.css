@@ -40,10 +40,10 @@
         background-image: url('/content/img/Images/grid/sort_desc.png');
         background-repeat: no-repeat;
     }
-    .paging .hd-pop{
+    .paging .hd-pop {
         background-image: url('/content/img/Images/grid/hd-pop.png');
         background-repeat: no-repeat;
-        background-position-x: 12px;
+        background-position-x: 23px;
         background-position-y: 7px;
     }
 .paging-content input {

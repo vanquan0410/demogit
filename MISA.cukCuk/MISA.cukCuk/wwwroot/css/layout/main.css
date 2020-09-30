@@ -1,8 +1,8 @@
 ﻿body {
     margin: 0px;
     display: flex;
-    font-family: 'fontello','Tahoma_Regular';
-    font-size:15px;
+    font-family: 'fontello','Tahoma_Regular'!important;
+    font-size:15px!important;
 
 }
 .main{

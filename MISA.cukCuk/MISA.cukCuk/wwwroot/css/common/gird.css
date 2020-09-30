@@ -33,14 +33,14 @@ table {
 }
      .gird-content table tbody tr:nth-child(even){
         background-color:#f1f1f1;
-    } 
+    }
     .gird-content table tbody tr:hover {
-        background-color: #437698;
+        background-color: #d1d7db;
         cursor: pointer;
     }
 
-    .gird-content table tbody .row-selected{
-        background-color:#437698 !important;
+    .gird-content table tbody .row-selected {
+        background-color: #d1d7db !important;
     } 
     /* .gird-content table tr td:last-child,th:last-child{
         border-right: 0px;
@@ -61,6 +61,12 @@ table {
 
     .gird-content table td:first-child, th:first-child{
         border-left: none;
+    }
+    .gird-content table td {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 150px;
+        overflow: hidden
     }
 .gird-content #titleCode{
     width: 10%;

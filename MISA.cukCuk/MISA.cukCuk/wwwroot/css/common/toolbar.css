@@ -4,6 +4,7 @@
     height: 30px;
     background-color: rgb(239,239,239);
     display: flex;
+    
 }
 
 .toolbar {
@@ -22,6 +23,7 @@
         border-style: solid;
         border-width: 1px;
         border-color: transparent;
+        font-size: 15px;
     }
 
         .toolbar button:hover {
