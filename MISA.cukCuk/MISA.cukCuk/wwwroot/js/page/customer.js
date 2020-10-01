@@ -18,7 +18,6 @@ class CustomerJS extends BaseJS {
     * author:DVQuan
     * */
     getData() {
-        /* this.Data = data;*/
         var res = this;
         $.ajax({
             url: "/api/customer",
@@ -72,9 +71,7 @@ class CustomerJS extends BaseJS {
             url: "/api/customer",
             method:POST,
             data: JSON.stringify(customer),
-            contenttype: "application/json",
-            datatype: "json",      
-            async: false
+            contentType: "application/json",
         }).done(function (res) {
             debugger;
             if (res) {
@@ -87,6 +84,16 @@ class CustomerJS extends BaseJS {
         }).fail(function (res) {
             console.log(res);
             alert('that bai');
+        })
+    }
+
+    /**
+     * lấy dữ liệu của đối tượng thông qua customerID
+     * @param {any} customerID
+     */
+    getObjData(customerID) {
+        $.ajax({
+            
         })
     }
 }

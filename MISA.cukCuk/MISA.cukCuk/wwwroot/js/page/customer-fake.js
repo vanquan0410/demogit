@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     var customer = new customerjs();
     if (document.getElementById('#dialog-btncancel').hasFocus()) {
         document.getElementById('txtcustomerCode').focus();
@@ -7,6 +6,7 @@ $(document).ready(function () {
 
 
 });
+
 class customerjs {
 
     constructor() {

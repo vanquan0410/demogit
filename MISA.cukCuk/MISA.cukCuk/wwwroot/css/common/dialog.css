@@ -231,9 +231,6 @@ input[type="text" i] {
     }
 .dialog-body .required-error{
     border:1px solid #ff0000;
-    height: 19px;
-    width: 80%;
-    outline: none;
     padding: 1px 1px !important;
 }
 

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    debugger
+   
     baseJS = new BaseJS();
 
 });
@@ -23,19 +23,16 @@ class BaseJS {
      * author: DVQuan(24/9/2020)
      */
     initEvents() {
-        debugger
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));
-        $("input[required]").blur(this.checkRequired);
+        $("input[required]").blur(vadilateRequired.bind(this));
         $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showFocusDetail);
-        debugger
         $("table").on("click", "tbody tr", this.rowOnClick);
-
     }
 
     /**
@@ -43,7 +40,6 @@ class BaseJS {
      * author:DVQuan(30/9/2020)
      * */
     showFocusDetail() {
-
     }
 
     /**
@@ -55,21 +51,21 @@ class BaseJS {
     }
 
     /**
+     * Hàm lấy dữ liệu tương ứng của 1 đối tượng
+     * author: DVQuan(01/10/2020)
+     * @param {any} objCode
+     */
+    getObjData(objCode) {
+        //lớp con sẽ override lại hàm này lấy dữ liệu theo dối tượng của nó
+    }
+
+    /**
      * lớp con sẽ override lại hàm này và save lại theo ý muốn của nó
      * author:DVQuan
      * @param {any} obj một mảng của đối tượng
      * @param {any} method xác định xem là post or put
      */
     saveToDB(obj, method) {
-
-    }
-
-    /**
-     * lớp con sẽ override lại và make lai trHTML theo ý muốn của nó
-     * @param {any} obj
-     */
-    makeTrHTML(obj) {
-
     }
 
     /**
@@ -77,6 +73,7 @@ class BaseJS {
      * author:DVQuan(27/9/2020)
      */
     loadData() {
+            $('table#tbListData tbody').empty();
             try {
                 //đọc thông tin các cột dữ liệu
                 var fields = $('table#tbListData thead th');
@@ -86,9 +83,8 @@ class BaseJS {
                 var seft = this;
                 //đọc dữ liệu:
                 $.each(data, function (index, obj) {
-                    debugger
+                    //gán id vao attr của dòng dữ liệu tương ứng
                     var id = $(filedID).attr('fieldID');
-                    debugger
                     var tr = $(`<tr fieldID=`+obj[id]+`></tr>`);
                     $.each(fields, function (index, field) {
                         var fieldName = $(field).attr('fieldName');
@@ -109,10 +105,11 @@ class BaseJS {
                         else if (formatName) {
                             td.addClass("format");
                         }
+
                         if (formatName == "Address") {
                             td.addClass("format-address");
                             if (value.length > 0) {
-                                var address = value.slice(0, 70) + "...";
+                                var address = value.slice(0, 70);
                                 td = $(`<td title="` + value + `">` + address + `</td>`);
                             }
                             else {
@@ -197,10 +194,10 @@ class BaseJS {
     btnSaveOnClick() {
         var inputRequired = $("[required]");
         var isValid = true;
-        debugger
         $.each(inputRequired, function (index, input) {
-            var valid = $(input).trigger("blur");
-            if (isValid && valid.hasClass("required-error")) {
+            /* var valid = $(input).trigger("blur");*/
+            debugger
+            if (!vadilateData.vadilateEmpty(input)) {
                 isValid = false;
             }
         })
@@ -232,17 +229,17 @@ class BaseJS {
      * @param {any} seder
      */
     btnEditOnClick(seder) {
-        debugger
+        //xác định đối tượng cần sửa
         var rowSelected = $('tr.row-selected');
         if (rowSelected && rowSelected.length == 1) {
             debugger
             var customerID = $('tr.row-selected').attr('fieldID');
             $.ajax({
                 url: "/api/customer/" + customerID,
-                method: "get",
+                method: "GET",
                 // data: "",
                 datatype: "json",
-                contenttype: "application/json"
+                contentType: "application/json"
             }).done(function (res) {
                 //thực hiện binding dữ liệu lên form chi tiết
                 var fields = $('table.dialog-information tbody tr td')
@@ -278,17 +275,7 @@ class BaseJS {
     * author: DVQuan(28/9/2020)
     */
     checkRequired() {
-        var value = this.value;
-        if (!value) {
-            $(this).addClass('required-error');
-            $(this).attr("title", "Ban phải nhập thông tin này");
-            return;
-        }
-        else {
-            $(this).removeClass('required-error');
-            $(this).removeAttr("title");
-            return;
-        }
+        return true;
     }
 
     /**
@@ -297,7 +284,7 @@ class BaseJS {
      * createBy: DVQuan(24/9/2020)
      */
     rowOnClick(sender) {
-        debugger
+        
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
     }
