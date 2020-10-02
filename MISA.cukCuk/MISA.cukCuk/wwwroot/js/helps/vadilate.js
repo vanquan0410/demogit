@@ -2,8 +2,8 @@
     /**
      * validate bắt buộc nhập
      * @param {any} obj input selector
-     */
-    vadilateEmpty(obj) {
+    */
+    vadilateEmpty: function (obj) {
         var value = $(obj).val();
         if (!value || !(value && value.trim())) {
             $(obj).addClass('required-error');
@@ -16,7 +16,11 @@
             return true;
         }
     },
-
+    /**
+     * validate email
+     * author: DVQuan(02/10/2020)
+     * @param {any} obj
+     */
     validataEmail(obj) {
 
     }

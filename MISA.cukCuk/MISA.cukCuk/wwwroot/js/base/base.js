@@ -25,12 +25,12 @@ class BaseJS {
     initEvents() {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
-        $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));
-        $("input[required]").blur(vadilateRequired.bind(this));
+        $("input[required]").blur(this.checkRequired);
         $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
+        $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showFocusDetail);
         $("table").on("click", "tbody tr", this.rowOnClick);
     }
@@ -195,7 +195,6 @@ class BaseJS {
         var inputRequired = $("[required]");
         var isValid = true;
         $.each(inputRequired, function (index, input) {
-            /* var valid = $(input).trigger("blur");*/
             debugger
             if (!vadilateData.vadilateEmpty(input)) {
                 isValid = false;
@@ -247,8 +246,7 @@ class BaseJS {
                     if (fieldName) {
                         var fieldName = $(data).attr('fieldName');
                         $(fieldName).val(res[fieldName]);
-                    }
-                   
+                    } 
                 })
             }).fail(function (res) {
 
@@ -261,10 +259,9 @@ class BaseJS {
      * sự kiện xóa 1 bản ghi trong trường dữ liệu
      * author:DVQuan(28/9/2020)
      */
-    //TODO đang thực hiện build chức năng xóa dở dang
     btnDeleteOnClick() {
         $.each(this.Data, function (index, value) {
-
+             //TODO đang thực hiện build chức năng xóa dở dang
         })
     }
 
@@ -275,7 +272,12 @@ class BaseJS {
     * author: DVQuan(28/9/2020)
     */
     checkRequired() {
-        return true;
+        // trường nhập liệu không được để trống
+        var value = vadilateData.vadilateEmpty(this)
+        // nhập liệu đúng email
+        //TODO: đang thực hiện validate email
+        //nhập liêu đúng number
+        //TODO: đang thực hiện number
     }
 
     /**
@@ -284,38 +286,7 @@ class BaseJS {
      * createBy: DVQuan(24/9/2020)
      */
     rowOnClick(sender) {
-        
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
     }
 }
-
-/**
- * dữ liệu fake
- * createBy: DVQuan(24/9/2020)
- */
-/*var data = [
-    {
-        customerCode: "kh10",
-        customerName: "tran van teo",
-        email: "abc@gmail.com",
-        companyName: "cong ty rickit",
-        codeThue: "1234",
-        diaChi: "Thượng Mỗ - Đan Phượng - Hà Nội",
-        dienThoai: "0165985629",
-        ngaySinh: "01/10/1999"
-    },
-    {
-        customerCode: "Kh11",
-        customerName: "Trần thị tý",
-        email: "tyabc@gmail.com",
-        companyName: "cong ty rickit",
-        codeThue: "1234",
-        diaChi: "so nha gi đó Thôn an sơn ngõ thượng cát Thượng Mỗ - Đan Phượng - Hà Nội",
-        dienThoai: "0165985629",
-        ngaySinh: "01/10/1999"
-    },
-]
-
-
-*/

@@ -1,4 +1,4 @@
-var commonjs={
+var commonjs = {
     /**
      * hàm định dạng tiền tệ
      * @param {number} money 

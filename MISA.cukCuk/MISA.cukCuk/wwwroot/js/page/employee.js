@@ -17,6 +17,10 @@ class EmployeeJS extends BaseJS{
     getData() {
         this.Data = data;
     }
+
+    showFocusDetail() {
+        $('#txtEmployeeCode').focus();
+    }
 }
 
 /**
