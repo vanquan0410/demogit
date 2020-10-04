@@ -8,7 +8,7 @@ namespace MISA.cukCuk.model
 {
     public class CustomerModel
     {
-        public CustomerModel(String customerCode, String customerName,String email, String companyName, Double code, String address, String phone, String date)
+        public CustomerModel(String customerCode, String customerName,String email, String companyName, Double code, String address, String phone, DateTime date)
         {
             CustomerID = Guid.NewGuid();
             this.CustomerCode = customerCode;
@@ -28,12 +28,12 @@ namespace MISA.cukCuk.model
         }
         public static List<CustomerModel> listCustomer = new List<CustomerModel>()
         {
-            new CustomerModel("kh10","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa-đường cầu diễn, Cầu giấy, Hà nội","0988788776", "10/10/2000"),
-            new CustomerModel("kh11","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", "10/10/2000"),
-            new CustomerModel("kh12","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776","10/10/2000"),
-            new CustomerModel("kh13","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776","10/10/2000"),
-            new CustomerModel("kh14","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776","10/10/2000"),
-            new CustomerModel("kh15","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776","10/10/2000"),
+            new CustomerModel("kh10","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa-đường cầu diễn, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
+            new CustomerModel("kh11","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776",  new DateTime(1999,10,10)),
+            new CustomerModel("kh12","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
+            new CustomerModel("kh13","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
+            new CustomerModel("kh14","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
+            new CustomerModel("kh15","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
 
         };
         public Guid? CustomerID { get; set; }
@@ -44,6 +44,6 @@ namespace MISA.cukCuk.model
         public double Money { get; set; }   
         public string Address { get; set; }
         public String Phone { get; set; }
-        public String DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

@@ -62,31 +62,82 @@ class CustomerJS extends BaseJS {
      * @param {any} customer
      * @param {any} POST
      * */
-    saveToDB(customer, POST) {
-        console.log(customer);
-        console.log(POST);
+    saveToDB(customer, method) {
         var self = this;
-        debugger
-        $.ajax({
-            url: "/api/customer",
-            method:POST,
-            data: JSON.stringify(customer),
-            contentType: "application/json",
-        }).done(function (res) {
-            debugger;
-            if (res) {
-                self.btnCancelOnClick();
-                debugger
-                self.getData();
-                self.loadData();
-                alert('them thanh cong');
-            }
-        }).fail(function (res) {
-            console.log(res);
-            alert('that bai');
-        })
+        console.log(customer)
+        console.log(method)
+        if (method == "POST") {
+            $.ajax({
+                url: "/api/customer",
+                method: method,
+                data: JSON.stringify(customer),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    debugger
+                    self.getData();
+                    self.loadData();
+                    alert('them thanh cong');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('that bai');
+            })
+        } else {
+            debugger
+            $.ajax({
+                url: "/api/customer/"+customer.customerID,
+                method: method,
+                data: JSON.stringify(customer),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    debugger
+                    self.getData();
+                    self.loadData();
+                    alert('sửa thành công');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('sua that bai');
+            })
+        }
+       
     }
 
+    /**
+     * xóa 1 bản ghi
+     * @param {any} obj  customer id
+     * author: DVQuan(4/10/2020)
+     */
+    deleteToDB(customer) {
+        debugger
+        var self = this;
+        if (customer != null) {
+            $.ajax({
+                url: "/api/customer/" + customer.customerID,
+                method: "DELETE",
+                data: JSON.stringify(customer),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    //load lại dữ liệu
+                    self.getData();
+                    self.loadData();
+                    alert('xóa thành công');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('xóa that bai');
+            })
+        }
+    }
     /**
      * lấy dữ liệu của đối tượng thông qua customerID
      * @param {any} customerID

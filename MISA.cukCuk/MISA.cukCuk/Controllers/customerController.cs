@@ -43,16 +43,36 @@ namespace MISA.cukCuk.Controllers
         }
 
         // PUT api/<customerController>/5
-        [HttpPut("{id}")]
-        public String Put(int id, [FromBody] string value)
+        [HttpPut("{CustomerID}")]
+        public bool Put([FromBody] CustomerModel customerModel)
         {
-            return value;
+            var customerEdit = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();
+            if (customerEdit!=null)
+            {
+                customerEdit.CustomerCode = customerModel.CustomerCode;
+                customerEdit.FullName = customerModel.FullName;
+                customerEdit.Email = customerModel.Email;
+                customerEdit.CompanyName = customerModel.CompanyName;
+                customerEdit.Money = customerModel.Money;
+                customerEdit.Address = customerModel.Address;
+                customerModel.Phone = customerModel.Phone;
+                customerEdit.DateOfBirth = customerModel.DateOfBirth;
+                return true;
+            }
+            return false;
         }
 
         // DELETE api/<customerController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{CustomerID}")]
+        public bool Delete([FromBody] CustomerModel customerModel)
         {
+            var customerDelete = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();
+            if (customerDelete != null)
+            {
+                CustomerModel.listCustomer.Remove(customerDelete);
+                return true;
+            }
+            return false;
         }
     }
 }

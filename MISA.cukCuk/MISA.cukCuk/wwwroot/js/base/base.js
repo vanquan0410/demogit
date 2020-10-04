@@ -1,7 +1,4 @@
 ﻿$(document).ready(function () {
-   
-    baseJS = new BaseJS();
-
 });
 /**
  * object cha quản lý danh mục
@@ -24,12 +21,12 @@ class BaseJS {
      */
     initEvents() {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
-        $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));
-        $("input[required]").blur(this.checkRequired);
+        $('input[required]').blur(this.checkRequired);
         $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
+        $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
         $('#dialog-btnfocus').focus(this.showFocusDetail);
         $("table").on("click", "tbody tr", this.rowOnClick);
@@ -43,7 +40,7 @@ class BaseJS {
     }
 
     /**
-     * lớp con sẽ override lại hàm này và getData theo ý muốn của nó
+     * lớp con sẽ override lại hàm này và getData của nó
      * author:DVQuan(30/9/2020)
      */
     getData() {
@@ -69,10 +66,18 @@ class BaseJS {
     }
 
     /**
+     * lớp con sẽ override lại hàm này và delete lại theo ý muốn của nó
+     * @param {any} obj
+     */
+    deleteToDB(obj) {
+
+    }
+    /**
      * sự kiện load data
      * author:DVQuan(27/9/2020)
      */
     loadData() {
+        debugger;
             $('table#tbListData tbody').empty();
             try {
                 //đọc thông tin các cột dữ liệu
@@ -81,6 +86,7 @@ class BaseJS {
                 //lấy dữ liệu
                 var data = this.Data;
                 var seft = this;
+             
                 //đọc dữ liệu:
                 $.each(data, function (index, obj) {
                     //gán id vao attr của dòng dữ liệu tương ứng
@@ -117,14 +123,12 @@ class BaseJS {
                             }
                         }
                         // định dạng type date
-                        //không cần vì có thể xử lý ở service trả về một chuỗi
-                       /* if (formatName == "Date") {
+                        if (formatName == "Date") {
                             debugger
                             var valueDate = commonjs.formatDate(value);
                             td = $(`<td>` + valueDate + `</td>`);
                             td.addClass("format");
                         }
-                       */
                         $(tr).append(td);
                     })
                     //Biding dữ liệu lên UI
@@ -139,7 +143,7 @@ class BaseJS {
 
     /**
      * sự kiên khi click vao button thêm mới -> show dialog
-     * createdBy: DVQuan(24/9/2020)
+     * author: DVQuan(24/9/2020)
      */
     btnAddOnClick() {
         this.showDialogDetail();
@@ -148,7 +152,7 @@ class BaseJS {
 
     /**
      * sự kiên khi click vao button cancel-> ẩn dialog
-     * createdBy: DVQuan(24/9/2020)
+     * author: DVQuan(24/9/2020)
      */
     btnCancelOnClick() {
         this.hideDialogDetail();
@@ -196,17 +200,18 @@ class BaseJS {
         var isValid = true;
         $.each(inputRequired, function (index, input) {
             debugger
-            if (!vadilateData.vadilateEmpty(input)) {
+            if (!validateData.validateEmpty(input)) {
                 isValid = false;
             }
         })
         if (isValid) {
             var self = this;
+            var obj = {};
             var method = "POST";
             if (self.FormType == "Edit") {
                 method = "PUT";
+                obj["customerID"] = $('tr.row-selected').attr('fieldID');
             }
-            var obj = {};
             var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
             $.each(fields, function (index, field) {
                 var fieldName = $(field).attr('fieldName');
@@ -228,10 +233,14 @@ class BaseJS {
      * @param {any} seder
      */
     btnEditOnClick(seder) {
+        var self = this;
+        debugger;
+        var rowSelected = null;
         //xác định đối tượng cần sửa
-        var rowSelected = $('tr.row-selected');
-        if (rowSelected && rowSelected.length == 1) {
+        rowSelected = $('tr.row-selected');
+        if (rowSelected && rowSelected.length != 0) {
             debugger
+            //lấy ID của đối tượng cần sửa
             var customerID = $('tr.row-selected').attr('fieldID');
             $.ajax({
                 url: "/api/customer/" + customerID,
@@ -241,18 +250,28 @@ class BaseJS {
                 contentType: "application/json"
             }).done(function (res) {
                 //thực hiện binding dữ liệu lên form chi tiết
-                var fields = $('table.dialog-information tbody tr td')
-                $.each(fields, function (index, data) {
-                    if (fieldName) {
-                        var fieldName = $(data).attr('fieldName');
-                        $(fieldName).val(res[fieldName]);
-                    } 
+                var fields = $('input[fieldName]');
+                $.each(fields, function (index, field) {
+                    var fieldName = $(field).attr('fieldName');
+                    var format = $(field).attr('format');
+                    //biding dl lên input=date
+                    if (format == "date") {
+                        $(field).val(commonjs.convertDate(res[fieldName]))
+                    } else {
+                        var fieldName = $(field).attr('fieldName');
+                        $(field).val(res[fieldName]);
+                    }
                 })
+                self.FormType = "Edit";
+               /* self.btnSaveOnClick(customerID);*/
             }).fail(function (res) {
 
             })
+            this.showDialogDetail();
+        } else {
+            alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
         }
-        this.showDialogDetail();
+       
     }
 
     /**
@@ -260,9 +279,20 @@ class BaseJS {
      * author:DVQuan(28/9/2020)
      */
     btnDeleteOnClick() {
-        $.each(this.Data, function (index, value) {
-             //TODO đang thực hiện build chức năng xóa dở dang
-        })
+        var dataToDelete = {}
+        var rowSelected = $('tr.row-selected');
+        if (rowSelected && rowSelected.length != 0) {
+            debugger
+            //lấy ID của đối tượng cần xoa
+            var fieldID = $('tr.row-selected').attr('fieldID');
+            dataToDelete["customerID"] = $('tr.row-selected').attr('fieldID');
+            this.deleteToDB(dataToDelete);
+
+        }
+        else {
+            alert('vui long chọn 1 bản ghi để xóa');
+        }
+
     }
 
     //#endregion
@@ -273,7 +303,7 @@ class BaseJS {
     */
     checkRequired() {
         // trường nhập liệu không được để trống
-        var value = vadilateData.vadilateEmpty(this)
+        var value = validateData.validateEmpty(this)
         // nhập liệu đúng email
         //TODO: đang thực hiện validate email
         //nhập liêu đúng number
