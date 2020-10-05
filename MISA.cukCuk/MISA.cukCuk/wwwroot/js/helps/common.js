@@ -28,6 +28,7 @@ var commonjs = {
         }
         return null;
     },
+
     /**
     * hàm convert ngay thang yyyy/MM/dd
     * @param {date} date input ngày tháng
@@ -45,5 +46,24 @@ var commonjs = {
             return year + "-" + month + "-" + day;
         }
         return null;
+    },
+
+    /**
+     * convert number 
+     * @param {any} input
+     */
+    reformatText(input) {
+            var x = input.value;
+            x = x.replace(/,/g, ""); // Strip out all commas
+            x = x.split("").reverse().join("")
+            x = x.toString();
+            x = x.replace(/.../g, function (e) {
+                return e + ",";
+            }); // Insert new commas
+            x = x.split("").reverse().join("")
+            x = x.toString();
+            x = x.replace(/^,/, ""); // Remove leading comma
+            input.value = x;
     }
+
 }

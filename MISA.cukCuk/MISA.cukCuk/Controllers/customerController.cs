@@ -43,7 +43,7 @@ namespace MISA.cukCuk.Controllers
         }
 
         // PUT api/<customerController>/5
-        [HttpPut("{CustomerID}")]
+        [HttpPut]
         public bool Put([FromBody] CustomerModel customerModel)
         {
             var customerEdit = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();
@@ -63,7 +63,7 @@ namespace MISA.cukCuk.Controllers
         }
 
         // DELETE api/<customerController>/5
-        [HttpDelete("{CustomerID}")]
+        [HttpDelete]
         public bool Delete([FromBody] CustomerModel customerModel)
         {
             var customerDelete = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();

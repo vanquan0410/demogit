@@ -1,6 +1,4 @@
-﻿$(document).ready(function () {
-});
-/**
+﻿/**
  * object cha quản lý danh mục
  */
 class BaseJS {
@@ -15,21 +13,23 @@ class BaseJS {
 
         }
     }
+
     /**
      * Thực hiện gán các sự kiện
      * author: DVQuan(24/9/2020)
      */
     initEvents() {
-        $('#btnAdd').click(this.btnAddOnClick.bind(this));
-        $('#btnEdit').click(this.btnEditOnClick.bind(this));
-        $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
-        $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));
-        $('input[required]').blur(this.checkRequired);
-        $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));
-        $('#btnCancel').click(this.btnCancelOnClick.bind(this));
-        $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));
-        $('#dialog-btnfocus').focus(this.showFocusDetail);
-        $("table").on("click", "tbody tr", this.rowOnClick);
+        $('#btnAdd').click(this.btnAddOnClick.bind(this));                //thực hiện showdialog add
+        $('#btnEdit').click(this.btnEditOnClick.bind(this));              //thực hiện hide dialog edit
+        $('#btnDelete').click(this.btnDeleteOnClick.bind(this));          // thực hiện event delete
+        $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));        //thực hiện event refresh
+        $('input[required]').blur(this.checkRequired);                    //thực hiện event check require
+        $('#txtMoney').keyup(this.formatNumber);                          //convert text number
+        $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));        //thực hiện event save data
+        $('#btnCancel').click(this.btnCancelOnClick.bind(this));          //thực hiện event hủy
+        $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));   //thực hiện event hủy
+        $('#dialog-btnfocus').focus(this.showFocusDetail);                //thực hiện event focus
+        $("table").on("click", "tbody tr", this.rowOnClick);              //thực hiện event click on table
     }
 
     /**
@@ -63,6 +63,7 @@ class BaseJS {
      * @param {any} method xác định xem là post or put
      */
     saveToDB(obj, method) {
+        //lớp con sẽ override lại hàm này lưu dữ liệu theo dối tượng của nó
     }
 
     /**
@@ -70,14 +71,14 @@ class BaseJS {
      * @param {any} obj
      */
     deleteToDB(obj) {
-
+        //lớp con sẽ override lại hàm này xóa dữ liệu theo dối tượng của nó
     }
+
     /**
      * sự kiện load data
      * author:DVQuan(27/9/2020)
      */
     loadData() {
-        debugger;
             $('table#tbListData tbody').empty();
             try {
                 //đọc thông tin các cột dữ liệu
@@ -86,7 +87,6 @@ class BaseJS {
                 //lấy dữ liệu
                 var data = this.Data;
                 var seft = this;
-             
                 //đọc dữ liệu:
                 $.each(data, function (index, obj) {
                     //gán id vao attr của dòng dữ liệu tương ứng
@@ -129,6 +129,15 @@ class BaseJS {
                             td = $(`<td>` + valueDate + `</td>`);
                             td.addClass("format");
                         }
+                        if (formatName == "Gender") {
+                            if (value == true) {
+                                var valueGender = "nam"
+                                td = $(`<td>` + valueGender + `</td>`);
+                            } else {
+                                var valueGender = "nữ"
+                                td = $(`<td>` + valueGender + `</td>`);
+                            }
+                        }
                         $(tr).append(td);
                     })
                     //Biding dữ liệu lên UI
@@ -139,13 +148,14 @@ class BaseJS {
             }
     }
 
-    // #region even-click
+    // #region even->click
 
     /**
      * sự kiên khi click vao button thêm mới -> show dialog
      * author: DVQuan(24/9/2020)
      */
     btnAddOnClick() {
+        this.FormType = "Add";
         this.showDialogDetail();
         this.showFocusDetail();
     }
@@ -168,7 +178,7 @@ class BaseJS {
 
     // #endregion
 
-    //#region event-show-hide-dialog
+    //#region event-show-hide->dialog
 
     /**
      * sự kiện show dialog
@@ -196,35 +206,47 @@ class BaseJS {
      * createBy: DVQuan(24/9/2020)
      */
     btnSaveOnClick() {
-        var inputRequired = $("[required]");
-        var isValid = true;
-        $.each(inputRequired, function (index, input) {
-            debugger
-            if (!validateData.validateEmpty(input)) {
-                isValid = false;
-            }
-        })
-        if (isValid) {
-            var self = this;
-            var obj = {};
-            var method = "POST";
-            if (self.FormType == "Edit") {
-                method = "PUT";
-                obj["customerID"] = $('tr.row-selected').attr('fieldID');
-            }
-            var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
-            $.each(fields, function (index, field) {
-                var fieldName = $(field).attr('fieldName');
-                var format = $(field).attr('format');
-                if (format == 'number') {
-                    obj[fieldName] = Number($(field).val());
-                }
-                else {
-                    obj[fieldName] = $(field).val();
+        try {
+            var inputRequired = $("[required]");
+            var inputEmail = $("[requiredEmail]");
+            var isValid = true;
+            $.each(inputRequired, function (index, input) {
+                if (!validateData.validateEmpty(input)) {
+                    isValid = false;
                 }
             })
-            this.saveToDB(obj, method);
-        }
+            debugger
+            if (!validateData.validateEmail(inputEmail)) {
+                isValid = false;
+            }
+            if (isValid) {
+                var self = this;
+                var obj = {};
+                var method = "POST";
+                if (self.FormType == "Edit") {
+                    method = "PUT";
+                    debugger
+                    var fieldIDName = $('table thead tr').attr('fieldid');
+                    obj[fieldIDName] = $('tr.row-selected').attr('fieldID');
+                }
+                var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
+                $.each(fields, function (index, field) {
+                    var fieldName = $(field).attr('fieldName');
+                    var format = $(field).attr('format');
+                    if (format == 'number') {
+                        obj[fieldName] = Number($(field).val());
+                    }
+                    else {
+                        obj[fieldName] = $(field).val();
+                    }
+                })
+                debugger
+
+                this.saveToDB(obj, method);
+            }
+        } catch (e) {
+            alert('lỗi trong quá trình save');
+        }  
     }
 
     /**
@@ -233,45 +255,53 @@ class BaseJS {
      * @param {any} seder
      */
     btnEditOnClick(seder) {
-        var self = this;
-        debugger;
-        var rowSelected = null;
-        //xác định đối tượng cần sửa
-        rowSelected = $('tr.row-selected');
-        if (rowSelected && rowSelected.length != 0) {
-            debugger
-            //lấy ID của đối tượng cần sửa
-            var customerID = $('tr.row-selected').attr('fieldID');
-            $.ajax({
-                url: "/api/customer/" + customerID,
-                method: "GET",
-                // data: "",
-                datatype: "json",
-                contentType: "application/json"
-            }).done(function (res) {
-                //thực hiện binding dữ liệu lên form chi tiết
-                var fields = $('input[fieldName]');
-                $.each(fields, function (index, field) {
-                    var fieldName = $(field).attr('fieldName');
-                    var format = $(field).attr('format');
-                    //biding dl lên input=date
-                    if (format == "date") {
-                        $(field).val(commonjs.convertDate(res[fieldName]))
-                    } else {
+        try {
+            var self = this;
+            debugger;
+            var rowSelected = null;
+            //xác định đối tượng cần sửa
+            rowSelected = $('tr.row-selected');
+            if (rowSelected && rowSelected.length != 0) {
+                debugger
+                //lấy ID của đối tượng cần sửa
+                var fieldID = $('tr.row-selected').attr('fieldID');
+                debugger;
+                var formatName = $('table thead tr').attr('formatName');
+                $.ajax({
+                    url: "/api/" + formatName + "/" + fieldID,
+                    method: "GET",
+                    // data: "",
+                    datatype: "json",
+                    contentType: "application/json"
+                }).done(function (res) {
+                    //thực hiện binding dữ liệu lên form chi tiết
+                    var fields = $('input[fieldName],select[fieldName]');
+                    $.each(fields, function (index, field) {
+                        debugger
                         var fieldName = $(field).attr('fieldName');
-                        $(field).val(res[fieldName]);
-                    }
-                })
-                self.FormType = "Edit";
-               /* self.btnSaveOnClick(customerID);*/
-            }).fail(function (res) {
+                        var format = $(field).attr('format');
+                        //biding dl lên input=date
+                        if (format == "date") {
+                           
+                            $(field).val(commonjs.convertDate(res[fieldName]))
+                        } 
+                        else {
+                            var fieldName = $(field).attr('fieldName');
+                            $(field).val(res[fieldName]);
+                        }
+                    })
+                    self.FormType = "Edit";
+                    /* self.btnSaveOnClick(customerID);*/
+                }).fail(function (res) {
 
-            })
-            this.showDialogDetail();
-        } else {
-            alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
-        }
-       
+                })
+                this.showDialogDetail();
+            } else {
+                alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
+            }
+        } catch (e) {
+            alert('lỗi trong quá trình sửa');
+        } 
     }
 
     /**
@@ -279,37 +309,54 @@ class BaseJS {
      * author:DVQuan(28/9/2020)
      */
     btnDeleteOnClick() {
-        var dataToDelete = {}
-        var rowSelected = $('tr.row-selected');
-        if (rowSelected && rowSelected.length != 0) {
-            debugger
-            //lấy ID của đối tượng cần xoa
-            var fieldID = $('tr.row-selected').attr('fieldID');
-            dataToDelete["customerID"] = $('tr.row-selected').attr('fieldID');
-            this.deleteToDB(dataToDelete);
+        try {
+            var dataToDelete = {}
+            var rowSelected = $('tr.row-selected');
+            if (rowSelected && rowSelected.length != 0) {
+                var r = confirm("bạn có chắc muốn xóa bản ghi này");
+                if (r == true) {
+                    debugger
+                    //lấy ID của đối tượng cần xoa
+                    var fieldID = $('tr.row-selected').attr('fieldID');
+                    var fieldIDName = $('table thead tr').attr('fieldid');
+                    dataToDelete[fieldIDName] = $('tr.row-selected').attr('fieldID');
+                    //thực hiện delete
+                    this.deleteToDB(dataToDelete);
+                } else {
+                    return;
+                }
+            }
+            else {
+                alert('vui long chọn 1 bản ghi để xóa');
+            }
+        } catch (e) {
 
-        }
-        else {
-            alert('vui long chọn 1 bản ghi để xóa');
-        }
-
+        } 
     }
 
     //#endregion
-
+    formatNumber() {
+        debugger
+        commonjs.reformatText(this);
+    }
+    //#region validate
     /**
-    * vadilate kiểm tra trường nhập dữ liệu không được để trống
+    * vadilate kiểm tra trường nhập dữ liệu nhập
     * author: DVQuan(28/9/2020)
     */
     checkRequired() {
         // trường nhập liệu không được để trống
-        var value = validateData.validateEmpty(this)
+        if (validateData.validateEmpty(this)) {
+            /*$(this).removeClass('required-error');
+            $(this).removeAttr("title");*/
+        }
         // nhập liệu đúng email
         //TODO: đang thực hiện validate email
+       
         //nhập liêu đúng number
         //TODO: đang thực hiện number
     }
-
+    //#endregion
     /**
      * sự kiện click vào table thì đổi màu dòng được chọn
      * @param {object} sender 

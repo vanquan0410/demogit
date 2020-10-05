@@ -10,6 +10,7 @@ var validateData = {
      * @param {any} obj input selector
     * */
     validateEmpty: function (obj) {
+        debugger;
         var value = $(obj).val();
         if (!value || !(value && value.trim())) {
             $(obj).addClass('required-error');
@@ -28,7 +29,18 @@ var validateData = {
      * @param {any} obj input selector
      */
     validateEmail: function (obj) {
-
+        var email = $(obj).val();
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(email)) {
+            $(obj).removeClass('required-error');
+            $(obj).removeAttr("title");
+            return true;
+        }
+        else {
+            $(obj).addClass('required-error');
+            $(obj).attr("title", "email không hợp lệ");
+            return false;
+        }
     },
 
     /**
@@ -36,6 +48,9 @@ var validateData = {
      * @param {any} obj input selecttor
      */
     validateNumber: function (obj) {
-
+        var value = $(obj).val();
+        if (!/^[0-9]+$/.test(value)) {
+            alert("vui lòng nhập toàn bộ là chữ số từ 0-9")
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     employeeJS = new EmployeeJS("quan");
 })
+
 /**
  * object js quản lý danh mục nhân viên
  * author: DVQuan(28/9/2020)
@@ -10,14 +11,102 @@ class EmployeeJS extends BaseJS{
         debugger
         super();
     }
+
     /**
      * lấy dữ liệu fake
      * author:DVQuan
      * */
     getData() {
-        this.Data = data;
+        var res = this;
+        $.ajax({
+            url: "/api/employee",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (response) {
+            res.Data = response;
+            console.log("thanh cong");
+            //load lai data khi co data từ server trả về
+            res.loadData();
+        }).fail(function (response) {
+            res.Data = null;
+        })
+        /* this.Data = data;*/
+        debugger
     }
 
+    saveToDB(employee, method) {
+        var self = this;
+        console.log(employee)
+        console.log(method)
+        if (method == "POST") {
+            $.ajax({
+                url: "/api/employee",
+                method: method,
+                data: JSON.stringify(employee),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    debugger
+                    self.getData();
+                    self.loadData();
+                    alert('them thanh cong');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('that bai');
+            })
+        } else {
+            debugger
+            $.ajax({
+                url: "/api/employee",
+                method: method,
+                data: JSON.stringify(employee),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    debugger
+                    self.getData();
+                    self.loadData();
+                    alert('sửa thành công');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('sua that bai');
+            })
+        }
+
+    }
+
+    deleteToDB(employee) {
+        debugger
+        var self = this;
+        if (employee != null) {
+            $.ajax({
+                url: "/api/employee",
+                method: "DELETE",
+                data: JSON.stringify(employee),
+                contentType: "application/json",
+            }).done(function (res) {
+                debugger;
+                if (res) {
+                    self.btnCancelOnClick();
+                    //load lại dữ liệu
+                    self.getData();
+                    self.loadData();
+                    alert('xóa thành công');
+                }
+            }).fail(function (res) {
+                console.log(res);
+                alert('xóa that bai');
+            })
+        }
+    }
     showFocusDetail() {
         $('#txtEmployeeCode').focus();
     }

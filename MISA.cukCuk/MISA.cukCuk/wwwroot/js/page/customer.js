@@ -10,11 +10,17 @@ class CustomerJS extends BaseJS {
         debugger
         super();
     }
+
+    /**
+     * focus và input mã khách hàng
+     * author: DVQuan(5/10/2020)
+     * */
     showFocusDetail() {
         $('#txtCustomerCode').focus();
     }
+
     /**
-    * lấy dữ liệu fake
+    * lấy dữ liệu fake của customer
     * author:DVQuan
     * */
     getData() {
@@ -57,7 +63,7 @@ class CustomerJS extends BaseJS {
     }
 
     /**
-     * lưu trữ dữ liệu xuống DB
+     * lưu trữ dữ liệu xuống DB mục đích của việc thêm mới hoặc chỉnh sửa
      * author: DVQuan(30/9/2020)
      * @param {any} customer
      * @param {any} POST
@@ -88,7 +94,7 @@ class CustomerJS extends BaseJS {
         } else {
             debugger
             $.ajax({
-                url: "/api/customer/"+customer.customerID,
+                url: "/api/customer/",
                 method: method,
                 data: JSON.stringify(customer),
                 contentType: "application/json",
@@ -110,7 +116,7 @@ class CustomerJS extends BaseJS {
     }
 
     /**
-     * xóa 1 bản ghi
+     * xóa 1 bản ghi của khách hàng
      * @param {any} obj  customer id
      * author: DVQuan(4/10/2020)
      */
@@ -119,7 +125,7 @@ class CustomerJS extends BaseJS {
         var self = this;
         if (customer != null) {
             $.ajax({
-                url: "/api/customer/" + customer.customerID,
+                url: "/api/customer/",
                 method: "DELETE",
                 data: JSON.stringify(customer),
                 contentType: "application/json",
@@ -137,15 +143,6 @@ class CustomerJS extends BaseJS {
                 alert('xóa that bai');
             })
         }
-    }
-    /**
-     * lấy dữ liệu của đối tượng thông qua customerID
-     * @param {any} customerID
-     */
-    getObjData(customerID) {
-        $.ajax({
-            
-        })
     }
 }
 
