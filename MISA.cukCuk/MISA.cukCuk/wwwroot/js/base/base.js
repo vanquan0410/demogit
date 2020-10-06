@@ -24,7 +24,7 @@ class BaseJS {
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));          // thực hiện event delete
         $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));        //thực hiện event refresh
         $('input[required]').blur(this.checkRequired);                    //thực hiện event check require
-        $('#txtMoney').keyup(this.formatNumber);                          //convert text number
+        $('input[convertNumber]').keyup(this.formatNumber);               //convert text number
         $('#dialog-btnAdd').click(this.btnSaveOnClick.bind(this));        //thực hiện event save data
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));          //thực hiện event hủy
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));   //thực hiện event hủy
@@ -111,16 +111,10 @@ class BaseJS {
                         else if (formatName) {
                             td.addClass("format");
                         }
-
+                          //nếu dữ liệu là address thì định dạng theo address
                         if (formatName == "Address") {
                             td.addClass("format-address");
-                            if (value.length > 0) {
-                                var address = value.slice(0, 70);
-                                td = $(`<td title="` + value + `">` + address + `</td>`);
-                            }
-                            else {
-                                td = $(`<td>` + value + `</td>`);
-                            }
+                            td = $(`<td title="` + value + `">` + value + `</td>`);       
                         }
                         // định dạng type date
                         if (formatName == "Date") {
@@ -129,6 +123,7 @@ class BaseJS {
                             td = $(`<td>` + valueDate + `</td>`);
                             td.addClass("format");
                         }
+                        // định dạng type gender
                         if (formatName == "Gender") {
                             if (value == true) {
                                 var valueGender = "nam"
@@ -282,7 +277,6 @@ class BaseJS {
                         var format = $(field).attr('format');
                         //biding dl lên input=date
                         if (format == "date") {
-                           
                             $(field).val(commonjs.convertDate(res[fieldName]))
                         } 
                         else {

@@ -230,15 +230,22 @@
                                 <td class="lable">Mã Nhân viên <span style="color:#ff0000">(*)</span></td>
                                 <td><div class="dialog-in"><input fieldName="EmployeeCode" type="text" required id="txtEmployeeCode" /></div></td>
                                 <td>Tên nhân viên<span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input fieldName="FullName"  type="text" required id="txtEmployeeName" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="FullName" type="text" required id="txtEmployeeName" /></div></td>
                             </tr>
                             <tr>
-                                <td class="lable">Mã thẻ thành viên</td>
-                                <td><div class="dialog-in"><input type="text" /></div></td>
-                                <td class="lable">Hạng thẻ</td>
+                                <td class="lable">Vị trí</td>
                                 <td>
                                     <div class="dialog-in">
-                                        <select format="select" id="sel-card">
+                                        <select format="select" id="position">
+                                            <option value="true">Nhân viên chính thức</option>
+                                            <option value="false">Nhan viên thử việc</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="lable">Giới Tính</td>
+                                <td>
+                                    <div class="dialog-in">
+                                        <select format="select" id="gender">
                                             <option value="true">Nam</option>
                                             <option value="false">Nữ</option>
                                         </select>
@@ -272,7 +279,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Mức lương</td>
-                                <td><div class="dialog-in"><input fieldName="Salary" fomat="number" type="text" id="txtSalary" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="Salary" fomat="number" convertNumber type="text" id="txtSalary" /></div></td>
 
                                 <td class="lable">Email</td>
                                 <td><div class="dialog-in"><input fieldName="Email" requiredEmail type="text" id="txtEmail" /></div></td>

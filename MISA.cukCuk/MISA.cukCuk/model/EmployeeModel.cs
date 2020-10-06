@@ -43,7 +43,7 @@ namespace MISA.cukCuk.model
         public String Phone { get; set; }
         public String DepartmentName { get; set; }
         public String Email { get; set; }
-        public Double Salary { get; set; }
+        public double Salary { get; set; }
         public String WorkStatus { get; set; }
     }
 }

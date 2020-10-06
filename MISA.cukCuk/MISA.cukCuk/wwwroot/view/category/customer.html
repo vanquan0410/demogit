@@ -86,7 +86,10 @@
                 <div class="menu-item-text">Thuê bao</div>
             </div>
         </div>
+        <!--endmenu-->
     </div>
+    <!--end-sidebar-->
+
     <!--phan main-->
     <div class="main">
         <!--main header-->
@@ -114,6 +117,7 @@
         <!--content-->
         <div class="content">
             <div class="container">
+                <!--content-header-->
                 <div class="content-header">
                     <div class="content-header-main">
                         <h1 style="    font-weight: normal;
@@ -132,6 +136,8 @@
                         </h2>
                     </div>
                 </div>
+                <!--end-content-header-->
+                <!--content-body-->
                 <div class="content-body">
                     <div class="toolbar">
                         <button id="btnAdd">
@@ -210,10 +216,14 @@
 
                         </div>
                     </div>
+                    <!--endpaging-->
                 </div>
+                <!--end-content-body-->
             </div>
         </div>
+        <!--end-content-->
     </div>
+    <!--end main-->
     <!--Form thông tin chi tiết-->
     <div class="dialog-modal">
         <div class="form-dialog">
@@ -271,7 +281,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số tiền nợ</td>
-                                <td><div class="dialog-in"><input fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
+                                <td><div class="dialog-in"><input convertNumber fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
 
                                 <td class="lable">Email</td>
                                 <td><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" /></div></td>
@@ -294,8 +304,6 @@
                     </table>
                 </div>
                 <!--dialog footer-->
-
-
                 <div class="dialog-footer">
                     <div class="dialog-footer-left">
                         <button id="dialog-btnHelp" class="dialog-button">
@@ -320,13 +328,13 @@
                         </button>
                     </div>
                 </div>
-
+                <!--end dialog footer-->
             </div>
         </div>
         <button id="dialog-btnfocus" style="width: 0px;height: 0px;background: #8080806e;border: none;">
         </button>
     </div>
-
+    <!--end Form thông tin chi tiết-->
     <script src="/js/lib/jquery-3.5.1.min.js"></script>
     <script src="/js/helps/common.js"></script>
     <script src="/js/helps/vadilate.js"></script>
