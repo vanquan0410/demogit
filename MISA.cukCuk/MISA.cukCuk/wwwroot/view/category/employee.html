@@ -71,7 +71,12 @@
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon category-icon"></div>
-                <div class="menu-item-text">Danh mục</div>
+                <a href="customer.html" class="menu-item-text">Danh mục khách hàng</a>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon category-icon"></div>
+                <a href="employee.html" class="menu-item-text">Danh mục nhân viên</a>
+
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon setting-system-icon"></div>
@@ -129,7 +134,7 @@
                     <div class="content-header-sub">
                         <h2 style="    font-weight: normal;
                         ">
-                            Khách hàng
+                           Nhân viên
                         </h2>
                     </div>
                 </div>
@@ -238,14 +243,14 @@
                                     <div class="dialog-in">
                                         <select format="select" id="position">
                                             <option value="true">Nhân viên chính thức</option>
-                                            <option value="false">Nhan viên thử việc</option>
+                                            <option value="false">Nhân viên thử việc</option>
                                         </select>
                                     </div>
                                 </td>
                                 <td class="lable">Giới Tính</td>
                                 <td>
                                     <div class="dialog-in">
-                                        <select format="select" id="gender">
+                                        <select format="select" id="gender" fieldName="Gender">
                                             <option value="true">Nam</option>
                                             <option value="false">Nữ</option>
                                         </select>
@@ -266,7 +271,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="lable">Số Điện thoai</td>
+                                <td class="lable">Số điện thoai</td>
                                 <td><div class="dialog-in"><input fieldName="Phone" type="text" id="txtPhone" /></div></td>
                             </tr>
                             <tr>
@@ -282,7 +287,7 @@
                                 <td><div class="dialog-in"><input fieldName="Salary" fomat="number" convertNumber type="text" id="txtSalary" /></div></td>
 
                                 <td class="lable">Email</td>
-                                <td><div class="dialog-in"><input fieldName="Email" requiredEmail type="text" id="txtEmail" /></div></td>
+                                <td><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Phòng ban</td>

@@ -70,7 +70,12 @@
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon category-icon"></div>
-                <div class="menu-item-text">Danh mục</div>
+                <a href="customer.html" class="menu-item-text">Danh mục khách hàng</a>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon category-icon"></div>
+                <a href="employee.html" class="menu-item-text">Danh mục nhân viên</a>
+           
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon setting-system-icon"></div>
@@ -244,12 +249,12 @@
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
                                 <td><div class="dialog-in"><input type="text" /></div></td>
-                                <td class="lable">Hạng thẻ</td>
+                                <td class="lable">Giới tính</td>
                                 <td>
                                     <div class="dialog-in">
                                         <select id="sel-card">
-                                            <option>Thẻ VIP</option>
-                                            <option>Thẻ thường</option>
+                                            <option>Nam</option>
+                                            <option>Nữ</option>
                                         </select>
                                     </div>
                                 </td>
@@ -281,7 +286,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số tiền nợ</td>
-                                <td><div class="dialog-in"><input convertNumber fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
+                                <td><div class="dialog-in"><input requiredNumber convertNumber fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
 
                                 <td class="lable">Email</td>
                                 <td><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" /></div></td>

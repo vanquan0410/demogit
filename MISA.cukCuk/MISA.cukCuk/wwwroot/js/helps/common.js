@@ -16,7 +16,6 @@ var commonjs = {
      * author: DVQuan(24/9/2020)
      */
     formatDate(date) {
-        debugger
         var d = new Date(date);
         if (d && !isNaN(d.getDate())) {
             var day = d.getDate();
@@ -35,7 +34,6 @@ var commonjs = {
     * author: DVQuan(24/9/2020)
     */
     convertDate(date) {
-        debugger
         var d = new Date(date);
         if (d && !isNaN(d.getDate())) {
             var day = d.getDate();

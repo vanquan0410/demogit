@@ -5,10 +5,9 @@ class BaseJS {
     constructor(name) {
         try {
             this.FormType = null;
-            this.getData();
+            this.getData();      
             this.loadData();
             this.initEvents();
-
         } catch (e) {
 
         }
@@ -118,7 +117,6 @@ class BaseJS {
                         }
                         // định dạng type date
                         if (formatName == "Date") {
-                            debugger
                             var valueDate = commonjs.formatDate(value);
                             td = $(`<td>` + valueDate + `</td>`);
                             td.addClass("format");
@@ -153,6 +151,7 @@ class BaseJS {
         this.FormType = "Add";
         this.showDialogDetail();
         this.showFocusDetail();
+        this.formatDialog();
     }
 
     /**
@@ -204,13 +203,15 @@ class BaseJS {
         try {
             var inputRequired = $("[required]");
             var inputEmail = $("[requiredEmail]");
+            var inputNumber = $("[requiredNumber]");
             var isValid = true;
+            //kiểm tra các trường dl ko được để trống
             $.each(inputRequired, function (index, input) {
                 if (!validateData.validateEmpty(input)) {
                     isValid = false;
                 }
             })
-            debugger
+            // kiểm tra email đúng định dạng
             if (!validateData.validateEmail(inputEmail)) {
                 isValid = false;
             }
@@ -220,7 +221,6 @@ class BaseJS {
                 var method = "POST";
                 if (self.FormType == "Edit") {
                     method = "PUT";
-                    debugger
                     var fieldIDName = $('table thead tr').attr('fieldid');
                     obj[fieldIDName] = $('tr.row-selected').attr('fieldID');
                 }
@@ -235,7 +235,6 @@ class BaseJS {
                         obj[fieldName] = $(field).val();
                     }
                 })
-                debugger
 
                 this.saveToDB(obj, method);
             }
@@ -252,15 +251,12 @@ class BaseJS {
     btnEditOnClick(seder) {
         try {
             var self = this;
-            debugger;
             var rowSelected = null;
             //xác định đối tượng cần sửa
             rowSelected = $('tr.row-selected');
             if (rowSelected && rowSelected.length != 0) {
-                debugger
                 //lấy ID của đối tượng cần sửa
                 var fieldID = $('tr.row-selected').attr('fieldID');
-                debugger;
                 var formatName = $('table thead tr').attr('formatName');
                 $.ajax({
                     url: "/api/" + formatName + "/" + fieldID,
@@ -272,7 +268,6 @@ class BaseJS {
                     //thực hiện binding dữ liệu lên form chi tiết
                     var fields = $('input[fieldName],select[fieldName]');
                     $.each(fields, function (index, field) {
-                        debugger
                         var fieldName = $(field).attr('fieldName');
                         var format = $(field).attr('format');
                         //biding dl lên input=date
@@ -280,6 +275,7 @@ class BaseJS {
                             $(field).val(commonjs.convertDate(res[fieldName]))
                         } 
                         else {
+                            debugger
                             var fieldName = $(field).attr('fieldName');
                             $(field).val(res[fieldName]);
                         }
@@ -309,7 +305,6 @@ class BaseJS {
             if (rowSelected && rowSelected.length != 0) {
                 var r = confirm("bạn có chắc muốn xóa bản ghi này");
                 if (r == true) {
-                    debugger
                     //lấy ID của đối tượng cần xoa
                     var fieldID = $('tr.row-selected').attr('fieldID');
                     var fieldIDName = $('table thead tr').attr('fieldid');
@@ -329,11 +324,9 @@ class BaseJS {
     }
 
     //#endregion
-    formatNumber() {
-        debugger
-        commonjs.reformatText(this);
-    }
+
     //#region validate
+
     /**
     * vadilate kiểm tra trường nhập dữ liệu nhập
     * author: DVQuan(28/9/2020)
@@ -350,7 +343,9 @@ class BaseJS {
         //nhập liêu đúng number
         //TODO: đang thực hiện number
     }
+
     //#endregion
+
     /**
      * sự kiện click vào table thì đổi màu dòng được chọn
      * @param {object} sender 
@@ -359,5 +354,24 @@ class BaseJS {
     rowOnClick(sender) {
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
+    }
+
+    /**
+     * dịnh dạng kiểm number
+     * author: DVQuan
+     * */
+    formatNumber() {
+        commonjs.reformatText(this);
+    }
+
+    /**
+     * định dạng lại giá trị cho input =''
+     * author=DVQuan(07/10/2020)
+     * */
+    formatDialog() {
+        var fields = $('.dialog-body input');
+        $.each(fields, function (index, value) {
+            $(value).val('');
+        })
     }
 }

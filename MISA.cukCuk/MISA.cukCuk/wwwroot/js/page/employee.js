@@ -8,7 +8,6 @@
  * */
 class EmployeeJS extends BaseJS{
     constructor(name) {
-        debugger
         super();
     }
 
@@ -33,58 +32,32 @@ class EmployeeJS extends BaseJS{
             res.Data = null;
         })
         /* this.Data = data;*/
-        debugger
     }
 
     saveToDB(employee, method) {
         var self = this;
         console.log(employee)
         console.log(method)
-        if (method == "POST") {
             $.ajax({
                 url: "/api/employee",
                 method: method,
                 data: JSON.stringify(employee),
                 contentType: "application/json",
             }).done(function (res) {
-                debugger;
                 if (res) {
                     self.btnCancelOnClick();
-                    debugger
                     self.getData();
                     self.loadData();
-                    alert('them thanh cong');
+                    alert('thanh cong');
                 }
             }).fail(function (res) {
                 console.log(res);
                 alert('that bai');
             })
-        } else {
-            debugger
-            $.ajax({
-                url: "/api/employee",
-                method: method,
-                data: JSON.stringify(employee),
-                contentType: "application/json",
-            }).done(function (res) {
-                debugger;
-                if (res) {
-                    self.btnCancelOnClick();
-                    debugger
-                    self.getData();
-                    self.loadData();
-                    alert('sửa thành công');
-                }
-            }).fail(function (res) {
-                console.log(res);
-                alert('sua that bai');
-            })
-        }
 
     }
 
     deleteToDB(employee) {
-        debugger
         var self = this;
         if (employee != null) {
             $.ajax({
@@ -93,7 +66,6 @@ class EmployeeJS extends BaseJS{
                 data: JSON.stringify(employee),
                 contentType: "application/json",
             }).done(function (res) {
-                debugger;
                 if (res) {
                     self.btnCancelOnClick();
                     //load lại dữ liệu

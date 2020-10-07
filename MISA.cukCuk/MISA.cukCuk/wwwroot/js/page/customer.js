@@ -7,7 +7,6 @@
  * */
 class CustomerJS extends BaseJS {
     constructor(name) {
-        debugger
         super();
     }
 
@@ -39,8 +38,6 @@ class CustomerJS extends BaseJS {
         }).fail(function (response) {
             res.Data = null;
         })
-       /* this.Data = data;*/
-        debugger
     }
 
     /**
@@ -49,7 +46,6 @@ class CustomerJS extends BaseJS {
      * @param {any} item
      * */
     makeTrHTML(item) {
-        debugger
         var trHTML = $(`<tr>
                         <td>`+ item.CustomerCode + `</td>
                         <td>`+ item.CustomerName + `</td>
@@ -70,49 +66,28 @@ class CustomerJS extends BaseJS {
      * */
     saveToDB(customer, method) {
         var self = this;
-        console.log(customer)
-        console.log(method)
-        if (method == "POST") {
-            $.ajax({
-                url: "/api/customer",
-                method: method,
-                data: JSON.stringify(customer),
-                contentType: "application/json",
-            }).done(function (res) {
-                debugger;
-                if (res) {
-                    self.btnCancelOnClick();
-                    debugger
-                    self.getData();
-                    self.loadData();
-                    alert('them thanh cong');
-                }
-            }).fail(function (res) {
-                console.log(res);
-                alert('that bai');
-            })
-        } else {
-            debugger
+        var alter = 'thêm';
+        if (method == 'PUT') {
+            alter = 'sửa';
+        }
             $.ajax({
                 url: "/api/customer/",
                 method: method,
                 data: JSON.stringify(customer),
                 contentType: "application/json",
             }).done(function (res) {
-                debugger;
                 if (res) {
+                    //close form-dialog
                     self.btnCancelOnClick();
-                    debugger
+                    //load lại dữ liệu
                     self.getData();
                     self.loadData();
-                    alert('sửa thành công');
+                    alert(alter+' thành công');
                 }
             }).fail(function (res) {
                 console.log(res);
-                alert('sua that bai');
+                alert(alter+' that bai');
             })
-        }
-       
     }
 
     /**
@@ -121,7 +96,6 @@ class CustomerJS extends BaseJS {
      * author: DVQuan(4/10/2020)
      */
     deleteToDB(customer) {
-        debugger
         var self = this;
         if (customer != null) {
             $.ajax({
@@ -130,7 +104,6 @@ class CustomerJS extends BaseJS {
                 data: JSON.stringify(customer),
                 contentType: "application/json",
             }).done(function (res) {
-                debugger;
                 if (res) {
                     self.btnCancelOnClick();
                     //load lại dữ liệu

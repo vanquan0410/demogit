@@ -1,37 +1,47 @@
 @media only screen and (max-width: 1000px) {
     body {
-      
     }
-    .sidebar{
+
+    .sidebar {
         /* display: none; */
         width: 36px;
-        
     }
-    .sidebar .logo{
 
-    }
-    .main{
+        .sidebar .logo {
+            height: 50px;
+            width: 354%;
+            background-color: #0973b9;
+            padding-left: 8px
+        }
+    .main {
         width: 100%;
     }
-    .header-content{
+
+    .header-content {
         display: none;
     }
-    .icon-down{
+
+    .icon-down {
         display: block;
     }
-    .menu-item-text{
+
+    .menu-item-text {
         display: none;
     }
-    .menu-item-icon{
+
+    .menu-item-icon {
         display: block;
     }
-    .drop-help-icon{
+
+    .drop-help-icon {
         display: none;
     }
-    #denger{
+
+    #denger {
         display: none;
     }
-    .container{
+
+    .container {
         height: 98%;
     }
-  }
+}
