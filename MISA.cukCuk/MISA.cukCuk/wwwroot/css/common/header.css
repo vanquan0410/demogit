@@ -43,11 +43,11 @@
     align-self: center;
     width: 65px;
     height: 58%;
-    background-image: url(/content/img/Images/ic_support.svg);
+    background-image: url(/content/img/images/ic_support.svg);
     background-repeat: no-repeat;
 }
 .header-right .person-icon {
-    background-image: url('/content/img/Images/EmployeeImage.png');
+    background-image: url('/content/img/images/EmployeeImage.png');
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@
 .header-right .icon-down {
     width: 20px;
     height: 15px;
-    background-image: url('/content/img/Images/iconMenu.png');
+    background-image: url('/content/img/images/iconMenu.png');
     background-position-y: -261px;
     background-position-x: -3px;
     background-repeat: no-repeat;

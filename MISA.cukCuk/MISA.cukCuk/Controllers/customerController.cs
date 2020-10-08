@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MISA.cukCuk.model;
+using MySql.Data.MySqlClient;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +19,19 @@ namespace MISA.cukCuk.Controllers
         [HttpGet]
         public IEnumerable<CustomerModel> Get()
         {
-            return CustomerModel.listCustomer;
+            String connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_DVQuan;User Id=nvmanh;Password=12345678@Abc";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlCommand cmm = new MySqlCommand();
+            if (conn != null)
+            {
+                return CustomerModel.listCustomer;
+            }
+            else
+            {
+                return null;
+                
+            }
+            
         }
 
         // GET api/<customerController>/5

@@ -42,7 +42,7 @@
     height: 20px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/content/img/Images/cancel.png');
+    background-image: url('/content/img/images/cancel.png');
     margin-left: 545px;
     align-self: center;
 }
@@ -172,7 +172,7 @@ input[type="text" i] {
     /* background: url(/content/img/Images/IconSprite.png) no-repeat -1px -767px; */
     width: 78px;
     height: 20px; 
-    background-image: url('/content/img/Images/diskette.png');
+    background-image: url('/content/img/images/diskette.png');
     background-repeat:no-repeat ;
     background-position-x: 3px;
     background-position-y: 3px;
@@ -181,7 +181,7 @@ input[type="text" i] {
 #dialog-btnEdit {
     width: 130px;
     height: 20px; 
-    background-image: url('/content/img/Images/add.png');
+    background-image: url('/content/img/images/add.png');
     background-repeat:no-repeat ;
     background-position-x: 3px;
     background-position-y: 3px;
@@ -189,7 +189,7 @@ input[type="text" i] {
 #dialog-btnCancel {
     width: 100px;
     height: 20px; 
-    background-image: url('/content/img/Images/cance.png');
+    background-image: url('/content/img/images/cance.png');
     background-repeat:no-repeat ;
     background-position-x: 3px;
     background-position-y: 3px;
@@ -199,7 +199,7 @@ input[type="text" i] {
     width: 88px;
     height: 20px; 
     margin-left: 0px;
-    background-image: url('/content/img/Images/iconHelp.png');
+    background-image: url('/content/img/images/iconHelp.png');
     background-repeat:no-repeat ;
     background-position-x: 3px;
     background-position-y: 1px;

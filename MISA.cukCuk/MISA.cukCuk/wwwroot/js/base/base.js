@@ -235,7 +235,6 @@ class BaseJS {
                         obj[fieldName] = $(field).val();
                     }
                 })
-
                 this.saveToDB(obj, method);
             }
         } catch (e) {

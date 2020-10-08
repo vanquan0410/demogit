@@ -16,32 +16,32 @@
     }
 /*paging icon*/
     .paging .page-first {
-        background-image: url('/content/img/Images/grid/page-first.png');
+        background-image: url('/content/img/images/grid/page-first.png');
         background-repeat:no-repeat;
         margin-left:8px;
     }
     .paging .page-prev {
-        background-image: url('/content/img/Images/grid/page-prev.png');
+        background-image: url('/content/img/images/grid/page-prev.png');
         background-repeat: no-repeat;
     }
     .paging .page-next {
-        background-image: url('/content/img/Images/grid/page-next.png');
+        background-image: url('/content/img/images/grid/page-next.png');
         background-repeat: no-repeat;
     }
     .paging .page-last {
-        background-image: url('/content/img/Images/grid/page-last.png');
+        background-image: url('/content/img/images/grid/page-last.png');
         background-repeat: no-repeat;
     }
     .paging .refresh {
-        background-image: url('/content/img/Images/grid/refresh.png');
+        background-image: url('/content/img/images/grid/refresh.png');
         background-repeat: no-repeat;
     }
     .paging .sort_desc {
-        background-image: url('/content/img/Images/grid/sort_desc.png');
+        background-image: url('/content/img/images/grid/sort_desc.png');
         background-repeat: no-repeat;
     }
     .paging .hd-pop {
-        background-image: url('/content/img/Images/grid/hd-pop.png');
+        background-image: url('/content/img/images/grid/hd-pop.png');
         background-repeat: no-repeat;
         background-position-x: 23px;
         background-position-y: 7px;

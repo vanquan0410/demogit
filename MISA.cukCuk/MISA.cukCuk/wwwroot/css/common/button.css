@@ -10,7 +10,7 @@
     button .btn-icon {
         width: 16px;
         height: 16px;
-        background-image: url('/content/img/Images/IconSprite.png');
+        background-image: url('/content/img/images/IconSprite.png');
     }
 
         button .btn-icon.btn-icon-add {
