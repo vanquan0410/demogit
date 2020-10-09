@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MISA.cukCuk.model;
+using MISA.cukCuk.Model;
 using MySql.Data.MySqlClient;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,19 +20,10 @@ namespace MISA.cukCuk.Controllers
         [HttpGet]
         public IEnumerable<CustomerModel> Get()
         {
-            String connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_DVQuan;User Id=nvmanh;Password=12345678@Abc";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            MySqlCommand cmm = new MySqlCommand();
-            if (conn != null)
-            {
-                return CustomerModel.listCustomer;
-            }
-            else
-            {
-                return null;
-                
-            }
-            
+            DBConnection db = new DBConnection();
+            var listCustomer = new List<CustomerModel>();
+            listCustomer = db.getData();
+            return listCustomer;
         }
 
         // GET api/<customerController>/5
@@ -63,12 +55,12 @@ namespace MISA.cukCuk.Controllers
             if (customerEdit!=null)
             {
                 customerEdit.CustomerCode = customerModel.CustomerCode;
-                customerEdit.FullName = customerModel.FullName;
+                customerEdit.CustomerName = customerModel.CustomerName;
                 customerEdit.Email = customerModel.Email;
                 customerEdit.CompanyName = customerModel.CompanyName;
-                customerEdit.Money = customerModel.Money;
+                customerEdit.DebitMoney = customerModel.DebitMoney;
                 customerEdit.Address = customerModel.Address;
-                customerModel.Phone = customerModel.Phone;
+                customerModel.PhoneNumber = customerModel.PhoneNumber;
                 customerEdit.DateOfBirth = customerModel.DateOfBirth;
                 return true;
             }

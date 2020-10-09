@@ -12,12 +12,12 @@ namespace MISA.cukCuk.model
         {
             CustomerID = Guid.NewGuid();
             this.CustomerCode = customerCode;
-            this.FullName = customerName;
+            this.CustomerName = customerName;
             this.Email = email;
             this.CompanyName = companyName;
-            this.Money = code;
+            this.DebitMoney = code;
             this.Address = address;
-            this.Phone = phone;
+            this.PhoneNumber = phone;
             this.DateOfBirth = date;
         }
         public CustomerModel()
@@ -38,12 +38,12 @@ namespace MISA.cukCuk.model
         };
         public Guid? CustomerID { get; set; }
         public String CustomerCode { get; set; }
-        public String FullName { get; set; }
+        public String CustomerName { get; set; }
         public String Email { get; set; }
         public String CompanyName { get; set; }
-        public double Money { get; set; }   
+        public double DebitMoney { get; set; }   
         public string Address { get; set; }
-        public String Phone { get; set; }
+        public String PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
     }
 }
