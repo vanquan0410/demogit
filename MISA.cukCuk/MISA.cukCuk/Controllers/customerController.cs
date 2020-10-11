@@ -30,7 +30,8 @@ namespace MISA.cukCuk.Controllers
         [HttpGet("{customerId}")]
         public CustomerModel Get(Guid customerId)
         {
-            var customer =CustomerModel.listCustomer.Where(c=>c.CustomerID == customerId).FirstOrDefault();
+            DBConnection db = new DBConnection();
+            CustomerModel customer = db.getElementById(customerId);
             return customer;
         }
 
