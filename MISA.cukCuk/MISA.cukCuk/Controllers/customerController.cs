@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MISA.cukCuk.model;
 using MISA.cukCuk.Model;
-using MySql.Data.MySqlClient;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,9 +12,9 @@ namespace MISA.cukCuk.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class customerController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        // GET: api/<customerController>
+        // GET: api/<CustomerController>
         [HttpGet]
         public IEnumerable<CustomerModel> Get()
         {
@@ -26,7 +24,7 @@ namespace MISA.cukCuk.Controllers
             return listCustomer;
         }
 
-        // GET api/<customerController>/5
+        // GET api/<CustomerController>/5
         [HttpGet("{customerId}")]
         public CustomerModel Get(Guid customerId)
         {
@@ -35,50 +33,29 @@ namespace MISA.cukCuk.Controllers
             return customer;
         }
 
-        // POST api/<customerController>
+        // POST api/<CustomerController>
         [HttpPost]
         public bool Post([FromBody] CustomerModel customer)
         {
-            if (customer != null)
-            {
-                customer.CustomerID = Guid.NewGuid();
-                CustomerModel.listCustomer.Add(customer);
-                return true;
-            }
-            return false;
+            DBConnection db = new DBConnection();
+            return db.insertCustomer(customer);
         }
 
-        // PUT api/<customerController>/5
+        // PUT api/<CustomerController>/5
         [HttpPut]
         public bool Put([FromBody] CustomerModel customerModel)
         {
-            var customerEdit = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();
-            if (customerEdit!=null)
-            {
-                customerEdit.CustomerCode = customerModel.CustomerCode;
-                customerEdit.CustomerName = customerModel.CustomerName;
-                customerEdit.Email = customerModel.Email;
-                customerEdit.CompanyName = customerModel.CompanyName;
-                customerEdit.DebitMoney = customerModel.DebitMoney;
-                customerEdit.Address = customerModel.Address;
-                customerModel.PhoneNumber = customerModel.PhoneNumber;
-                customerEdit.DateOfBirth = customerModel.DateOfBirth;
-                return true;
-            }
-            return false;
+            DBConnection db = new DBConnection();
+            return db.updateCustomer(customerModel);
         }
 
-        // DELETE api/<customerController>/5
+        // DELETE api/<CustomerController>/5
         [HttpDelete]
         public bool Delete([FromBody] CustomerModel customerModel)
         {
-            var customerDelete = CustomerModel.listCustomer.Where(x => x.CustomerID == customerModel.CustomerID).FirstOrDefault();
-            if (customerDelete != null)
-            {
-                CustomerModel.listCustomer.Remove(customerDelete);
-                return true;
-            }
-            return false;
+            DBConnection db = new DBConnection();
+            return db.deleteCustomer(customerModel);
+           
         }
     }
 }

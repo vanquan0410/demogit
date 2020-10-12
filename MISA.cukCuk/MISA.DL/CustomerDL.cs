@@ -1,29 +1,18 @@
-﻿using MISA.cukCuk.model;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
+using MISA.Entities;
+using MySql.Data.MySqlClient;
 
-namespace MISA.cukCuk.Model
+namespace MISA.DL
 {
-    public class DBConnection
+    class CustomerDL
     {
-        public static MySqlConnection getConncetion()
+        public List<Customer> getCustomers()
         {
-            String sql = "server=35.194.166.58;port=3306;user=nvmanh;password=12345678@Abc;database=MISACukCuk_F09_DVQuan";
-            MySqlConnection conn = new MySqlConnection(sql);
-            if (conn != null)
-            {
-                return conn;
-            }
-            return null;
-        }
-
-        public List<CustomerModel> getData()
-        {
-            var customers = new List<CustomerModel>();
-            MySqlConnection mySqlConnection = getConncetion();
+            var customers = new List<Customer>();
+            MySqlConnection mySqlConnection = DbContext.getConncetion();
             //mở kết nối database
             mySqlConnection.Open();
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
@@ -35,7 +24,7 @@ namespace MISA.cukCuk.Model
             //xử lý dữ liệu trả về
             while (mySqlDataReader.Read())
             {
-                var customer = new CustomerModel();
+                var customer = new Customer();
                 for (int i = 0; i < mySqlDataReader.FieldCount; i++)
                 {
                     //lấy tên cột dữ liệu đang đọc
@@ -61,11 +50,11 @@ namespace MISA.cukCuk.Model
             return customers;
         }
 
-        public CustomerModel getElementById(Guid customerId)
+        public Customer getElementById(Guid customerId)
         {
-            var customers = new List<CustomerModel>();
+            var customers = new List<Customer>();
             //khởi tạo đối tượng mysqlconnection
-            MySqlConnection mySqlConnection = getConncetion();
+            MySqlConnection mySqlConnection = DbContext.getConncetion();
             //đối tượng mysql cho phép thao tác sối tươngj
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             //đối tượng sql cho phép thwo thác với csdl
@@ -81,7 +70,7 @@ namespace MISA.cukCuk.Model
             //xử lý dữ liệu trả về           
             while (mySqlDataReader.Read())
             {
-                var customer = new CustomerModel();
+                var customer = new Customer();
                 for (int i = 0; i < mySqlDataReader.FieldCount; i++)
                 {
                     //lấy tên cột dữ liệu đang đọc
@@ -106,10 +95,10 @@ namespace MISA.cukCuk.Model
             return customers.FirstOrDefault();
         }
 
-        public bool updateCustomer(CustomerModel customerModel)
+        public bool updateCustomer(Customer customerModel)
         {
             //khởi tạo đối tượng mysql connection
-            MySqlConnection mySqlConnection = getConncetion();
+            MySqlConnection mySqlConnection = DbContext.getConncetion();
             //đối tượng mysqlcommand cho phép thao tác với csdl
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -136,10 +125,11 @@ namespace MISA.cukCuk.Model
             }
             return false;
         }
-        public bool insertCustomer(CustomerModel customerModel)
+
+        public bool insertCustomer(Customer customerModel)
         {
             //khởi tạo đối tượng mysql connection
-            MySqlConnection mySqlConnection = getConncetion();
+            MySqlConnection mySqlConnection = DbContext.getConncetion();
             //đối tượng mysqlcommand- cho phép thao tác với csdl
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -160,19 +150,19 @@ namespace MISA.cukCuk.Model
             mySqlConnection.Open();
             //thực thi công việc
             var result = mySqlCommand.ExecuteNonQuery();
+            //đóng kết lối database
             mySqlConnection.Close();
             if (result > 0)
             {
                 return true;
             }
-            return false;
-            //đóng kết lối database
+            return false;  
         }
 
-        public bool deleteCustomer(CustomerModel customerModel)
+        public bool deleteCustomer(Customer customerModel)
         {
             //khởi tạo đối tượng mysqlconnection
-            MySqlConnection mySqlConnection = getConncetion();
+            MySqlConnection mySqlConnection = DbContext.getConncetion();
             //đối tượng mysql cho phép thao tác với csdl:
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;

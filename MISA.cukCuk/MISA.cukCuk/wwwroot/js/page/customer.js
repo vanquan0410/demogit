@@ -8,6 +8,7 @@
 class CustomerJS extends BaseJS {
     constructor(name) {
         super();
+        this.loadDataSelect()
     }
 
     /**
@@ -18,6 +19,26 @@ class CustomerJS extends BaseJS {
         $('#txtCustomerCode').focus();
     }
 
+    /**
+     * bidding dữ liệu ra select option
+     * author: DVQuan(12/10/2020)
+     * */
+    loadDataSelect() {
+        $.ajax({
+            url: "/api/CustomerGroup",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (res) {
+            debugger
+            $.each(res, function (index, value) {
+                var o = new Option(value.CustomerGroupName, value.CustomerGroupId);
+                $(o).html(value.CustomerGroupName);
+                $('#customerGroup').append(o);
+            })
+        })
+    }
     /**
     * lấy dữ liệu fake của customer
     * author:DVQuan
@@ -97,9 +118,10 @@ class CustomerJS extends BaseJS {
      */
     deleteToDB(customer) {
         var self = this;
+        debugger
         if (customer != null) {
             $.ajax({
-                url: "/api/customer/",
+                url: "/api/customer",
                 method: "DELETE",
                 data: JSON.stringify(customer),
                 contentType: "application/json",

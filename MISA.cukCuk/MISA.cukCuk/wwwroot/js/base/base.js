@@ -221,18 +221,29 @@ class BaseJS {
                 var method = "POST";
                 if (self.FormType == "Edit") {
                     method = "PUT";
-                    var fieldIDName = $('table thead tr').attr('fieldid');
+                    var fieldIDName = $('table thead tr').attr('fieldID');
+                    //lấy id 
                     obj[fieldIDName] = $('tr.row-selected').attr('fieldID');
                 }
                 var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
                 $.each(fields, function (index, field) {
+                    //lấy tên trường
+                    debugger
                     var fieldName = $(field).attr('fieldName');
                     var format = $(field).attr('format');
                     if (format == 'number') {
                         obj[fieldName] = Number($(field).val());
                     }
                     else {
+                        //lấy giá trị của trường
                         obj[fieldName] = $(field).val();
+                        if (format == 'date') {
+                            debugger
+                            if (obj[fieldName] == "") {
+                                alert('vui lòng chọn ngày sinh');
+                                return;
+                            }
+                        }
                     }
                 })
                 this.saveToDB(obj, method);
@@ -305,8 +316,9 @@ class BaseJS {
                 var r = confirm("bạn có chắc muốn xóa bản ghi này");
                 if (r == true) {
                     //lấy ID của đối tượng cần xoa
+                    debugger
                     var fieldID = $('tr.row-selected').attr('fieldID');
-                    var fieldIDName = $('table thead tr').attr('fieldid');
+                    var fieldIDName = $('table thead tr').attr('fieldId');
                     dataToDelete[fieldIDName] = $('tr.row-selected').attr('fieldID');
                     //thực hiện delete
                     this.deleteToDB(dataToDelete);

@@ -169,7 +169,7 @@
                     <div class="gird-content">
                         <table class="tbListcustomer" width="100%" border="1" id="tbListData">
                             <thead>
-                                <tr fieldID="CustomerID" formatName="customer">
+                                <tr fieldID="CustomerId" formatName="customer">
                                     <th fieldName="CustomerCode" id="titleCode">Mã khách hàng</th>
                                     <th fieldName="CustomerName" id="titleName">Tên khách hàng</th>
                                     <th fieldName="CompanyName" id="titleCompany">Tên công ty</th>
@@ -244,7 +244,7 @@
                                 <td class="lable">Mã khách hàng <span style="color:#ff0000">(*)</span></td>
                                 <td><div class="dialog-in"><input fieldName="CustomerCode" type="text" required id="txtCustomerCode" /></div></td>
                                 <td>Tên khách hàng<span style="color:#ff0000">(*)</span></td>
-                                <td><div class="dialog-in"><input fieldName="FullName" type="text" required id="txtCustomerName" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="CustomerName" type="text" required id="txtCustomerName" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Mã thẻ thành viên</td>
@@ -264,9 +264,8 @@
                                 <td class="lable">Nhóm khách hàng</td>
                                 <td>
                                     <div class="dialog-in">
-                                        <select>
-                                            <option>Khách hàng tiềm năng</option>
-                                            <option>Khách hàng không tiềm năng</option>
+                                        <select id="customerGroup" fieldName="CustomerGroupId">
+                                            
                                         </select>
                                     </div>
 
@@ -274,7 +273,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số điện thoai</td>
-                                <td><div class="dialog-in"><input fieldName="Phone" type="text" id="txtPhone" /></div></td>
+                                <td><div class="dialog-in"><input fieldName="PhoneNumber" type="text" id="txtPhone" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
@@ -286,7 +285,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Số tiền nợ</td>
-                                <td><div class="dialog-in"><input requiredNumber convertNumber fieldName="Money" fomat="number" type="text" id="txtMoney" /></div></td>
+                                <td><div class="dialog-in"><input requiredNumber convertNumber fieldName="DebitMoney" fomat="number" type="text" id="txtMoney" /></div></td>
 
                                 <td class="lable">Email</td>
                                 <td><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" /></div></td>

@@ -7,3 +7,7 @@ hover vao table can nhat dan ok
 chinh sửa lại khaongr cách va kich thước button trong file dialog ok
 sửa lai tổ chức code cái nào ko cần thì xóa đi ok
 sủa lại tên kho trong menu ok
+
+phím tắt
+pagging
+xóa nhiều bản ghi
