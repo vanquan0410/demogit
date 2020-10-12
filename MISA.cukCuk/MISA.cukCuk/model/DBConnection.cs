@@ -11,6 +11,7 @@ namespace MISA.cukCuk.Model
     {
         public static MySqlConnection getConncetion()
         {
+            //chuỗi kết nối
             String sql = "server=35.194.166.58;port=3306;user=nvmanh;password=12345678@Abc;database=MISACukCuk_F09_DVQuan";
             MySqlConnection conn = new MySqlConnection(sql);
             if (conn != null)
@@ -20,7 +21,7 @@ namespace MISA.cukCuk.Model
             return null;
         }
 
-        public List<CustomerModel> getData()
+        public List<CustomerModel> getData(int page,int size)
         {
             var customers = new List<CustomerModel>();
             MySqlConnection mySqlConnection = getConncetion();
@@ -29,7 +30,10 @@ namespace MISA.cukCuk.Model
             MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
             mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
             //khai bao cau truy van
-            mySqlCommand.CommandText = "Proc_GetCustomers";
+            mySqlCommand.CommandText = "Proc_GetCustomerByPage";
+            //gán giá trị đầu vào cho các các store
+            mySqlCommand.Parameters.AddWithValue("Page", page);
+            mySqlCommand.Parameters.AddWithValue("Size", size);
             //thực thi công việc tới database
             MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
             //xử lý dữ liệu trả về
@@ -160,13 +164,14 @@ namespace MISA.cukCuk.Model
             mySqlConnection.Open();
             //thực thi công việc
             var result = mySqlCommand.ExecuteNonQuery();
+            //đóng kết lối database
             mySqlConnection.Close();
             if (result > 0)
             {
                 return true;
             }
             return false;
-            //đóng kết lối database
+           
         }
 
         public bool deleteCustomer(CustomerModel customerModel)

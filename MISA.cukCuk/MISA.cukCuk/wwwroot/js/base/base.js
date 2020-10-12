@@ -4,8 +4,10 @@
 class BaseJS {
     constructor(name) {
         try {
+            this.page = 3;
+            this.size = 1;
             this.FormType = null;
-            this.getData();      
+            this.getData(this.page, this.size);      
             this.loadData();
             this.initEvents();
         } catch (e) {
@@ -29,6 +31,7 @@ class BaseJS {
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));   //thực hiện event hủy
         $('#dialog-btnfocus').focus(this.showFocusDetail);                //thực hiện event focus
         $("table").on("click", "tbody tr", this.rowOnClick);              //thực hiện event click on table
+        $(".page-next").click(this.nextData.bind(this));
     }
 
     /**
@@ -42,8 +45,14 @@ class BaseJS {
      * lớp con sẽ override lại hàm này và getData của nó
      * author:DVQuan(30/9/2020)
      */
-    getData() {
+    getData(page,size) {
         this.Data = [];
+    }
+
+    nextData() {
+        this.size = this.size + 1
+        this.getData(this.page, this.size)
+        $('#txtPageNext').val(this.size);
     }
 
     /**

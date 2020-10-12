@@ -8,9 +8,8 @@
 class CustomerJS extends BaseJS {
     constructor(name) {
         super();
-        this.loadDataSelect()
+        this.loadDataSelect();
     }
-
     /**
      * focus và input mã khách hàng
      * author: DVQuan(5/10/2020)
@@ -43,10 +42,10 @@ class CustomerJS extends BaseJS {
     * lấy dữ liệu fake của customer
     * author:DVQuan
     * */
-    getData() {
+    getData(page,size) {
         var res = this;
         $.ajax({
-            url: "/api/customer",
+            url: "/api/customer?page=" + page + "&size="+size,
             method: "GET",
             data: "",
             datatype: "json",
