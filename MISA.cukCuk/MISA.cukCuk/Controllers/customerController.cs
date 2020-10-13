@@ -32,12 +32,11 @@ namespace MISA.cukCuk.Controllers
             CustomerModel customer = db.getElementById(customerId);
             return customer;
         }
-        [Route("quan")]
-        [HttpGet]
+        [HttpGet("countpage")]
         public int GetCountData()
         {
-           /* DBConnection db = new DBConnection();*/
-            return 1;
+            DBConnection db = new DBConnection();
+            return db.getCountData();
         }
 
         // POST api/<CustomerController>

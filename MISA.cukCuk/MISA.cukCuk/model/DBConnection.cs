@@ -212,8 +212,13 @@ namespace MISA.cukCuk.Model
             //đọc dữ liệu
             MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
             //xử lý dữ liệu trả về
-            var value = mySqlDataReader.GetValue(0);
-            return  Convert.ToInt32(value);
+            
+            while (mySqlDataReader.Read())
+            {
+                var value = mySqlDataReader.GetValue(0);
+                return Convert.ToInt32(value);
+            }
+            return 0;
         }
     }
 }

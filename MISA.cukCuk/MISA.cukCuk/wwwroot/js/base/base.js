@@ -7,8 +7,10 @@ class BaseJS {
             this.page = 25;
             this.startPage = 1;
             this.currentPage = 1;
+            this.countPages = 0;
+            this.getCountPages();
             this.FormType = null;
-            this.getData(this.page, this.startPage);      
+            this.getData(this.page, this.startPage);
             this.loadData();
             this.initEvents();
         } catch (e) {
@@ -35,6 +37,7 @@ class BaseJS {
         $(".page-next").click(this.nextData.bind(this));
         $(".page-prev").click(this.prevData.bind(this));
         $(".page-first").click(this.pageFirstData.bind(this));
+        $(".page-last").click(this.pageLastData.bind(this));
     }
 
     /**
@@ -48,8 +51,28 @@ class BaseJS {
      * lớp con sẽ override lại hàm này và getData của nó
      * author:DVQuan(30/9/2020)
      */
-    getData(page,size) {
+    getData(page, size) {
         this.Data = [];
+    }
+
+    /**
+     * lấy tổng số bản ghi
+     * author: DVQuan(13/10/2020)
+     * */
+    getCountPages() {
+        var ref = this;
+        $.ajax({
+            url: "/api/customer/countpage",
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+        }).done(function (res) {
+            debugger
+            $('#numberOfPages').val(Math.ceil(res / ref.page));
+            ref.countPages = res;
+        }).fail(function (res) {
+
+        })
     }
 
     /**
@@ -57,10 +80,13 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     nextData() {
-        this.currentPage = this.currentPage + 1;  //trang hiện tại
-        this.startPage = this.startPage + this.page; //bản ghi bắt đầu
-        this.getData(this.page, this.startPage)
-        $('#txtPageNext').val(this.currentPage);
+        if ((this.startPage + this.page) < this.countPages) {
+            this.currentPage = this.currentPage + 1;  //trang hiện tại
+            this.startPage = this.startPage + this.page; //bản ghi bắt đầu
+            this.getData(this.page, this.startPage)
+            $('#txtPageNext').val(this.currentPage);
+        }
+       
     }
 
     /**
@@ -84,6 +110,17 @@ class BaseJS {
         this.currentPage = 1; //trang hiện tại
         this.startPage = 1; //bản ghi bắt đầu
         this.getData(this.page, this.startPage)
+        $('#txtPageNext').val(this.currentPage);
+    }
+
+    /**
+     * cuối trang
+     * author: DVQuan(13/10/2020)
+     * */
+    pageLastData() {
+        this.currentPage = (Math.ceil(this.countPages / this.page)); //trang hiện tại
+        this.startPage = this.page * (this.currentPage-1)+1; //bản ghi bắt đầu
+        this.getData(this.page, this.startPage) //lấy lại data
         $('#txtPageNext').val(this.currentPage);
     }
     /**
