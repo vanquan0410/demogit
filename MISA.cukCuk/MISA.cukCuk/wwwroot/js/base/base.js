@@ -4,10 +4,11 @@
 class BaseJS {
     constructor(name) {
         try {
-            this.page = 3;
-            this.size = 1;
+            this.page = 25;
+            this.startPage = 1;
+            this.currentPage = 1;
             this.FormType = null;
-            this.getData(this.page, this.size);      
+            this.getData(this.page, this.startPage);      
             this.loadData();
             this.initEvents();
         } catch (e) {
@@ -32,6 +33,8 @@ class BaseJS {
         $('#dialog-btnfocus').focus(this.showFocusDetail);                //thực hiện event focus
         $("table").on("click", "tbody tr", this.rowOnClick);              //thực hiện event click on table
         $(".page-next").click(this.nextData.bind(this));
+        $(".page-prev").click(this.prevData.bind(this));
+        $(".page-first").click(this.pageFirstData.bind(this));
     }
 
     /**
@@ -49,12 +52,40 @@ class BaseJS {
         this.Data = [];
     }
 
+    /**
+     * phân trang ->next sang trang kế tiếp
+     * author: DVQuan(13/10/2020)
+     * */
     nextData() {
-        this.size = this.size + 1
-        this.getData(this.page, this.size)
-        $('#txtPageNext').val(this.size);
+        this.currentPage = this.currentPage + 1;  //trang hiện tại
+        this.startPage = this.startPage + this.page; //bản ghi bắt đầu
+        this.getData(this.page, this.startPage)
+        $('#txtPageNext').val(this.currentPage);
     }
 
+    /**
+     * phân trang -> prev về trang trước
+     * author: DVQuan(13/10/2020)
+     * */
+    prevData() {
+        if (this.currentPage > 1) {
+            this.currentPage = this.currentPage - 1; //trang hiện tại
+            this.startPage = this.startPage - this.page; //bản ghi bắt đầu
+            this.getData(this.page, this.startPage)
+            $('#txtPageNext').val(this.currentPage);
+        }
+    }
+
+    /**
+     * phân trang -> quay về trang đầu tiên
+     * author: DVQuan(13/10/2020)
+     * */
+    pageFirstData() {
+        this.currentPage = 1; //trang hiện tại
+        this.startPage = 1; //bản ghi bắt đầu
+        this.getData(this.page, this.startPage)
+        $('#txtPageNext').val(this.currentPage);
+    }
     /**
      * Hàm lấy dữ liệu tương ứng của 1 đối tượng
      * author: DVQuan(01/10/2020)

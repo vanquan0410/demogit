@@ -198,5 +198,22 @@ namespace MISA.cukCuk.Model
 
             return false;
         }
+
+        public int getCountData()
+        {
+            //khởi tạo dối tượng mysqlconnection
+            MySqlConnection mySqlConnection = getConncetion();
+            //đối tượng mysql cho phép thao tác với csdl
+            MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            //khai báo câu truy vấn 
+            mySqlCommand.CommandText = "SELECT COUNT(*) FROM View_Customer vc";
+            //mở kết nối database;
+            mySqlConnection.Open();
+            //đọc dữ liệu
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            //xử lý dữ liệu trả về
+            var value = mySqlDataReader.GetValue(0);
+            return  Convert.ToInt32(value);
+        }
     }
 }
