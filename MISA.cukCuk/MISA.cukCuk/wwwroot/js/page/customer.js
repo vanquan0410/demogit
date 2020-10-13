@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    
     customerJS = new CustomerJS("quan");
 })
 
