@@ -87,9 +87,9 @@ class CustomerJS extends BaseJS {
      * */
     saveToDB(customer, method) {
         var self = this;
-        var alter = 'thêm';
+        var alter = 'Thêm';
         if (method == 'PUT') {
-            alter = 'sửa';
+            alter = 'Sửa';
         }
             $.ajax({
                 url: "/api/customer/",
@@ -101,13 +101,14 @@ class CustomerJS extends BaseJS {
                     //close form-dialog
                     self.btnCancelOnClick();
                     //load lại dữ liệu
-                    self.getData(page,size);
+                    self.getData(self.page, self.startPage);
                     self.loadData();
-                    alert(alter+' thành công');
+                    self.showMessage();
+                    $('.message-title').html(alter+ " thành công")
                 }
             }).fail(function (res) {
-                console.log(res);
-                alert(alter+' that bai');
+                self.showMessage();
+                $('.message-title').html(alter + " thất bại")
             })
     }
 
@@ -129,7 +130,7 @@ class CustomerJS extends BaseJS {
                 if (res) {
                     self.btnCancelOnClick();
                     //load lại dữ liệu
-                    self.getData();
+                    self.getData(self.page, self.startPage);
                     self.loadData();
                     alert('xóa thành công');
                 }
