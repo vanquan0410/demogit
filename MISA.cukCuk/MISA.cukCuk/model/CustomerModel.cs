@@ -6,42 +6,54 @@ using System.Threading.Tasks;
 
 namespace MISA.cukCuk.model
 {
+    /// <summary>
+    /// danh muc khách hàng
+    /// CreatedBy: DVQuan(01/10/2020)
+    /// </summary>
     public class CustomerModel
     {
-       /* public CustomerModel(String customerCode, String customerName,String email, String companyName, Double code, String address, String phone, DateTime date)
-        {
-            CustomerId = Guid.NewGuid();
-            this.CustomerCode = customerCode;
-            this.CustomerName = customerName;
-            this.Email = email;
-            this.CompanyName = companyName;
-            this.DebitMoney = code;
-            this.Address = address;
-            this.PhoneNumber = phone;
-            this.DateOfBirth = date;
-        }*/
         public CustomerModel()
         {
         }
-       /* public static List<CustomerModel> listCustomer = new List<CustomerModel>()
-        {
-            new CustomerModel("kh10","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa-đường cầu diễn, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
-            new CustomerModel("kh11","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776",  new DateTime(1999,10,10)),
-            new CustomerModel("kh12","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
-            new CustomerModel("kh13","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
-            new CustomerModel("kh14","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
-            new CustomerModel("kh15","Tran thi a", "abc@gmail.com", "Công ty cổ phần",10000000,"phố Trần Duy Hưng, Cầu giấy, Hà nội","0988788776", new DateTime(1999,10,10)),
-
-        };*/
+        /// <summary>
+        /// id khách hàng
+        /// </summary>
         public Guid? CustomerId { get; set; }
+        /// <summary>
+        /// mã khách hàng
+        /// </summary>
         public String CustomerCode { get; set; }
+        /// <summary>
+        /// tên khách hàng
+        /// </summary>
         public String CustomerName { get; set; }
+        /// <summary>
+        /// email khách hàng
+        /// </summary>
         public String Email { get; set; }
+        /// <summary>
+        /// tên công ty
+        /// </summary>
         public String CompanyName { get; set; }
+        /// <summary>
+        /// id nhóm khách hàng
+        /// </summary>
         public Guid? CustomerGroupId { get; set; }
+        /// <summary>
+        /// sô tiền nợ của khách hàng
+        /// </summary>
         public double DebitMoney { get; set; }   
+        /// <summary>
+        /// dịa chỉ khách hàng
+        /// </summary>
         public string Address { get; set; }
+        /// <summary>
+        /// số diện thoại khách hàng
+        /// </summary>
         public String PhoneNumber { get; set; }
+        /// <summary>
+        /// ngày sinh khách hàng
+        /// </summary>
         public DateTime DateOfBirth { get; set; }
     }
 }

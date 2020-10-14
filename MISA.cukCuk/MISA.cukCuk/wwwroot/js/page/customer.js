@@ -101,7 +101,7 @@ class CustomerJS extends BaseJS {
                     //close form-dialog
                     self.btnCancelOnClick();
                     //load lại dữ liệu
-                    self.getData();
+                    self.getData(page,size);
                     self.loadData();
                     alert(alter+' thành công');
                 }
@@ -138,6 +138,24 @@ class CustomerJS extends BaseJS {
                 alert('xóa that bai');
             })
         }
+    }
+    /**
+     * show message
+     * author: DVQuan(14/10/2020)
+     * */
+    showMessage() {
+        $('.dialog-modal-messages').show();
+        $('.form-message').show();
+        setTimeout(this.hideMessage, 1000);
+    }
+
+    /**
+     * hide message
+     * author: DVQuan(14/10/2020)
+     * */
+    hideMessage() {
+        $('.dialog-modal-messages').hide();
+        $('.form-message').hide();
     }
 }
 

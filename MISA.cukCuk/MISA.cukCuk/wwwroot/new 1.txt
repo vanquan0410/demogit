@@ -11,3 +11,5 @@ sủa lại tên kho trong menu ok
 phím tắt
 pagging
 xóa nhiều bản ghi
+
+gặp vấn đề khi loaddata theo phân trang. khi load ko getdata đc! khi thực hiện đến thằng thứ 2 thì mât tất dl

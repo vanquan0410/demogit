@@ -9,6 +9,11 @@ namespace MISA.cukCuk.Model
 {
     public class DBConnection
     {
+        /// <summary>
+        /// kết nối cơ sở dữ liệu
+        /// </summary>
+        /// <returns></returns>
+        /// createdBy: DVQuan(10/10/2020)
         public static MySqlConnection getConncetion()
         {
             //chuỗi kết nối
@@ -21,6 +26,13 @@ namespace MISA.cukCuk.Model
             return null;
         }
 
+        /// <summary>
+        /// lấy danh sách khách hàng
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        /// createdBy: DVQuan(10/10/2020)
         public List<CustomerModel> getData(int page,int size)
         {
             var customers = new List<CustomerModel>();

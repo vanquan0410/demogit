@@ -5,45 +5,103 @@ using System.Threading.Tasks;
 
 namespace MISA.cukCuk.model
 {
+    /// <summary>
+    /// Danh mục nhân viên
+    /// CreatedBy: DVQuan(14/10/2020)
+    /// </summary>
     public class EmployeeModel
     {
-        public static List<EmployeeModel> listEmployee = new List<EmployeeModel>()
-        {
-            new EmployeeModel("NV001","trần thị anh",true,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV002","trần thị anh",false,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV003","trần thị anh",true,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV004","trần thị anh",false,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV005","trần thị anh",true,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV006","trần thị anh",true,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc"),
-            new EmployeeModel("NV007","trần thị anh",false,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Nghỉ việc"),
-            new EmployeeModel("NV008","trần thị anh",true,new DateTime(1999,10,10),"0989987655","phong nhan sự","abc@gmail.com",100000000,"Đang làm việc")
-        };
+        /// <summary>
+        /// khởi tạo 
+        /// </summary>
         public EmployeeModel()
         {
-            EmployeeID = Guid.NewGuid();
+
         }
-        public EmployeeModel(String employeeCode,String fullName,bool gender,DateTime date,String phone,String departmentName,String email,double salary,String workstatus)
-        {
-            this.EmployeeID = Guid.NewGuid();
-            this.EmployeeCode = employeeCode;
-            this.FullName = fullName;
-            this.Gender = gender;
-            this.DateOfBirth = date;
-            this.Phone = phone;
-            this.DepartmentName = departmentName;
-            this.Email = email;
-            this.Salary = salary;
-            this.WorkStatus = workstatus;
-        }
+        /// <summary>
+        /// id của nhân viên
+        /// </summary>
         public Guid? EmployeeID { get; set; }
+        /// <summary>
+        /// mã nhân viên
+        /// </summary>
         public String EmployeeCode { get; set; }
-        public String FullName { get; set; }
-        public bool Gender { get; set; }
+        /// <summary>
+        /// tên nhân viên
+        /// </summary>
+        public String EmployeeName { get; set; }
+        /// <summary>
+        /// loại giới tính
+        /// </summary>
+        public int? Gender { get; set; }
+        /// <summary>
+        /// giới tính
+        /// </summary>
+        public String GenderName
+        {
+            get
+            {
+                switch (Gender)
+                {
+                    case 0:
+                        return MISA.cukCuk.Properties.Resources.Enum_Gender_Male;
+                    case 1:
+                        return MISA.cukCuk.Properties.Resources.Enum_Gender_Female;
+                    default:
+                        return "không xác định";
+
+                }
+            }
+        }
+        /// <summary>
+        /// ngày sinh
+        /// </summary>
         public DateTime DateOfBirth { get; set; }
-        public String Phone { get; set; }
+        /// <summary>
+        /// số điện thoại
+        /// </summary>
+        public String PhoneNumber { get; set; }
+        /// <summary>
+        /// id phòng ban
+        /// </summary>
+        public Guid DepartmentId { get; set; }
+        /// <summary>
+        /// tên phòng ban
+        /// </summary>
         public String DepartmentName { get; set; }
+        /// <summary>
+        /// email
+        /// </summary>
         public String Email { get; set; }
+        /// <summary>
+        /// lương
+        /// </summary>
         public double Salary { get; set; }
-        public String WorkStatus { get; set; }
+        /// <summary>
+        /// loại tình trạng công việc
+        /// </summary>
+        public int? WorkStatus { get; set; }
+        /// <summary>
+        /// tên tình trạng công việc
+        /// </summary>
+        public String WorkStatusName
+        {
+            get
+            {
+                if (WorkStatus == null)
+                {
+                    return string.Empty;
+                }
+                switch (WorkStatus)
+                {
+                    case 0:
+                        return MISA.cukCuk.Properties.Resources.Enum_WorkStatus_Stopeed;
+                    case 1:
+                        return MISA.cukCuk.Properties.Resources.Enum_WorkStatus_Working;
+                    default:
+                        return string.Empty;
+                }
+            }
+        }
     }
 }
