@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MISA.Data.Repository
 {
-    public class EmployeeRepository:DatabaseMariaDbAccess<Employee>,IEmployeeRepository
+    public class EmployeeRepository
     {
     }
 }

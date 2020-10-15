@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MISA.Data.Interfaces
 {
-    public interface IEmployeeRepository:IDataAccess<Employee>
+    public interface IEmployeeRepository:IBaseRepository<Employee>
     {
     }
 }

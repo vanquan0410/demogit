@@ -9,7 +9,7 @@ using MISA.Service.Service;
 
 namespace MISA.cukCuk.Controllers
 {
-    [Route("aa")]
+    [Route("Customers")]
     [ApiController]
     public class CustomerApi : ControllerBase
     {

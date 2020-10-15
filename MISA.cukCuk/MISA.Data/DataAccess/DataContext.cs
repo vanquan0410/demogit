@@ -7,17 +7,13 @@ using System.Text;
 
 namespace MISA.Data.DataAccess
 {
-    /// <summary>
-    /// base Data access
-    /// </summary>
-    /// CreatedBy: DVQuan(14/10/2020)
-    public class DatabaseMariaDbAccess<T>:IDisposable,IDataAccess<T>
+    public class DataContext<T>:IDisposable,IDataContext<T>
     {
         readonly String _connectionString = "server=35.194.166.58;port=3306;user=nvmanh;password=12345678@Abc;database=MISACukCuk_F09_DVQuan";
         MySqlConnection _mySqlConnection;
         MySqlCommand _mySqlCommand;
 
-        public DatabaseMariaDbAccess()
+        public DataContext()
         {
             //khởi tạo kết nối
             _mySqlConnection = new MySqlConnection(_connectionString);
@@ -33,16 +29,7 @@ namespace MISA.Data.DataAccess
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// đóng kết nôi
-        /// </summary>
-        /// CreateBy: DVQuan(14/10/2020)
-        public void Dispose()
-        {
-            _mySqlConnection.Close();
-        }
-
-        public IEnumerable<T> Get(int page,int size)
+        public IEnumerable<T> Get(int page, int size)
         {
             //khỏi tạo danh sách đối tượng cần trả về
             var values = new List<T>();
@@ -79,6 +66,7 @@ namespace MISA.Data.DataAccess
             }
             return values;
         }
+
 
         public T GetByID(Guid Id)
         {
@@ -149,7 +137,7 @@ namespace MISA.Data.DataAccess
             _mySqlCommand.Parameters.AddWithValue("DebitMoney", customer.DebitMoney);
             _mySqlCommand.Parameters.AddWithValue("Email", customer.Email);
             _mySqlCommand.Parameters.AddWithValue("Address", customer.Address);
-           //thực thi công việc
+            //thực thi công việc
             var result = _mySqlCommand.ExecuteNonQuery();
 
             if (result > 0)
@@ -183,5 +171,52 @@ namespace MISA.Data.DataAccess
             }
             return false;
         }
+
+
+        /// <summary>
+        /// đóng kết nôi
+        /// </summary>
+        /// CreateBy: DVQuan(14/10/2020)
+        public void Dispose()
+        {
+            _mySqlConnection.Close();
+        }
+
+        public IEnumerable<T> GetAllData()
+        {
+            //khỏi tạo danh sách đối tượng cần trả về
+            var values = new List<T>();
+            //khai bao cau truy van
+            _mySqlCommand.CommandText = "Proc_GetCustomerGroup";
+
+            //thực thi công việc tới database
+            MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
+            //xử lý dữ liệu trả về
+            while (mySqlDataReader.Read())
+            {
+                var customer = Activator.CreateInstance<T>();
+                for (int i = 0; i < mySqlDataReader.FieldCount; i++)
+                {
+                    //lấy tên cột dữ liệu đang đọc
+                    var colName = mySqlDataReader.GetName(i);
+
+                    //lấy giá trị cell đang đọc
+                    var value = mySqlDataReader.GetValue(i);
+
+                    //lấy property giống với tên cột được khai báo ở trên
+                    var property = customer.GetType().GetProperty(colName);
+
+                    //nếu có property tương ứng với tên cột thì gán dữ liệu tương ứng
+                    if (property != null && value != DBNull.Value)
+                    {
+                        property.SetValue(customer, value);
+                    }
+                }
+                //thêm khách hàng vừa build được vào list
+                values.Add(customer);
+            }
+            return values;
+        }
+
     }
 }

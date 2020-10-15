@@ -7,7 +7,10 @@ using System.Text;
 
 namespace MISA.Data.Repository
 {
-    public class CustomerRepository:DatabaseMariaDbAccess<Customer>,ICustomerRepository
+    public class CustomerRepository:BaseRepository<Customer>,ICustomerRepository
     {
+        public CustomerRepository(IDataContext<Customer> dataContext):base(dataContext)
+        {
+        }
     }
 }

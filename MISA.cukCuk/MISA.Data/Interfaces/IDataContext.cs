@@ -1,18 +1,25 @@
-﻿using MISA.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MISA.Data.Interfaces
 {
-    public interface IDataAccess<T>
+    public interface IDataContext<T>
     {
         /// <summary>
         /// lấy data theo phân trang
         /// </summary>
         /// <returns></returns> list nhân viên
         /// CreatedBy: DVQuan(14/10/2020)
-        IEnumerable<T> Get(int page,int size);
+        IEnumerable<T> Get(int page, int size);
+
+
+        /// <summary>
+        /// lấy all data 
+        /// </summary>
+        /// <returns></returns> list nhân viên
+        /// CreatedBy: DVQuan(14/10/2020)
+        IEnumerable<T> GetAllData();
 
 
         /// <summary>
@@ -49,6 +56,8 @@ namespace MISA.Data.Interfaces
         /// <returns></returns>
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Delete(T value);
+
+
         /// <summary>
         /// lấy số lượng danh sách các bản ghi
         /// </summary>
@@ -56,5 +65,4 @@ namespace MISA.Data.Interfaces
         /// CreatedBy: DVQuan
         int GetCountData();
     }
-
 }

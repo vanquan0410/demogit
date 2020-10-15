@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MISA.Data.Interfaces
 {
-    public interface ICustomerGroupRepository:IDataAccess<CustomerGroup>
+    public interface ICustomerGroupRepository:IBaseRepository<CustomerGroup>
     {
     }
 }

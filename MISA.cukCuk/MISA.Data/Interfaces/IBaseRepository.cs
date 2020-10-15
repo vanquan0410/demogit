@@ -2,63 +2,68 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MISA.Service.Service
+namespace MISA.Data.Interfaces
 {
-    public interface IBaseService<T>
+    public interface IBaseRepository<T>
     {
-        /// <summary>
-        /// lấy danh sách của bản ghi theo phân trang
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        IEnumerable<T> Get(int page,int size);
 
         /// <summary>
-        /// lấy all danh sách 
+        /// lấy data theo phân trang
         /// </summary>
-        /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
+        /// <returns></returns> list nhân viên
+        /// CreatedBy: DVQuan(14/10/2020)
+        IEnumerable<T> Get(int page, int size);
+
+        /// <summary>
+        /// lấy all data 
+        /// </summary>
+        /// <returns></returns> list nhân viên
+        /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> GetAllData();
 
+
         /// <summary>
-        /// lấy danh sách theo id
+        /// lấy data theo ID
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
-        T GetById(Guid Id);
+        ///  CreatedBy: DVQuan(14/10/2020)
+        T GetByID(Guid Id);
+
 
         /// <summary>
-        /// thêm mới 1 bản ghi mới
+        /// thêm mới
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
+        /// CreatedBy: DVQuan(14/10/2020)
         bool Insert(T value);
 
+
         /// <summary>
-        /// sử một bản ghi
+        /// sửa 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
+        ///  CreatedBy: DVQuan(14/10/2020)
         bool Update(T value);
 
+
         /// <summary>
-        /// delete một bản ghi ra khỏi danh sách
+        /// xóa
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
+        ///  CreatedBy: DVQuan(14/10/2020)
         bool Delete(T value);
 
+
         /// <summary>
-        /// lấy số lượng
+        /// lấy số lượng danh sách các bản ghi
         /// </summary>
         /// <returns></returns>
-        /// CreateddBy: DVQuan(15/10/2020)
+        /// CreatedBy: DVQuan
         int GetCountData();
-
     }
+
 }

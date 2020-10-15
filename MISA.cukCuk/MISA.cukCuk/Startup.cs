@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MISA.Data.DataAccess;
 using MISA.Data.Interfaces;
+using MISA.Data.Repository;
 using MISA.Service.Service;
 using Newtonsoft.Json.Serialization;
 
@@ -38,9 +39,9 @@ namespace MISA.cukCuk
                 Options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             }
             );
-            services.AddScoped(typeof(IDataAccess<>), typeof(DatabaseMariaDbAccess<>));
+            services.AddScoped(typeof(IDataContext<>), typeof(DataContext<>));
             services.AddScoped<ICustomerService, CustomerService>();
-            services.AddScoped<ICustomerRepository, ICustomerRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
