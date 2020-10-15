@@ -40,7 +40,12 @@ namespace MISA.cukCuk
             }
             );
             services.AddScoped(typeof(IDataContext<>), typeof(DataContext<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerGroupRepository, CustomerGroupRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerGroupService, CustomerGroupService>();
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             
         }
 

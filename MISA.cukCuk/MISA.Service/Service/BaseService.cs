@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MISA.Service.Service
 {
-    class BaseService<T> : IBaseService<T>
+    public class BaseService<T> : IBaseService<T>
     {
         IBaseRepository<T> _baseRepository;
         public BaseService(IBaseRepository<T> baseRepository)

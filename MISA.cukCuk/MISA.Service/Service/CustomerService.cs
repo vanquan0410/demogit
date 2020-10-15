@@ -6,11 +6,10 @@ using System.Text;
 
 namespace MISA.Service.Service
 {
-    public class CustomerService :BaseService<Customer>,ICustomerService
+    public class CustomerService:BaseService<Customer>,ICustomerService
     {
         public CustomerService(ICustomerRepository customerRepository):base(customerRepository)
         {
-
         }
     }
 }
