@@ -6,9 +6,9 @@ using System.Text;
 
 namespace MISA.Data.Repository
 {
-    public class DepartmentRepository:BaseRepository<Department>,IDepartmentRepository
+    public class PossitionRepository:BaseRepository<Possition>,IPossitionRepository
     {
-        public DepartmentRepository(IDataContext<Department> dataContext) : base(dataContext)
+        public PossitionRepository(IDataContext<Possition> dataContext) : base(dataContext)
         {
         }
     }

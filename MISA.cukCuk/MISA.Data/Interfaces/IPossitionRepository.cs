@@ -5,8 +5,7 @@ using System.Text;
 
 namespace MISA.Data.Interfaces
 {
-    //TODO: chua biuld model
-    public interface IDepartmentRepository:IBaseRepository<Department>
+    public interface IPossitionRepository:IBaseRepository<Possition>
     {
     }
 }

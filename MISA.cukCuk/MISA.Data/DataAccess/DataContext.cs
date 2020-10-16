@@ -34,7 +34,8 @@ namespace MISA.Data.DataAccess
             //khỏi tạo danh sách đối tượng cần trả về
             var values = new List<T>();
             //khai bao cau truy van
-            _mySqlCommand.CommandText = "Proc_GetCustomerByPage";
+            var className = typeof(T);
+            _mySqlCommand.CommandText = $"Proc_Get{className}ByPage";
             //gán giá trị đầu vào cho các các store
             _mySqlCommand.Parameters.AddWithValue("Page", page);
             _mySqlCommand.Parameters.AddWithValue("Size", size);
@@ -70,8 +71,9 @@ namespace MISA.Data.DataAccess
 
         public T GetByID(Guid Id)
         {
+            var className = typeof(T);
             //khai báo câu truy vấn
-            _mySqlCommand.CommandText = "Proc_GetCustomerById";
+            _mySqlCommand.CommandText = $"Proc_Get{className}ById";
             //gán giá trị đầu vào cho các tham số trong store
             _mySqlCommand.Parameters.AddWithValue("CustomerId", Id);
             //đọc dữ liệu
@@ -104,10 +106,9 @@ namespace MISA.Data.DataAccess
 
         public int GetCountData()
         {
-            //đối tượng mysql cho phép thao tác với csdl
-            _mySqlCommand.CommandType = System.Data.CommandType.Text;
+            var className = typeof(T);
             //khai báo câu truy vấn 
-            _mySqlCommand.CommandText = "SELECT COUNT(*) FROM View_Customer vc";
+            _mySqlCommand.CommandText = $"Proc_GetCount{className}";
             //mở kết nối database;
             _mySqlConnection.Open();
             //đọc dữ liệu
@@ -125,8 +126,9 @@ namespace MISA.Data.DataAccess
         public bool Insert(T value)
         {
             var customer = value as Customer;
+            var className = typeof(T);
             //khai báo câu truy vấn
-            _mySqlCommand.CommandText = "Proc_AddCustomer";
+            _mySqlCommand.CommandText = $"Proc_Add{className}";
             //gán giá trị đầu vào cho các tham số trong store
             _mySqlCommand.Parameters.AddWithValue("CustomerCode", customer.CustomerCode);
             _mySqlCommand.Parameters.AddWithValue("CustomerName", customer.CustomerName);
@@ -173,15 +175,7 @@ namespace MISA.Data.DataAccess
         }
 
 
-        /// <summary>
-        /// đóng kết nôi
-        /// </summary>
-        /// CreateBy: DVQuan(14/10/2020)
-        public void Dispose()
-        {
-            _mySqlConnection.Close();
-        }
-
+       
         public IEnumerable<T> GetAllData()
         {
             //khỏi tạo danh sách đối tượng cần trả về
@@ -218,5 +212,13 @@ namespace MISA.Data.DataAccess
             return values;
         }
 
+        /// <summary>
+        /// đóng kết nôi
+        /// </summary>
+        /// CreateBy: DVQuan(14/10/2020)
+        public void Dispose()
+        {
+            _mySqlConnection.Close();
+        }
     }
 }
