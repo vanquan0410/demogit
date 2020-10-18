@@ -27,7 +27,7 @@ namespace MISA.Service.Service
         /// <param name="Id"></param>
         /// <returns></returns>
         /// CreateddBy: DVQuan(15/10/2020)
-        T GetById(Guid Id);
+        T GetById(object Id);
 
         /// <summary>
         /// thêm mới 1 bản ghi mới

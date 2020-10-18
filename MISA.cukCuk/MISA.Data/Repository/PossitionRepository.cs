@@ -8,8 +8,10 @@ namespace MISA.Data.Repository
 {
     public class PossitionRepository:BaseRepository<Possition>,IPossitionRepository
     {
+        #region constructor
         public PossitionRepository(IDataContext<Possition> dataContext) : base(dataContext)
         {
         }
+        #endregion
     }
 }

@@ -9,8 +9,10 @@ namespace MISA.Data.Repository
 {
     public class CustomerGroupRepository:BaseRepository<CustomerGroup>,ICustomerGroupRepository
     {
+        #region constructor
         public CustomerGroupRepository(IDataContext<CustomerGroup> dataContext):base(dataContext)
         {
         }
+        #endregion
     }
 }

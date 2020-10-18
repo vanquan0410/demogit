@@ -7,19 +7,23 @@ namespace MISA.Data.Interfaces
     public interface IDataContext<T>
     {
         /// <summary>
-        /// lấy data theo phân trang
-        /// </summary>
-        /// <returns></returns> list nhân viên
-        /// CreatedBy: DVQuan(14/10/2020)
-        IEnumerable<T> Get(int page, int size);
-
-
-        /// <summary>
-        /// lấy all data 
+        /// lấy all data của đối tượng
         /// </summary>
         /// <returns></returns> list nhân viên
         /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> GetAllData();
+        /// <summary>
+        /// 
+        /// </summary>lấy tất cả bản ghi có giá trị =code
+        /// <returns></returns>
+        T GetAllData(String storeName,object value);
+
+        /// <summary>
+        /// lấy data theo phân trang của đối tượng
+        /// </summary>
+        /// <returns></returns> list nhân viên
+        /// CreatedBy: DVQuan(14/10/2020)
+        IEnumerable<T> Get(int page, int size);
 
 
         /// <summary>
@@ -28,7 +32,7 @@ namespace MISA.Data.Interfaces
         /// <param name="Id"></param>
         /// <returns></returns>
         ///  CreatedBy: DVQuan(14/10/2020)
-        T GetByID(Guid Id);
+        T GetByID(Object Id);
 
 
         /// <summary>

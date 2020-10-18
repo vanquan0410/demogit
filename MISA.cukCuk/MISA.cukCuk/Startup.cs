@@ -46,7 +46,10 @@ namespace MISA.cukCuk
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerGroupService, CustomerGroupService>();
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-            
+            services.AddScoped<ICustomerGroupService, CustomerGroupService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

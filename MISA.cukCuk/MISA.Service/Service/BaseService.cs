@@ -7,11 +7,15 @@ namespace MISA.Service.Service
 {
     public class BaseService<T> : IBaseService<T>
     {
+        #region constructor
         IBaseRepository<T> _baseRepository;
         public BaseService(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
         }
+        #endregion
+        
+        #region method
         public bool Delete(T value)
         {
            return _baseRepository.Delete(value);
@@ -27,7 +31,7 @@ namespace MISA.Service.Service
             return _baseRepository.GetAllData();
         }
 
-        public T GetById(Guid Id)
+        public T GetById(Object Id)
         {
             return _baseRepository.GetByID(Id);
         }
@@ -46,5 +50,6 @@ namespace MISA.Service.Service
         {
             return _baseRepository.Update(value);
         }
+        #endregion
     }
 }

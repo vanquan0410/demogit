@@ -8,8 +8,10 @@ namespace MISA.Service.Service
 {
     public class CustomerGroupService:BaseService<CustomerGroup>,ICustomerGroupService
     {
+        #region constructor
         public CustomerGroupService(ICustomerGroupRepository customerGroupRepository):base(customerGroupRepository)
         {
         }
+        #endregion
     }
 }

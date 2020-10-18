@@ -13,11 +13,15 @@ namespace MISA.cukCuk.Api
     [ApiController]
     public class BaseApi<T> : ControllerBase
     {
+        #region constructor
         IBaseService<T> _baseService;
         public BaseApi(IBaseService<T> baseService)
         {
             _baseService = baseService;
         }
+        #endregion
+
+        #region metod
         // GET: api/<BaseApi>
         [HttpGet]
         public ActionResult Get([FromQuery] int page, int size)
@@ -53,5 +57,6 @@ namespace MISA.cukCuk.Api
         public void Delete(int id)
         {
         }
+        #endregion
     }
 }

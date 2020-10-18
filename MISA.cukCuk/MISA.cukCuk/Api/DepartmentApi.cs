@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MISA.Data.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +13,11 @@ namespace MISA.cukCuk.Api
     [ApiController]
     public class DepartmentApi : ControllerBase
     {
+       
+        public DepartmentApi()
+        {
+
+        }
         // GET: api/<DepartmentApi>
         [HttpGet]
         public IEnumerable<string> Get()

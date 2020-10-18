@@ -5,6 +5,10 @@ using System.Text;
 
 namespace MISA.Model
 {
+    /// <summary>
+    /// danh mực vị trí
+    /// </summary>
+    /// CreatedBy: DVQuan(10/10/2020)
     public class Possition
     {
         /// <summary>

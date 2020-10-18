@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,11 +16,11 @@ namespace MISA.cukCuk.Controllers
     {
         // GET: api/<CustomerController>
         [HttpGet]
-        public IEnumerable<CustomerModel> Get([FromQuery] int page,int size)
+        public IEnumerable<CustomerModel> Get([FromQuery] int page, int size)
         {
             DBConnection db = new DBConnection();
             var listCustomer = new List<CustomerModel>();
-            listCustomer = db.getData(page,size);
+            listCustomer = db.getData(page, size);
             return listCustomer;
         }
 
@@ -61,7 +61,8 @@ namespace MISA.cukCuk.Controllers
         {
             DBConnection db = new DBConnection();
             return db.deleteCustomer(customerModel);
-           
+
         }
     }
 }
+*/

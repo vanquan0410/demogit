@@ -4,6 +4,10 @@ using System.Text;
 
 namespace MISA.Model
 {
+    /// <summary>
+    /// danh mực phòng ban
+    /// </summary>
+    /// CreatedBy: DVQuan(10/10/2020)
     public class Department
     {
         /// <summary>

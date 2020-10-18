@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace MISA.cukCuk.Controllers
         [HttpGet]
         public IEnumerable<EmployeeModel> Get()
         {
-            /*return EmployeeModel.listEmployee;*/
+            *//*return EmployeeModel.listEmployee;*//*
             return null;
         }
 
@@ -25,7 +25,7 @@ namespace MISA.cukCuk.Controllers
         [HttpGet("{employeeId}")]
         public EmployeeModel Get(Guid employeeId)
         {
-            /*var employee = EmployeeModel.listEmployee.Where(c => c.EmployeeID == employeeId).FirstOrDefault();*/
+            *//*var employee = EmployeeModel.listEmployee.Where(c => c.EmployeeID == employeeId).FirstOrDefault();*//*
             return null ;
         }
 
@@ -33,12 +33,12 @@ namespace MISA.cukCuk.Controllers
         [HttpPost]
         public bool Post([FromBody] EmployeeModel employee)
         {
-           /* if (employee != null)
+           *//* if (employee != null)
             {
                 employee.EmployeeID = Guid.NewGuid();
                 EmployeeModel.listEmployee.Add(employee);
                 return true;
-            }*/
+            }*//*
             return false;
         }
 
@@ -46,7 +46,7 @@ namespace MISA.cukCuk.Controllers
         [HttpPut]
         public bool Put([FromBody] EmployeeModel employeeModel)
         {
-            /*var employeeEdit = EmployeeModel.listEmployee.Where(x => x.EmployeeID == employeeModel.EmployeeID).FirstOrDefault();
+            *//*var employeeEdit = EmployeeModel.listEmployee.Where(x => x.EmployeeID == employeeModel.EmployeeID).FirstOrDefault();
             if (employeeEdit != null)
             {
                 employeeEdit.EmployeeCode = employeeModel.EmployeeCode;
@@ -59,7 +59,7 @@ namespace MISA.cukCuk.Controllers
                 employeeEdit.Salary = employeeModel.Salary;
                 employeeEdit.WorkStatus = employeeModel.WorkStatus;
                 return true;
-            }*/
+            }*//*
             return false;
         }
 
@@ -67,13 +67,14 @@ namespace MISA.cukCuk.Controllers
         [HttpDelete]
         public bool Delete([FromBody] EmployeeModel employeeModel)
         {
-           /* var employeeDelete = EmployeeModel.listEmployee.Where(x => x.EmployeeID == employeeModel.EmployeeID).FirstOrDefault();
+           *//* var employeeDelete = EmployeeModel.listEmployee.Where(x => x.EmployeeID == employeeModel.EmployeeID).FirstOrDefault();
             if (employeeDelete != null)
             {
                 EmployeeModel.listEmployee.Remove(employeeDelete);
                 return true;
-            }*/
+            }*//*
             return false;
         }
     }
 }
+*/

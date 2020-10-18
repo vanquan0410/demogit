@@ -28,7 +28,7 @@ namespace MISA.Data.Interfaces
         /// <param name="Id"></param>
         /// <returns></returns>
         ///  CreatedBy: DVQuan(14/10/2020)
-        T GetByID(Guid Id);
+        T GetByID(Object Id);
 
 
         /// <summary>

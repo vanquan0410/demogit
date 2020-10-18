@@ -7,10 +7,14 @@
  * Object JS quản lý các sự kiện cho danh mục khách hàng
  * */
 class CustomerJS extends BaseJS {
+    //#region constructor
     constructor(name) {
         super();
         this.loadDataSelect();
     }
+    //#endregion
+
+    //#region method
     /**
      * focus và input mã khách hàng
      * author: DVQuan(5/10/2020)
@@ -39,14 +43,16 @@ class CustomerJS extends BaseJS {
             })
         })
     }
+
     /**
-    * lấy dữ liệu fake của customer
+    * lấy dữ liệu fake của customer-> phân trang
     * author:DVQuan
     * */
-    getData(page,size) {
+    getData(page, size) {
+        debugger
         var res = this;
         $.ajax({
-            url: "/api/customer?page=" + page + "&size="+size,
+            url: "/api/customer?page=" + page + "&size=" + size,
             method: "GET",
             data: "",
             datatype: "json",
@@ -60,6 +66,7 @@ class CustomerJS extends BaseJS {
             res.Data = null;
         })
     }
+
 
     /**
      * định dạng lại dòng dữ liệu của customer
@@ -96,6 +103,7 @@ class CustomerJS extends BaseJS {
                 method: method,
                 data: JSON.stringify(customer),
                 contentType: "application/json",
+                
             }).done(function (res) {
                 if (res) {
                     //close form-dialog
@@ -158,6 +166,8 @@ class CustomerJS extends BaseJS {
         $('.dialog-modal-messages').hide();
         $('.form-message').hide();
     }
+
+    //#endregion
 }
 
 /**

@@ -233,4 +233,7 @@ input[type="text" i] {
     border:1px solid #ff0000;
     padding: 1px 1px !important;
 }
-
+.dialog-modal .dialog-employee {
+    height: 520px;
+    width: 720px !important;
+}

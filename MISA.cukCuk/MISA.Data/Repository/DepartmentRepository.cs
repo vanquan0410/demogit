@@ -8,8 +8,10 @@ namespace MISA.Data.Repository
 {
     public class DepartmentRepository:BaseRepository<Department>,IDepartmentRepository
     {
+        #region constructor
         public DepartmentRepository(IDataContext<Department> dataContext) : base(dataContext)
         {
         }
+        #endregion
     }
 }

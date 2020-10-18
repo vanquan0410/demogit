@@ -2,6 +2,8 @@
  * object cha quản lý danh mục
  */
 class BaseJS {
+
+    //#region constructor
     constructor(name) {
         try {
             this.page = 25;
@@ -18,7 +20,9 @@ class BaseJS {
 
         }
     }
+    //#endregion
 
+    //#region event
     /**
      * Thực hiện gán các sự kiện
      * author: DVQuan(24/9/2020)
@@ -40,45 +44,12 @@ class BaseJS {
         $(".page-first").click(this.pageFirstData.bind(this));            //thực hiện về dầu trang
         $(".page-last").click(this.pageLastData.bind(this));              //thực hiện về cuối trang
     }
-    /**
-     * phím tắt 
-     * author: DVQuan(13/10/2020)
-     * */
-    shortKeys() {
-        //tắt form
-        var self = this;
-        Mousetrap.bind("esc", function () {
-            self.btnCancelOnClick();
-        });
-        //mở form
-        Mousetrap.bind("shift+n", function () {
-            self.btnAddOnClick();
-            self.formatDialog();
+    //#endregion
 
-        });
-        //thực hiện lưu
-        Mousetrap.bind("shift+s", function () {
-            self.btnAddOnClick();
-            self.btnSaveOnClick();
+    //#region method
 
-        })
 
-    }
-    /**
-     * lớp con sẽ override và mặc định focus vào trường dữ liệu mà nó mọng muốn
-     * author:DVQuan(30/9/2020)
-     * */
-    showFocusDetail() {
-    }
-
-    /**
-     * lớp con sẽ override lại hàm này và getData của nó
-     * author:DVQuan(30/9/2020)
-     */
-    getData(page, size) {
-        this.Data = [];
-    }
-
+    //#region phân trang
     /**
      * lấy tổng số bản ghi
      * author: DVQuan(13/10/2020)
@@ -104,6 +75,7 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     nextData() {
+        debugger
         if ((this.startPage + this.page) < this.countPages) {
             this.currentPage = this.currentPage + 1;  //trang hiện tại
             this.startPage = this.startPage + this.page; //bản ghi bắt đầu
@@ -147,6 +119,17 @@ class BaseJS {
         this.getData(this.page, this.startPage) //lấy lại data
         $('#txtPageNext').val(this.currentPage);
     }
+    //#endregion
+
+    //#region contact to DB
+    /**
+     * lớp con sẽ override lại hàm này và getData của nó
+     * author:DVQuan(30/9/2020)
+     */
+    getData(page, size) {
+        this.Data = [];
+    }
+
     /**
      * Hàm lấy dữ liệu tương ứng của 1 đối tượng
      * author: DVQuan(01/10/2020)
@@ -242,26 +225,10 @@ class BaseJS {
         }
     }
 
+    //#endregion
+
     // #region even->click
 
-    /**
-     * di chuyển form sang chỗ khác
-     * author: DVQuan(13/10/2020)
-     * */
-    draggableForm() {
-        debugger
-        $(function () {
-            $(".form-dialog").draggable();
-            $("#droppable").droppable({
-                drop: function (event, ui) {
-                    $(this)
-                        .addClass("ui-state-highlight")
-                        .find("p")
-                        .html("Dropped!");
-                }
-            });
-        });
-    }
     /**
      * sự kiên khi click vao button thêm mới -> show dialog
      * author: DVQuan(24/9/2020)
@@ -271,7 +238,7 @@ class BaseJS {
         this.showDialogDetail();
         this.showFocusDetail();
         this.formatDialog();
-        debugger
+        this.removeClassRequired();
 
     }
 
@@ -289,6 +256,16 @@ class BaseJS {
      * */
     btnRefreshOnclick() {
         this.loadData();
+    }
+
+    /**
+     * sự kiện click vào table thì đổi màu dòng được chọn
+     * @param {object} sender 
+     * createBy: DVQuan(24/9/2020)
+     */
+    rowOnClick(sender) {
+        $(this).addClass("row-selected");
+        $(this).siblings().removeClass("row-selected");
     }
 
     // #endregion
@@ -382,6 +359,7 @@ class BaseJS {
      */
     btnEditOnClick(seder) {
         try {
+
             var self = this;
             var rowSelected = null;
             //xác định đối tượng cần sửa
@@ -414,10 +392,12 @@ class BaseJS {
                     })
                     self.FormType = "Edit";
                     /* self.btnSaveOnClick(customerID);*/
+
                 }).fail(function (res) {
 
                 })
                 this.showDialogDetail();
+                /* this.removeClassRequired();*/
             } else {
                 alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
             }
@@ -477,16 +457,44 @@ class BaseJS {
         //TODO: đang thực hiện number
     }
 
+    /**
+     * remove class required
+     * author: DVQuan(17/10/2020)
+     * */
+    removeClassRequired() {
+        $('input[required]').removeClass('required-error');
+        $('input[required]').removeAttr("title");
+    }
+
     //#endregion
 
+    //#region fomat 
+
     /**
-     * sự kiện click vào table thì đổi màu dòng được chọn
-     * @param {object} sender 
-     * createBy: DVQuan(24/9/2020)
-     */
-    rowOnClick(sender) {
-        $(this).addClass("row-selected");
-        $(this).siblings().removeClass("row-selected");
+     * lớp con sẽ override và mặc định focus vào trường dữ liệu mà nó mọng muốn
+     * author:DVQuan(30/9/2020)
+     * */
+    showFocusDetail() {
+    }
+
+
+    /**
+     * di chuyển form sang chỗ khác
+     * author: DVQuan(13/10/2020)
+     * */
+    draggableForm() {
+        debugger
+        $(function () {
+            $(".form-dialog").draggable();
+            $("#droppable").droppable({
+                drop: function (event, ui) {
+                    $(this)
+                        .addClass("ui-state-highlight")
+                        .find("p")
+                        .html("Dropped!");
+                }
+            });
+        });
     }
 
     /**
@@ -498,7 +506,7 @@ class BaseJS {
     }
 
     /**
-     * định dạng lại giá trị cho input =''
+     * định dạng lại giá trị cho input ='' ->giá trị trống
      * author=DVQuan(07/10/2020)
      * */
     formatDialog() {
@@ -507,4 +515,35 @@ class BaseJS {
             $(value).val('');
         })
     }
+    //#endregion
+
+    //#region phím tắt
+    /**
+     * phím tắt 
+     * author: DVQuan(13/10/2020)
+     * */
+    shortKeys() {
+        //tắt form
+        var self = this;
+        Mousetrap.bind("esc", function () {
+            self.btnCancelOnClick();
+        });
+        //mở form
+        Mousetrap.bind("shift+n", function () {
+            self.btnAddOnClick();
+            self.formatDialog();
+
+        });
+        //thực hiện lưu
+        Mousetrap.bind("shift+s", function () {
+            self.btnAddOnClick();
+            self.btnSaveOnClick();
+
+        })
+
+    }
+    //#endregion
+
+    //#endregion
+
 }

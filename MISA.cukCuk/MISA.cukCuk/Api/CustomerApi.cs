@@ -10,15 +10,19 @@ using MISA.Service.Service;
 
 namespace MISA.cukCuk.Api
 {
-    [Route("customer")]
+    [Route("api/customer")]
     [ApiController]
     public class CustomerApi : ControllerBase
     {
+        #region constructor
         ICustomerService _customerService;
         public CustomerApi(ICustomerService customerService)
         {
             _customerService = customerService;
         }
+        #endregion
+
+        #region method
         // GET: api/<CustomerApi>
         [HttpGet]
         public ActionResult Get([FromQuery] int page, int size)
@@ -28,6 +32,13 @@ namespace MISA.cukCuk.Api
                 return Ok(customers);
             else
                 return NoContent();
+        }
+
+        [HttpGet("countpage")]
+        public int GetCountData()
+        {
+            return _customerService.GetCountData();
+            
         }
 
         // GET api/<CustomerApi>/5
@@ -85,5 +96,6 @@ namespace MISA.cukCuk.Api
                 return Ok(false);
             }
         }
+        #endregion
     }
 }

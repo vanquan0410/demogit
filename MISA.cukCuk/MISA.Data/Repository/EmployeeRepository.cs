@@ -7,7 +7,13 @@ using System.Text;
 
 namespace MISA.Data.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository:BaseRepository<Employee>,IEmployeeRepository
     {
+        #region constructor
+        public EmployeeRepository(IDataContext<Employee> dataContext) : base(dataContext)
+        {
+
+        }
+        #endregion
     }
 }

@@ -8,11 +8,15 @@ namespace MISA.Data.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T>
     {
+        #region khởi tạo
         protected IDataContext<T> _dataContext;
         public BaseRepository(IDataContext<T> dataContext)
         {
             _dataContext = dataContext;
         }
+        #endregion
+
+        #region method
         public bool Delete(T value)
         {
             return _dataContext.Delete(value);
@@ -28,7 +32,7 @@ namespace MISA.Data.Repository
             return _dataContext.GetAllData();
         }
 
-        public T GetByID(Guid Id)
+        public T GetByID(object Id)
         {
             return _dataContext.GetByID(Id);
         }
@@ -47,5 +51,6 @@ namespace MISA.Data.Repository
         {
             return _dataContext.Update(value);
         }
+        #endregion
     }
 }

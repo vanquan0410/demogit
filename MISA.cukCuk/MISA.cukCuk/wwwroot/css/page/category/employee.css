@@ -25,6 +25,9 @@
 .tblistemployee #titleWorkStatus{
     width:10%;
 }
+.tblistemployee #titlePosition {
+    width: 10%;
+}
 /*.dialog-in input[type="radio"]{
     width:20px;
 }
@@ -54,4 +57,46 @@ td #txtNote {
 td select {
    
     width: 98%;
+}
+.avatar-box {
+    position: relative;
+    width: 131px;
+    height: 80%;
+    border: 1px solid #ccc;
+    background-image: url('/content/img/Images/avatardefault.png');
+    background-position-y: -8px;
+    background-position-x: center;
+}
+
+    .avatar-box .btn-select-avatar {
+        position: absolute;
+        bottom: 8px;
+        left: 24px;
+    }
+
+    .avatar-box .btn-remove-avatar {
+        position: absolute;
+        bottom: 8px;
+        right: 24px;
+        background-image: url('/content/img/Images/cance.png');
+        background-repeat: no-repeat;
+        background-position: 7px;
+    }
+
+    .avatar-box .ct-btn-avatar {
+        min-width: 35px !important;
+        height: 22px;
+        line-height: 7px;
+    }
+
+        .avatar-box .ct-btn-avatar .btn-remove-avatar {
+            color: #f00;
+        }
+.tb-right-top {
+    padding-left: 67px;
+    padding-top: 1px;
+}
+.tb-right-butoom {
+    padding-left: 55px;
+    padding-top: 1px;
 }

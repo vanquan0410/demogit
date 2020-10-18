@@ -7,18 +7,22 @@
  * author: DVQuan(28/9/2020)
  * */
 class EmployeeJS extends BaseJS{
+    //#region constructor
     constructor(name) {
         super();
     }
+    //#endregion
 
+    //#region method
     /**
-     * lấy dữ liệu fake
+     * lấy dữ liệu fake của employee-> phân trang
      * author:DVQuan
      * */
-    getData() {
+    getData(page, size) {
+        debugger
         var res = this;
         $.ajax({
-            url: "/api/employee",
+            url: "/api/employee?page=" + page + "&size=" + size,
             method: "GET",
             data: "",
             datatype: "json",
@@ -31,32 +35,47 @@ class EmployeeJS extends BaseJS{
         }).fail(function (response) {
             res.Data = null;
         })
-        /* this.Data = data;*/
     }
 
-    saveToDB(employee, method) {
+    /**
+         * lưu trữ dữ liệu xuống DB mục đích của việc thêm mới hoặc chỉnh sửa
+         * author: DVQuan(30/9/2020)
+         * @param {any} customer
+         * @param {any} POST
+         * */
+    saveToDB(customer, method) {
         var self = this;
-        console.log(employee)
-        console.log(method)
-            $.ajax({
-                url: "/api/employee",
-                method: method,
-                data: JSON.stringify(employee),
-                contentType: "application/json",
-            }).done(function (res) {
-                if (res) {
-                    self.btnCancelOnClick();
-                    self.getData();
-                    self.loadData();
-                    alert('thanh cong');
-                }
-            }).fail(function (res) {
-                console.log(res);
-                alert('that bai');
-            })
+        var alter = 'Thêm';
+        if (method == 'PUT') {
+            alter = 'Sửa';
+        }
+        $.ajax({
+            url: "/api/employee/",
+            method: method,
+            data: JSON.stringify(customer),
+            contentType: "application/json",
 
+        }).done(function (res) {
+            if (res) {
+                //close form-dialog
+                self.btnCancelOnClick();
+                //load lại dữ liệu
+                self.getData(self.page, self.startPage);
+                self.loadData();
+                self.showMessage();
+                $('.message-title').html(alter + " thành công")
+            }
+        }).fail(function (res) {
+            self.showMessage();
+            $('.message-title').html(alter + " thất bại")
+        })
     }
 
+    /**
+     * xóa một bản ghi trong cơ sở dữ liệu
+     * @param {any} employee
+     * author: DVQuan(10/10/2020)
+     */
     deleteToDB(employee) {
         var self = this;
         if (employee != null) {
@@ -82,6 +101,7 @@ class EmployeeJS extends BaseJS{
     showFocusDetail() {
         $('#txtEmployeeCode').focus();
     }
+    //#endregion
 }
 
 /**
