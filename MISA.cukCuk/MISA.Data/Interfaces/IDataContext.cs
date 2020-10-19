@@ -68,5 +68,18 @@ namespace MISA.Data.Interfaces
         /// <returns></returns>
         /// CreatedBy: DVQuan
         int GetCountData();
+
+        /// <summary>
+        /// lấy Code của item lớn nhất
+        /// </summary>
+        /// <returns></returns>
+        String GetMaxItemCode();
+
+        /// <summary>
+        /// check item
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        bool checkItem(Object value, string storeName);
     }
 }

@@ -6,14 +6,62 @@
  * object js quản lý danh mục nhân viên
  * author: DVQuan(28/9/2020)
  * */
-class EmployeeJS extends BaseJS{
+class EmployeeJS extends BaseJS {
     //#region constructor
     constructor(name) {
         super();
+        this.loadDataSelectPossition();
+        this.loadDataSelectDepartment();
     }
     //#endregion
 
     //#region method
+    /**
+     * bidding dữ liệu ra select option
+     * author: DVQuan(12/10/2020)
+     * */
+    loadDataSelectPossition() {
+        debugger
+        $.ajax({
+            url: "/possition",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (res) {
+            debugger
+            $.each(res, function (index, value) {
+                var o = new Option(value.PossitionId, value.PositionName);
+                $(o).val(value.PossitionId);
+                $(o).html(value.PositionName);
+                $('#possition').append(o);
+            })
+        })
+    }
+
+    /**
+     * load data department
+     * author: DVQuan(19/10/2020)
+     * */
+    loadDataSelectDepartment() {
+        debugger
+        $.ajax({
+            url: "/department",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (res) {
+            debugger
+            $.each(res, function (index, value) {
+                var o = new Option(value.DepartmentId, value.DepartmentName);
+                $(o).val(value.DepartmentId);
+                $(o).html(value.DepartmentName);
+                $('#department').append(o);
+            })
+        })
+    }
+
     /**
      * lấy dữ liệu fake của employee-> phân trang
      * author:DVQuan
@@ -98,8 +146,34 @@ class EmployeeJS extends BaseJS{
             })
         }
     }
+
+    /**
+     * focus vào ô employee code
+     * */
     showFocusDetail() {
         $('#txtEmployeeCode').focus();
+    }
+
+    addItemCode() {
+        $.ajax({
+            url: "/api/employee/maxcodeemployee",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (res) {
+            //todo đang thực hiện
+            debugger
+            var code = res.slice(2);
+            var value = (code) + 1;
+            value = 'NV' + value;
+            
+            $('#txtEmployeeCode').val(res);
+        })
+    }
+
+    getName() {
+        return "nhân viên";
     }
     //#endregion
 }
@@ -112,9 +186,9 @@ var data = [];
 for (var i = 0; i < 10; i++) {
     var employee = {
         EmployeeCode: "kh00" + i + 1,
-        Fullname:"Dam Van Quan",
+        Fullname: "Dam Van Quan",
         Gender: "nam",
-        DateOfBirth:'1999-01-01',
+        DateOfBirth: '1999-01-01',
         Phone: "0987887678",
         DepartmentName: "Phong cong nghe",
         Email: "abc@gmail.com",

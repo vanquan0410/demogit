@@ -41,6 +41,17 @@ namespace MISA.cukCuk.Api
                 return NoContent();
         }
 
+        [HttpGet("maxcodeemployee")]
+        public ActionResult GetCountData()
+        {
+            var max= _employeeService.GetMaxItemCode();
+            if (max != null)
+                 return Ok(max);
+            else
+                return NoContent();
+
+        }
+
         // POST api/<EmployeeApi>
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)

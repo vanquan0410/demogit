@@ -1,4 +1,5 @@
 ﻿using MISA.Data.Interfaces;
+using MISA.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace MISA.Service.Service
     {
         #region constructor
         IBaseRepository<T> _baseRepository;
+        protected List<string> validateErrorResponseMsg = new List<string>();
         public BaseService(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
@@ -41,14 +43,37 @@ namespace MISA.Service.Service
             return _baseRepository.GetCountData();
         }
 
-        public bool Insert(T value)
+        public string GetMaxItemCode()
         {
-            return _baseRepository.Insert(value);
+            return _baseRepository.GetMaxItemCode();
+        }
+
+        public ServiceResponse Insert(T value)
+        {
+            var serviceResponse = new ServiceResponse();
+            if (validate(value) == false)
+            {
+                serviceResponse.Success = true;
+                serviceResponse.Msg.Add("Thành công");
+                serviceResponse.Data = _baseRepository.Insert(value);
+            }
+            else
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Msg.Add("trùng mã nhân viên");
+            }
+            return serviceResponse;
+           
         }
 
         public bool Update(T value)
         {
             return _baseRepository.Update(value);
+        }
+
+        protected virtual bool validate(T entity)
+        {
+            return true;
         }
         #endregion
     }

@@ -7,5 +7,6 @@ namespace MISA.Data.Interfaces
 {
     public interface IEmployeeRepository:IBaseRepository<Employee>
     {
+        bool checkItem(Object value);
     }
 }

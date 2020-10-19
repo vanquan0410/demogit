@@ -15,7 +15,7 @@ namespace MISA.Model
         /// id vij tri cong viec
         /// </summary>
         /// CreatedBY: DVQuan(16/10/2020)
-        public Guid PossitionId { get; set; }
+        public Guid PositionId { get; set; }
 
         /// <summary>
         /// Ten ci tri cong viec

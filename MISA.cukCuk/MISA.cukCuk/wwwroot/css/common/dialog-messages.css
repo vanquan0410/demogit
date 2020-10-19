@@ -1,4 +1,4 @@
-﻿
+﻿/*dialog help*/
 .dialog-modal-messages {
     display:none;
     position: absolute;
@@ -11,15 +11,98 @@
 }
 
 .form-message {
-    display:none;
+display:none;
     position: absolute;
     border: 5px solid #0973b9;
     border-radius: 3px;
     width: 300px;
-    height: 150px;
+    height: 125px;
     background-color: #fff;
     top: calc(50% - 150px);
     left: calc(50% - 202px);
     right: 0;
     bottom: 0;
+}
+.message-icon {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-image: url(/content/img/Images/question.png);
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+}
+.form-message .dialog-titlebar .dialog-titlebar-text {
+    align-self: center;
+    padding: 5px;
+    background-color: #0973b9;
+    color: #fff;
+}
+.form-message .button-icon button{
+    width: 60px;
+    height:25px;
+}
+.form-message .button-icon {
+    margin-top: 12px;
+    margin-left: 168px;
+}
+.form-message .message-title {
+    margin-top: 10px;
+}
+
+/*dialog warning*/
+.dialog-modal-messages-warning {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8080806e;
+    opacity: 1;
+}
+
+.form-message-warning {
+    display: none;
+    position: absolute;
+    border: 5px solid #0973b9;
+    border-radius: 3px;
+    width: 300px;
+    height: 125px;
+    background-color: #fff;
+    top: calc(50% - 150px);
+    left: calc(50% - 202px);
+    right: 0;
+    bottom: 0;
+}
+
+.message-icon-warning {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-image: url('/content/img/Images/warning (1).png');
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+}
+
+.form-message-warning .dialog-titlebar .dialog-titlebar-text {
+    align-self: center;
+    padding: 5px;
+    background-color: #0973b9;
+    color: #fff;
+}
+
+.form-message-warning .button-icon button {
+    width: 60px;
+    height: 25px;
+}
+
+.form-message-warning .button-icon {
+    margin-top: 35px;
+    margin-left: 232px;
+}
+
+.form-message-warning .message-title-warning {
+    margin-top: 10px;
 }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MISA.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MISA.Service.Interfaces
+namespace MISA.Service.Service
 {
-    interface IPossitionService
+    public interface IPossitionService: IBaseService<Possition>
     {
     }
 }

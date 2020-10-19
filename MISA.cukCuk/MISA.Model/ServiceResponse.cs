@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MISA.Model
 {
-    class ServiceResponse
+   public  class ServiceResponse
     {
         /// <summary>
         /// thông báo

@@ -62,6 +62,13 @@ var commonjs = {
             x = x.toString();
             x = x.replace(/^,/, ""); // Remove leading comma
             input.value = x;
-    }
+    },
 
+    /**
+     * định dạng number
+     * @param {any} input
+     */
+    fomatNumber(input) {
+        return new Intl.NumberFormat('vi', { style: 'currency', currency: currencyCode || 'VND' }).format(input);
+    }
 }

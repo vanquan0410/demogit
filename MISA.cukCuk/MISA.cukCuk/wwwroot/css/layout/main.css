@@ -3,7 +3,6 @@
     display: flex;
     font-family: 'fontello','Tahoma_Regular'!important;
     font-size:15px!important;
-
 }
 .main{
     width:calc(100% - 200px);

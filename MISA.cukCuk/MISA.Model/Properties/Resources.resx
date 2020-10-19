@@ -125,6 +125,10 @@
     <value>nam</value>
     <comment>giới tính nam</comment>
   </data>
+  <data name="Enum_Gender_Other" xml:space="preserve">
+    <value>khác</value>
+    <comment>giới tính khác</comment>
+  </data>
   <data name="Enum_WorkStatus_Stopeed" xml:space="preserve">
     <value>đã nghỉ việc</value>
     <comment>tình trạng đã nghỉ việc</comment>

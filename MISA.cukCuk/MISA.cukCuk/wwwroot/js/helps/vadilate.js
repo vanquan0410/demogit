@@ -14,6 +14,7 @@ var validateData = {
         if (!value || !(value && value.trim())) {
             $(obj).addClass('required-error');
             $(obj).attr("title", "Ban phải nhập thông tin này");
+
             return false;
         }
         else {

@@ -79,6 +79,15 @@ namespace MISA.Model.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to khác.
+        /// </summary>
+        internal static string Enum_Gender_Other {
+            get {
+                return ResourceManager.GetString("Enum_Gender_Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to đã nghỉ việc.
         /// </summary>
         internal static string Enum_WorkStatus_Stopeed {

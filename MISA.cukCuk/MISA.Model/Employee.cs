@@ -43,6 +43,8 @@ namespace MISA.Model
                         return MISA.Model.Properties.Resources.Enum_Gender_Male;
                     case 1:
                         return MISA.Model.Properties.Resources.Enum_Gender_Female;
+                    case 2:
+                        return MISA.Model.Properties.Resources.Enum_Gender_Other;
                     default:
                         return "không xác định";
 

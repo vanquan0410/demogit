@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Renci.SshNet.Messages.Transport;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using MISA.Model;
 
 namespace MISA.Service.Service
 {
@@ -35,7 +37,7 @@ namespace MISA.Service.Service
         /// <param name="value"></param>
         /// <returns></returns>
         /// CreateddBy: DVQuan(15/10/2020)
-        bool Insert(T value);
+        ServiceResponse Insert(T value);
 
         /// <summary>
         /// sử một bản ghi
@@ -59,6 +61,12 @@ namespace MISA.Service.Service
         /// <returns></returns>
         /// CreateddBy: DVQuan(15/10/2020)
         int GetCountData();
+
+        /// <summary>
+        /// lấy Code của item lớn nhất
+        /// </summary>
+        /// <returns></returns>
+        String GetMaxItemCode();
 
     }
 }

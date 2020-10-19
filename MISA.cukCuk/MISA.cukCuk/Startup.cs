@@ -49,6 +49,13 @@ namespace MISA.cukCuk
             services.AddScoped<ICustomerGroupService, CustomerGroupService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IPossitionService, PossitionService>();
+            services.AddScoped<IPossitionRepository, PossitionRepository>();
+           
+
+
 
         }
 

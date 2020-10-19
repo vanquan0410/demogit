@@ -43,6 +43,7 @@ class BaseJS {
         $(".page-prev").click(this.prevData.bind(this));                  //thực hiện prev data về trang trước
         $(".page-first").click(this.pageFirstData.bind(this));            //thực hiện về dầu trang
         $(".page-last").click(this.pageLastData.bind(this));              //thực hiện về cuối trang
+        $("#btnWarning").click(this.hideMessageWarning);
     }
     //#endregion
 
@@ -207,11 +208,14 @@ class BaseJS {
                     }
                     // định dạng type gender
                     if (formatName == "Gender") {
-                        if (value == true) {
+                        if (value == 0) {
                             var valueGender = "nam"
                             td = $(`<td>` + valueGender + `</td>`);
-                        } else {
+                        } else if (value == 1) {
                             var valueGender = "nữ"
+                            td = $(`<td>` + valueGender + `</td>`);
+                        } else {
+                            var valueGender = "Khác"
                             td = $(`<td>` + valueGender + `</td>`);
                         }
                     }
@@ -239,7 +243,7 @@ class BaseJS {
         this.showFocusDetail();
         this.formatDialog();
         this.removeClassRequired();
-
+        this.addItemCode();
     }
 
     /**
@@ -300,6 +304,7 @@ class BaseJS {
      */
     btnSaveOnClick() {
         try {
+            var seft = this;
             var inputRequired = $("[required]");
             var inputEmail = $("[requiredEmail]");
             var inputNumber = $("[requiredNumber]");
@@ -307,11 +312,21 @@ class BaseJS {
             //kiểm tra các trường dl ko được để trống
             $.each(inputRequired, function (index, input) {
                 if (!validateData.validateEmpty(input)) {
+                    debugger
                     isValid = false;
+                    seft.showMessageWarning();
+                    var alterName = input.getAttribute('requireName');
+                    $('.message-title-warning').html(alterName + " không được trống");
+                    return;
                 }
             })
             // kiểm tra email đúng định dạng
             if (!validateData.validateEmail(inputEmail)) {
+                var emailValue = $('#txtEmail').val();
+                if (emailValue || (emailValue && emailValue.trim())) {
+                    seft.showMessageWarning();
+                    $('.message-title-warning').html("email không đúng định dạng");
+                }
                 isValid = false;
             }
             if (isValid) {
@@ -330,17 +345,25 @@ class BaseJS {
                     debugger
                     var fieldName = $(field).attr('fieldName');
                     var format = $(field).attr('format');
+                    
                     if (format == 'number') {
-                        obj[fieldName] = Number($(field).val());
+                        debugger
+                        if ($(field).val() == '' || obj[fieldName] == null || obj[fieldName] == undefined) {
+                            obj[fieldName] = 0;
+                        }
+                        else {
+                            obj[fieldName] = Number($(field).val());
+                        }
+                        
                     }
                     else {
                         //lấy giá trị của trường
+                        debugger
                         obj[fieldName] = $(field).val();
                         if (format == 'date') {
                             debugger
                             if (obj[fieldName] == "") {
-                                alert('vui lòng chọn ngày sinh');
-                                return;
+                                obj[fieldName] = new Date();
                             }
                         }
                     }
@@ -359,7 +382,6 @@ class BaseJS {
      */
     btnEditOnClick(seder) {
         try {
-
             var self = this;
             var rowSelected = null;
             //xác định đối tượng cần sửa
@@ -397,6 +419,7 @@ class BaseJS {
 
                 })
                 this.showDialogDetail();
+                this.showFocusDetail();
                 /* this.removeClassRequired();*/
             } else {
                 alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
@@ -412,24 +435,39 @@ class BaseJS {
      */
     btnDeleteOnClick() {
         try {
+            var self = this;
+            debugger
+            var name = this.getName();
             var dataToDelete = {}
-            var rowSelected = $('tr.row-selected');
+            var rowSelected = $('tr.row-selected');  
             if (rowSelected && rowSelected.length != 0) {
-                var r = confirm("bạn có chắc muốn xóa bản ghi này");
-                if (r == true) {
+                this.showMessage();
+                $('.message-title').html("bạn chắc muốn xóa " + name + " này không");
+                $('#btnMessageOk').click(function () {
                     //lấy ID của đối tượng cần xoa
                     debugger
                     var fieldID = $('tr.row-selected').attr('fieldID');
                     var fieldIDName = $('table thead tr').attr('fieldId');
                     dataToDelete[fieldIDName] = $('tr.row-selected').attr('fieldID');
                     //thực hiện delete
-                    this.deleteToDB(dataToDelete);
+                    self.deleteToDB(dataToDelete);
+                    self.hideMessage();
+                })
+
+                $('#btnMessageCancel').click(function () {
+                    self.hideMessage();
+                })
+              
+                if (r == true) {
+                    
                 } else {
                     return;
                 }
             }
             else {
-                alert('vui long chọn 1 bản ghi để xóa');
+                self.showMessageWarning();
+                $('.message-title-warning').html("vui lòng chọn 1 nhân viên để xóa");
+                return;
             }
         } catch (e) {
 
@@ -496,6 +534,10 @@ class BaseJS {
             });
         });
     }
+    //tự dộng biding dl itemcode
+    addItemCode() {
+
+    }
 
     /**
      * dịnh dạng kiểm number
@@ -503,6 +545,8 @@ class BaseJS {
      * */
     formatNumber() {
         commonjs.reformatText(this);
+        commonjs.fomatNumber(this);
+
     }
 
     /**
@@ -541,6 +585,48 @@ class BaseJS {
 
         })
 
+    }
+
+    /**
+    * show message
+     * author: DVQuan(14/10/2020)
+    * */
+    showMessage() {
+        $('.dialog-modal-messages').show();
+        $('.form-message').show();
+    }
+
+    /**
+    * hide message
+    * author: DVQuan(14/10/2020)
+    * */
+    hideMessage() {
+        $('.dialog-modal-messages').hide();
+        $('.form-message').hide();
+    }
+
+    /**
+    * show message warning
+     * author: DVQuan(14/10/2020)
+    * */
+    showMessageWarning() {
+        $('.dialog-modal-messages-warning').show();
+        $('.form-message-warning').show();
+    }
+
+    /**
+    * hide message warning
+    * author: DVQuan(14/10/2020)
+    * */
+    hideMessageWarning() {
+        $('.dialog-modal-messages-warning').hide();
+        $('.form-message-warning').hide();
+    }
+
+    /**
+     * lấy tên
+     * */
+    getName() {
     }
     //#endregion
 

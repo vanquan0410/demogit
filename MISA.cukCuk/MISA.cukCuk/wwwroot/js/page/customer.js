@@ -38,6 +38,7 @@ class CustomerJS extends BaseJS {
             debugger
             $.each(res, function (index, value) {
                 var o = new Option(value.CustomerGroupName, value.CustomerGroupId);
+               
                 $(o).html(value.CustomerGroupName);
                 $('#customerGroup').append(o);
             })
@@ -148,6 +149,7 @@ class CustomerJS extends BaseJS {
             })
         }
     }
+
     /**
      * show message
      * author: DVQuan(14/10/2020)

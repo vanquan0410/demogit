@@ -3,45 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MISA.Model;
+using MISA.Service.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MISA.cukCuk.Api
 {
-    [Route("api/[controller]")]
+    [Route("possition")]
     [ApiController]
     public class PossitionApi : ControllerBase
     {
+
+        IPossitionService _possitionService;
+        public PossitionApi(IPossitionService possitionService)
+        {
+            _possitionService = possitionService;
+        }
         // GET: api/<PossitionApi>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<Possition> Get()
         {
-            return new string[] { "value1", "value2" };
+            var customerGroup = _possitionService.GetAllData();
+            if (customerGroup.Count() > 0)
+            {
+                return Ok(customerGroup);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // GET api/<PossitionApi>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<PossitionApi>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PossitionApi>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PossitionApi>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

@@ -37,7 +37,7 @@ namespace MISA.Data.DataAccess
             //khỏi tạo danh sách đối tượng cần trả về
             var values = new List<T>();
             //khai bao cau truy van
-            _mySqlCommand.CommandText = $"Proc_Get{className}";
+            _mySqlCommand.CommandText = $"Proc_Get{className}s";
 
             //thực thi công việc tới database
             MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
@@ -313,7 +313,69 @@ namespace MISA.Data.DataAccess
             _mySqlConnection.Close();
         }
 
-       
+        public string GetMaxItemCode()
+        {
+            var className = typeof(T).Name;
+            //khai báo câu truy vấn 
+            _mySqlCommand.CommandText = $"Proc_GetMax{className}Code";
+            //đọc dữ liệu
+            MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
+            //xử lý dữ liệu trả về
+            //xử lý dữ liệu trả về
+            while (mySqlDataReader.Read())
+            {
+                var value = mySqlDataReader.GetValue(0);
+                return Convert.ToString(value);
+            }
+            return default;
+        }
+
+        public bool checkItem(object value, string storeName)
+        {
+            
+            //khai báo câu truy vấn
+            _mySqlCommand.CommandText = storeName;
+            var parameter = _mySqlCommand.Parameters;
+            MySqlCommandBuilder.DeriveParameters(_mySqlCommand); //giống như tham chiếu
+            var properties = typeof(T).GetProperties();
+            foreach (var property in properties)
+            {
+                //lấy ra tên của property
+                var propertyName = property.Name;
+                //lấy ra giá trị của property
+                var propertyValue = property.GetValue(value);
+                //gán giá trị đầu vào cho các tham số trong store
+                _mySqlCommand.Parameters.AddWithValue($"@{propertyName}", propertyValue);
+            }
+            //đọc dữ liệu
+            MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
+            //xử lý dữ liệu trả về           
+            while (mySqlDataReader.Read())
+            {
+                var entity = Activator.CreateInstance<T>();
+                for (int i = 0; i < mySqlDataReader.FieldCount; i++)
+                {
+                    //lấy tên cột dữ liệu đang đọc
+                    var colName = mySqlDataReader.GetName(i);
+
+                    //lấy giá trị cell đang đọc
+                    var valueRead = mySqlDataReader.GetValue(i);
+
+                    //lấy property giống với tên cột được khai báo ở trên
+                    var property = entity.GetType().GetProperty(colName);
+
+                    //nếu có property tương ứng với tên cột thì gán dữ liệu tương ứng
+                    if (property != null && valueRead != DBNull.Value)
+                    {
+                        property.SetValue(entity, valueRead);
+                    }
+                }
+                if (entity != null)
+                    return false;      //false trùng
+            }
+            return true;   //true không trùng
+        }
+
         #endregion
     }
 }

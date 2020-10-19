@@ -12,8 +12,14 @@ namespace MISA.Data.Repository
         #region constructor
         public EmployeeRepository(IDataContext<Employee> dataContext) : base(dataContext)
         {
+        }
 
+        public bool checkItem(object value)
+        {
+            return _dataContext.checkItem(value, "Proc_GetEmployeeByCode");
         }
         #endregion
+
+
     }
 }

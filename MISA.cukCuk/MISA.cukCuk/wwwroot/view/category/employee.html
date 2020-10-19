@@ -12,6 +12,7 @@
     <link href="/css/common/paging.css" rel="stylesheet" />
     <link href="/css/common/gird.css" rel="stylesheet" />
     <link href="/css/common/dialog.css" rel="stylesheet" />
+    <link href="/css/common/dialog-messages.css" rel="stylesheet" />
     <link href="/css/page/category/customer.css" rel="stylesheet" />
     <link href="/css/common/responsive.css" rel="stylesheet" />
     <link href="/css/page/category/employee.css" rel="stylesheet" />
@@ -239,7 +240,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Mã Nhân viên<span style="color:#ff0000">(*)</span></td>
-                                <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeCode" type="text" required id="txtEmployeeCode" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeCode" type="text" required id="txtEmployeeCode" requireName="mã nhân viên"/></div></td>
                                 <td rowspan="6">
                                     <div style="width:100%;height:100%">
                                         <div class="avatar-box">
@@ -254,7 +255,7 @@
                             <tr>
 
                                 <td>Tên nhân viên<span style="color:#ff0000">(*)</span></td>
-                                <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeName" type="text" required id="txtEmployeeName" style="width:96%" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeName" type="text" required id="txtEmployeeName" style="width:96%" requireName="tên nhân viên"/></div></td>
 
                             </tr>
                             <tr>
@@ -264,19 +265,20 @@
                                 <td>
                                     <div class="dialog-in">
                                         <select format="select" id="gender" fieldName="Gender" style="width: 92.1%;">
-                                            <option value="true">Nam</option>
-                                            <option value="false">Nữ</option>
+                                            <option value="0">Nam</option>
+                                            <option value="1">Nữ</option>
+                                            <option value="2">Khác</option>
                                         </select>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="lable">Email <span style="color:#ff0000">(*)</span></td>
-                                <td colspan="3"><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input fomat="email" fieldName="Email" type="text" requiredEmail id="txtEmail" required requireName="email"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">DT di động <span style="color:#ff0000">(*)</span></td>
-                                <td colspan="3"><div class="dialog-in"><input fieldName="PhoneNumber" type="text" id="txtPhone" style="width:96.2%;" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input fieldName="PhoneNumber" type="text" id="txtPhone" style="width:96.2%;" required requireName="số điện thoại"/></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Số CMT/HC</td>
@@ -286,7 +288,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Nơi cấp CMND</td>
-                                <td colspan="5"><div class="dialog-in"><input fieldName="IdentityPlace" type="text" id="txtCmmt" style="width:99.5%"/></div></td>
+                                <td colspan="5"><div class="dialog-in"><input fieldName="IdentityPlace" type="text" id="txtCmmt" style="width:99.5%" /></div></td>
                             </tr>
                             <tr>
 
@@ -296,21 +298,17 @@
                                 <td class="lable">Vị trí</td>
                                 <td colspan="4">
                                     <div class="dialog-in">
-                                        <select format="select" id="position" style=" width: 100.2%;">
-                                            <option value="true">Nhân viên chính thức</option>
-                                            <option value="false">Nhân viên thử việc</option>
+                                        <select fieldName="PossitionId" id="possition" style=" width: 100.2%;">
                                         </select>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                
+
                                 <td class="lable">Phòng ban</td>
                                 <td colspan="4">
                                     <div class="dialog-in">
-                                        <select format="select" id="department" style=" width: 100.2%;">
-                                            <option value="true">Phòng đào tạo</option>
-                                            <option value="false"></option>
+                                        <select fieldName="DepartmentId" id="department" style=" width: 100.2%;">
                                         </select>
                                     </div>
                                 </td>
@@ -319,7 +317,7 @@
                                 <td class="lable">Mã số thuế cá nhân </td>
                                 <td><div class="dialog-in"><input fieldName="TaxCode" type="text" id="txtThue" /></div></td>
                                 <td class="lable"><span class="tb-right-butoom">Mức lương</span></td>
-                                <td colspan="2"><div class="dialog-in"><input fieldName="Salary" fomat="number" convertNumber type="text" id="txtSalary" style="width: 98.5%" /></div></td>
+                                <td colspan="2"><div class="dialog-in"><input fieldName="Salary" format="number" convertNumber type="text" id="txtSalary" style="width: 98.5%" /></div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
@@ -328,8 +326,8 @@
                                 <td colspan="2">
                                     <div class="dialog-in">
                                         <select format="select" fieldName="WorkStatus" style="width: 100.4%;">
-                                            <option value="Đang làm việc">Đang làm việc</option>
-                                            <option value="Nghỉ việc">Nghỉ việc</option>
+                                            <option value="0">Đang làm việc</option>
+                                            <option value="1">Nghỉ việc</option>
                                         </select>
                                     </div>
 
@@ -371,7 +369,39 @@
         <button id="dialog-btnfocus" style="width: 0px;height: 0px;background: white;border: none;">
         </button>
     </div>
+    <!--Form Message-->
+    <div class="dialog-modal-messages">
+        <div class="form-message">
+            <div class="dialog-titlebar">
+                <div class="dialog-titlebar-text">Thông báo</div>
+            </div>
+            <div class="message-icon"></div>
+            <div class="message-title">aaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <div class="button-icon">
+                <button id="btnMessageOk">có</button>
+                <button id="btnMessageCancel">không</button>
+            </div>
 
+        </div>
+    </div>
+    <!--end Form mesage-->
+
+    <!--Form Message warning-->
+    <div class="dialog-modal-messages-warning">
+        <div class="form-message-warning">
+            <div class="dialog-titlebar">
+                <div class="dialog-titlebar-text">Thông báo</div>
+            </div>
+            <div class="message-icon-warning"></div>
+            <div class="message-title-warning"></div>
+            <div class="button-icon">
+                <button id="btnWarning">Đồng ý</button>
+
+            </div>
+
+        </div>
+    </div>
+    <!--end Form mesage-->
     <script src="/js/lib/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
