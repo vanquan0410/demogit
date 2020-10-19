@@ -7,7 +7,7 @@ namespace MISA.Service.Service
 {
     public interface IEmployeeService:IBaseService<Employee>
     {
-        bool checkDuplicate(String employeeCode);
+        Employee checkDuplicate(String employeeCode);
 
     }
 }

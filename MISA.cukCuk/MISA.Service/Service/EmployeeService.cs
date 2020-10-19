@@ -18,22 +18,9 @@ namespace MISA.Service.Service
 
         #region method
         //check trùng mã
-        public bool checkDuplicate(string employeeCode)
+        public Employee checkDuplicate(string employeeCode)
         {
             return _employeeRepository.checkItem(employeeCode);
-        }
-        //validate
-
-        protected override bool validate(Employee entity)
-        {
-            var isvalid = true;
-            var isvalidCode = checkDuplicate(entity.EmployeeCode);
-            if (isvalidCode)
-            {
-                isvalid = false;
-                
-            }
-
         }
         #endregion
 

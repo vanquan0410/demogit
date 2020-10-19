@@ -330,24 +330,25 @@ namespace MISA.Data.DataAccess
             return default;
         }
 
-        public bool checkItem(object value, string storeName)
+        public T checkItem(object id, string storeName)
         {
-            
+
+            //lấy name của class
+            var className = typeof(T).Name;
             //khai báo câu truy vấn
-            _mySqlCommand.CommandText = storeName;
-            var parameter = _mySqlCommand.Parameters;
+            _mySqlCommand.CommandText = $"Proc_Get{className}ById";
+            //lấy ra các parameter bên trong store
+            var parameters = _mySqlCommand.Parameters;
             MySqlCommandBuilder.DeriveParameters(_mySqlCommand); //giống như tham chiếu
             var properties = typeof(T).GetProperties();
-            foreach (var property in properties)
+            foreach (MySqlParameter param in parameters)
             {
-                //lấy ra tên của property
-                var propertyName = property.Name;
-                //lấy ra giá trị của property
-                var propertyValue = property.GetValue(value);
-                //gán giá trị đầu vào cho các tham số trong store
-                _mySqlCommand.Parameters.AddWithValue($"@{propertyName}", propertyValue);
+                var paramName = param.ParameterName.Replace("@", string.Empty);
+                param.Value = id;
             }
-            //đọc dữ liệu
+            /*//gán giá trị đầu vào cho các tham số trong store
+            _mySqlCommand.Parameters.AddWithValue("CustomerId", id);
+            //đọc dữ liệu*/
             MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
             //xử lý dữ liệu trả về           
             while (mySqlDataReader.Read())
@@ -359,21 +360,20 @@ namespace MISA.Data.DataAccess
                     var colName = mySqlDataReader.GetName(i);
 
                     //lấy giá trị cell đang đọc
-                    var valueRead = mySqlDataReader.GetValue(i);
+                    var value = mySqlDataReader.GetValue(i);
 
                     //lấy property giống với tên cột được khai báo ở trên
                     var property = entity.GetType().GetProperty(colName);
 
                     //nếu có property tương ứng với tên cột thì gán dữ liệu tương ứng
-                    if (property != null && valueRead != DBNull.Value)
+                    if (property != null && value != DBNull.Value)
                     {
-                        property.SetValue(entity, valueRead);
+                        property.SetValue(entity, value);
                     }
                 }
-                if (entity != null)
-                    return false;      //false trùng
+                return entity;
             }
-            return true;   //true không trùng
+            return default;
         }
 
         #endregion

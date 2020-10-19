@@ -110,12 +110,12 @@ class EmployeeJS extends BaseJS {
                 //load lại dữ liệu
                 self.getData(self.page, self.startPage);
                 self.loadData();
-                self.showMessage();
-                $('.message-title').html(alter + " thành công")
+                seft.showMessageWarning();
+                $('.message-title-warning').html(alter + " thành công");
             }
         }).fail(function (res) {
-            self.showMessage();
-            $('.message-title').html(alter + " thất bại")
+            seft.showMessageWarning();
+            $('.message-title-warning').html(alter + " thất bại");
         })
     }
 
@@ -171,7 +171,23 @@ class EmployeeJS extends BaseJS {
             $('#txtEmployeeCode').val(res);
         })
     }
+    /**
+    * show message warning
+     * author: DVQuan(14/10/2020)
+    * */
+    showMessageWarning() {
+        $('.dialog-modal-messages-warning').show();
+        $('.form-message-warning').show();
+    }
 
+    /**
+    * hide message warning
+    * author: DVQuan(14/10/2020)
+    * */
+    hideMessageWarning() {
+        $('.dialog-modal-messages-warning').hide();
+        $('.form-message-warning').hide();
+    }
     getName() {
         return "nhân viên";
     }

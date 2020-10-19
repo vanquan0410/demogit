@@ -14,7 +14,7 @@ namespace MISA.Data.Repository
         {
         }
 
-        public bool checkItem(object value)
+        public Employee checkItem(object value)
         {
             return _dataContext.checkItem(value, "Proc_GetEmployeeByCode");
         }

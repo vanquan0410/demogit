@@ -48,21 +48,9 @@ namespace MISA.Service.Service
             return _baseRepository.GetMaxItemCode();
         }
 
-        public ServiceResponse Insert(T value)
+        public bool Insert(T value)
         {
-            var serviceResponse = new ServiceResponse();
-            if (validate(value) == false)
-            {
-                serviceResponse.Success = true;
-                serviceResponse.Msg.Add("Thành công");
-                serviceResponse.Data = _baseRepository.Insert(value);
-            }
-            else
-            {
-                serviceResponse.Success = false;
-                serviceResponse.Msg.Add("trùng mã nhân viên");
-            }
-            return serviceResponse;
+            return _baseRepository.Insert(value);
            
         }
 
@@ -71,10 +59,7 @@ namespace MISA.Service.Service
             return _baseRepository.Update(value);
         }
 
-        protected virtual bool validate(T entity)
-        {
-            return true;
-        }
+       
         #endregion
     }
 }

@@ -80,6 +80,6 @@ namespace MISA.Data.Interfaces
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        bool checkItem(Object value, string storeName);
+        T checkItem(Object value, string storeName);
     }
 }

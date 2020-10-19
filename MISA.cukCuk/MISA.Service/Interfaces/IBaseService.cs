@@ -37,7 +37,7 @@ namespace MISA.Service.Service
         /// <param name="value"></param>
         /// <returns></returns>
         /// CreateddBy: DVQuan(15/10/2020)
-        ServiceResponse Insert(T value);
+        bool Insert(T value);
 
         /// <summary>
         /// sử một bản ghi
