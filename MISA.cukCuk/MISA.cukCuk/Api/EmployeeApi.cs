@@ -59,18 +59,28 @@ namespace MISA.cukCuk.Api
         }
 
         // POST api/<EmployeeApi>
+        /* [HttpPost]
+         public IActionResult Post([FromBody] Employee employee)
+         {
+             var customerResult = _employeeService.Insert(employee);
+             if (customerResult)
+             {
+                 return Ok(true);
+             }
+             else
+             {
+                 return Ok(false);
+             }
+         }*/
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
         {
-            var customerResult = _employeeService.Insert(employee);
-            if (customerResult)
-            {
-                return Ok(true);
-            }
+            var serviceResponse = _employeeService.Insert(employee);
+            var affectRows = serviceResponse.Data != null ? ((int)serviceResponse.Data) : 0;
+            if (affectRows > 0)
+                return CreatedAtAction("POST", affectRows);
             else
-            {
-                return Ok(false);
-            }
+                return BadRequest(serviceResponse);
         }
 
         // PUT api/<EmployeeApi>/5

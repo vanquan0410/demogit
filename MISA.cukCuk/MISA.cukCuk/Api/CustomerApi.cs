@@ -53,7 +53,7 @@ namespace MISA.cukCuk.Api
         }
 
         // POST api/<CustomerApi>
-        [HttpPost]
+/*        [HttpPost]
         public IActionResult Post([FromBody] Customer customer)
         {
             var customerResult = _customerService.Insert(customer);
@@ -65,7 +65,7 @@ namespace MISA.cukCuk.Api
             {
                 return Ok(false);
             }
-        }
+        }*/
 
         // PUT api/<CustomerApi>/5
         [HttpPut]

@@ -30,7 +30,11 @@ namespace MISA.Service.Service
             var isvalid = true;
             //check trùng mã
             if (!checkDuplicate(entity.EmployeeCode))
+            {
                 isvalid = false;
+                validateErrorResponseMsg.Add("bị trùng với mã nhân viên  " + _employeeRepository.checkItem(entity.EmployeeCode).EmployeeName);
+            }
+              
             return isvalid;
         }
         #endregion

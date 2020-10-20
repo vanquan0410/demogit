@@ -53,17 +53,21 @@ namespace MISA.Service.Service
              return _baseRepository.Insert(value);
 
          }*/
-        public bool Insert(T value)
+        public ServiceResponse Insert(T value)
         {
+            ServiceResponse serviceResponse = new ServiceResponse();
             if (Validate(value) == true)
             {
-                return _baseRepository.Insert(value);
+                serviceResponse.Success = true;
+                serviceResponse.Msg.Add("thành công");
+                serviceResponse.Data = _baseRepository.Insert(value);
             }
             else
             {
-                return false;
+                serviceResponse.Success = false;
+                serviceResponse.Msg = validateErrorResponseMsg;
             }
-
+            return serviceResponse;
         }
 
         public bool Update(T value)
