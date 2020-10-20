@@ -117,9 +117,11 @@ class EmployeeJS extends BaseJS {
                 setTimeout(self.hideMessageWarning, 1000);
             }
         }).fail(function (res) {
+            debugger
             self.showMessageWarning();
-            $('.message-title-warning').html(alter + " thất bại");
-            setTimeout(self.hideMessageWarning, 1000);
+            $('.message-title-warning').html(res.responseJSON.Msg);
+            $('.button-icon').addClass('setdialogtitle');
+           // setTimeout(self.hideMessageWarning, 1000);
         })
     }
 
@@ -172,11 +174,25 @@ class EmployeeJS extends BaseJS {
         }).done(function (res) {
             //todo đang thực hiện
             debugger
-            var code = res.slice(2);
+            /*var code = res.slice(2);
             var value = (code) + 1;
-            value = 'NV' + value;
-            
-            $('#txtEmployeeCode').val(res);
+            value = 'NV' + value;*/
+             var value = res.split('');
+             var sum = parseInt(value[value.length - 1]);
+             if (sum == 9) {
+                 value[value.length - 2] = parseInt(value[value.length - 2]) + 1;
+                 value[value.length - 1] = 0;
+             }
+             else {
+                 value[value.length-1] = parseInt(value[value.length - 1]) + 1;
+             }
+             value=value.join('');
+
+
+            /*debugger
+            var code = res.slice(index);
+            var valuecode = (code) + 1;*/
+            $('#txtEmployeeCode').val(value);
         })
     }
     /**
@@ -195,6 +211,7 @@ class EmployeeJS extends BaseJS {
     hideMessageWarning() {
         $('.dialog-modal-messages-warning').hide();
         $('.form-message-warning').hide();
+        $('.button-icon').removeClass('setdialogtitle');
     }
 
     /**

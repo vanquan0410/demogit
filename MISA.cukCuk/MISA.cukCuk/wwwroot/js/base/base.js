@@ -235,7 +235,7 @@ class BaseJS {
                             var valueGender = "nữ"
                             td = $(`<td>` + valueGender + `</td>`);
                         } else {
-                            var valueGender = "Khác"
+                            var valueGender = "khác"
                             td = $(`<td>` + valueGender + `</td>`);
                         }
                     }

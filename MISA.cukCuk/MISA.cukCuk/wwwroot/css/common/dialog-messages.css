@@ -107,6 +107,6 @@ display:none;
     margin-top: 10px;
 }
 
-.dialog-warning{
-
+.form-message-warning .setdialogtitle {
+    margin-top: 15px !important;
 }
