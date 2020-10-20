@@ -13,6 +13,7 @@ class EmployeeJS extends BaseJS {
         this.loadDataSelectPossition();
         this.loadDataSelectDepartment();
     }
+
     //#endregion
 
     //#region method
@@ -31,8 +32,8 @@ class EmployeeJS extends BaseJS {
         }).done(function (res) {
             debugger
             $.each(res, function (index, value) {
-                var o = new Option(value.PossitionId, value.PositionName);
-                $(o).val(value.PossitionId);
+                var o = new Option(value.PositionId, value.PositionName);
+                $(o).val(value.PositionId);
                 $(o).html(value.PositionName);
                 $('#possition').append(o);
             })

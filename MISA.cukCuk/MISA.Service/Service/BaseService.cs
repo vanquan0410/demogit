@@ -48,10 +48,22 @@ namespace MISA.Service.Service
             return _baseRepository.GetMaxItemCode();
         }
 
+        /* public bool Insert(T value)
+         {
+             return _baseRepository.Insert(value);
+
+         }*/
         public bool Insert(T value)
         {
-            return _baseRepository.Insert(value);
-           
+            if (Validate(value) == true)
+            {
+                return _baseRepository.Insert(value);
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public bool Update(T value)
@@ -59,7 +71,10 @@ namespace MISA.Service.Service
             return _baseRepository.Update(value);
         }
 
-       
+        protected virtual bool Validate(T entity)
+        {
+            return true;
+        }
         #endregion
     }
 }

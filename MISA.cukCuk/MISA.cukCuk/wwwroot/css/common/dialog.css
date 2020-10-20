@@ -237,3 +237,13 @@ input[type="text" i] {
     height: 520px;
     width: 720px !important;
 }
+/*.form-dialog {
+   
+    overflow: auto;
+    resize: both;
+    width: 400px;
+}
+.sidebar .form-dialog::-webkit-scrollbar {
+    width: 0px;*/
+     /*background-color: darkgray; */
+/*}*/

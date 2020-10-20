@@ -21,6 +21,7 @@ namespace MISA.cukCuk
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    
                 });
     }
 }

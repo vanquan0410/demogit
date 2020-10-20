@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * object cha quản lý danh mục
  */
 class BaseJS {
@@ -28,6 +29,7 @@ class BaseJS {
      * author: DVQuan(24/9/2020)
      */
     initEvents() {
+        var sel = this;
         $('#btnAdd').click(this.btnAddOnClick.bind(this));                //thực hiện showdialog add
         $('#btnEdit').click(this.btnEditOnClick.bind(this));              //thực hiện hide dialog edit
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));          // thực hiện event delete
@@ -38,12 +40,25 @@ class BaseJS {
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));          //thực hiện event hủy
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));   //thực hiện event hủy
         $('#dialog-btnfocus').focus(this.showFocusDetail);                //thực hiện event focus
-        $("table").on("click", "tbody tr", this.rowOnClick);              //thực hiện event click on table
+        //thực hiện event click on table
+        $(document).ready(function () {
+            $("table").on("click", "tbody tr", function (event) {
+
+                if (event.ctrlKey) {
+                    sel.rowOnMultiClick(this);
+                    //is ctrl + click
+                } else {
+                    debugger
+                    sel.rowOnClick(this);
+                }
+            });
+        })
         $(".page-next").click(this.nextData.bind(this));                  // thực hiện next data sang trang kế tiếp
         $(".page-prev").click(this.prevData.bind(this));                  //thực hiện prev data về trang trước
         $(".page-first").click(this.pageFirstData.bind(this));            //thực hiện về dầu trang
         $(".page-last").click(this.pageLastData.bind(this));              //thực hiện về cuối trang
         $("#btnWarning").click(this.hideMessageWarning);
+
     }
     //#endregion
 
@@ -273,10 +288,19 @@ class BaseJS {
      * createBy: DVQuan(24/9/2020)
      */
     rowOnClick(sender) {
-        $(this).addClass("row-selected");
-        $(this).siblings().removeClass("row-selected");
+        debugger
+        $(sender).addClass("row-selected");
+        $(sender).siblings().removeClass("row-selected");
     }
 
+    /**
+     * sự kiện click vào table thì đổi màu dòng được chọn
+     * @param {object} sender
+     * createBy: DVQuan(24/9/2020)
+     */
+    rowOnMultiClick(sender) {
+        $(sender).addClass("row-selected");
+    }
     /**
      *
      * sự kiện click vào table thì đổi màu dòng được chọn và không xóa đi dòng trước đã chọn
@@ -459,9 +483,31 @@ class BaseJS {
             var name = this.getName();
             var dataToDelete = {}
             var rowSelected = $('tr.row-selected');
-            if (rowSelected && rowSelected.length != 0) {
+            var rowName = $('thead tr');
+            if (rowSelected && rowSelected.length > 1) {
                 this.showMessage();
-                $('.message-title').html("bạn chắc muốn xóa " + name + " này không");
+                $('.message-title').html("bạn chắc muốn xóa các " + name + " này không");
+                $('#btnMessageOk').click(function () {
+                    $.each(rowSelected, function (index, value) {
+                        //lấy ID của đối tượng cần xoa
+                        debugger
+                        var fieldID = value.getAttribute('fieldid');
+                        var fieldIDName = rowName.attr('fieldID');
+                        dataToDelete[fieldIDName] = value.getAttribute('fieldID');
+                        //thực hiện delete
+                        self.deleteToDB(dataToDelete);
+                        self.hideMessage();
+                    })
+                })
+                
+                $('#btnMessageCancel').click(function () {
+                    self.hideMessage();
+                })
+            }
+            else if (rowSelected && rowSelected.length ==1) {
+                this.showMessage();
+                var getNameElement = $('tr.row-selected td')[1];
+                $('.message-title').html("bạn chắc muốn xóa " + name +" "+ getNameElement.innerText + " không");
                 $('#btnMessageOk').click(function () {
                     //lấy ID của đối tượng cần xoa
                     debugger
@@ -476,12 +522,6 @@ class BaseJS {
                 $('#btnMessageCancel').click(function () {
                     self.hideMessage();
                 })
-
-                if (r == true) {
-
-                } else {
-                    return;
-                }
             }
             else {
                 self.showMessageWarning();
@@ -598,61 +638,61 @@ class BaseJS {
 
         });
         //thực hiện lưu
-        Mousetrap.bind("shift+s", function () {
+        Mousetrap.bind("ctrl+s", function () {
             self.btnAddOnClick();
             self.btnSaveOnClick();
         })
     }
 
 
-/**
-* show message
- * author: DVQuan(14/10/2020)
-* */
-showMessage() {
-    $('.dialog-modal-messages').show();
-    $('.form-message').show();
-}
+    /**
+    * show message
+     * author: DVQuan(14/10/2020)
+    * */
+    showMessage() {
+        $('.dialog-modal-messages').show();
+        $('.form-message').show();
+    }
 
-/**
-* hide message
-* author: DVQuan(14/10/2020)
-* */
-hideMessage() {
-    $('.dialog-modal-messages').hide();
-    $('.form-message').hide();
-}
+    /**
+    * hide message
+    * author: DVQuan(14/10/2020)
+    * */
+    hideMessage() {
+        $('.dialog-modal-messages').hide();
+        $('.form-message').hide();
+    }
 
-/**
-* show message warning
- * author: DVQuan(14/10/2020)
-* */
-showMessageWarning() {
-    $('.dialog-modal-messages-warning').show();
-    $('.form-message-warning').show();
-}
+    /**
+    * show message warning
+     * author: DVQuan(14/10/2020)
+    * */
+    showMessageWarning() {
+        $('.dialog-modal-messages-warning').show();
+        $('.form-message-warning').show();
+    }
 
-/**
-* hide message warning
-* author: DVQuan(14/10/2020)
-* */
-hideMessageWarning() {
-    $('.dialog-modal-messages-warning').hide();
-    $('.form-message-warning').hide();
-}
+    /**
+    * hide message warning
+    * author: DVQuan(14/10/2020)
+    * */
+    hideMessageWarning() {
+        $('.dialog-modal-messages-warning').hide();
+        $('.form-message-warning').hide();
+    }
 
-/**
- * lấy tên
- * */
-getName() {
-}
-/**
- * lấy tên class
- * author: DVQuan(201/10/2020)
- * */
-getClassName() {
+    /**
+     * lấy tên
+     * */
+    getName() {
+    }
+    /**
+     * lấy tên class
+     * author: DVQuan(201/10/2020)
+     * */
+    getClassName() {
 
-}
+    }
     //#endregion
 
     //#endregion

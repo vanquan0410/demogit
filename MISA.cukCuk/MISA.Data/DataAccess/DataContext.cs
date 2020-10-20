@@ -208,14 +208,15 @@ namespace MISA.Data.DataAccess
 
         public bool Insert(T value)
         {
+            _mySqlCommand.Parameters.Clear();
             //lấy tên của class
             var className = typeof(T).Name;
             //khai báo câu truy vấn
             _mySqlCommand.CommandText = $"Proc_Add{className}";
             //lấy ra các parameter bên trong store
+            MySqlCommandBuilder.DeriveParameters(_mySqlCommand);  //giống như tham chiếu
             var parameters = _mySqlCommand.Parameters;
-            MySqlCommandBuilder.DeriveParameters(_mySqlCommand); //giống như tham chiếu
-            var properties = typeof(T).GetProperties();
+            /*var properties = typeof(T).GetProperties();*/
             foreach (MySqlParameter param in parameters)
             {
                 var paramName = param.ParameterName.Replace("@", string.Empty);
@@ -332,48 +333,54 @@ namespace MISA.Data.DataAccess
 
         public T checkItem(object id, string storeName)
         {
-
+            _mySqlCommand.Parameters.Clear();
             //lấy name của class
             var className = typeof(T).Name;
             //khai báo câu truy vấn
-            _mySqlCommand.CommandText = $"Proc_Get{className}ById";
-            //lấy ra các parameter bên trong store
-            var parameters = _mySqlCommand.Parameters;
-            MySqlCommandBuilder.DeriveParameters(_mySqlCommand); //giống như tham chiếu
-            var properties = typeof(T).GetProperties();
-            foreach (MySqlParameter param in parameters)
-            {
-                var paramName = param.ParameterName.Replace("@", string.Empty);
-                param.Value = id;
-            }
-            /*//gán giá trị đầu vào cho các tham số trong store
-            _mySqlCommand.Parameters.AddWithValue("CustomerId", id);
-            //đọc dữ liệu*/
+            _mySqlCommand.CommandText = $"Proc_Get{className}ByCode";
+            _mySqlCommand.Parameters.AddWithValue("EmployeeCode", id);
+            /* //lấy ra các parameter bên trong store
+             var parameters = _mySqlCommand.Parameters;
+             MySqlCommandBuilder.DeriveParameters(_mySqlCommand); //giống như tham chiếu
+             var properties = typeof(T).GetProperties();
+             foreach (MySqlParameter param in parameters)
+             {
+                 var paramName = param.ParameterName.Replace("@", string.Empty);
+                 param.Value = id;
+             }
+             *//*//gán giá trị đầu vào cho các tham số trong store
+             _mySqlCommand.Parameters.AddWithValue("CustomerId", id);
+             //đọc dữ liệu*//*
+                             * */
             MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
-            //xử lý dữ liệu trả về           
-            while (mySqlDataReader.Read())
-            {
-                var entity = Activator.CreateInstance<T>();
-                for (int i = 0; i < mySqlDataReader.FieldCount; i++)
-                {
-                    //lấy tên cột dữ liệu đang đọc
-                    var colName = mySqlDataReader.GetName(i);
+             //xử lý dữ liệu trả về           
+             while (mySqlDataReader.Read())
+             {
+                 var entity = Activator.CreateInstance<T>();
+                 for (int i = 0; i < mySqlDataReader.FieldCount; i++)
+                 {
+                     //lấy tên cột dữ liệu đang đọc
+                     var colName = mySqlDataReader.GetName(i);
 
-                    //lấy giá trị cell đang đọc
-                    var value = mySqlDataReader.GetValue(i);
+                     //lấy giá trị cell đang đọc
+                     var value = mySqlDataReader.GetValue(i);
 
-                    //lấy property giống với tên cột được khai báo ở trên
-                    var property = entity.GetType().GetProperty(colName);
+                     //lấy property giống với tên cột được khai báo ở trên
+                     var property = entity.GetType().GetProperty(colName);
 
-                    //nếu có property tương ứng với tên cột thì gán dữ liệu tương ứng
-                    if (property != null && value != DBNull.Value)
-                    {
-                        property.SetValue(entity, value);
-                    }
-                }
-                return entity;
-            }
+                     //nếu có property tương ứng với tên cột thì gán dữ liệu tương ứng
+                     if (property != null && value != DBNull.Value)
+                     {
+                         property.SetValue(entity, value);
+                     }
+                 }
+                mySqlDataReader.Close();
+                 return entity;
+             }
+            mySqlDataReader.Close();
             return default;
+
+
         }
 
         #endregion

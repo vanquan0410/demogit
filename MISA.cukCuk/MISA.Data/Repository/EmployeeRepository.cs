@@ -13,7 +13,9 @@ namespace MISA.Data.Repository
         public EmployeeRepository(IDataContext<Employee> dataContext) : base(dataContext)
         {
         }
+        #endregion
 
+        #region method
         public Employee checkItem(object value)
         {
             return _dataContext.checkItem(value, "Proc_GetEmployeeByCode");
