@@ -108,14 +108,17 @@ class EmployeeJS extends BaseJS {
                 //close form-dialog
                 self.btnCancelOnClick();
                 //load lại dữ liệu
+                debugger
                 self.getData(self.page, self.startPage);
                 self.loadData();
-                seft.showMessageWarning();
+                self.showMessageWarning();
                 $('.message-title-warning').html(alter + " thành công");
+                setTimeout(self.hideMessageWarning, 1000);
             }
         }).fail(function (res) {
-            seft.showMessageWarning();
+            self.showMessageWarning();
             $('.message-title-warning').html(alter + " thất bại");
+            setTimeout(self.hideMessageWarning, 1000);
         })
     }
 
@@ -136,13 +139,17 @@ class EmployeeJS extends BaseJS {
                 if (res) {
                     self.btnCancelOnClick();
                     //load lại dữ liệu
-                    self.getData();
+                    self.getData(self.page, self.startPage);
                     self.loadData();
-                    alert('xóa thành công');
+                    self.showMessageWarning();
+                    $('.message-title-warning').html("xóa thành công");
+                    setTimeout(self.hideMessageWarning, 1000);
                 }
             }).fail(function (res) {
                 console.log(res);
-                alert('xóa that bai');
+                self.showMessageWarning();
+                $('.message-title-warning').html("xóa thất bại");
+                setTimeout(self.hideMessageWarning, 1000);
             })
         }
     }
@@ -188,8 +195,21 @@ class EmployeeJS extends BaseJS {
         $('.dialog-modal-messages-warning').hide();
         $('.form-message-warning').hide();
     }
+
+    /**
+     * freturn tên nhân viên
+     * author: DVQuan(20/10/2020)
+     * */
     getName() {
         return "nhân viên";
+    }
+
+    /**
+     * return tên class
+     * author: DVQuan(20/10/2020)
+     * */
+    getClassName() {
+        return "employee";
     }
     //#endregion
 }

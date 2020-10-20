@@ -1,0 +1,22 @@
+    simulateKeyPress(character) {
+    jQuery.event.trigger({ type: 'keypress', which: character.charCodeAt(0) });
+}
+
+$(function () {
+    $('body').keypress(function (e) {
+        alert(e.which);
+    });
+
+    simulateKeyPress("e");
+});
+
+KeyboardJS.on('shift', function() { ...handleDown... }, function() { ...handleUp... });
+
+var shiftHeld = false;
+$('#control').on('mousedown', function (e) { shiftHeld = e.shiftKey });
+
+$('#anchor').on('click', function (e) {
+    if (e.shiftKey) {
+        // your code
+    }
+});

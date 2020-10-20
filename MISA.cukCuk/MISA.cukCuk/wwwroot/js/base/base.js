@@ -57,8 +57,9 @@ class BaseJS {
      * */
     getCountPages() {
         var ref = this;
+        debugger
         $.ajax({
-            url: "/api/customer/countpage",
+            url: "/api/" + ref.getClassName() + "/countpage",
             method: "GET",
             data: "",
             contentType: "application/json",
@@ -104,10 +105,14 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     pageFirstData() {
-        this.currentPage = 1; //trang hiện tại
-        this.startPage = 1; //bản ghi bắt đầu
-        this.getData(this.page, this.startPage)
-        $('#txtPageNext').val(this.currentPage);
+        debugger
+        if (this.currentPage != 1) {
+            this.currentPage = 1; //trang hiện tại
+            this.startPage = 1; //bản ghi bắt đầu
+            this.getData(this.page, this.startPage)
+            $('#txtPageNext').val(this.currentPage);
+        }
+
     }
 
     /**
@@ -116,8 +121,8 @@ class BaseJS {
      * */
     pageLastData() {
         this.currentPage = (Math.ceil(this.countPages / this.page)); //trang hiện tại
-        this.startPage = this.page * (this.currentPage - 1) + 1; //bản ghi bắt đầu
-        this.getData(this.page, this.startPage) //lấy lại data
+        this.startPage = this.page * (this.currentPage - 1) + 1;     //bản ghi bắt đầu
+        this.getData(this.page, this.startPage)                      //lấy lại data
         $('#txtPageNext').val(this.currentPage);
     }
     //#endregion
@@ -272,6 +277,18 @@ class BaseJS {
         $(this).siblings().removeClass("row-selected");
     }
 
+    /**
+     *
+     * sự kiện click vào table thì đổi màu dòng được chọn và không xóa đi dòng trước đã chọn
+     * @param {object} sender
+     * createBy: DVQuan(24/9/2020)
+     * */
+    rowmultiOnClick() {
+        debugger
+        $(this).addClass("row-selected");
+
+    }
+
     // #endregion
 
     //#region event-show-hide->dialog
@@ -345,7 +362,7 @@ class BaseJS {
                     debugger
                     var fieldName = $(field).attr('fieldName');
                     var format = $(field).attr('format');
-                    
+
                     if (format == 'number') {
                         debugger
                         if ($(field).val() == '' || obj[fieldName] == null || obj[fieldName] == undefined) {
@@ -354,7 +371,7 @@ class BaseJS {
                         else {
                             obj[fieldName] = Number($(field).val());
                         }
-                        
+
                     }
                     else {
                         //lấy giá trị của trường
@@ -422,7 +439,9 @@ class BaseJS {
                 this.showFocusDetail();
                 /* this.removeClassRequired();*/
             } else {
-                alert('vui lòng chọn một bản ghi để thực hiện thay đổi');
+                this.showMessageWarning();
+                $('.button-icon').css("margin-top", "16px")
+                $('.message-title-warning').html("vui lòng chọn một bản ghi để thực hiện thay đổi");
             }
         } catch (e) {
             alert('lỗi trong quá trình sửa');
@@ -439,7 +458,7 @@ class BaseJS {
             debugger
             var name = this.getName();
             var dataToDelete = {}
-            var rowSelected = $('tr.row-selected');  
+            var rowSelected = $('tr.row-selected');
             if (rowSelected && rowSelected.length != 0) {
                 this.showMessage();
                 $('.message-title').html("bạn chắc muốn xóa " + name + " này không");
@@ -457,9 +476,9 @@ class BaseJS {
                 $('#btnMessageCancel').click(function () {
                     self.hideMessage();
                 })
-              
+
                 if (r == true) {
-                    
+
                 } else {
                     return;
                 }
@@ -582,52 +601,58 @@ class BaseJS {
         Mousetrap.bind("shift+s", function () {
             self.btnAddOnClick();
             self.btnSaveOnClick();
-
         })
-
     }
 
-    /**
-    * show message
-     * author: DVQuan(14/10/2020)
-    * */
-    showMessage() {
-        $('.dialog-modal-messages').show();
-        $('.form-message').show();
-    }
 
-    /**
-    * hide message
-    * author: DVQuan(14/10/2020)
-    * */
-    hideMessage() {
-        $('.dialog-modal-messages').hide();
-        $('.form-message').hide();
-    }
+/**
+* show message
+ * author: DVQuan(14/10/2020)
+* */
+showMessage() {
+    $('.dialog-modal-messages').show();
+    $('.form-message').show();
+}
 
-    /**
-    * show message warning
-     * author: DVQuan(14/10/2020)
-    * */
-    showMessageWarning() {
-        $('.dialog-modal-messages-warning').show();
-        $('.form-message-warning').show();
-    }
+/**
+* hide message
+* author: DVQuan(14/10/2020)
+* */
+hideMessage() {
+    $('.dialog-modal-messages').hide();
+    $('.form-message').hide();
+}
 
-    /**
-    * hide message warning
-    * author: DVQuan(14/10/2020)
-    * */
-    hideMessageWarning() {
-        $('.dialog-modal-messages-warning').hide();
-        $('.form-message-warning').hide();
-    }
+/**
+* show message warning
+ * author: DVQuan(14/10/2020)
+* */
+showMessageWarning() {
+    $('.dialog-modal-messages-warning').show();
+    $('.form-message-warning').show();
+}
 
-    /**
-     * lấy tên
-     * */
-    getName() {
-    }
+/**
+* hide message warning
+* author: DVQuan(14/10/2020)
+* */
+hideMessageWarning() {
+    $('.dialog-modal-messages-warning').hide();
+    $('.form-message-warning').hide();
+}
+
+/**
+ * lấy tên
+ * */
+getName() {
+}
+/**
+ * lấy tên class
+ * author: DVQuan(201/10/2020)
+ * */
+getClassName() {
+
+}
     //#endregion
 
     //#endregion

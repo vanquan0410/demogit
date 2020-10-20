@@ -40,7 +40,13 @@ namespace MISA.cukCuk.Api
             else
                 return NoContent();
         }
+        [HttpGet("countpage")]
+        public int GetCount()
+        {
 
+            return _employeeService.GetCountData();
+
+        }
         [HttpGet("maxcodeemployee")]
         public ActionResult GetCountData()
         {
