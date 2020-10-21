@@ -12,6 +12,7 @@ class EmployeeJS extends BaseJS {
         super();
         this.loadDataSelectPossition();
         this.loadDataSelectDepartment();
+        this.code = '';
     }
 
     //#endregion
@@ -30,7 +31,7 @@ class EmployeeJS extends BaseJS {
             datatype: "json",
             contenttype: "application/json"
         }).done(function (res) {
-            debugger
+            //thực hiện gán giá trị vào các option
             $.each(res, function (index, value) {
                 var o = new Option(value.PositionId, value.PositionName);
                 $(o).val(value.PositionId);
@@ -87,12 +88,13 @@ class EmployeeJS extends BaseJS {
     }
 
     /**
-         * lưu trữ dữ liệu xuống DB mục đích của việc thêm mới hoặc chỉnh sửa
-         * author: DVQuan(30/9/2020)
-         * @param {any} customer
-         * @param {any} POST
-         * */
+    * lưu trữ dữ liệu xuống DB mục đích của việc thêm mới hoặc chỉnh sửa
+    * author: DVQuan(30/9/2020)
+    * @param {any} customer
+    * @param {any} POST
+    * */
     saveToDB(customer, method) {
+        debugger
         var self = this;
         var alter = 'Thêm';
         if (method == 'PUT') {
@@ -112,12 +114,13 @@ class EmployeeJS extends BaseJS {
                 debugger
                 self.getData(self.page, self.startPage);
                 self.loadData();
+                //show message thòng công
                 self.showMessageWarning();
                 $('.message-title-warning').html(alter + " thành công");
                 setTimeout(self.hideMessageWarning, 1000);
             }
         }).fail(function (res) {
-            debugger
+            //show message khi lỗi
             self.showMessageWarning();
             $('.message-title-warning').html(res.responseJSON.Msg);
             $('.button-icon').addClass('setdialogtitle');
@@ -141,15 +144,18 @@ class EmployeeJS extends BaseJS {
             }).done(function (res) {
                 if (res) {
                     self.btnCancelOnClick();
-                    //load lại dữ liệu
+                    //lấy dữ liệu mới
                     self.getData(self.page, self.startPage);
+                    //load lại dữ liệu
                     self.loadData();
+                    //hiển thị thông báo
                     self.showMessageWarning();
                     $('.message-title-warning').html("xóa thành công");
                     setTimeout(self.hideMessageWarning, 1000);
                 }
             }).fail(function (res) {
                 console.log(res);
+                //hiển thị thông báo xóa thất bại
                 self.showMessageWarning();
                 $('.message-title-warning').html("xóa thất bại");
                 setTimeout(self.hideMessageWarning, 1000);
@@ -159,11 +165,16 @@ class EmployeeJS extends BaseJS {
 
     /**
      * focus vào ô employee code
+     * author: DVQuan(21/10/2020)
      * */
     showFocusDetail() {
         $('#txtEmployeeCode').focus();
     }
 
+    /**
+     * tự động lấy mã nv cao nhât + 1
+     * author: DVQuan(21/10/2020)
+     * */
     addItemCode() {
         $.ajax({
             url: "/api/employee/maxcodeemployee",
@@ -172,12 +183,12 @@ class EmployeeJS extends BaseJS {
             datatype: "json",
             contenttype: "application/json"
         }).done(function (res) {
-            //todo đang thực hiện
-            debugger
-            /*var code = res.slice(2);
-            var value = (code) + 1;
-            value = 'NV' + value;*/
-             var value = res.split('');
+            //cắt chuỗi
+            var code = res.slice(2);
+            //ép kiểu về int
+            var value = parseInt(code) + 1;
+            value = 'NV' + value;
+            /* var value = res.split('');
              var sum = parseInt(value[value.length - 1]);
              if (sum == 9) {
                  value[value.length - 2] = parseInt(value[value.length - 2]) + 1;
@@ -186,15 +197,16 @@ class EmployeeJS extends BaseJS {
              else {
                  value[value.length-1] = parseInt(value[value.length - 1]) + 1;
              }
-             value=value.join('');
-
-
+             value=value.join('');*/
             /*debugger
             var code = res.slice(index);
             var valuecode = (code) + 1;*/
+            //biding code mới vào ô text mã nhân viên
             $('#txtEmployeeCode').val(value);
+           
         })
     }
+
     /**
     * show message warning
      * author: DVQuan(14/10/2020)
@@ -222,6 +234,29 @@ class EmployeeJS extends BaseJS {
         return "nhân viên";
     }
 
+    /**
+     * lấy item code lớn nhất 
+     * author: DVQuan(21/10/2020)
+     * */
+    itemCode() {
+        debugger
+        var value;
+        $.ajax({
+            url: "/api/employee/maxcodeemployee",
+            method: "GET",
+            data: "",
+            datatype: "json",
+            contenttype: "application/json"
+        }).done(function (res) {
+            //cắt chuỗi
+            var code = res.slice(2);
+            //ép kiểu về int
+            value = parseInt(code) + 1;
+            value = 'NV' + value;
+            return value;
+        })
+        return value;
+    }
     /**
      * return tên class
      * author: DVQuan(20/10/2020)

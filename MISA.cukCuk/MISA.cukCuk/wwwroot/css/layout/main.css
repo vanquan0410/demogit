@@ -14,7 +14,7 @@
         width: 100%;
         height: calc(100% - 63.5px);
     }
-
+    /*font chữ*/
 @font-face {
     font-family: 'fontello';
     src: url('/content/font/fontello.woff') format('woff');

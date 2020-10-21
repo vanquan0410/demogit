@@ -15,11 +15,19 @@ namespace MISA.cukCuk.Api
     [ApiController]
     public class DepartmentApi : ControllerBase
     {
+        #region constructor
         IDepartmentService _departmentService;
         public DepartmentApi(IDepartmentService departmentService)
         {
             _departmentService = departmentService;
         }
+        #endregion
+
+        /// <summary>
+        /// lấy danh sách phòng ban
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         // GET: api/<DepartmentApi>
         [HttpGet]
         public ActionResult<Department> Get()

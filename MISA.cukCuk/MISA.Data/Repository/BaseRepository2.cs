@@ -47,7 +47,7 @@ namespace MISA.Data.Repository2
             return _dataContext.GetMaxItemCode();
         }
 
-        public bool Insert(T value)
+        public int Insert(T value)
         {
             return _dataContext.Insert(value);
         }

@@ -14,12 +14,20 @@ namespace MISA.cukCuk.Api
     [ApiController]
     public class PossitionApi : ControllerBase
     {
-
+        #region constructor
         IPossitionService _possitionService;
         public PossitionApi(IPossitionService possitionService)
         {
             _possitionService = possitionService;
         }
+        #endregion
+
+        #region method
+        /// <summary>
+        /// lấy danh sách phòng ban
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(19/10/2020)
         // GET: api/<PossitionApi>
         [HttpGet]
         public ActionResult<Possition> Get()
@@ -35,5 +43,6 @@ namespace MISA.cukCuk.Api
             }
         }
 
+        #endregion
     }
 }

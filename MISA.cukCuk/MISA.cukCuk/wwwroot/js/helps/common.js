@@ -1,4 +1,10 @@
+/**
+ * convert data đúng định dạng
+ * author: DVQuan(10/10/2020)
+ * */
+
 var commonjs = {
+
     /**
      * hàm định dạng tiền tệ
      * @param {number} money 
@@ -10,6 +16,7 @@ var commonjs = {
         }
         return null;
     },
+
     /**
      * hàm định dạng ngày tháng
      * @param {date} date input ngày tháng
@@ -49,6 +56,7 @@ var commonjs = {
     /**
      * convert number 
      * @param {any} input
+     * author: DVQuan(10/10/2020)
      */
     reformatText(input) {
             var x = input.value;
@@ -67,8 +75,9 @@ var commonjs = {
     /**
      * định dạng number
      * @param {any} input
+     * author: DVQuan(10/10/2020)
      */
     fomatNumber(input) {
-        return new Intl.NumberFormat('vi', { style: 'currency', currency: currencyCode || 'VND' }).format(input);
+       
     }
 }

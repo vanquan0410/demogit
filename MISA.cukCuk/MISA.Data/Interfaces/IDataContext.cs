@@ -41,7 +41,7 @@ namespace MISA.Data.Interfaces
         /// <param name="value"></param>
         /// <returns></returns>
         /// CreatedBy: DVQuan(14/10/2020)
-        bool Insert(T value);
+        int Insert(T value);
 
 
         /// <summary>

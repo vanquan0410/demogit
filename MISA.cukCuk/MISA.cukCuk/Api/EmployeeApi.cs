@@ -14,12 +14,23 @@ namespace MISA.cukCuk.Api
     [ApiController]
     public class EmployeeApi : ControllerBase
     {
+        #region constructor
         IEmployeeService _employeeService;
         public EmployeeApi(IEmployeeService employeeService)
         {
             _employeeService = employeeService;
         }
+        #endregion
+
+        /// <summary>
+        /// lấy danh sách nhân viên theo phân trang
+        /// </summary>
+        /// <param name="page"></param> số bản ghi trong 1 trang
+        /// <param name="size"></param> kích thức 1 trang
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         // GET: api/<EmployeeApi>
+        #region method
         [HttpGet]
         public ActionResult<Employee> Get([FromQuery] int page, int size)
         {
@@ -29,7 +40,12 @@ namespace MISA.cukCuk.Api
             else
                 return NoContent();
         }
-
+        /// <summary>
+        /// tìm kiếm nhân viên theo id
+        /// </summary>
+        /// <param name="id"></param> id nhân viên
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         // GET api/<EmployeeApi>/5
         [HttpGet("{id}")]
         public ActionResult Get(Guid id)
@@ -40,6 +56,12 @@ namespace MISA.cukCuk.Api
             else
                 return NoContent();
         }
+
+        /// <summary>
+        /// lấy ra tổng số bản ghi của nhân viên
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         [HttpGet("countpage")]
         public int GetCount()
         {
@@ -47,6 +69,12 @@ namespace MISA.cukCuk.Api
             return _employeeService.GetCountData();
 
         }
+
+        /// <summary>
+        /// lấy ra mã nhân viên theo thứ tự lớn nhất
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(21/10/2020)
         [HttpGet("maxcodeemployee")]
         public ActionResult GetCountData()
         {
@@ -72,6 +100,13 @@ namespace MISA.cukCuk.Api
                  return Ok(false);
              }
          }*/
+
+        /// <summary>
+        /// thêm mới một nhân viên
+        /// </summary>
+        /// <param name="employee"></param> thông tin của nhân viên mới
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(19/10/2020)
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
         {
@@ -83,6 +118,12 @@ namespace MISA.cukCuk.Api
                 return BadRequest(serviceResponse);
         }
 
+        /// <summary>
+        /// thay đổi thông tin của 1 nhân viên
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(17/10/2020)
         // PUT api/<EmployeeApi>/5
         [HttpPut]
         public IActionResult Put([FromBody] Employee employee)
@@ -98,6 +139,12 @@ namespace MISA.cukCuk.Api
             }
         }
 
+        /// <summary>
+        /// Xóa một nhân viên
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(19/10/2020)
         // DELETE api/<EmployeeApi>/5
         [HttpDelete]
         public IActionResult Delete([FromBody] Employee employee)
@@ -112,5 +159,6 @@ namespace MISA.cukCuk.Api
                 return Ok(false);
             }
         }
+        #endregion
     }
 }

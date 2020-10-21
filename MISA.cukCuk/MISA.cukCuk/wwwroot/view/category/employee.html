@@ -166,7 +166,7 @@
                         <table class="tblistemployee" width="100%" border="1" id="tbListData">
                             <thead>
                                 <tr fieldID="EmployeeId" formatName="employee">
-                                    <th fieldName="EmployeeCode" width="100px" id="titleCode">Mã nhân viên</th>
+                                    <th format="code" fieldName="EmployeeCode" width="100px" id="titleCode">Mã nhân viên</th>
                                     <th fieldName="EmployeeName" id="titleName">Tên nhân viên</th>
                                     <th format="Gender" fieldName="Gender" width="100px" id="titleGender">Giới tính</th>
                                     <th format="Date" fieldName="DateOfBirth" width="100px" id="titleDateOfBirth">Ngày sinh</th>
@@ -233,7 +233,7 @@
                             </tr>
                             <tr>
                                 <td class="lable">Mã Nhân viên<span style="color:#ff0000">(*)</span></td>
-                                <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeCode" type="text" required id="txtEmployeeCode" requireName="mã nhân viên" /></div></td>
+                                <td colspan="3"><div class="dialog-in"><input code format="code" fieldName="EmployeeCode" type="text" required id="txtEmployeeCode" requireName="mã nhân viên" /></div></td>
                                 <td rowspan="6">
                                     <div style="width:100%;height:100%">
                                         <div class="avatar-box">
@@ -246,10 +246,8 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>Tên nhân viên<span style="color:#ff0000">(*)</span></td>
                                 <td colspan="3"><div class="dialog-in"><input fieldName="EmployeeName" type="text" required id="txtEmployeeName" style="width:96%" requireName="tên nhân viên" /></div></td>
-
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>
@@ -284,7 +282,6 @@
                                 <td colspan="5"><div class="dialog-in"><input fieldName="IdentityPlace" type="text" id="txtCmmt" style="width:99.5%" /></div></td>
                             </tr>
                             <tr>
-
                                 <td colspan="6"><div style="font-weight:bold">Thông tin công việc <hr /></div></td>
                             </tr>
                             <tr>
@@ -297,7 +294,6 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td class="lable">Phòng ban</td>
                                 <td colspan="4">
                                     <div class="dialog-in">
@@ -310,7 +306,9 @@
                                 <td class="lable">Mã số thuế cá nhân </td>
                                 <td><div class="dialog-in"><input fieldName="TaxCode" type="text" id="txtThue" /></div></td>
                                 <td class="lable"><span class="tb-right-butoom">Mức lương</span></td>
-                                <td colspan="2"><div class="dialog-in"><input fieldName="Salary" format="number" convertNumber type="text" id="txtSalary" style="width: 98.5%" /></div></td>
+                                <td colspan="2"><div class="dialog-in" style=" width: 230px;"><input fieldName="Salary" format="number" convertNumber type="text" id="txtSalary" style="width: 98.5%;text-align:right;padding-right: 50px;" />
+                                                                       <i style=" position: absolute; margin-left: 234px; margin-top: -21px;">(VND)</i>
+                                     </div></td>
                             </tr>
                             <tr>
                                 <td class="lable">Ngày sinh</td>

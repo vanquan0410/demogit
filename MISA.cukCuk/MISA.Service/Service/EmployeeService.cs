@@ -34,6 +34,10 @@ namespace MISA.Service.Service
                 isvalid = false;
                 validateErrorResponseMsg.Add("bị trùng với mã nhân viên  " + _employeeRepository.checkItem(entity.EmployeeCode).EmployeeName);
             }
+            else
+            {
+                validateErrorResponseMsg.Add(" thêm thành công");
+            }
               
             return isvalid;
         }

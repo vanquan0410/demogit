@@ -7,16 +7,19 @@ class BaseJS {
     //#region constructor
     constructor(name) {
         try {
-            this.page = 25;
-            this.startPage = 1;
-            this.currentPage = 1;
-            this.countPages = 0;
-            this.getCountPages();
+            this.code = '';
+            this.page = 25;                         //số trang hiển thị trong 1 page
+            this.startPage = 1;                     //trang bắt đầu
+            this.currentPage = 1;                   //trang hiện tại
+            this.countPages = 0;                    //số trang
+            this.getCountPages();                   //lấy tổng số trang
             this.FormType = null;
-            this.getData(this.page, this.startPage);
-            this.loadData();
-            this.initEvents();
-            this.shortKeys();
+            this.getData(this.page, this.startPage); //lấy data theo phân trang
+            this.loadData();                         //load dữ liệu
+            this.initEvents();                       //các sự kiện click
+            this.shortKeys();                        //phím tắt
+            this.addItemCode();                      // lấy code cao nhất
+
         } catch (e) {
 
         }
@@ -33,6 +36,7 @@ class BaseJS {
         $('#btnAdd').click(this.btnAddOnClick.bind(this));                //thực hiện showdialog add
         $('#btnEdit').click(this.btnEditOnClick.bind(this));              //thực hiện hide dialog edit
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));          // thực hiện event delete
+        $('#btnDuplicate').click(this.btnDuplicate.bind(this));           //thực hiện nhân bản
         $('#btnRefresh').click(this.btnRefreshOnclick.bind(this));        //thực hiện event refresh
         $('input[required]').blur(this.checkRequired);                    //thực hiện event check require
         $('input[convertNumber]').keyup(this.formatNumber);               //convert text number
@@ -41,14 +45,13 @@ class BaseJS {
         $('#dialog-btnCancel').click(this.btnCancelOnClick.bind(this));   //thực hiện event hủy
         $('#dialog-btnfocus').focus(this.showFocusDetail);                //thực hiện event focus
         //thực hiện event click on table
-        $(document).ready(function () {
+        $(document).ready(function () {                                   //chọn nhiều dòng trong table
             $("table").on("click", "tbody tr", function (event) {
 
                 if (event.ctrlKey) {
                     sel.rowOnMultiClick(this);
                     //is ctrl + click
                 } else {
-                    debugger
                     sel.rowOnClick(this);
                 }
             });
@@ -57,13 +60,13 @@ class BaseJS {
         $(".page-prev").click(this.prevData.bind(this));                  //thực hiện prev data về trang trước
         $(".page-first").click(this.pageFirstData.bind(this));            //thực hiện về dầu trang
         $(".page-last").click(this.pageLastData.bind(this));              //thực hiện về cuối trang
-        $("#btnWarning").click(this.hideMessageWarning);
+        $("#btnWarning").click(this.hideMessageWarning);                  //hiển thị thông báo
+
 
     }
     //#endregion
 
     //#region method
-
 
     //#region phân trang
     /**
@@ -74,7 +77,7 @@ class BaseJS {
         var ref = this;
         debugger
         $.ajax({
-            url: "/api/" + ref.getClassName() + "/countpage",
+            url: "/api/" + ref.getClassName() + "/countpage",    //tên của class
             method: "GET",
             data: "",
             contentType: "application/json",
@@ -94,10 +97,10 @@ class BaseJS {
     nextData() {
         debugger
         if ((this.startPage + this.page) < this.countPages) {
-            this.currentPage = this.currentPage + 1;  //trang hiện tại
+            this.currentPage = this.currentPage + 1;     //trang hiện tại
             this.startPage = this.startPage + this.page; //bản ghi bắt đầu
-            this.getData(this.page, this.startPage)
-            $('#txtPageNext').val(this.currentPage);
+            this.getData(this.page, this.startPage)      //lấy data theo phân trang
+            $('#txtPageNext').val(this.currentPage);     //giá trị của trang hiện tại
         }
 
     }
@@ -122,9 +125,9 @@ class BaseJS {
     pageFirstData() {
         debugger
         if (this.currentPage != 1) {
-            this.currentPage = 1; //trang hiện tại
-            this.startPage = 1; //bản ghi bắt đầu
-            this.getData(this.page, this.startPage)
+            this.currentPage = 1;                       //trang hiện tại
+            this.startPage = 1;                         //bản ghi bắt đầu
+            this.getData(this.page, this.startPage)     //lấy data theo phân trang
             $('#txtPageNext').val(this.currentPage);
         }
 
@@ -203,13 +206,13 @@ class BaseJS {
                     //nếu dữ liệu trống thì sẽ thay thế bằng ""
                     if (value == null || !value) {
                         value = "";
-                        td = $(`<td>` + value + `</td>`);
+                        td = $(`<td fieldName=` + fieldName + `>` + value + `</td>`);
                     }
-                    var td = $(`<td>` + value + `</td>`);
+                    var td = $(`<td fieldName=` + fieldName + `>` + value + `</td>`);
                     //nếu dữ liệu là money thì định dạng theo money
                     if (formatName == "Money") {
                         var valueMoney = commonjs.formatMoney(value);
-                        td = $(`<td>` + valueMoney + `</td>`);
+                        td = $(`<td format=` + formatName + ` fieldName=` + fieldName + `>` + valueMoney + `</td>`);
                         td.addClass("format-money");
                     }
                     else if (formatName) {
@@ -218,26 +221,31 @@ class BaseJS {
                     //nếu dữ liệu là address thì định dạng theo address
                     if (formatName == "Address") {
                         td.addClass("format-address");
-                        td = $(`<td title="` + value + `">` + value + `</td>`);
+                        td = $(`<td format=` + formatName + ` fieldName=` + fieldName + ` title="` + value + `">` + value + `</td>`);
                     }
                     // định dạng type date
                     if (formatName == "Date") {
                         var valueDate = commonjs.formatDate(value);
-                        td = $(`<td>` + valueDate + `</td>`);
+                        td = $(`<td format=` + formatName + ` fieldName=` + fieldName + `>` + valueDate + `</td>`);
                         td.addClass("format");
+                        //  td.setAttribute("fieldName", fieldName);
                     }
                     // định dạng type gender
                     if (formatName == "Gender") {
                         if (value == 0) {
                             var valueGender = "nam"
-                            td = $(`<td>` + valueGender + `</td>`);
+                            td = $(`<td value=` + value + ` format=` + formatName + ` fieldName=` + fieldName + `>` + valueGender + `</td>`);
                         } else if (value == 1) {
                             var valueGender = "nữ"
-                            td = $(`<td>` + valueGender + `</td>`);
+                            td = $(`<td value=` + value + ` format=` + formatName + ` fieldName=` + fieldName + `>` + valueGender + `</td>`);
                         } else {
                             var valueGender = "khác"
-                            td = $(`<td>` + valueGender + `</td>`);
+                            td = $(`<td value=` + value + ` format=` + formatName + ` fieldName=` + fieldName + `>` + valueGender + `</td>`);
                         }
+                    }
+                    //định dạng type date
+                    if (formatName == "code") {
+                        var td = $(`<td format=` + formatName + ` fieldName=` + fieldName + `>` + value + `</td>`);
                     }
                     $(tr).append(td);
                 })
@@ -288,7 +296,6 @@ class BaseJS {
      * createBy: DVQuan(24/9/2020)
      */
     rowOnClick(sender) {
-        debugger
         $(sender).addClass("row-selected");
         $(sender).siblings().removeClass("row-selected");
     }
@@ -301,16 +308,14 @@ class BaseJS {
     rowOnMultiClick(sender) {
         $(sender).addClass("row-selected");
     }
+
     /**
-     *
      * sự kiện click vào table thì đổi màu dòng được chọn và không xóa đi dòng trước đã chọn
      * @param {object} sender
      * createBy: DVQuan(24/9/2020)
      * */
     rowmultiOnClick() {
-        debugger
         $(this).addClass("row-selected");
-
     }
 
     // #endregion
@@ -346,9 +351,9 @@ class BaseJS {
     btnSaveOnClick() {
         try {
             var seft = this;
-            var inputRequired = $("[required]");
-            var inputEmail = $("[requiredEmail]");
-            var inputNumber = $("[requiredNumber]");
+            var inputRequired = $("[required]");    //các trường bắt buộc phải nhập
+            var inputEmail = $("[requiredEmail]");  //bắt buộc nhập dúng dạng email
+            var inputNumber = $("[requiredNumber]"); //bắt buộc nhập đúng dạng number
             var isValid = true;
             //kiểm tra các trường dl ko được để trống
             $.each(inputRequired, function (index, input) {
@@ -383,19 +388,17 @@ class BaseJS {
                 var fields = $('.dialog-body input,.dialog-body select,.dialog-body textarea');
                 $.each(fields, function (index, field) {
                     //lấy tên trường
-                    debugger
                     var fieldName = $(field).attr('fieldName');
                     var format = $(field).attr('format');
-
+                    //định dạng kiểu number
                     if (format == 'number') {
                         debugger
-                        if ($(field).val() == '' || obj[fieldName] == null || obj[fieldName] == undefined) {
+                        if ($(field).val() == '' || $(field).val() == null || $(field).val() == undefined) {
                             obj[fieldName] = 0;
                         }
                         else {
-                            obj[fieldName] = Number($(field).val());
+                            obj[fieldName] = Number($(field).val().replace(',',''));
                         }
-
                     }
                     else {
                         //lấy giá trị của trường
@@ -448,16 +451,13 @@ class BaseJS {
                             $(field).val(commonjs.convertDate(res[fieldName]))
                         }
                         else {
-                            debugger
+                            //bidding dl lên
                             var fieldName = $(field).attr('fieldName');
                             $(field).val(res[fieldName]);
                         }
                     })
                     self.FormType = "Edit";
-                    /* self.btnSaveOnClick(customerID);*/
-
                 }).fail(function (res) {
-
                 })
                 this.showDialogDetail();
                 this.showFocusDetail();
@@ -468,7 +468,7 @@ class BaseJS {
                 $('.message-title-warning').html("vui lòng chọn một bản ghi để thực hiện thay đổi");
             }
         } catch (e) {
-            alert('lỗi trong quá trình sửa');
+            $('.message-title-warning').html("loi trong qua trinh sua");
         }
     }
 
@@ -484,13 +484,13 @@ class BaseJS {
             var dataToDelete = {}
             var rowSelected = $('tr.row-selected');
             var rowName = $('thead tr');
+            //xóa nhiều bản ghi cùng lúc
             if (rowSelected && rowSelected.length > 1) {
                 this.showMessage();
                 $('.message-title').html("bạn chắc muốn xóa các " + name + " này không");
                 $('#btnMessageOk').click(function () {
                     $.each(rowSelected, function (index, value) {
                         //lấy ID của đối tượng cần xoa
-                        debugger
                         var fieldID = value.getAttribute('fieldid');
                         var fieldIDName = rowName.attr('fieldID');
                         dataToDelete[fieldIDName] = value.getAttribute('fieldID');
@@ -499,26 +499,26 @@ class BaseJS {
                         self.hideMessage();
                     })
                 })
-                
+
                 $('#btnMessageCancel').click(function () {
                     self.hideMessage();
                 })
-            }
-            else if (rowSelected && rowSelected.length ==1) {
+            }  //xóa 1 bản ghi thôi
+            else if (rowSelected && rowSelected.length == 1) {
                 this.showMessage();
+                //lấy tên của bản ghi cần xóa
                 var getNameElement = $('tr.row-selected td')[1];
-                $('.message-title').html("bạn chắc muốn xóa " + name +" "+ getNameElement.innerText + " không");
+                $('.message-title').html("bạn chắc muốn xóa " + name + " " + getNameElement.innerText + " không");
                 $('#btnMessageOk').click(function () {
                     //lấy ID của đối tượng cần xoa
-                    debugger
                     var fieldID = $('tr.row-selected').attr('fieldID');
                     var fieldIDName = $('table thead tr').attr('fieldId');
                     dataToDelete[fieldIDName] = $('tr.row-selected').attr('fieldID');
                     //thực hiện delete
                     self.deleteToDB(dataToDelete);
+                    //ẩn dialog
                     self.hideMessage();
                 })
-
                 $('#btnMessageCancel').click(function () {
                     self.hideMessage();
                 })
@@ -530,6 +530,70 @@ class BaseJS {
             }
         } catch (e) {
 
+        }
+    }
+
+    /**
+     * nhân bản
+     * author: DVQuan(21/10/2020)
+     * */
+    btnDuplicate() {
+        //lấy dòng đực chọn
+        var fields = $("tr.row-selected td");
+        try {
+            var self = this;
+            var rowSelected = null;
+            //xác định đối tượng cần sửa
+            rowSelected = $('tr.row-selected');
+            if (rowSelected && rowSelected.length != 0) {
+                //lấy ID của đối tượng cần sửa
+                var fieldID = $('tr.row-selected').attr('fieldID');
+                var formatName = $('table thead tr').attr('formatName');
+                $.ajax({
+                    url: "/api/" + formatName + "/" + fieldID,
+                    method: "GET",
+                    // data: "",
+                    datatype: "json",
+                    contentType: "application/json"
+                }).done(function (res) {
+                    var obj = {};
+                    //thực hiện binding dữ liệu lên form chi tiết
+                    debugger
+                    var fields = $('input[fieldName],select[fieldName]');
+                    $.each(fields, function (index, field) {
+                        var fieldName = $(field).attr('fieldName');
+                        var format = $(field).attr('format');
+                        //biding dl lên input=date
+                        if (format == "date") {
+                            obj[fieldName] = commonjs.convertDate(res[fieldName]);
+                        }
+                        else {
+                            debugger
+                            //biding dl len các truong
+                            if (format == "code") {
+                                var fieldName = $(field).attr('fieldName');
+                                obj[fieldName] = $('#txtEmployeeCode').val();
+                            } else {
+                                var fieldName = $(field).attr('fieldName');
+                                obj[fieldName] = res[fieldName];
+                            }
+
+                        }
+                    })
+                    self.FormType = "Add";
+                    self.saveToDB(obj, "POST");
+                }).fail(function (res) {
+
+                })
+
+                /* this.removeClassRequired();*/
+            } else {
+                this.showMessageWarning();
+                $('.button-icon').css("margin-top", "16px")
+                $('.message-title-warning').html("vui lòng chọn một bản ghi để thực hiện nhan ban");
+            }
+        } catch (e) {
+            $('.message-title-warning').html("lỗi trong qua trình thêm");
         }
     }
 
@@ -574,6 +638,26 @@ class BaseJS {
     showFocusDetail() {
     }
 
+    /**
+    * lấy tên
+    * author: DVQuan(21/10/2020)
+    * */
+    getName() {
+    }
+
+    /**
+     * lấy tên class
+     * author: DVQuan(201/10/2020)
+     * */
+    getClassName() {
+    }
+
+    /**
+     * lấy code cua item
+     * author: DVQuan(21/10/2020)
+     * */
+    itemCode() {
+    }
 
     /**
      * di chuyển form sang chỗ khác
@@ -593,7 +677,11 @@ class BaseJS {
             });
         });
     }
-    //tự dộng biding dl itemcode
+
+    /**
+     * tự dộng bidding dl liên item code
+     * author: DVQuan(21/10/2020)
+     * */
     addItemCode() {
 
     }
@@ -643,8 +731,9 @@ class BaseJS {
             self.btnSaveOnClick();
         })
     }
+    //#endregion
 
-
+    //#region showmessage
     /**
     * show message
      * author: DVQuan(14/10/2020)
@@ -681,18 +770,6 @@ class BaseJS {
         $('.form-message-warning').hide();
     }
 
-    /**
-     * lấy tên
-     * */
-    getName() {
-    }
-    /**
-     * lấy tên class
-     * author: DVQuan(201/10/2020)
-     * */
-    getClassName() {
-
-    }
     //#endregion
 
     //#endregion

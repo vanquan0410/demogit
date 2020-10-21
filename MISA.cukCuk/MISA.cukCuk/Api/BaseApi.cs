@@ -21,7 +21,14 @@ namespace MISA.cukCuk.Api
         }
         #endregion
 
-        #region metod
+        #region method
+        /// <summary>
+        /// lấy danh sách theo phân trang
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        /// author: DVQuan(15/10/2020)
         // GET: api/<BaseApi>
         [HttpGet]
         public ActionResult Get([FromQuery] int page, int size)
@@ -33,25 +40,46 @@ namespace MISA.cukCuk.Api
                 return NoContent();
         }
 
+        /// <summary>
+        /// lấy thông tin theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQaun(15/10/2020)
         // GET api/<BaseApi>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
+        /// <summary>
+        /// thêm mới mooti item
+        /// </summary>
+        /// <param name="value"></param>
+        /// author: DVQuan(29/10/2020)
         // POST api/<BaseApi>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
+        /// <summary>
+        /// sửa thong tin của 1 item
+        /// </summary>
+        /// <param name="id"></param> id
+        /// <param name="value"></param> giá trị
+        /// createdBy: DVQuan(15/10/2020)
         // PUT api/<BaseApi>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
+        /// <summary>
+        /// xóa một bản ghi
+        /// </summary>
+        /// <param name="id"></param> id
+        /// CreatedBy: DVQaun(15/10/2020)
         // DELETE api/<BaseApi>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

@@ -23,6 +23,13 @@ namespace MISA.cukCuk.Api
         #endregion
 
         #region method
+        /// <summary>
+        /// lấy danh sách khách hàng theo phân trang
+        /// </summary>
+        /// <param name="page"></param> 
+        /// <param name="size"></param>
+        /// <returns></returns>
+        /// CreatedBy DVQaun(15/10/2020)
         // GET: api/<CustomerApi>
         [HttpGet]
         public ActionResult Get([FromQuery] int page, int size)
@@ -34,6 +41,11 @@ namespace MISA.cukCuk.Api
                 return NoContent();
         }
 
+        /// <summary>
+        /// lấy tổng số lượng bản ghi
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: DVQaun(15/10/2020)
         [HttpGet("countpage")]
         public int GetCountData()
         {
@@ -41,6 +53,12 @@ namespace MISA.cukCuk.Api
             
         }
 
+        /// <summary>
+        /// tìm kiếm nhân viên theo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQaun(15/10/2020)
         // GET api/<CustomerApi>/5
         [HttpGet("{id}")]
         public ActionResult Get(Guid id)
@@ -67,6 +85,12 @@ namespace MISA.cukCuk.Api
             }
         }*/
 
+        /// <summary>
+        /// sửa thông tin của 1 khách hàng
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         // PUT api/<CustomerApi>/5
         [HttpPut]
         public IActionResult Put([FromBody] Customer customer)
@@ -82,6 +106,12 @@ namespace MISA.cukCuk.Api
             }
         }
 
+        /// <summary>
+        /// xóa bỏ 1 khách hàng
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        /// CreatedBy: DVQuan(15/10/2020)
         // DELETE api/<CustomerApi>/5
         [HttpDelete]
         public IActionResult Delete([FromBody] Customer customer)

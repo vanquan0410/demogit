@@ -206,7 +206,7 @@ namespace MISA.Data.DataAccess
             return default;
         }
 
-        public bool Insert(T value)
+        public int Insert(T value)
         {
             _mySqlCommand.Parameters.Clear();
             //lấy tên của class
@@ -229,10 +229,10 @@ namespace MISA.Data.DataAccess
             //thành công thì trả về true
             if (result > 0)
             {
-                return true;
+                return result;
             }
-            //không thành công trả về fale
-            return false;
+            //không thành công trả về adefault
+            return default;
         }
 
         public bool Update(T value)

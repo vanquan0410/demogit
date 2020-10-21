@@ -56,8 +56,6 @@
     height: calc(100% - 60px);
     padding: 9px;
     padding-top: 5px;
-    /* font-family: emoji; */
-    /* background-color: #00ff21;*/
 }
     .dialog-content .dialog-body{
        
@@ -89,8 +87,6 @@ input{
 input:focus{
      outline: 0px; 
     border: 1px solid #0973b9;
-
-    /* height: 100%; */
 }
 .dialog-in textarea:focus{
     outline: 0px; 
@@ -106,6 +102,7 @@ td input{
 }
 td input[type="date" i]{
     height: 22px;
+    text-align:right;
 }
 td select {
     border:1px solid #ccc;
@@ -145,10 +142,7 @@ input[type="text" i] {
 }
 .dialog-body input:focus{
    border-radius:0% ;
-   /* padding: 0px; */
    padding: 1px 1px;
-   /* height: 15;
-   width: 100%;; */
    border-color: #0973b9;
 }
 .dialog-body .dialog-in{
@@ -158,7 +152,6 @@ input[type="text" i] {
 .dialog-content .dialog-footer {
     height: 35px;
     display: flex;
-    /* margin-left: 330px; */
     background-color: #ffffff;
     padding-top: 23px;
     
@@ -168,15 +161,12 @@ input[type="text" i] {
     height: 25px !important;
 }
 #dialog-btnAdd {
-
-    /* background: url(/content/img/Images/IconSprite.png) no-repeat -1px -767px; */
     width: 78px;
     height: 20px; 
     background-image: url('/content/img/images/diskette.png');
     background-repeat:no-repeat ;
     background-position-x: 3px;
     background-position-y: 3px;
-    /* background: url(../../content/img/Images/diskette.png) no-repeat -1px -0px; */
 }
 #dialog-btnEdit {
     width: 130px;
@@ -211,13 +201,11 @@ input[type="text" i] {
     border-width: 1px;
     border-color: #1614142b;
 }
-
     .dialog-footer button:hover {
         border-color: #0973b9;
         background-color: #ffffff;
         cursor: pointer;
     }
-
     .dialog-footer button:focus {
         border-color: #0973b9 !important;
         background-color: #ffffff;

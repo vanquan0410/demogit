@@ -23,6 +23,11 @@ namespace MISA.cukCuk.Api
         #endregion
 
         #region method
+        /// <summary>
+        /// lấy danh sách nhóm khách hàng
+        /// </summary>
+        /// <returns></returns> danh sách nhóm khách hàng
+        /// CreatedBy: DVQuan(20/10/2020)
         // GET: api/<CustomerGroupApi>
         [HttpGet]
         public ActionResult<CustomerGroup> Get()
