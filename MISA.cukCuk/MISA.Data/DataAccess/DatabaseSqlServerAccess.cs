@@ -6,5 +6,6 @@ namespace MISA.Data.DataAccess
 {
     class DatabaseSqlServerAccess
     {
+        //TODO: đang thực hiện xây dựng 
     }
 }

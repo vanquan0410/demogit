@@ -65,7 +65,7 @@ namespace MISA.Model
         /// <summary>
         /// id phòng ban
         /// </summary>
-        public Guid DepartmentId { get; set; }
+        public Guid? DepartmentId { get; set; }
 
         /// <summary>
         /// tên phòng ban
@@ -80,7 +80,7 @@ namespace MISA.Model
         /// <summary>
         /// lương
         /// </summary>
-        public double Salary { get; set; }
+        public double? Salary { get; set; }
 
         /// <summary>
         /// loại tình trạng công việc

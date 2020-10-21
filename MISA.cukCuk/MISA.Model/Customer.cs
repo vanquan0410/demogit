@@ -43,7 +43,7 @@ namespace MISA.Model
         /// <summary>
         /// sô tiền nợ của khách hàng
         /// </summary>
-        public double DebitMoney { get; set; }
+        public double? DebitMoney { get; set; }
 
         /// <summary>
         /// dịa chỉ khách hàng
@@ -58,7 +58,7 @@ namespace MISA.Model
         /// <summary>
         /// ngày sinh khách hàng
         /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 
 }

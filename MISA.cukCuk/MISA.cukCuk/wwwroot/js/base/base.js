@@ -247,6 +247,9 @@ class BaseJS {
                     if (formatName == "code") {
                         var td = $(`<td format=` + formatName + ` fieldName=` + fieldName + `>` + value + `</td>`);
                     }
+                    if (formatName == "email") {
+                        var td = $(`<td format=` + formatName + ` fieldName=` + fieldName + ` title=` + value + `>` + value + `</td>`);
+                    }
                     $(tr).append(td);
                 })
                 //Biding dữ liệu lên UI
@@ -541,6 +544,8 @@ class BaseJS {
         //lấy dòng đực chọn
         var fields = $("tr.row-selected td");
         try {
+            this.btnAddOnClick();
+            this.btnCancelOnClick();
             var self = this;
             var rowSelected = null;
             //xác định đối tượng cần sửa
@@ -573,6 +578,7 @@ class BaseJS {
                             if (format == "code") {
                                 var fieldName = $(field).attr('fieldName');
                                 obj[fieldName] = $('#txtEmployeeCode').val();
+                                
                             } else {
                                 var fieldName = $(field).attr('fieldName');
                                 obj[fieldName] = res[fieldName];
@@ -590,7 +596,7 @@ class BaseJS {
             } else {
                 this.showMessageWarning();
                 $('.button-icon').css("margin-top", "16px")
-                $('.message-title-warning').html("vui lòng chọn một bản ghi để thực hiện nhan ban");
+                $('.message-title-warning').html("vui lòng chọn một bản ghi để thực hiện nhân bản");
             }
         } catch (e) {
             $('.message-title-warning').html("lỗi trong qua trình thêm");
