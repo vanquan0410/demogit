@@ -7,6 +7,7 @@ class BaseJS {
     //#region constructor
     constructor(name) {
         try {
+            this.mess = 0;
             this.code = '';
             this.page = 25;                         //số trang hiển thị trong 1 page
             this.startPage = 1;                     //trang bắt đầu
@@ -61,6 +62,7 @@ class BaseJS {
         $(".page-first").click(this.pageFirstData.bind(this));            //thực hiện về dầu trang
         $(".page-last").click(this.pageLastData.bind(this));              //thực hiện về cuối trang
         $("#btnWarning").click(this.hideMessageWarning);                  //hiển thị thông báo
+        $('#dialog-btnEdit').click(this.btnAddAndSaveOnClick.bind(this));
 
 
     }
@@ -263,6 +265,24 @@ class BaseJS {
     //#endregion
 
     // #region even->click
+    /**
+     * 
+     * thêm và cất
+     * author: DVQuan(21/10/2020)
+     * */
+    btnAddAndSaveOnClick() {
+        debugger
+        this.btnSaveOnClick();
+        if (this.mess != 0) {
+            this.FormType = "Add";
+            this.showDialogDetail();
+            this.showFocusDetail();
+            this.formatDialog();
+            this.removeClassRequired();
+            this.addItemCode();
+        }
+       /* this.btnAddOnClick();*/
+    }
 
     /**
      * sự kiên khi click vao button thêm mới -> show dialog
@@ -415,6 +435,7 @@ class BaseJS {
                         }
                     }
                 })
+                this.mess = 1;
                 this.saveToDB(obj, method);
             }
         } catch (e) {
@@ -732,7 +753,7 @@ class BaseJS {
 
         });
         //thực hiện lưu
-        Mousetrap.bind("ctrl+s", function () {
+        Mousetrap.bind("shift+s", function () {
             self.btnAddOnClick();
             self.btnSaveOnClick();
         })

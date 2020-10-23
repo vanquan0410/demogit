@@ -38,8 +38,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// thêm mới
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> T value
+        /// <returns></returns> số bản ghi thay đổi
         /// CreatedBy: DVQuan(14/10/2020)
         int Insert(T value);
 
@@ -47,8 +47,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// sửa 
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> T value
+        /// <returns></returns> true or flase
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Update(T value);
 
@@ -56,8 +56,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// xóa
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> T value
+        /// <returns></returns> true or false
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Delete(T value);
 
@@ -65,21 +65,21 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy số lượng danh sách các bản ghi
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> số lượng danh sách các bản ghi
         /// CreatedBy: DVQuan
         int GetCountData();
 
         /// <summary>
         /// lấy Code của item lớn nhất
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> item code
         String GetMaxItemCode();
 
         /// <summary>
         /// check item
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> value của object
+        /// <returns></returns> T value
         T checkItem(Object value, string storeName);
     }
 }

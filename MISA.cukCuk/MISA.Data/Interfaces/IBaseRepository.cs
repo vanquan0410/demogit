@@ -10,14 +10,14 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy data theo phân trang
         /// </summary>
-        /// <returns></returns> list nhân viên
+        /// <returns></returns> list T
         /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> Get(int page, int size);
 
         /// <summary>
         /// lấy all data 
         /// </summary>
-        /// <returns></returns> list nhân viên
+        /// <returns></returns> list T
         /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> GetAllData();
 
@@ -25,8 +25,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy data theo ID
         /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
+        /// <param name="Id"></param> id của đối tượng
+        /// <returns></returns> list<T]>
         ///  CreatedBy: DVQuan(14/10/2020)
         T GetByID(Object Id);
 
@@ -34,8 +34,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// thêm mới
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> t value
+        /// <returns></returns> số bản ghi đã thay đổi
         /// CreatedBy: DVQuan(14/10/2020)
         int Insert(T value);
 
@@ -43,8 +43,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// sửa 
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> T value
+        /// <returns></returns> true or false
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Update(T value);
 
@@ -52,8 +52,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// xóa
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value"></param> T value
+        /// <returns></returns> true or flase
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Delete(T value);
 
@@ -61,14 +61,14 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy số lượng danh sách các bản ghi
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> tổng số bản ghi
         /// CreatedBy: DVQuan
         int GetCountData();
 
         /// <summary>
         /// lấy Code của item lớn nhất
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> Item code
         String GetMaxItemCode();
     }
 

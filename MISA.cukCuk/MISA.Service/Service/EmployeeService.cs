@@ -25,6 +25,12 @@ namespace MISA.Service.Service
             return true;
             
         }
+        /// <summary>
+        /// ghi dè phương thức Validate của lớp cho
+        /// </summary>
+        /// <param name="entity"></param> Emploee
+        /// <returns></returns> true or flase
+        /// CreatedBy: DVQuan(19/10/2020)
         protected override bool Validate(Employee entity)
         {
             var isvalid = true;

@@ -26,7 +26,7 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy danh sách phòng ban
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> ds phòng ban
         /// CreatedBy: DVQuan(15/10/2020)
         // GET: api/<DepartmentApi>
         [HttpGet]

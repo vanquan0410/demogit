@@ -40,11 +40,12 @@ namespace MISA.cukCuk.Api
             else
                 return NoContent();
         }
+
         /// <summary>
         /// tìm kiếm nhân viên theo id
         /// </summary>
         /// <param name="id"></param> id nhân viên
-        /// <returns></returns>
+        /// <returns></returns> nhân viên
         /// CreatedBy: DVQuan(15/10/2020)
         // GET api/<EmployeeApi>/5
         [HttpGet("{id}")]
@@ -60,7 +61,7 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy ra tổng số bản ghi của nhân viên
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> số bản ghi
         /// CreatedBy: DVQuan(15/10/2020)
         [HttpGet("countpage")]
         public int GetCount()
@@ -73,7 +74,7 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy ra mã nhân viên theo thứ tự lớn nhất
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> EmployeeCode
         /// CreatedBy: DVQuan(21/10/2020)
         [HttpGet("maxcodeemployee")]
         public ActionResult GetCountData()
@@ -105,7 +106,7 @@ namespace MISA.cukCuk.Api
         /// thêm mới một nhân viên
         /// </summary>
         /// <param name="employee"></param> thông tin của nhân viên mới
-        /// <returns></returns>
+        /// <returns></returns> response
         /// CreatedBy: DVQuan(19/10/2020)
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
@@ -121,8 +122,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// thay đổi thông tin của 1 nhân viên
         /// </summary>
-        /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <param name="employee"></param> thông tin nhân viên cần thay dổi
+        /// <returns></returns> true or false
         /// CreatedBy: DVQuan(17/10/2020)
         // PUT api/<EmployeeApi>/5
         [HttpPut]
@@ -142,8 +143,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// Xóa một nhân viên
         /// </summary>
-        /// <param name="employee"></param>
-        /// <returns></returns>
+        /// <param name="employee"></param> EmployeeId
+        /// <returns></returns> true or false
         /// CreatedBy: DVQuan(19/10/2020)
         // DELETE api/<EmployeeApi>/5
         [HttpDelete]

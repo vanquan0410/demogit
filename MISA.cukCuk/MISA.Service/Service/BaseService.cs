@@ -75,6 +75,11 @@ namespace MISA.Service.Service
             return _baseRepository.Update(value);
         }
 
+        /// <summary>
+        /// vadilate dữ liệu
+        /// </summary>
+        /// <param name="entity"></param> T entity
+        /// <returns></returns> true or flase
         protected virtual bool Validate(T entity)
         {
             return true;
