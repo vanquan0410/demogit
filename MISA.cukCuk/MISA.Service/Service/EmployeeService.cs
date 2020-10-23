@@ -21,30 +21,29 @@ namespace MISA.Service.Service
         public bool checkDuplicate(string employeeCode)
         {
             if(_employeeRepository.checkItem(employeeCode)!=null)    //đã tồn tại mã nhân viên
-                return false;
-            return true;
+                return false;    //đã tồn tại mã nhân viên
+            return true;    //chưa tồn tại mã nhân viên
             
         }
         /// <summary>
         /// ghi dè phương thức Validate của lớp cho
         /// </summary>
-        /// <param name="entity"></param> Emploee
-        /// <returns></returns> true or flase
+        /// <param name="entity"> Emploee</param>
+        /// <returns>true or flase</returns> 
         /// CreatedBy: DVQuan(19/10/2020)
         protected override bool Validate(Employee entity)
         {
             var isvalid = true;
             //check trùng mã
-            if (!checkDuplicate(entity.EmployeeCode))
+            if (!checkDuplicate(entity.EmployeeCode)) //đã tồn tại mã nhân viên ->false
             {
                 isvalid = false;
                 validateErrorResponseMsg.Add("bị trùng với mã nhân viên  " + _employeeRepository.checkItem(entity.EmployeeCode).EmployeeName);
             }
-            else
+            else   //true chưa tồn tại mã nhân viên
             {
                 validateErrorResponseMsg.Add(" thêm thành công");
-            }
-              
+            } 
             return isvalid;
         }
         #endregion

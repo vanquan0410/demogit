@@ -10,14 +10,14 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy data theo phân trang
         /// </summary>
-        /// <returns></returns> list T
+        /// <returns>list T</returns> 
         /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> Get(int page, int size);
 
         /// <summary>
         /// lấy all data 
         /// </summary>
-        /// <returns></returns> list T
+        /// <returns>list T</returns> 
         /// CreatedBy: DVQuan(14/10/2020)
         IEnumerable<T> GetAllData();
 
@@ -25,8 +25,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// lấy data theo ID
         /// </summary>
-        /// <param name="Id"></param> id của đối tượng
-        /// <returns></returns> list<T]>
+        /// <param name="Id">id của đối tượng</param> 
+        /// <returns>list<T></returns> 
         ///  CreatedBy: DVQuan(14/10/2020)
         T GetByID(Object Id);
 
@@ -34,8 +34,8 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// thêm mới
         /// </summary>
-        /// <param name="value"></param> t value
-        /// <returns></returns> số bản ghi đã thay đổi
+        /// <param name="value"> t value</param>
+        /// <returns>số bản ghi đã thay đổi</returns> 
         /// CreatedBy: DVQuan(14/10/2020)
         int Insert(T value);
 
@@ -52,7 +52,7 @@ namespace MISA.Data.Interfaces
         /// <summary>
         /// xóa
         /// </summary>
-        /// <param name="value"></param> T value
+        /// <param name="value">T value</param> 
         /// <returns></returns> true or flase
         ///  CreatedBy: DVQuan(14/10/2020)
         bool Delete(T value);

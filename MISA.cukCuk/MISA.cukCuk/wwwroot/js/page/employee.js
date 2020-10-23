@@ -23,7 +23,6 @@ class EmployeeJS extends BaseJS {
      * author: DVQuan(12/10/2020)
      * */
     loadDataSelectPossition() {
-        debugger
         $.ajax({
             url: "/possition",
             method: "GET",
@@ -46,7 +45,6 @@ class EmployeeJS extends BaseJS {
      * author: DVQuan(19/10/2020)
      * */
     loadDataSelectDepartment() {
-        debugger
         $.ajax({
             url: "/department",
             method: "GET",
@@ -54,7 +52,6 @@ class EmployeeJS extends BaseJS {
             datatype: "json",
             contenttype: "application/json"
         }).done(function (res) {
-            debugger
             $.each(res, function (index, value) {
                 var o = new Option(value.DepartmentId, value.DepartmentName);
                 $(o).val(value.DepartmentId);
@@ -69,7 +66,6 @@ class EmployeeJS extends BaseJS {
      * author:DVQuan
      * */
     getData(page, size) {
-        debugger
         var res = this;
         $.ajax({
             url: "/api/employee?page=" + page + "&size=" + size,
@@ -94,7 +90,6 @@ class EmployeeJS extends BaseJS {
     * @param {any} POST
     * */
     saveToDB(customer, method) {
-        debugger
         var self = this;
         var alter = 'Thêm';
         if (method == 'PUT') {
@@ -111,7 +106,6 @@ class EmployeeJS extends BaseJS {
                 //close form-dialog
                 self.btnCancelOnClick();
                 //load lại dữ liệu
-                debugger
                 self.getData(self.page, self.startPage);
                 self.loadData();
                 //show message thòng công
@@ -239,7 +233,6 @@ class EmployeeJS extends BaseJS {
      * author: DVQuan(21/10/2020)
      * */
     itemCode() {
-        debugger
         var value;
         $.ajax({
             url: "/api/employee/maxcodeemployee",

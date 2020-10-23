@@ -10,8 +10,8 @@ namespace MISA.Service.Service
         /// <summary>
         /// check trùng mã
         /// </summary>
-        /// <param name="employeeCode"></param>
-        /// <returns></returns>
+        /// <param name="employeeCode">employeeCode</param>
+        /// <returns>true(chưa tồn tại mã nhân viên) false (đã tồn tại mã nhân viên)</returns>
         /// CreatedBy:DVQuan(20/10/2020)
         bool checkDuplicate(String employeeCode);
 

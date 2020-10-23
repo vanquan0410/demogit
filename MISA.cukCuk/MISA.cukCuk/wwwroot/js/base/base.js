@@ -77,14 +77,12 @@ class BaseJS {
      * */
     getCountPages() {
         var ref = this;
-        debugger
         $.ajax({
             url: "/api/" + ref.getClassName() + "/countpage",    //tên của class
             method: "GET",
             data: "",
             contentType: "application/json",
         }).done(function (res) {
-            debugger
             $('#numberOfPages').val(Math.ceil(res / ref.page));
             ref.countPages = res;
         }).fail(function (res) {
@@ -97,7 +95,6 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     nextData() {
-        debugger
         if ((this.startPage + this.page) < this.countPages) {
             this.currentPage = this.currentPage + 1;     //trang hiện tại
             this.startPage = this.startPage + this.page; //bản ghi bắt đầu
@@ -125,7 +122,6 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     pageFirstData() {
-        debugger
         if (this.currentPage != 1) {
             this.currentPage = 1;                       //trang hiện tại
             this.startPage = 1;                         //bản ghi bắt đầu
@@ -271,7 +267,6 @@ class BaseJS {
      * author: DVQuan(21/10/2020)
      * */
     btnAddAndSaveOnClick() {
-        debugger
         this.btnSaveOnClick();
         if (this.mess != 0) {
             this.FormType = "Add";
@@ -381,7 +376,6 @@ class BaseJS {
             //kiểm tra các trường dl ko được để trống
             $.each(inputRequired, function (index, input) {
                 if (!validateData.validateEmpty(input)) {
-                    debugger
                     isValid = false;
                     seft.showMessageWarning();
                     var alterName = input.getAttribute('requireName');
@@ -415,7 +409,6 @@ class BaseJS {
                     var format = $(field).attr('format');
                     //định dạng kiểu number
                     if (format == 'number') {
-                        debugger
                         if ($(field).val() == '' || $(field).val() == null || $(field).val() == undefined) {
                             obj[fieldName] = 0;
                         }
@@ -425,10 +418,8 @@ class BaseJS {
                     }
                     else {
                         //lấy giá trị của trường
-                        debugger
                         obj[fieldName] = $(field).val();
                         if (format == 'date') {
-                            debugger
                             if (obj[fieldName] == "") {
                                 obj[fieldName] = new Date();
                             }
@@ -503,7 +494,6 @@ class BaseJS {
     btnDeleteOnClick() {
         try {
             var self = this;
-            debugger
             var name = this.getName();
             var dataToDelete = {}
             var rowSelected = $('tr.row-selected');
@@ -584,7 +574,6 @@ class BaseJS {
                 }).done(function (res) {
                     var obj = {};
                     //thực hiện binding dữ liệu lên form chi tiết
-                    debugger
                     var fields = $('input[fieldName],select[fieldName]');
                     $.each(fields, function (index, field) {
                         var fieldName = $(field).attr('fieldName');
@@ -594,7 +583,6 @@ class BaseJS {
                             obj[fieldName] = commonjs.convertDate(res[fieldName]);
                         }
                         else {
-                            debugger
                             //biding dl len các truong
                             if (format == "code") {
                                 var fieldName = $(field).attr('fieldName');
@@ -691,7 +679,6 @@ class BaseJS {
      * author: DVQuan(13/10/2020)
      * */
     draggableForm() {
-        debugger
         $(function () {
             $(".form-dialog").draggable();
             $("#droppable").droppable({

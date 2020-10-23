@@ -25,8 +25,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy danh sách nhân viên theo phân trang
         /// </summary>
-        /// <param name="page"></param> số bản ghi trong 1 trang
-        /// <param name="size"></param> kích thức 1 trang
+        /// <param name="page">số bản ghi trong 1 trang</param> 
+        /// <param name="size">kích thức 1 trang</param> 
         /// <returns></returns>
         /// CreatedBy: DVQuan(15/10/2020)
         // GET: api/<EmployeeApi>
@@ -45,7 +45,7 @@ namespace MISA.cukCuk.Api
         /// tìm kiếm nhân viên theo id
         /// </summary>
         /// <param name="id"></param> id nhân viên
-        /// <returns></returns> nhân viên
+        /// <returns> nhân viên</returns>
         /// CreatedBy: DVQuan(15/10/2020)
         // GET api/<EmployeeApi>/5
         [HttpGet("{id}")]
@@ -61,7 +61,7 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy ra tổng số bản ghi của nhân viên
         /// </summary>
-        /// <returns></returns> số bản ghi
+        /// <returns> số bản ghi</returns>
         /// CreatedBy: DVQuan(15/10/2020)
         [HttpGet("countpage")]
         public int GetCount()
@@ -74,7 +74,7 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// lấy ra mã nhân viên theo thứ tự lớn nhất
         /// </summary>
-        /// <returns></returns> EmployeeCode
+        /// <returns>EmployeeCode</returns> 
         /// CreatedBy: DVQuan(21/10/2020)
         [HttpGet("maxcodeemployee")]
         public ActionResult GetCountData()
@@ -105,8 +105,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// thêm mới một nhân viên
         /// </summary>
-        /// <param name="employee"></param> thông tin của nhân viên mới
-        /// <returns></returns> response
+        /// <param name="employee">thông tin của nhân viên mới</param> 
+        /// <returns> response</returns>
         /// CreatedBy: DVQuan(19/10/2020)
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
@@ -122,8 +122,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// thay đổi thông tin của 1 nhân viên
         /// </summary>
-        /// <param name="employee"></param> thông tin nhân viên cần thay dổi
-        /// <returns></returns> true or false
+        /// <param name="employee">thông tin nhân viên cần thay dổi</param> 
+        /// <returns>true or false</returns> 
         /// CreatedBy: DVQuan(17/10/2020)
         // PUT api/<EmployeeApi>/5
         [HttpPut]
@@ -143,8 +143,8 @@ namespace MISA.cukCuk.Api
         /// <summary>
         /// Xóa một nhân viên
         /// </summary>
-        /// <param name="employee"></param> EmployeeId
-        /// <returns></returns> true or false
+        /// <param name="employee"> EmployeeId</param>
+        /// <returns>true(thành công) or false(không thành công)</returns> 
         /// CreatedBy: DVQuan(19/10/2020)
         // DELETE api/<EmployeeApi>/5
         [HttpDelete]
@@ -153,11 +153,11 @@ namespace MISA.cukCuk.Api
             var customerResult = _employeeService.Delete(employee);
             if (customerResult)
             {
-                return Ok(true);
+                return Ok(true);  //xóa thành công
             }
             else
             {
-                return Ok(false);
+                return Ok(false); //xóa không thành công
             }
         }
         #endregion

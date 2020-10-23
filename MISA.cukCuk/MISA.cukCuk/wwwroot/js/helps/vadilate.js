@@ -48,7 +48,6 @@ var validateData = {
      * @param {any} obj input selecttor
      */
     validateNumber: function (obj) {
-        debugger
         var value = $(obj).val();
         if (!(/^[0-9]+$/.test(value))) {
             $(obj).addClass('required-error');

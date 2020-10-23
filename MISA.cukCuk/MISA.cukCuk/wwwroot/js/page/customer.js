@@ -35,7 +35,6 @@ class CustomerJS extends BaseJS {
             datatype: "json",
             contenttype: "application/json"
         }).done(function (res) {
-            debugger
             $.each(res, function (index, value) {
                 var o = new Option(value.CustomerGroupName, value.CustomerGroupId);
                
@@ -50,7 +49,7 @@ class CustomerJS extends BaseJS {
     * author:DVQuan
     * */
     getData(page, size) {
-        debugger
+
         var res = this;
         $.ajax({
             url: "/api/customer?page=" + page + "&size=" + size,
@@ -128,7 +127,6 @@ class CustomerJS extends BaseJS {
      */
     deleteToDB(customer) {
         var self = this;
-        debugger
         if (customer != null) {
             $.ajax({
                 url: "/api/customer",
