@@ -23,50 +23,18 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       operationId: get-employees
+
+    #theem nhaan vieen  
     post:
       summary: thêm nhân viên
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ExchangeRateObjectParam'
       responses:
         '201':
-          description: thêm thành công .
-          content:
-            application/json: null
-        '400':
-          $ref: '#/components/responses/400'
-        '500':
-          $ref: '#/components/responses/500'
-
-  '/employees/{employeeId}':
-    parameters:
-      - schema:
-          type: string
-        name: employeeId
-        in: path
-        required: true
-    put:
-      summary: sửa nhân viên
-      parameters:
-        '-schema':
-          type: string
-          format: uuid
-        name: EmployeeId
-        in: path
-        required: true
-        example: e709b020-1b81-48c2-b9bc-f8d9518d13ab
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExchangeRateObjectParam'
-      responses:
-        '200':
-          description: cập nhật chuyển đổi tiền tệ.
+          description: thêm thành công.
           content:
             application/json:
               schema:
@@ -78,16 +46,48 @@ paths:
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
+
+    put:
+      summary: sửa nhân viên
+      parameters:
+        - name: EmployeeId
+          in: query
+          required: true
+          description: ID người dùng
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRateObjectParam'
+      responses:
+        '200':
+          description: cập nhật thành công.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseResult'
+              examples:
+                200UpdateExchangeRate:
+                  $ref: models/examples/ResponseResultExamples.v1.yaml#/components/examples/200UpdateExchangeRate
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+
+
     delete:
       summary: xóa nhân viên
       parameters:
-        '-schema':
-          type: string
-          format: uuid
-        name: EmployeeId
-        in: path
-        required: true
-        example: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+        - name: userID
+          in: query
+          required: true
+          description: ID người dùng
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: Xóa nhân viên.

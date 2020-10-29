@@ -1,0 +1,521 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Employees",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:3000"
+  } ],
+  "paths" : {
+    "/employees" : {
+      "delete" : {
+        "parameters" : [ {
+          "description" : "ID người dùng",
+          "explode" : true,
+          "in" : "query",
+          "name" : "userID",
+          "required" : true,
+          "schema" : {
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "200InitializeLanguage" : {
+                    "value" : {
+                      "notify" : "OK"
+                    }
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseResult"
+                }
+              }
+            },
+            "description" : "Xóa nhân viên."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "400ReturnInvalidInput" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInput"
+                  },
+                  "400ReturnInvalidInputValidationNull" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInputValidationNull"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "500ReturnException" : {
+                    "$ref" : "#/components/examples/500ReturnException"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Internal Server Error"
+          }
+        },
+        "summary" : "xóa nhân viên"
+      },
+      "get" : {
+        "operationId" : "get-employees",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "200Get10Employees" : {
+                    "$ref" : "#/components/examples/200Get10Employees"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/EmployeeList"
+                }
+              }
+            },
+            "description" : "trả dữu liệu thành công"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "400ReturnInvalidInput" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInput"
+                  },
+                  "400ReturnInvalidInputValidationNull" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInputValidationNull"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "500ReturnException" : {
+                    "$ref" : "#/components/examples/500ReturnException"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Internal Server Error"
+          }
+        },
+        "summary" : "lấy danh sách nhân viên"
+      },
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExchangeRateObjectParam"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "200UpdateExchangeRate" : {
+                    "$ref" : "#/components/examples/200UpdateExchangeRate"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseResult"
+                }
+              }
+            },
+            "description" : "thêm thành công."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "400ReturnInvalidInput" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInput"
+                  },
+                  "400ReturnInvalidInputValidationNull" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInputValidationNull"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "500ReturnException" : {
+                    "$ref" : "#/components/examples/500ReturnException"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Internal Server Error"
+          }
+        },
+        "summary" : "thêm nhân viên"
+      },
+      "put" : {
+        "parameters" : [ {
+          "description" : "ID người dùng",
+          "explode" : true,
+          "in" : "query",
+          "name" : "EmployeeId",
+          "required" : true,
+          "schema" : {
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "style" : "form"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ExchangeRateObjectParam"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "200UpdateExchangeRate" : {
+                    "$ref" : "#/components/examples/200UpdateExchangeRate"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseResult"
+                }
+              }
+            },
+            "description" : "cập nhật thành công."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "400ReturnInvalidInput" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInput"
+                  },
+                  "400ReturnInvalidInputValidationNull" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInputValidationNull"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Bad Request"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "500ReturnException" : {
+                    "$ref" : "#/components/examples/500ReturnException"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error"
+                }
+              }
+            },
+            "description" : "Internal Server Error"
+          }
+        },
+        "summary" : "sửa nhân viên"
+      }
+    }
+  },
+  "components" : {
+    "examples" : {
+      "200Get10Employees" : {
+        "value" : [ {
+          "EmployeeId" : "e709b020-1b81-48c2-b9bc-f8d9518d13ab",
+          "EmployeeCode" : "NV0001",
+          "EmployeeName" : "đàm văn quân",
+          "Gender" : 1,
+          "DateOfBirth" : "2000-10-10",
+          "PhoneNumber" : 2.65498651E8,
+          "DepartmentId" : "cfa09661-bdfc-49a0-ad2c-fc83a1610000",
+          "DepartmentName" : "phòng đào tạo",
+          "Email" : "anhquan@gmail.com",
+          "Salary" : 3000000,
+          "WorkStatus" : 1,
+          "PositionId" : "cfa09661-bdfc-49a0-ad2c-fc83a16195ca",
+          "PositionName" : "nhân viên",
+          "TaxCode" : 155895,
+          "JoinDate" : "2000-10-10",
+          "IdentityNumber" : 14648,
+          "IdentityDate" : "2020-10-10",
+          "IdentityPlace" : "hà nội"
+        }, {
+          "EmployeeId" : "e709b020-1b81-48c2-b9bc-f8d9518d13ab",
+          "EmployeeCode" : "NV0001",
+          "EmployeeName" : "đàm văn quân",
+          "Gender" : 1,
+          "DateOfBirth" : "2000-10-10",
+          "PhoneNumber" : 2.65498651E8,
+          "DepartmentId" : "cfa09661-bdfc-49a0-ad2c-fc83a1610000",
+          "DepartmentName" : "phòng đào tạo",
+          "Email" : "anhquan@gmail.com",
+          "Salary" : 3000000,
+          "WorkStatus" : 1,
+          "PositionId" : "cfa09661-bdfc-49a0-ad2c-fc83a16195ca",
+          "PositionName" : "nhân viên",
+          "TaxCode" : 155895,
+          "JoinDate" : "2000-10-10",
+          "IdentityNumber" : 14648,
+          "IdentityDate" : "2020-10-10",
+          "IdentityPlace" : "hà nội"
+        }, {
+          "EmployeeId" : "e709b020-1b81-48c2-b9bc-f8d9518d13ab",
+          "EmployeeCode" : "NV0001",
+          "EmployeeName" : "đàm văn quân",
+          "Gender" : 1,
+          "DateOfBirth" : "2000-10-10",
+          "PhoneNumber" : 2.65498651E8,
+          "DepartmentId" : "cfa09661-bdfc-49a0-ad2c-fc83a1610000",
+          "DepartmentName" : "phòng đào tạo",
+          "Email" : "anhquan@gmail.com",
+          "Salary" : 3000000,
+          "WorkStatus" : 1,
+          "PositionId" : "cfa09661-bdfc-49a0-ad2c-fc83a16195ca",
+          "PositionName" : "nhân viên",
+          "TaxCode" : 155895,
+          "JoinDate" : "2000-10-10",
+          "IdentityNumber" : 14648,
+          "IdentityDate" : "2020-10-10",
+          "IdentityPlace" : "hà nội"
+        }, {
+          "EmployeeId" : "e709b020-1b81-48c2-b9bc-f8d9518d13ab",
+          "EmployeeCode" : "NV0001",
+          "EmployeeName" : "đàm văn quân",
+          "Gender" : 1,
+          "DateOfBirth" : "2000-10-10",
+          "PhoneNumber" : 2.65498651E8,
+          "DepartmentId" : "cfa09661-bdfc-49a0-ad2c-fc83a1610000",
+          "DepartmentName" : "phòng đào tạo",
+          "Email" : "anhquan@gmail.com",
+          "Salary" : 3000000,
+          "WorkStatus" : 1,
+          "PositionId" : "cfa09661-bdfc-49a0-ad2c-fc83a16195ca",
+          "PositionName" : "nhân viên",
+          "TaxCode" : 155895,
+          "JoinDate" : "2000-10-10",
+          "IdentityNumber" : 14648,
+          "IdentityDate" : "2020-10-10",
+          "IdentityPlace" : "hà nội"
+        }, {
+          "EmployeeId" : "e709b020-1b81-48c2-b9bc-f8d9518d13ab",
+          "EmployeeCode" : "NV0001",
+          "EmployeeName" : "đàm văn quân",
+          "Gender" : 1,
+          "DateOfBirth" : "2000-10-10",
+          "PhoneNumber" : 2.65498651E8,
+          "DepartmentId" : "cfa09661-bdfc-49a0-ad2c-fc83a1610000",
+          "DepartmentName" : "phòng đào tạo",
+          "Email" : "anhquan@gmail.com",
+          "Salary" : 3000000,
+          "WorkStatus" : 1,
+          "PositionId" : "cfa09661-bdfc-49a0-ad2c-fc83a16195ca",
+          "PositionName" : "nhân viên",
+          "TaxCode" : 155895,
+          "JoinDate" : "2000-10-10",
+          "IdentityNumber" : 14648,
+          "IdentityDate" : "2020-10-10",
+          "IdentityPlace" : "hà nội"
+        } ]
+      },
+      "200UpdateExchangeRate" : {
+        "value" : {
+          "resultMessage" : "Success"
+        }
+      },
+      "400ReturnInvalidInput" : {
+        "value" : {
+          "devMSG" : "The request was invalid or cannot be otherwise served.",
+          "userMsg" : "Thông tin đúng định dạng.",
+          "errorCode" : "CM-0001",
+          "moreInfo" : "https://openapi.misa.com.vn/errorcode/CM-0001",
+          "traceId" : "ba9587fd-1a79-4ac5-a0ca-2c9f74dfd3fb",
+          "validationFailures" : [ {
+            "property" : "email",
+            "failureReason" : "email address is invalid."
+          }, {
+            "property" : "city",
+            "failureReason" : "city address is invalid."
+          } ]
+        }
+      },
+      "400ReturnInvalidInputValidationNull" : {
+        "value" : {
+          "devMSG" : "The request was invalid or cannot be otherwise served.",
+          "userMsg" : "Thông tin đúng định dạng.",
+          "errorCode" : "CM-0001",
+          "moreInfo" : "https://openapi.misa.com.vn/errorcode/CM-0001",
+          "traceId" : "ba9587fd-1a79-4ac5-a0ca-2c9f74dfd3fb",
+          "validationFailures" : [ null ]
+        }
+      },
+      "500ReturnException" : {
+        "value" : {
+          "devMSG" : "The server encountered an unexpected condition which prevented it from fulfilling the request.",
+          "userMsg" : "Có lỗi xảy ra! vui lòng liên hệ với MISA.",
+          "errorCode" : "CM-0002",
+          "moreInfo" : "https://openapi.misa.com.vn/errorcode/CM-0002",
+          "traceId" : "dc2f5361-a879-4164-a757-826536a81166"
+        }
+      }
+    },
+    "responses" : {
+      "400" : {
+        "$ref" : "../common/models/responses.v1.yaml#/components/responses/400"
+      },
+      "500" : {
+        "$ref" : "../common/models/responses.v1.yaml#/components/responses/500"
+      }
+    },
+    "schemas" : {
+      "EmployeeList" : {
+        "items" : {
+          "$ref" : "#/components/schemas/Employee"
+        },
+        "type" : "array"
+      },
+      "ExchangeRateObjectParam" : {
+        "example" : {
+          "EmployeeCode" : "EmployeeCode",
+          "Gender" : 0,
+          "EmployeeId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "EmployeeName" : "EmployeeName"
+        },
+        "properties" : {
+          "EmployeeId" : {
+            "description" : "id của của nhân viên",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "EmployeeCode" : {
+            "description" : "mã nhân viên",
+            "type" : "string"
+          },
+          "EmployeeName" : {
+            "description" : "tên nhân viên",
+            "type" : "string"
+          },
+          "Gender" : {
+            "description" : "(giới tính 0-nam 1-nữ)",
+            "enum" : [ 0, 1 ],
+            "type" : "integer"
+          }
+        },
+        "title" : "Employee",
+        "type" : "object"
+      },
+      "ResponseResult" : {
+        "description" : "",
+        "example" : {
+          "resultStream" : "resultStream",
+          "resultMessage" : "resultMessage"
+        },
+        "properties" : {
+          "resultMessage" : {
+            "type" : "string"
+          },
+          "resultStream" : {
+            "type" : "string"
+          }
+        },
+        "title" : "ResponseResult",
+        "type" : "object"
+      },
+      "Employee" : {
+        "example" : {
+          "EmployeeCode" : "EmployeeCode",
+          "Gender" : 0,
+          "EmployeeId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "EmployeeName" : "EmployeeName"
+        },
+        "properties" : {
+          "EmployeeId" : {
+            "description" : "id của của nhân viên",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "EmployeeCode" : {
+            "description" : "mã nhân viên",
+            "type" : "string"
+          },
+          "EmployeeName" : {
+            "description" : "tên nhân viên",
+            "type" : "string"
+          },
+          "Gender" : {
+            "description" : "(giới tính 0-nam 1-nữ)",
+            "enum" : [ 0, 1 ],
+            "type" : "integer"
+          }
+        },
+        "title" : "Employee",
+        "type" : "object"
+      },
+      "error" : {
+        "description" : "A standard error object.",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "code" ],
+        "title" : "Error",
+        "type" : "object",
+        "x-tags" : [ "Common" ]
+      }
+    }
+  }
+}
