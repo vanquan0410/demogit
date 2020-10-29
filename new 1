@@ -1,0 +1,15 @@
+openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g aspnetcore -o sourcecode/MISA.OpenAPI.MISA.CukCukSDK --package-name MISA.OAS.Finance.Service --additional-properties=aspnetCoreVersion=3.1
+
+openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g csharp-netcore -o sourcecode/MISA.OpenAPI.MISA.CukCukSDK --package-name MISA.OAS.CukCuk.SDK --additional-properties=packageVersion=1.0.0.1
+
+openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g csharp-netcore -o quan/MISA.OpenApi --package-name MISA.OAS.OpenApi.SDK --additional-properties=packageVersion=1.0.0.1
+
+ openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g aspnetcore -o quan/MISA.OpenAPI.service --package-name MISA.OAS.Finance.Service --additional-properties=aspnetCoreVersion=3.1
+ 
+             List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee(new Guid(), "1234", "Nguyễn Văn A", 0));
+            employees.Add(new Employee(new Guid(), "1235", "Nguyễn Văn B", 0));
+            employees.Add(new Employee(new Guid(), "1236", "Nguyễn Văn C", 0));
+            employees.Add(new Employee(new Guid(), "1237", "Nguyễn Văn D", 0));
+            employees.Add(new Employee(new Guid(), "1238", "Nguyễn Văn E", 0));
+            employees.Add(new Employee(new Guid(), "1239", "Nguyễn Văn F", 0));
