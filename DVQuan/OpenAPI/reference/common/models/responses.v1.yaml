@@ -1,0 +1,27 @@
+openapi: '3.0.0'
+description: 'Định nghĩa các responses dùng chung'
+info:
+  title: response
+  version: '1.0'
+components:
+  responses:
+    '400': 
+      description: Bad request 
+      content:
+        application/json:
+          schema:
+            $ref: 'error1.v1.yaml'
+          examples:
+            400ReturnInvalidInput:       
+              $ref: 'examples/response400.v1.yaml#/components/examples/400ReturnInvalidInput'
+            400returnInvalidInputValidationNull:
+              $ref: 'examples/response400.v1.yaml#/components/examples/400returnInvalidInputValidationNull'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: 'error1.v1.yaml'
+          examples:
+            500ReturnException:       
+                $ref: 'examples/response500.v1.yaml#/components/examples/500ReturnException'

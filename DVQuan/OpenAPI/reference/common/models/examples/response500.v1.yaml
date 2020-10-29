@@ -1,0 +1,13 @@
+openapi: '3.0.0'
+description: 'định nghĩa các dụ trả về của lỗi http code 500'
+info:
+  title: 'ví dụ trả về lỗi 500'
+  version: '1.0'
+components:
+  examples:
+    500ReturnException:
+      value:
+        devMSG: 'The server encountered an unexpected condition which prevented it from fulfilling the request. '
+        useMSG: 'có lỗi xảy ra vui lòng liêu hệ MISA.'
+        moreInfo: ''
+        trarceId: ''

@@ -1,0 +1,27 @@
+openapi: '3.0.0'
+description: 'Định nghĩa các ví dụ trả về của lỗi http code 500'
+info:
+  title: response400
+  version: '1.0'
+components:
+  examples: 
+    400ReturnInvalidInput:
+      value:
+        devMSG: 'the request invalid or cannot be otherwise served. '
+        userMSG: 'thông tin không đúng định dạng. '
+        errorCode: ''
+        moreInfo: ''
+        traceId: ''
+        validationFailures:
+          -null
+    400returnInvalidInputValidationNull:
+      value:
+        devMSG: 'the request was invalid or cannot be otherwise served.'
+        useMSG: 'thông tin không đúng định dạng.'
+        errorCode: ''
+        moreInfo: ''
+        traceId: ''
+        validationFailures:
+          -null
+
+

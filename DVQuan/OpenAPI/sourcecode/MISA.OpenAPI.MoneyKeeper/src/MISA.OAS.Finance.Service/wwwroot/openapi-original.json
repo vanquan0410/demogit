@@ -1,0 +1,189 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "UserApi",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:3000/v2"
+  } ],
+  "paths" : {
+    "/users" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "200GetUserRetuuenThreeUsers" : {
+                    "$ref" : "#/components/examples/200GetUserRetuuenThreeUsers"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/UserList"
+                }
+              }
+            },
+            "description" : "mảng danh sách người dùng"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "400ReturnInvalidInput" : {
+                    "$ref" : "#/components/examples/400ReturnInvalidInput"
+                  },
+                  "400returnInvalidInputValidationNull" : {
+                    "$ref" : "#/components/examples/400returnInvalidInputValidationNull"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error1"
+                }
+              }
+            },
+            "description" : "Bad request"
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "500ReturnException" : {
+                    "$ref" : "#/components/examples/500ReturnException"
+                  }
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/error1"
+                }
+              }
+            },
+            "description" : "Internal Server Error"
+          },
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/error1"
+                }
+              }
+            },
+            "description" : "unexpected error"
+          }
+        },
+        "summary" : "lấy danh sách tất cả người dùng",
+        "tags" : [ "users" ]
+      }
+    }
+  },
+  "components" : {
+    "examples" : {
+      "200GetUserRetuuenThreeUsers" : {
+        "value" : [ {
+          "UserId" : "cfa09661-bdcc-49a0-ad2c-fc83716195ca",
+          "UserName" : "DVQuan1",
+          "UserAddress" : "hà nội",
+          "UserDateOfBirth" : "2000-10-10"
+        }, {
+          "UserId" : "cfa09661-bdcc-49a0-ad2c-fc85456195cb",
+          "UserName" : "DVQuan2",
+          "UserAddress" : "hà nội",
+          "UserDateOfBirth" : "2000-10-11"
+        }, {
+          "UserId" : "cfa09661-bdcc-49a0-ad2c-fc85456192cb",
+          "UserName" : "DVQuan3",
+          "UserAddress" : "hà nội",
+          "UserDateOfBirth" : "2000-10-12"
+        } ]
+      },
+      "400ReturnInvalidInput" : {
+        "value" : {
+          "devMSG" : "the request invalid or cannot be otherwise served. ",
+          "userMSG" : "thông tin không đúng định dạng. ",
+          "errorCode" : "",
+          "moreInfo" : "",
+          "traceId" : "",
+          "validationFailures" : "-null"
+        }
+      },
+      "400returnInvalidInputValidationNull" : {
+        "value" : {
+          "devMSG" : "the request was invalid or cannot be otherwise served.",
+          "useMSG" : "thông tin không đúng định dạng.",
+          "errorCode" : "",
+          "moreInfo" : "",
+          "traceId" : "",
+          "validationFailures" : "-null"
+        }
+      },
+      "500ReturnException" : {
+        "value" : {
+          "devMSG" : "The server encountered an unexpected condition which prevented it from fulfilling the request. ",
+          "useMSG" : "có lỗi xảy ra vui lòng liêu hệ MISA.",
+          "moreInfo" : "",
+          "trarceId" : ""
+        }
+      }
+    },
+    "responses" : {
+      "400" : {
+        "$ref" : "../common/models/responses.v1.yaml#/components/responses/400"
+      },
+      "500" : {
+        "$ref" : "../common/models/responses.v1.yaml#/components/responses/500"
+      }
+    },
+    "schemas" : {
+      "UserList" : {
+        "items" : {
+          "$ref" : "#/components/schemas/User"
+        },
+        "type" : "array"
+      },
+      "error1" : {
+        "description" : "A standard error object.",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "code" ],
+        "title" : "Error",
+        "type" : "object",
+        "x-tags" : [ "Common" ]
+      },
+      "User" : {
+        "example" : {
+          "UserName" : "UserName",
+          "UserId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "UserAddress" : "UserAddress",
+          "UserDateOfBirth" : "2000-01-23"
+        },
+        "properties" : {
+          "UserId" : {
+            "description" : "mã người dùng",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "UserName" : {
+            "description" : "tên người dùng",
+            "type" : "string"
+          },
+          "UserAddress" : {
+            "description" : "địa chỉ người dùng",
+            "type" : "string"
+          },
+          "UserDateOfBirth" : {
+            "description" : "ngày sinh",
+            "format" : "date",
+            "type" : "string"
+          }
+        },
+        "title" : "user",
+        "type" : "object"
+      }
+    }
+  }
+}

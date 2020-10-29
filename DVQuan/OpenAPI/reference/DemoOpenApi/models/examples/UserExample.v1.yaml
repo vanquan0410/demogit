@@ -1,0 +1,33 @@
+openapi: '3.0.0'
+info:
+  title: UserExample
+  version: '1.0'
+servers:
+- url: http://localhost:3000
+paths: {}
+components:
+  examples:
+    200GetUserRetuuenTowUsers:
+      value:
+        - UserId: cfa09661-bdcc-49a0-ad2c-fc83a16195ca
+          UserName: DVQuan1
+          UserAddress: hà nội
+          UserDateOfBirth: '2000-10-10'
+        - UserId: cfa09661-bdcc-49a0-ad2c-fc85436195cb
+          UserName: DVQuan2
+          UserAddress: hà nội
+          UserDateOfBirth: '2000-10-11'
+    200GetUserRetuuenThreeUsers:
+      value:
+        - UserId: cfa09661-bdcc-49a0-ad2c-fc83716195ca
+          UserName: DVQuan1
+          UserAddress: hà nội
+          UserDateOfBirth: '2000-10-10'
+        - UserId: cfa09661-bdcc-49a0-ad2c-fc85456195cb
+          UserName: DVQuan2
+          UserAddress: hà nội
+          UserDateOfBirth: '2000-10-11'
+        - UserId: cfa09661-bdcc-49a0-ad2c-fc85456192cb
+          UserName: DVQuan3
+          UserAddress: hà nội
+          UserDateOfBirth: '2000-10-12'

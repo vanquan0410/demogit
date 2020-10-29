@@ -1,0 +1,46 @@
+openapi: '3.0.0'
+info:
+  title: UserApi
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000/v2'
+paths: 
+  /users:
+    get:
+      summary: lấy danh sách tất cả người dùng
+      tags:
+        - users
+      responses: 
+        '200': 
+          description: mảng danh sách người dùng 
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/UserList' 
+              examples:
+                200GetUserRetuuenThreeUsers:
+                  $ref: 'models/examples/UserExample.v1.yaml#/components/examples/200GetUserRetuuenThreeUsers'
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/error1.v1.yaml 
+                  
+
+              
+components:
+  schemas:
+    UserList:
+      type: array
+      items:
+        $ref : models/User.v1.yaml
+  responses:
+    '400':
+      $ref: '../common/models/responses.v1.yaml#/components/responses/400'
+    '500':
+      $ref: '../common/models/responses.v1.yaml#/components/responses/500'

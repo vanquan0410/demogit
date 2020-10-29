@@ -1,0 +1,17 @@
+title: user
+type: object
+properties:
+  UserId:
+    type: string
+    format: uuid
+    description: mã người dùng
+  UserName: 
+    type: string
+    description: tên người dùng
+  UserAddress:
+    type: string
+    description: 'địa chỉ người dùng'
+  UserDateOfBirth:
+    type: string
+    format: date
+    description: 'ngày sinh'
