@@ -1,0 +1,8 @@
+title: ResponseResult
+type: object
+properties:
+  resultMessage:
+    type: string
+  resultStream:
+    type: string
+description: ''

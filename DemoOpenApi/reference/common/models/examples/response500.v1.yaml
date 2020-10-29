@@ -1,0 +1,16 @@
+openapi: '3.0.0'
+description: 'Định nghĩa các ví dụ trả về của lỗi http code 500'
+info:
+  title: 'Ví dụ trả về lỗi 500'
+  version: '1.0'
+tags:
+  - ExampleCommon
+components:
+  examples:
+    500ReturnException:
+      value:
+        devMSG: 'The server encountered an unexpected condition which prevented it from fulfilling the request.'
+        userMsg: 'Có lỗi xảy ra! vui lòng liên hệ với MISA.'
+        errorCode: 'CM-0002'
+        moreInfo: 'https://openapi.misa.com.vn/errorcode/CM-0002'
+        traceId: 'dc2f5361-a879-4164-a757-826536a81166'

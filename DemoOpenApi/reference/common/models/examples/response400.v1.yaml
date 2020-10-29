@@ -1,0 +1,31 @@
+openapi: '3.0.0'
+description: 'Định nghĩa các ví dụ trả về của lỗi http code 500'
+info:
+  title: 'Ví dụ trả về lỗi 400'
+  version: '1.0'
+tags:
+  - ExampleCommon
+components:
+  examples:
+    400ReturnInvalidInput:
+      value:
+        devMSG: 'The request was invalid or cannot be otherwise served.'
+        userMsg: 'Thông tin đúng định dạng.'
+        errorCode: CM-0001
+        moreInfo: 'https://openapi.misa.com.vn/errorcode/CM-0001'
+        traceId: 'ba9587fd-1a79-4ac5-a0ca-2c9f74dfd3fb'
+        validationFailures:
+          - property: email
+            failureReason: 'email address is invalid.'
+          - property: city
+            failureReason: 'city address is invalid.'
+    400ReturnInvalidInputValidationNull:
+      value:
+        devMSG: 'The request was invalid or cannot be otherwise served.'
+        userMsg: 'Thông tin đúng định dạng.'
+        errorCode: CM-0001
+        moreInfo: 'https://openapi.misa.com.vn/errorcode/CM-0001'
+        traceId: 'ba9587fd-1a79-4ac5-a0ca-2c9f74dfd3fb'
+        validationFailures:
+          - null
+

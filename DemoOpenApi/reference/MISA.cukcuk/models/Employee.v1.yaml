@@ -1,0 +1,70 @@
+title: Employee
+type: object
+properties:
+  EmployeeId:
+    type: string
+    format: uuid
+    description: id của của nhân viên
+  EmployeeCode:
+    type: string
+    description: mã nhân viên
+  EmployeeName:
+    type: string
+    description: tên nhân viên
+  Gender:
+    type: integer
+    description: (giới tính 0-nam 1-nữ)
+    enum:
+      - 0
+      - 1
+    DateOfBirth:
+      type: string
+      description: ngày sinh
+      format: date
+    PhoneNumber:
+      type: string
+      description: số điện thoại của nhân viên
+    DepartmentId:
+      type: string
+      format: uuid
+      description: id phòng ban
+    DepartmentName:
+      type: string
+      description: tên phòng ban
+    Email:
+      type: string
+      description: email cuar nhân viên
+    Salary: 
+      type: double
+      description: mức lương
+    WorkStatus: 
+      type: integer
+      description: (tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)
+      enum:
+        - 0
+        - 1
+    PositionId:
+      type: string
+      format: uuid
+      description: id vị trí 
+    PositionName:
+      type: string
+      description: tên vị trí 
+    TaxCode:
+      type: string
+      description: mã số thuế
+    JoinDate:
+      type: string
+      format: date
+      description: ngày gia nhập
+    IdentityNumber:
+      type: string
+      description: số chứng minh nhân dân
+    IdentityDate:
+      type: string
+      format: date
+      description: ngày cấp chứng minh nhân dân
+    IdentityPlace:
+      type: string
+      description: nơi cấp chứng minh nhân dân
+

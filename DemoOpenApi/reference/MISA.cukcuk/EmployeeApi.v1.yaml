@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: Employees
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /employees:
+    get:
+      summary: lấy danh sách nhân viên
+      responses:
+        '200':
+          description: trả dữu liệu thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeList'
+              examples:
+                200Get10Employees:
+                  $ref: models/examples/EmployeeExamples.v1.yaml#/components/examples/200Get10Employees
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+      operationId: get-employees
+    post:
+      summary: thêm nhân viên
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRateObjectParam'
+      responses:
+        '201':
+          description: thêm thành công .
+          content:
+            application/json: null
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+
+  '/employees/{employeeId}':
+    parameters:
+      - schema:
+          type: string
+        name: employeeId
+        in: path
+        required: true
+    put:
+      summary: sửa nhân viên
+      parameters:
+        '-schema':
+          type: string
+          format: uuid
+        name: EmployeeId
+        in: path
+        required: true
+        example: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRateObjectParam'
+      responses:
+        '200':
+          description: cập nhật chuyển đổi tiền tệ.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseResult'
+              examples:
+                200UpdateExchangeRate:
+                  $ref: models/examples/ResponseResultExamples.v1.yaml#/components/examples/200UpdateExchangeRate
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      summary: xóa nhân viên
+      parameters:
+        '-schema':
+          type: string
+          format: uuid
+        name: EmployeeId
+        in: path
+        required: true
+        example: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+      responses:
+        '200':
+          description: Xóa nhân viên.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseResult'
+              examples:
+                200InitializeLanguage:
+                  value:
+                    notify: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  schemas:
+    EmployeeList:
+      type: array
+      items:
+        $ref: models/Employee.v1.yaml
+    ExchangeRateObjectParam:
+      $ref: models/Employee.v1.yaml
+    ResponseResult:
+      $ref: models/ResponseResult.v1.yaml
+  responses:
+    '400':
+      $ref: ../common/models/responses.v1.yaml#/components/responses/400
+    '500':
+      $ref: ../common/models/responses.v1.yaml#/components/responses/500

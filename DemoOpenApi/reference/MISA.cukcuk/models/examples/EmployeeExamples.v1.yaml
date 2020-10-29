@@ -1,0 +1,101 @@
+openapi: '3.0.0'
+info:
+  title: EmployeeExamples
+  version: '1.0'
+servers:
+- url: http://localhost:3000
+paths: {}
+components:
+  examples:
+    200Get10Employees:
+        value:
+          - EmployeeId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+            EmployeeCode: NV0001
+            EmployeeName: đàm văn quân
+            Gender: 1
+            DateOfBirth: '2000-10-10'
+            PhoneNumber: 0265498651
+            DepartmentId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+            DepartmentName: phòng đào tạo
+            Email: anhquan@gmail.com
+            Salary: 3000000
+            WorkStatus: 1
+            PositionId: cfa09661-bdfc-49a0-ad2c-fc83a16195ca
+            PositionName: nhân viên
+            TaxCode: 155895
+            JoinDate: '2000-10-10'
+            IdentityNumber: 14648
+            IdentityDate: '2020-10-10'
+            IdentityPlace: hà nội
+          - EmployeeId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+            EmployeeCode: NV0001
+            EmployeeName: đàm văn quân
+            Gender: 1
+            DateOfBirth: '2000-10-10'
+            PhoneNumber: 0265498651
+            DepartmentId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+            DepartmentName: phòng đào tạo
+            Email: anhquan@gmail.com
+            Salary: 3000000
+            WorkStatus: 1
+            PositionId: cfa09661-bdfc-49a0-ad2c-fc83a16195ca
+            PositionName: nhân viên
+            TaxCode: 155895
+            JoinDate: '2000-10-10'
+            IdentityNumber: 14648
+            IdentityDate: '2020-10-10'
+            IdentityPlace: hà nội
+          - EmployeeId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+            EmployeeCode: NV0001
+            EmployeeName: đàm văn quân
+            Gender: 1
+            DateOfBirth: '2000-10-10'
+            PhoneNumber: 0265498651
+            DepartmentId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+            DepartmentName: phòng đào tạo
+            Email: anhquan@gmail.com
+            Salary: 3000000
+            WorkStatus: 1
+            PositionId: cfa09661-bdfc-49a0-ad2c-fc83a16195ca
+            PositionName: nhân viên
+            TaxCode: 155895
+            JoinDate: '2000-10-10'
+            IdentityNumber: 14648
+            IdentityDate: '2020-10-10'
+            IdentityPlace: hà nội
+          - EmployeeId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+            EmployeeCode: NV0001
+            EmployeeName: đàm văn quân
+            Gender: 1
+            DateOfBirth: '2000-10-10'
+            PhoneNumber: 0265498651
+            DepartmentId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+            DepartmentName: phòng đào tạo
+            Email: anhquan@gmail.com
+            Salary: 3000000
+            WorkStatus: 1
+            PositionId: cfa09661-bdfc-49a0-ad2c-fc83a16195ca
+            PositionName: nhân viên
+            TaxCode: 155895
+            JoinDate: '2000-10-10'
+            IdentityNumber: 14648
+            IdentityDate: '2020-10-10'
+            IdentityPlace: hà nội
+          - EmployeeId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+            EmployeeCode: NV0001
+            EmployeeName: đàm văn quân
+            Gender: 1
+            DateOfBirth: '2000-10-10'
+            PhoneNumber: 0265498651
+            DepartmentId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+            DepartmentName: phòng đào tạo
+            Email: anhquan@gmail.com
+            Salary: 3000000
+            WorkStatus: 1
+            PositionId: cfa09661-bdfc-49a0-ad2c-fc83a16195ca
+            PositionName: nhân viên
+            TaxCode: 155895
+            JoinDate: '2000-10-10'
+            IdentityNumber: 14648
+            IdentityDate: '2020-10-10'
+            IdentityPlace: hà nội

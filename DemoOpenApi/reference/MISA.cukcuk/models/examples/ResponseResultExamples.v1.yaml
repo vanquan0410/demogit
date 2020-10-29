@@ -1,0 +1,21 @@
+openapi: '3.0.0'
+info:
+  title: ResponseResultExamples
+  version: '1.0'
+servers:
+- url: http://localhost:3000
+paths: {}
+components:
+  examples:
+    200GetResult_ShareAccount:
+      value:
+        resultMessage: 'Success'
+    200GetResult:
+      value:
+        resultMessage: "Success"
+    200UpdateExchangeRate:
+      value:
+        resultMessage: 'Success'
+    200ConfirmShareAccountViaLink:
+      value:
+        resultMessage: 'Success'

@@ -1,0 +1,63 @@
+title: Customer
+type: object
+properties:
+  CustomerId:
+    type: string
+    format: uuid
+    description: id khách hàng
+  CustomerCode:
+    type: string
+    description: mã khách hàng
+  CustomerName:
+    type: string
+    description: tên khách hàng
+  Email: 
+    type: string
+    description: email khách hàng
+  CompanyName:
+    type: string
+    description: tên công ty
+  CustomerGroupId:
+    type: string
+    format: uuid
+    description: id nhóm khách hàng
+  DebitMoney:
+    type: double
+    description: sô tiền nợ của khách hàng
+  Address:
+    type: string
+    description: dịa chỉ khách hàng
+  PhoneNumber:
+    type: string
+    description: số diện thoại khách hàng
+  DateOfBirth:
+    type: string
+    format: date
+    description: ngày sinh khách hàng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
