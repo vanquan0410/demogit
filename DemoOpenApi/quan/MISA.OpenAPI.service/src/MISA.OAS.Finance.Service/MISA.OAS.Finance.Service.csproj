@@ -7,7 +7,7 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>MISA.OAS.Finance.Service</AssemblyName>
     <PackageId>MISA.OAS.Finance.Service</PackageId>
-    <UserSecretsId>290334d8-d279-4c08-8476-1970899c96a3</UserSecretsId>
+    <UserSecretsId>76636a69-9646-41fe-baed-bfcb8046303e</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>

@@ -8,13 +8,16 @@ paths:
   /employees:
     get:
       summary: lấy danh sách nhân viên
+      description: lấy danh sách nhân viên
+      tags:
+        - EmployeeInfo
       responses:
         '200':
           description: trả dữu liệu thành công
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EmployeeList'
+                $ref: '#/components/schemas/ResponseResult'
               examples:
                 200Get10Employees:
                   $ref: models/examples/EmployeeExamples.v1.yaml#/components/examples/200Get10Employees
@@ -31,7 +34,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExchangeRateObjectParam'
+              $ref: '#/components/schemas/ResponseResult'
       responses:
         '201':
           description: thêm thành công.
@@ -61,7 +64,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExchangeRateObjectParam'
+              $ref: '#/components/schemas/ResponseResult'
       responses:
         '200':
           description: cập nhật thành công.
@@ -106,14 +109,9 @@ paths:
 
 components:
   schemas:
-    EmployeeList:
-      type: array
-      items:
-        $ref: models/Employee.v1.yaml
-    ExchangeRateObjectParam:
-      $ref: models/Employee.v1.yaml
     ResponseResult:
-      $ref: models/ResponseResult.v1.yaml
+      $ref: models/Employee.v1.yaml
+
   responses:
     '400':
       $ref: ../common/models/responses.v1.yaml#/components/responses/400

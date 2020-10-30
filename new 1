@@ -2,6 +2,8 @@ openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g
 
 openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g csharp-netcore -o sourcecode/MISA.OpenAPI.MISA.CukCukSDK --package-name MISA.OAS.CukCuk.SDK --additional-properties=packageVersion=1.0.0.1
 
+
+MISA.CukCuk
 openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g csharp-netcore -o quan/MISA.OpenApi --package-name MISA.OAS.OpenApi.SDK --additional-properties=packageVersion=1.0.0.1
 
  openapi-generator-cli generate -i .\reference\MISA.cukcuk\EmployeeApi.v1.yaml -g aspnetcore -o quan/MISA.OpenAPI.service --package-name MISA.OAS.Finance.Service --additional-properties=aspnetCoreVersion=3.1

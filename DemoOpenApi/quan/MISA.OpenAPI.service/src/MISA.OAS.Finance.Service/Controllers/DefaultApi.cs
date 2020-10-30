@@ -51,7 +51,7 @@ namespace MISA.OAS.Finance.Service.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(Error));
             string exampleJson = null;
-            exampleJson = "{\r\n  \"resultStream\" : \"resultStream\",\r\n  \"resultMessage\" : \"resultMessage\"\r\n}";
+            exampleJson = "{\r\n  \"DateOfBirth\" : \"2000-01-23\",\r\n  \"Salary\" : 6.027456183070403,\r\n  \"Email\" : \"Email\",\r\n  \"EmployeeCode\" : \"EmployeeCode\",\r\n  \"PositionName\" : \"PositionName\",\r\n  \"PositionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"IdentityPlace\" : \"IdentityPlace\",\r\n  \"Gender\" : 0,\r\n  \"TaxCode\" : \"TaxCode\",\r\n  \"WorkStatus\" : 1,\r\n  \"PhoneNumber\" : \"PhoneNumber\",\r\n  \"DepartmentName\" : \"DepartmentName\",\r\n  \"DepartmentId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeName\" : \"EmployeeName\",\r\n  \"IdentityDate\" : \"2000-01-23\",\r\n  \"JoinDate\" : \"2000-01-23\",\r\n  \"IdentityNumber\" : \"IdentityNumber\"\r\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ResponseResult>(exampleJson)
@@ -63,7 +63,7 @@ namespace MISA.OAS.Finance.Service.Controllers
         /// <summary>
         /// thêm nhân viên
         /// </summary>
-        /// <param name="exchangeRateObjectParam"></param>
+        /// <param name="responseResult"></param>
         /// <response code="201">thêm thành công.</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -74,7 +74,7 @@ namespace MISA.OAS.Finance.Service.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(ResponseResult), description: "thêm thành công.")]
         [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "Internal Server Error")]
-        public virtual IActionResult EmployeesPost([FromBody]ExchangeRateObjectParam exchangeRateObjectParam)
+        public virtual IActionResult EmployeesPost([FromBody]ResponseResult responseResult)
         { 
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
@@ -84,7 +84,7 @@ namespace MISA.OAS.Finance.Service.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(Error));
             string exampleJson = null;
-            exampleJson = "{\r\n  \"resultStream\" : \"resultStream\",\r\n  \"resultMessage\" : \"resultMessage\"\r\n}";
+            exampleJson = "{\r\n  \"DateOfBirth\" : \"2000-01-23\",\r\n  \"Salary\" : 6.027456183070403,\r\n  \"Email\" : \"Email\",\r\n  \"EmployeeCode\" : \"EmployeeCode\",\r\n  \"PositionName\" : \"PositionName\",\r\n  \"PositionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"IdentityPlace\" : \"IdentityPlace\",\r\n  \"Gender\" : 0,\r\n  \"TaxCode\" : \"TaxCode\",\r\n  \"WorkStatus\" : 1,\r\n  \"PhoneNumber\" : \"PhoneNumber\",\r\n  \"DepartmentName\" : \"DepartmentName\",\r\n  \"DepartmentId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeName\" : \"EmployeeName\",\r\n  \"IdentityDate\" : \"2000-01-23\",\r\n  \"JoinDate\" : \"2000-01-23\",\r\n  \"IdentityNumber\" : \"IdentityNumber\"\r\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ResponseResult>(exampleJson)
@@ -97,7 +97,7 @@ namespace MISA.OAS.Finance.Service.Controllers
         /// sửa nhân viên
         /// </summary>
         /// <param name="employeeId">ID người dùng</param>
-        /// <param name="exchangeRateObjectParam"></param>
+        /// <param name="responseResult"></param>
         /// <response code="200">cập nhật thành công.</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -108,7 +108,7 @@ namespace MISA.OAS.Finance.Service.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(ResponseResult), description: "cập nhật thành công.")]
         [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "Internal Server Error")]
-        public virtual IActionResult EmployeesPut([FromQuery][Required()]Guid employeeId, [FromBody]ExchangeRateObjectParam exchangeRateObjectParam)
+        public virtual IActionResult EmployeesPut([FromQuery][Required()]Guid employeeId, [FromBody]ResponseResult responseResult)
         { 
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
@@ -118,7 +118,7 @@ namespace MISA.OAS.Finance.Service.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(Error));
             string exampleJson = null;
-            exampleJson = "{\r\n  \"resultStream\" : \"resultStream\",\r\n  \"resultMessage\" : \"resultMessage\"\r\n}";
+            exampleJson = "{\r\n  \"DateOfBirth\" : \"2000-01-23\",\r\n  \"Salary\" : 6.027456183070403,\r\n  \"Email\" : \"Email\",\r\n  \"EmployeeCode\" : \"EmployeeCode\",\r\n  \"PositionName\" : \"PositionName\",\r\n  \"PositionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"IdentityPlace\" : \"IdentityPlace\",\r\n  \"Gender\" : 0,\r\n  \"TaxCode\" : \"TaxCode\",\r\n  \"WorkStatus\" : 1,\r\n  \"PhoneNumber\" : \"PhoneNumber\",\r\n  \"DepartmentName\" : \"DepartmentName\",\r\n  \"DepartmentId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeName\" : \"EmployeeName\",\r\n  \"IdentityDate\" : \"2000-01-23\",\r\n  \"JoinDate\" : \"2000-01-23\",\r\n  \"IdentityNumber\" : \"IdentityNumber\"\r\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ResponseResult>(exampleJson)
@@ -137,27 +137,26 @@ namespace MISA.OAS.Finance.Service.Controllers
         [Route("/employees")]
         [ValidateModelState]
         [SwaggerOperation("GetEmployees")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<Employee>), description: "trả dữu liệu thành công")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ResponseResult), description: "trả dữu liệu thành công")]
         [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "Internal Server Error")]
         public virtual IActionResult GetEmployees()
-        {
+        { 
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<Employee>));
+            // return StatusCode(200, default(ResponseResult));
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(Error));
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(Error));
-            List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee(new Guid(), "1234", "Nguyễn Văn A", 0));
-            employees.Add(new Employee(new Guid(), "1235", "Nguyễn Văn B", 0));
-            employees.Add(new Employee(new Guid(), "1236", "Nguyễn Văn C", 0));
-            employees.Add(new Employee(new Guid(), "1237", "Nguyễn Văn D", 0));
-            employees.Add(new Employee(new Guid(), "1238", "Nguyễn Văn E", 0));
-            employees.Add(new Employee(new Guid(), "1239", "Nguyễn Văn F", 0));
-
-            return Ok(employees);
+            string exampleJson = null;
+            exampleJson = "{\r\n  \"DateOfBirth\" : \"2000-01-23\",\r\n  \"Salary\" : 6.027456183070403,\r\n  \"Email\" : \"Email\",\r\n  \"EmployeeCode\" : \"EmployeeCode\",\r\n  \"PositionName\" : \"PositionName\",\r\n  \"PositionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"IdentityPlace\" : \"IdentityPlace\",\r\n  \"Gender\" : 0,\r\n  \"TaxCode\" : \"TaxCode\",\r\n  \"WorkStatus\" : 1,\r\n  \"PhoneNumber\" : \"PhoneNumber\",\r\n  \"DepartmentName\" : \"DepartmentName\",\r\n  \"DepartmentId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\r\n  \"EmployeeName\" : \"EmployeeName\",\r\n  \"IdentityDate\" : \"2000-01-23\",\r\n  \"JoinDate\" : \"2000-01-23\",\r\n  \"IdentityNumber\" : \"IdentityNumber\"\r\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<ResponseResult>(exampleJson)
+            : default(ResponseResult);
+            //TODO: Change the data returned
+            return Ok(example);
         }
     }
 }

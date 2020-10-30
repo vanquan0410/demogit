@@ -27,16 +27,174 @@ namespace MISA.OAS.Finance.Service.Models
     public partial class ResponseResult : IEquatable<ResponseResult>
     {
         /// <summary>
-        /// Gets or Sets ResultMessage
+        /// id của của nhân viên
         /// </summary>
-        [DataMember(Name="resultMessage", EmitDefaultValue=false)]
-        public string ResultMessage { get; set; }
+        /// <value>id của của nhân viên</value>
+        [DataMember(Name="EmployeeId", EmitDefaultValue=false)]
+        public Guid EmployeeId { get; set; }
 
         /// <summary>
-        /// Gets or Sets ResultStream
+        /// mã nhân viên
         /// </summary>
-        [DataMember(Name="resultStream", EmitDefaultValue=false)]
-        public string ResultStream { get; set; }
+        /// <value>mã nhân viên</value>
+        [DataMember(Name="EmployeeCode", EmitDefaultValue=false)]
+        public string EmployeeCode { get; set; }
+
+        /// <summary>
+        /// tên nhân viên
+        /// </summary>
+        /// <value>tên nhân viên</value>
+        [DataMember(Name="EmployeeName", EmitDefaultValue=false)]
+        public string EmployeeName { get; set; }
+
+
+        /// <summary>
+        /// (giới tính 0-nam 1-nữ)
+        /// </summary>
+        /// <value>(giới tính 0-nam 1-nữ)</value>
+        
+        public enum GenderEnum
+        {
+            
+            /// <summary>
+            /// Enum _0Enum for 0
+            /// </summary>
+            
+            _0Enum = 0,
+            
+            /// <summary>
+            /// Enum _1Enum for 1
+            /// </summary>
+            
+            _1Enum = 1
+        }
+
+        /// <summary>
+        /// (giới tính 0-nam 1-nữ)
+        /// </summary>
+        /// <value>(giới tính 0-nam 1-nữ)</value>
+        [DataMember(Name="Gender", EmitDefaultValue=false)]
+        public GenderEnum Gender { get; set; }
+
+        /// <summary>
+        /// ngày sinh
+        /// </summary>
+        /// <value>ngày sinh</value>
+        [DataMember(Name="DateOfBirth", EmitDefaultValue=false)]
+        public DateTime DateOfBirth { get; set; }
+
+        /// <summary>
+        /// số điện thoại của nhân viên
+        /// </summary>
+        /// <value>số điện thoại của nhân viên</value>
+        [DataMember(Name="PhoneNumber", EmitDefaultValue=false)]
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// id phòng ban
+        /// </summary>
+        /// <value>id phòng ban</value>
+        [DataMember(Name="DepartmentId", EmitDefaultValue=false)]
+        public Guid DepartmentId { get; set; }
+
+        /// <summary>
+        /// tên phòng ban
+        /// </summary>
+        /// <value>tên phòng ban</value>
+        [DataMember(Name="DepartmentName", EmitDefaultValue=false)]
+        public string DepartmentName { get; set; }
+
+        /// <summary>
+        /// email cuar nhân viên
+        /// </summary>
+        /// <value>email cuar nhân viên</value>
+        [DataMember(Name="Email", EmitDefaultValue=false)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// mức lương
+        /// </summary>
+        /// <value>mức lương</value>
+        [DataMember(Name="Salary", EmitDefaultValue=false)]
+        public decimal Salary { get; set; }
+
+
+        /// <summary>
+        /// (tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)
+        /// </summary>
+        /// <value>(tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)</value>
+        
+        public enum WorkStatusEnum
+        {
+            
+            /// <summary>
+            /// Enum _0Enum for 0
+            /// </summary>
+            
+            _0Enum = 0,
+            
+            /// <summary>
+            /// Enum _1Enum for 1
+            /// </summary>
+            
+            _1Enum = 1
+        }
+
+        /// <summary>
+        /// (tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)
+        /// </summary>
+        /// <value>(tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)</value>
+        [DataMember(Name="WorkStatus", EmitDefaultValue=false)]
+        public WorkStatusEnum WorkStatus { get; set; }
+
+        /// <summary>
+        /// id vị trí
+        /// </summary>
+        /// <value>id vị trí</value>
+        [DataMember(Name="PositionId", EmitDefaultValue=false)]
+        public Guid PositionId { get; set; }
+
+        /// <summary>
+        /// tên vị trí
+        /// </summary>
+        /// <value>tên vị trí</value>
+        [DataMember(Name="PositionName", EmitDefaultValue=false)]
+        public string PositionName { get; set; }
+
+        /// <summary>
+        /// mã số thuế
+        /// </summary>
+        /// <value>mã số thuế</value>
+        [DataMember(Name="TaxCode", EmitDefaultValue=false)]
+        public string TaxCode { get; set; }
+
+        /// <summary>
+        /// ngày gia nhập
+        /// </summary>
+        /// <value>ngày gia nhập</value>
+        [DataMember(Name="JoinDate", EmitDefaultValue=false)]
+        public DateTime JoinDate { get; set; }
+
+        /// <summary>
+        /// số chứng minh nhân dân
+        /// </summary>
+        /// <value>số chứng minh nhân dân</value>
+        [DataMember(Name="IdentityNumber", EmitDefaultValue=false)]
+        public string IdentityNumber { get; set; }
+
+        /// <summary>
+        /// ngày cấp chứng minh nhân dân
+        /// </summary>
+        /// <value>ngày cấp chứng minh nhân dân</value>
+        [DataMember(Name="IdentityDate", EmitDefaultValue=false)]
+        public DateTime IdentityDate { get; set; }
+
+        /// <summary>
+        /// nơi cấp chứng minh nhân dân
+        /// </summary>
+        /// <value>nơi cấp chứng minh nhân dân</value>
+        [DataMember(Name="IdentityPlace", EmitDefaultValue=false)]
+        public string IdentityPlace { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -46,8 +204,24 @@ namespace MISA.OAS.Finance.Service.Models
         {
             var sb = new StringBuilder();
             sb.Append("class ResponseResult {\n");
-            sb.Append("  ResultMessage: ").Append(ResultMessage).Append("\n");
-            sb.Append("  ResultStream: ").Append(ResultStream).Append("\n");
+            sb.Append("  EmployeeId: ").Append(EmployeeId).Append("\n");
+            sb.Append("  EmployeeCode: ").Append(EmployeeCode).Append("\n");
+            sb.Append("  EmployeeName: ").Append(EmployeeName).Append("\n");
+            sb.Append("  Gender: ").Append(Gender).Append("\n");
+            sb.Append("  DateOfBirth: ").Append(DateOfBirth).Append("\n");
+            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  DepartmentId: ").Append(DepartmentId).Append("\n");
+            sb.Append("  DepartmentName: ").Append(DepartmentName).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Salary: ").Append(Salary).Append("\n");
+            sb.Append("  WorkStatus: ").Append(WorkStatus).Append("\n");
+            sb.Append("  PositionId: ").Append(PositionId).Append("\n");
+            sb.Append("  PositionName: ").Append(PositionName).Append("\n");
+            sb.Append("  TaxCode: ").Append(TaxCode).Append("\n");
+            sb.Append("  JoinDate: ").Append(JoinDate).Append("\n");
+            sb.Append("  IdentityNumber: ").Append(IdentityNumber).Append("\n");
+            sb.Append("  IdentityDate: ").Append(IdentityDate).Append("\n");
+            sb.Append("  IdentityPlace: ").Append(IdentityPlace).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,14 +259,94 @@ namespace MISA.OAS.Finance.Service.Models
 
             return 
                 (
-                    ResultMessage == other.ResultMessage ||
-                    ResultMessage != null &&
-                    ResultMessage.Equals(other.ResultMessage)
+                    EmployeeId == other.EmployeeId ||
+                    EmployeeId != null &&
+                    EmployeeId.Equals(other.EmployeeId)
                 ) && 
                 (
-                    ResultStream == other.ResultStream ||
-                    ResultStream != null &&
-                    ResultStream.Equals(other.ResultStream)
+                    EmployeeCode == other.EmployeeCode ||
+                    EmployeeCode != null &&
+                    EmployeeCode.Equals(other.EmployeeCode)
+                ) && 
+                (
+                    EmployeeName == other.EmployeeName ||
+                    EmployeeName != null &&
+                    EmployeeName.Equals(other.EmployeeName)
+                ) && 
+                (
+                    Gender == other.Gender ||
+                    
+                    Gender.Equals(other.Gender)
+                ) && 
+                (
+                    DateOfBirth == other.DateOfBirth ||
+                    DateOfBirth != null &&
+                    DateOfBirth.Equals(other.DateOfBirth)
+                ) && 
+                (
+                    PhoneNumber == other.PhoneNumber ||
+                    PhoneNumber != null &&
+                    PhoneNumber.Equals(other.PhoneNumber)
+                ) && 
+                (
+                    DepartmentId == other.DepartmentId ||
+                    DepartmentId != null &&
+                    DepartmentId.Equals(other.DepartmentId)
+                ) && 
+                (
+                    DepartmentName == other.DepartmentName ||
+                    DepartmentName != null &&
+                    DepartmentName.Equals(other.DepartmentName)
+                ) && 
+                (
+                    Email == other.Email ||
+                    Email != null &&
+                    Email.Equals(other.Email)
+                ) && 
+                (
+                    Salary == other.Salary ||
+                    
+                    Salary.Equals(other.Salary)
+                ) && 
+                (
+                    WorkStatus == other.WorkStatus ||
+                    
+                    WorkStatus.Equals(other.WorkStatus)
+                ) && 
+                (
+                    PositionId == other.PositionId ||
+                    PositionId != null &&
+                    PositionId.Equals(other.PositionId)
+                ) && 
+                (
+                    PositionName == other.PositionName ||
+                    PositionName != null &&
+                    PositionName.Equals(other.PositionName)
+                ) && 
+                (
+                    TaxCode == other.TaxCode ||
+                    TaxCode != null &&
+                    TaxCode.Equals(other.TaxCode)
+                ) && 
+                (
+                    JoinDate == other.JoinDate ||
+                    JoinDate != null &&
+                    JoinDate.Equals(other.JoinDate)
+                ) && 
+                (
+                    IdentityNumber == other.IdentityNumber ||
+                    IdentityNumber != null &&
+                    IdentityNumber.Equals(other.IdentityNumber)
+                ) && 
+                (
+                    IdentityDate == other.IdentityDate ||
+                    IdentityDate != null &&
+                    IdentityDate.Equals(other.IdentityDate)
+                ) && 
+                (
+                    IdentityPlace == other.IdentityPlace ||
+                    IdentityPlace != null &&
+                    IdentityPlace.Equals(other.IdentityPlace)
                 );
         }
 
@@ -106,10 +360,42 @@ namespace MISA.OAS.Finance.Service.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (ResultMessage != null)
-                    hashCode = hashCode * 59 + ResultMessage.GetHashCode();
-                    if (ResultStream != null)
-                    hashCode = hashCode * 59 + ResultStream.GetHashCode();
+                    if (EmployeeId != null)
+                    hashCode = hashCode * 59 + EmployeeId.GetHashCode();
+                    if (EmployeeCode != null)
+                    hashCode = hashCode * 59 + EmployeeCode.GetHashCode();
+                    if (EmployeeName != null)
+                    hashCode = hashCode * 59 + EmployeeName.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + Gender.GetHashCode();
+                    if (DateOfBirth != null)
+                    hashCode = hashCode * 59 + DateOfBirth.GetHashCode();
+                    if (PhoneNumber != null)
+                    hashCode = hashCode * 59 + PhoneNumber.GetHashCode();
+                    if (DepartmentId != null)
+                    hashCode = hashCode * 59 + DepartmentId.GetHashCode();
+                    if (DepartmentName != null)
+                    hashCode = hashCode * 59 + DepartmentName.GetHashCode();
+                    if (Email != null)
+                    hashCode = hashCode * 59 + Email.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + Salary.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + WorkStatus.GetHashCode();
+                    if (PositionId != null)
+                    hashCode = hashCode * 59 + PositionId.GetHashCode();
+                    if (PositionName != null)
+                    hashCode = hashCode * 59 + PositionName.GetHashCode();
+                    if (TaxCode != null)
+                    hashCode = hashCode * 59 + TaxCode.GetHashCode();
+                    if (JoinDate != null)
+                    hashCode = hashCode * 59 + JoinDate.GetHashCode();
+                    if (IdentityNumber != null)
+                    hashCode = hashCode * 59 + IdentityNumber.GetHashCode();
+                    if (IdentityDate != null)
+                    hashCode = hashCode * 59 + IdentityDate.GetHashCode();
+                    if (IdentityPlace != null)
+                    hashCode = hashCode * 59 + IdentityPlace.GetHashCode();
                 return hashCode;
             }
         }

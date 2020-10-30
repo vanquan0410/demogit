@@ -88,7 +88,7 @@
                   }
                 },
                 "schema" : {
-                  "$ref" : "#/components/schemas/EmployeeList"
+                  "$ref" : "#/components/schemas/ResponseResult"
                 }
               }
             },
@@ -135,7 +135,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/ExchangeRateObjectParam"
+                "$ref" : "#/components/schemas/ResponseResult"
               }
             }
           }
@@ -209,7 +209,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/ExchangeRateObjectParam"
+                "$ref" : "#/components/schemas/ResponseResult"
               }
             }
           }
@@ -418,18 +418,26 @@
       }
     },
     "schemas" : {
-      "EmployeeList" : {
-        "items" : {
-          "$ref" : "#/components/schemas/Employee"
-        },
-        "type" : "array"
-      },
-      "ExchangeRateObjectParam" : {
+      "ResponseResult" : {
         "example" : {
+          "DateOfBirth" : "2000-01-23",
+          "Salary" : 6.027456183070403,
+          "Email" : "Email",
           "EmployeeCode" : "EmployeeCode",
+          "PositionName" : "PositionName",
+          "PositionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "IdentityPlace" : "IdentityPlace",
           "Gender" : 0,
+          "TaxCode" : "TaxCode",
+          "WorkStatus" : 1,
+          "PhoneNumber" : "PhoneNumber",
+          "DepartmentName" : "DepartmentName",
+          "DepartmentId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
           "EmployeeId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "EmployeeName" : "EmployeeName"
+          "EmployeeName" : "EmployeeName",
+          "IdentityDate" : "2000-01-23",
+          "JoinDate" : "2000-01-23",
+          "IdentityNumber" : "IdentityNumber"
         },
         "properties" : {
           "EmployeeId" : {
@@ -449,34 +457,93 @@
             "description" : "(giới tính 0-nam 1-nữ)",
             "enum" : [ 0, 1 ],
             "type" : "integer"
+          },
+          "DateOfBirth" : {
+            "description" : "ngày sinh",
+            "format" : "date",
+            "type" : "string"
+          },
+          "PhoneNumber" : {
+            "description" : "số điện thoại của nhân viên",
+            "type" : "string"
+          },
+          "DepartmentId" : {
+            "description" : "id phòng ban",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "DepartmentName" : {
+            "description" : "tên phòng ban",
+            "type" : "string"
+          },
+          "Email" : {
+            "description" : "email cuar nhân viên",
+            "type" : "string"
+          },
+          "Salary" : {
+            "description" : "mức lương",
+            "type" : "number"
+          },
+          "WorkStatus" : {
+            "description" : "(tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)",
+            "enum" : [ 0, 1 ],
+            "type" : "integer"
+          },
+          "PositionId" : {
+            "description" : "id vị trí",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "PositionName" : {
+            "description" : "tên vị trí",
+            "type" : "string"
+          },
+          "TaxCode" : {
+            "description" : "mã số thuế",
+            "type" : "string"
+          },
+          "JoinDate" : {
+            "description" : "ngày gia nhập",
+            "format" : "date",
+            "type" : "string"
+          },
+          "IdentityNumber" : {
+            "description" : "số chứng minh nhân dân",
+            "type" : "string"
+          },
+          "IdentityDate" : {
+            "description" : "ngày cấp chứng minh nhân dân",
+            "format" : "date",
+            "type" : "string"
+          },
+          "IdentityPlace" : {
+            "description" : "nơi cấp chứng minh nhân dân",
+            "type" : "string"
           }
         },
         "title" : "Employee",
         "type" : "object"
       },
-      "ResponseResult" : {
-        "description" : "",
-        "example" : {
-          "resultStream" : "resultStream",
-          "resultMessage" : "resultMessage"
-        },
-        "properties" : {
-          "resultMessage" : {
-            "type" : "string"
-          },
-          "resultStream" : {
-            "type" : "string"
-          }
-        },
-        "title" : "ResponseResult",
-        "type" : "object"
-      },
       "Employee" : {
         "example" : {
+          "DateOfBirth" : "2000-01-23",
+          "Salary" : 6.027456183070403,
+          "Email" : "Email",
           "EmployeeCode" : "EmployeeCode",
+          "PositionName" : "PositionName",
+          "PositionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "IdentityPlace" : "IdentityPlace",
           "Gender" : 0,
+          "TaxCode" : "TaxCode",
+          "WorkStatus" : 1,
+          "PhoneNumber" : "PhoneNumber",
+          "DepartmentName" : "DepartmentName",
+          "DepartmentId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
           "EmployeeId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "EmployeeName" : "EmployeeName"
+          "EmployeeName" : "EmployeeName",
+          "IdentityDate" : "2000-01-23",
+          "JoinDate" : "2000-01-23",
+          "IdentityNumber" : "IdentityNumber"
         },
         "properties" : {
           "EmployeeId" : {
@@ -496,6 +563,68 @@
             "description" : "(giới tính 0-nam 1-nữ)",
             "enum" : [ 0, 1 ],
             "type" : "integer"
+          },
+          "DateOfBirth" : {
+            "description" : "ngày sinh",
+            "format" : "date",
+            "type" : "string"
+          },
+          "PhoneNumber" : {
+            "description" : "số điện thoại của nhân viên",
+            "type" : "string"
+          },
+          "DepartmentId" : {
+            "description" : "id phòng ban",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "DepartmentName" : {
+            "description" : "tên phòng ban",
+            "type" : "string"
+          },
+          "Email" : {
+            "description" : "email cuar nhân viên",
+            "type" : "string"
+          },
+          "Salary" : {
+            "description" : "mức lương",
+            "type" : "number"
+          },
+          "WorkStatus" : {
+            "description" : "(tình trạng công việc 0-đang làm việc 1-đã nghỉ việc)",
+            "enum" : [ 0, 1 ],
+            "type" : "integer"
+          },
+          "PositionId" : {
+            "description" : "id vị trí",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "PositionName" : {
+            "description" : "tên vị trí",
+            "type" : "string"
+          },
+          "TaxCode" : {
+            "description" : "mã số thuế",
+            "type" : "string"
+          },
+          "JoinDate" : {
+            "description" : "ngày gia nhập",
+            "format" : "date",
+            "type" : "string"
+          },
+          "IdentityNumber" : {
+            "description" : "số chứng minh nhân dân",
+            "type" : "string"
+          },
+          "IdentityDate" : {
+            "description" : "ngày cấp chứng minh nhân dân",
+            "format" : "date",
+            "type" : "string"
+          },
+          "IdentityPlace" : {
+            "description" : "nơi cấp chứng minh nhân dân",
+            "type" : "string"
           }
         },
         "title" : "Employee",
