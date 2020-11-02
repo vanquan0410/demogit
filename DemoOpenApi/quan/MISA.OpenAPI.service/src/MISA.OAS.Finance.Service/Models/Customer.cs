@@ -24,7 +24,7 @@ namespace MISA.OAS.Finance.Service.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class ResponseResult : IEquatable<ResponseResult>
+    public partial class Customer : IEquatable<Customer>
     {
         /// <summary>
         /// id khách hàng
@@ -103,7 +103,7 @@ namespace MISA.OAS.Finance.Service.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ResponseResult {\n");
+            sb.Append("class Customer {\n");
             sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
             sb.Append("  CustomerCode: ").Append(CustomerCode).Append("\n");
             sb.Append("  CustomerName: ").Append(CustomerName).Append("\n");
@@ -136,15 +136,15 @@ namespace MISA.OAS.Finance.Service.Models
         {
             if (obj is null) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((ResponseResult)obj);
+            return obj.GetType() == GetType() && Equals((Customer)obj);
         }
 
         /// <summary>
-        /// Returns true if ResponseResult instances are equal
+        /// Returns true if Customer instances are equal
         /// </summary>
-        /// <param name="other">Instance of ResponseResult to be compared</param>
+        /// <param name="other">Instance of Customer to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResponseResult other)
+        public bool Equals(Customer other)
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -239,12 +239,12 @@ namespace MISA.OAS.Finance.Service.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(ResponseResult left, ResponseResult right)
+        public static bool operator ==(Customer left, Customer right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(ResponseResult left, ResponseResult right)
+        public static bool operator !=(Customer left, Customer right)
         {
             return !Equals(left, right);
         }

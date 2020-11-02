@@ -1,17 +1,16 @@
 openapi: 3.0.0
 info:
-  title: Employees
+  title: CustomerApi
   version: '1.0'
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /employees:
-    # lấy danh sách nhaanv viên CreatedBy: DVQuan
+  /customers:
     get:
-      summary: lấy danh sách nhân viên
-      description: lấy danh sách nhân viên
+      summary: lấy danh sách khách hàng
+      description: lấy danh sách khách hàng
       tags:
-        - EmployeeInfo
+        - CustomerInfo
       responses:
         '200':
           description: trả dữu liệu thành công
@@ -20,19 +19,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseResult'
               examples:
-                200Get10Employees:
-                  $ref: models/examples/EmployeeExamples.v1.yaml#/components/examples/200Get10Employees
+                200Get10Customers:
+                  $ref: models/examples/CustomerExamples.v1.yaml#/components/examples/200Get10Customers
+                200Get5Customers:
+                  $ref: models/examples/CustomerExamples.v1.yaml#/components/examples/200Get5Customers
         '400':
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
-      operationId: get-employees
-
-    #thêm nhân viên  CreatedBy: DVQuan
+      operationId: get-customers
     post:
-      summary: thêm nhân viên
+      summary: thêm khách hàng
       tags:
-        - EmployeeInfo
+        - CustomerInfo
       requestBody:
         content:
           application/json:
@@ -52,11 +51,10 @@ paths:
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
-
     put:
-      summary: sửa nhân viên
+      summary: sửa thong tin khach hang
       tags:
-        - EmployeeInfo
+        - CustomerInfo
       parameters:
         - name: EmployeeId
           in: query
@@ -84,14 +82,14 @@ paths:
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
-
-  # xóa nhân vien CreatedBy: DVQuan
+    
+    # xóa khách hàng
     delete:
-      summary: xóa nhân viên
+      summary: xóa khách hàng
       tags:
-        - EmployeeInfo
+        - CustomerInfo
       parameters:
-        - name: userID
+        - name: CustomerId
           in: query
           required: true
           description: ID người dùng
@@ -100,7 +98,7 @@ paths:
             format: uuid
       responses:
         '200':
-          description: Xóa nhân viên.
+          description: Xóa khách hàng.
           content:
             application/json:
               schema:
@@ -113,12 +111,56 @@ paths:
           $ref: '#/components/responses/400'
         '500':
           $ref: '#/components/responses/500'
-
+    parameters: []
+  '/customer/{customerid}':
+    parameters:
+      - schema:
+          type: string
+        name: customerid
+        in: path
+        required: true
+    get:
+      summary: lấy thông tin khác hàng theo ID
+      tags:
+        - CustomerInfo
+      responses:
+        '200':
+          description: trả dữu liệu thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseResult'
+              examples:
+                200GetCustomerById:
+                  $ref: models/examples/CustomerExamples.v1.yaml#/components/examples/200GetCustomerById
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+      operationId: get-customer-customerid
+  /countpages:
+    get:
+      summary: lấy số lượng bản ghi khách hàng
+      tags:
+        - CustomerInfo
+      responses:
+        '200':
+          description: trả dữu liệu thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePage'
+              examples:
+                ResponsePage:
+                  $ref: models/examples/ResponsePageExample.v1.yaml#/components/examples/ResponsePage
+      operationId: get-countpage
+    parameters: []
 components:
   schemas:
     ResponseResult:
-      $ref: models/Employee.v1.yaml
-
+      $ref: models/Customer.v1.yaml
+    ResponsePage:
+      $ref: models/CountPage.v1.yaml
   responses:
     '400':
       $ref: ../common/models/responses.v1.yaml#/components/responses/400

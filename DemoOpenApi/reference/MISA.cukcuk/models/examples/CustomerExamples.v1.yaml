@@ -6,7 +6,173 @@ servers:
 - url: http://localhost:3000
 paths: {}
 components:
-
+  examples:
+    200Get10Customers:
+      value:
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0001
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0002
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0003
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0004
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0005
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0006
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0007
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0008
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0009
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+    200Get5Customers:
+      value:
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0001
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0002
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0003
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0004
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0005
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0006
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
+    200GetCustomerById:
+      value:
+        - CustomerId: e709b020-1b81-48c2-b9bc-f8d9518d13ab
+          CustomerCode: kh0001
+          CustomerName: Trần thị anh
+          Email: abc@fmail.com
+          CompanyName: cong ty phan mem
+          CustomerGroupId: cfa09661-bdfc-49a0-ad2c-fc83a1610000
+          DebitMoney: 1000000
+          Address: dan phuong
+          PhoneNumber: 098545688
+          DateOfBirth: '2000-10-10'
     
 
           

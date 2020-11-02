@@ -1,0 +1,5 @@
+title: CountPage
+type: object
+properties:
+  CountPage:
+    type: number

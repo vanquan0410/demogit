@@ -22,7 +22,7 @@ properties:
     format: uuid
     description: id nhóm khách hàng
   DebitMoney:
-    type: double
+    type: number
     description: sô tiền nợ của khách hàng
   Address:
     type: string
@@ -34,28 +34,6 @@ properties:
     type: string
     format: date
     description: ngày sinh khách hàng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

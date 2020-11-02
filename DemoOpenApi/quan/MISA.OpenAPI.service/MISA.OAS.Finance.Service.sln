@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.OAS.Finance.Service", "src\MISA.OAS.Finance.Service\MISA.OAS.Finance.Service.csproj", "{16CB25F4-3E52-40D4-ACBE-95FD4EB91D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISA.OAS.Finance.Service", "src\MISA.OAS.Finance.Service\MISA.OAS.Finance.Service.csproj", "{4962289C-A185-40DB-ADB5-94412BCE0D79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16CB25F4-3E52-40D4-ACBE-95FD4EB91D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16CB25F4-3E52-40D4-ACBE-95FD4EB91D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16CB25F4-3E52-40D4-ACBE-95FD4EB91D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16CB25F4-3E52-40D4-ACBE-95FD4EB91D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4962289C-A185-40DB-ADB5-94412BCE0D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4962289C-A185-40DB-ADB5-94412BCE0D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4962289C-A185-40DB-ADB5-94412BCE0D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4962289C-A185-40DB-ADB5-94412BCE0D79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {74811737-5EEF-48DF-B039-E18AC1123ADC}
+		SolutionGuid = {F6EEA929-1EEC-416E-B69C-FD6D546D1F86}
 	EndGlobalSection
 EndGlobal

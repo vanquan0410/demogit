@@ -21,23 +21,16 @@ using MISA.OAS.Finance.Service.Converters;
 namespace MISA.OAS.Finance.Service.Models
 { 
     /// <summary>
-    /// A standard error object.
+    /// 
     /// </summary>
     [DataContract]
-    public partial class Error : IEquatable<Error>
+    public partial class CountPage : IEquatable<CountPage>
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets _CountPage
         /// </summary>
-        [Required]
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
+        [DataMember(Name="CountPage", EmitDefaultValue=false)]
+        public decimal _CountPage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -46,9 +39,8 @@ namespace MISA.OAS.Finance.Service.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Error {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("class CountPage {\n");
+            sb.Append("  _CountPage: ").Append(_CountPage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -71,29 +63,24 @@ namespace MISA.OAS.Finance.Service.Models
         {
             if (obj is null) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Error)obj);
+            return obj.GetType() == GetType() && Equals((CountPage)obj);
         }
 
         /// <summary>
-        /// Returns true if Error instances are equal
+        /// Returns true if CountPage instances are equal
         /// </summary>
-        /// <param name="other">Instance of Error to be compared</param>
+        /// <param name="other">Instance of CountPage to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Error other)
+        public bool Equals(CountPage other)
         {
             if (other is null) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Code == other.Code ||
-                    Code != null &&
-                    Code.Equals(other.Code)
-                ) && 
-                (
-                    Message == other.Message ||
-                    Message != null &&
-                    Message.Equals(other.Message)
+                    _CountPage == other._CountPage ||
+                    
+                    _CountPage.Equals(other._CountPage)
                 );
         }
 
@@ -107,10 +94,8 @@ namespace MISA.OAS.Finance.Service.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Code != null)
-                    hashCode = hashCode * 59 + Code.GetHashCode();
-                    if (Message != null)
-                    hashCode = hashCode * 59 + Message.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + _CountPage.GetHashCode();
                 return hashCode;
             }
         }
@@ -118,12 +103,12 @@ namespace MISA.OAS.Finance.Service.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(Error left, Error right)
+        public static bool operator ==(CountPage left, CountPage right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Error left, Error right)
+        public static bool operator !=(CountPage left, CountPage right)
         {
             return !Equals(left, right);
         }
