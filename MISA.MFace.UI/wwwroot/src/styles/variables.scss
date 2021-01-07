@@ -1,0 +1,105 @@
+/// Danh sách bảng màu và font chữ chung
+/// Created by nvnguyen 24.12.2020
+/// -------------------------------------------------------//
+
+//Bảng màu chung
+//BRAND
+$B-Dark: #1a2760;
+$B-Primary: #243585;
+$B-Light: #354ec0;
+$B-Secondary: #eff1fb;
+$B-Light-Opacity: #354ec033;
+$R-Dark: #8d0101;
+$R-Primary: #cc0202;
+$R-Light: #fd0d0d;
+$R-Secondary: #ffebeb;
+$B-Shadow: #0000001a;
+
+//BACKGROUND
+$BG-Dark: #dfe5e8;
+$BG-White: #ffffff;
+$BG-Light: #eff2f4;
+$Gray: #e5e5e5;
+
+//ALERT
+$Succes-Primary: #39ac66;
+$Warning-Primary: #ff8233;
+$Error-Primary: #eb3333;
+$Succes-Secondary: #d1f0dc;
+$Warning-Secondary: #ffd9c2;
+$Error-Secondary: #f9c7c7;
+
+//TEXT
+$Heading: #000000;
+$Body-Menu-Button: #454545;
+$Hint-Text: #bbbbbb;
+$Text-Note: #939597;
+
+//AVARTAR
+
+//Font family
+@import "./font-faces.scss";
+$_fontregular: "GoogleSansRegular";
+$_fontmedium: "GoogleSansMedium";
+$_fontbold: "GoogleSansBold";
+
+// Font size
+$_font-12: 12px;
+$_font-13: 13px;
+$_font-14: 14px;
+$_font-16: 16px;
+$_font-18: 18px;
+$_font-20: 20px;
+
+/// Custom pagination style
+/// Created by nvnguyen 30.12.2020
+/// -------------------------------------------------------//
+$pagination-item-height: 36px;
+$pagination-item-min-width: 36px;
+$pagination-item-margin: 6px 5px;
+$pagination-item-padding: 0 6px;
+$pagination-navigation-height: 36px;
+$pagination-navigation-width:36px;
+$pagination-navigation-margin:6px 5px;
+
+
+// Variable ghi đè các biến SASS Global của vuetify
+// Created by nvbinh2 28.12.2020
+/// ------------------------------------------------------------------///
+
+// Thông số Navigation
+// Created by vdthang 31.12.2020
+$navigation-drawer-border-width: 0px;
+
+/// Các font cơ bản
+
+$body-font-family: $_fontregular;
+$font-size-root: $_font-14;
+
+/// Button
+$btn-sizes: (
+    "x-small": 32,
+    "small": 36,
+    "default": 40,
+    "large": 44,
+    "x-large": 48,
+);
+
+/// Input
+$input-font-size: $_font-14;
+$text-field-solo-control-min-height: none;
+$text-field-solo-dense-control-min-height: 36px;
+// $text-field-solo-label-top: calc(50% - 30px);
+
+$input-icon-height: 16px;
+$input-icon-min-width: 16px;
+$input-icon-width: 16px;
+// List
+$list-item-min-height: 40px;
+
+//Icon 
+$icon-size: 20px;
+
+// Date-time-picker
+$date-picker-table-date-button-height: 36px;
+$date-picker-table-date-button-width: 36px;

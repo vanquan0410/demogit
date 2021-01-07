@@ -1,0 +1,11 @@
+/// Cấu hình lại cho các class global
+/// Created by nvbinh2 26.12.2020
+/// ---------------------------------------------------------------------------- ///
+
+@media (min-width: 1264px) {
+  // Class v-app
+  .v-application {
+    @import "../variables.scss";
+    @import "./typography.scss";
+  }
+}

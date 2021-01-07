@@ -1,0 +1,22 @@
+/// Custom lại class pagination
+/// Created by nvnguyen 30.12.2020
+/// --------------------------------------------------------------------///
+.v-pagination {
+    .v-pagination__navigation {
+        box-shadow: none;
+        background-color: transparent;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background-color: $BG-Light !important;
+            border-radius: 4px;
+        }
+    }
+
+    .v-pagination__navigation--disabled {
+        cursor: not-allowed !important;
+    }
+}

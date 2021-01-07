@@ -1,0 +1,110 @@
+/// Thay đổi thuộc tính cho class từ class của vuetify
+/// Created by nvbinh2
+/// ---------------------------------------------------------------------------///
+
+@import "../variables.scss";
+.v-text-field {
+  margin-bottom: 10px;
+
+  .v-input__control {
+    .v-input__slot {
+      border: 1px solid $BG-Dark;
+      border-radius: 4px;
+      margin-bottom: 0px;
+      padding: 0 0 0px 12px !important;
+
+      input {
+        // padding-right: 12px;
+        font-family: $_fontregular;
+        font-size: $_font-14;
+        width: 100%;
+        height: 100%;
+
+        &::placeholder {
+          font-family: $_fontregular;
+          font-size: $_font-12;
+        }
+      }
+
+      input::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $BG-Light;
+      }
+
+      &:focus {
+        background-color: $BG-White;
+        border-color: $B-Primary !important;
+      }
+
+      .v-select__slot {
+        height: 100%;
+
+        .v-label {
+          color: $Body-Menu-Button;
+          font-family: $_fontregular;
+          font-size: $_font-14;
+        }
+      }
+
+      .v-input__append-inner {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0 12px;
+        height: 100%;
+      }
+
+      .v-input__prepend-inner {
+        padding-right: 8px;
+      }
+    }
+
+    .v-text-field__details {
+      margin-top: 4px;
+    }
+    .v-text-field__details {
+      padding: 0px 0px;
+      margin-bottom: 0px;
+      .error--text {
+        color: $Error-Primary;
+      }
+    }
+  }
+}
+
+.v-input--is-focused {
+  .v-input__control {
+    .v-input__slot {
+      background-color: $BG-White !important;
+      border-color: $B-Primary;
+    }
+  }
+}
+
+// Cấu hình dạng text validat dữ liệu
+.v-input.error--text {
+  .v-input__slot {
+    border: 1px solid $Error-Primary;
+  }
+}
+
+// Cấu hình cho dạng readonly
+.v-input--is-readonly {
+  .v-input__control {
+    .v-input__slot {
+      border: 1px solid $BG-Light;
+      background-color: $BG-Light !important;
+    }
+  }
+}
+
+// Xét khoảng cách cho các input liền nhau
+.v-text-field {
+  margin-bottom: 4px;
+}
+.v-text-field.error--text {
+  margin-bottom: 16px;
+}

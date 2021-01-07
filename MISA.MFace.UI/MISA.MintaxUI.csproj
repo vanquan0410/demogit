@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>9338e03d-70a6-469d-ba1b-5e9b7fb42d59</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\src\openJs\formatDate.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="MySql.Data" Version="8.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\src\assets\js\img\" />
+    <Folder Include="wwwroot\src\assets\icon\" />
+    <Folder Include="wwwroot\src\components\buttons\" />
+    <Folder Include="wwwroot\src\components\check-boxs\" />
+    <Folder Include="wwwroot\src\components\date-time-pickers\" />
+    <Folder Include="wwwroot\src\components\drop-downs\" />
+    <Folder Include="wwwroot\src\components\inputs\" />
+    <Folder Include="wwwroot\src\components\loadings\" />
+    <Folder Include="wwwroot\src\components\message-boxs\" />
+    <Folder Include="wwwroot\src\components\modals\" />
+    <Folder Include="wwwroot\src\components\notifications\" />
+    <Folder Include="wwwroot\src\components\radio\" />
+    <Folder Include="wwwroot\src\components\select\" />
+    <Folder Include="wwwroot\src\components\tables\table-paging\" />
+    <Folder Include="wwwroot\src\enums\" />
+    <Folder Include="wwwroot\src\resources\chip\" />
+    <Folder Include="wwwroot\src\store\modules\employees\" />
+    <Folder Include="wwwroot\src\store\modules\organization\" />
+    <Folder Include="wwwroot\src\views\setting\" />
+    <Folder Include="wwwroot\src\views\tax-deduction\" />
+    <Folder Include="wwwroot\src\views\tax-ettlement\" />
+    <Folder Include="wwwroot\src\views\tax-payer\" />
+    <Folder Include="wwwroot\src\views\tax-register\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+
+</Project>

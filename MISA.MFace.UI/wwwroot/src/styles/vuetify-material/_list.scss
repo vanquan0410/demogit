@@ -1,0 +1,58 @@
+/// css lại cho các component v-list
+/// Created nvbinh2 30.12.2020
+/// ----------------------------------------------------------------------///
+
+@import "../icons.scss";
+
+// Cấu hình cho list danh sách trong menu
+.v-list {
+  // Cấu hình khi 1 thẻ được  chọn
+  .v-list-item--active {
+    .v-list-item__content {
+      padding-left: 36px;
+
+      &:before {
+        content: "";
+        background: url("~@/assets/images/Gray.png") no-repeat $space-icon-240
+          $space-icon-120;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        left: 12px;
+      }
+    }
+  }
+  .v-list-item__content {
+    padding-left: 36px;
+  }
+}
+
+.v-menu__content {
+    .v-select-list {
+      padding: 4px 4px;
+      .v-list-item--active {
+        color: $BG-White ;
+        background-color: $B-Secondary;
+        .v-list-item__title {
+          color: $Heading ;
+        }
+      }
+  
+      .v-list-item {
+        padding: 0px 0px;
+        &:hover {
+          background-color: $BG-Light !important;
+        }
+  
+        .v-list-item--highlighted {
+          &::before {
+            opacity: 0;
+          }
+        }
+      }
+      .theme--light.v-list-item:hover::before {
+        opacity: 0;
+      }
+    }
+  }
+  

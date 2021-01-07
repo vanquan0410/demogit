@@ -1,0 +1,12 @@
+
+    .v-radio {
+        &:not(:last-child) {
+          margin-bottom: 0 !important;
+          margin-right: 44px !important;
+        }
+    }
+
+    .radio-btn--text {
+        color: $B-Primary !important;
+        font-size: $_font-20 !important;
+      }

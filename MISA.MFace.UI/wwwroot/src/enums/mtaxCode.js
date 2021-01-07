@@ -1,0 +1,9 @@
+const MTAX_CODE = {
+    SUCCESS: 200,
+    VALIDATE:406,
+    EXCEPTION:500,
+    NOT_FOUND:404,
+    CALL_FAID:999,
+    DECLARATION_NOT_REGISTER:606,
+}
+export default { MTAX_CODE}

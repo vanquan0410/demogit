@@ -1,0 +1,9 @@
+// Custom lại class v-menu cho các select, dropdown
+// Created by vdthang 06.01.2021
+
+@import "../variables.scss";
+
+.v-menu__content {
+    box-shadow: 0px 3px 6px $B-Shadow;
+    z-index: 30 !important;
+}

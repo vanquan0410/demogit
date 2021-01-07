@@ -1,0 +1,88 @@
+
+/// Custom lại cho các text 
+/// Created by nvbinh2 26.12.2020
+/// --------------------------------------------------------------------------------------///
+@import "../variables.scss";
+  $sizes: sm, md, lg, xl;
+  @each $size in $sizes {
+    // Header 1
+    .text-#{$size}-h1 {
+      font-family: $_fontbold !important;
+      font-size: $_font-20 !important;
+      color: $Heading !important;
+      line-height: 28px !important;
+    }
+
+    /// Header 2
+    .text-#{$size}-h2 {
+      font-family: $_fontbold !important;
+      font-size: $_font-20 !important;
+      color: $Heading !important;
+      line-height: 28px !important;
+    }
+    /// Header 3
+    .text-#{$size}-h3 {
+      font-family: $_fontbold !important;
+      font-size: $_font-18 !important;
+      color: $Heading !important;
+      line-height: 25px !important;
+    }
+
+    /// Header 4
+    .text-#{$size}-h4 {
+      font-family: $_fontbold !important;
+      font-size: $_font-16 !important;
+      color: $Heading !important;
+      line-height: 22px !important;
+    }
+
+    /// SubTitle Hay SubHeader
+    .text-#{$size}-subtitle-1 {
+      font-family: $_fontbold !important;
+      font-size: $_font-14 !important;
+      color: $Heading !important;
+      line-height: 19px !important;
+    }
+
+    // Body1/Menu/Button
+    .text-#{$size}-body-1,
+    .text-#{$size}-menu,
+    .text-#{$size}-button {
+      font-family: $_fontmedium !important;
+      font-size: $_font-14 !important;
+      color: $Body-Menu-Button !important;
+      line-height: 20px !important;
+    }
+
+    /// Body 2
+    .text-#{$size}-body-2 {
+      font-family: $_fontregular !important;
+      font-size: $_font-14 !important;
+      color: $Body-Menu-Button !important;
+      line-height: 20px !important;
+    }
+
+    //Caption hay note
+    .text-#{$size}-caption {
+      font-family: $_fontregular !important;
+      font-size: $_font-13 !important;
+      color: $Text-Note !important;
+      line-height: 19px !important;
+    }
+
+    // OverLine
+    .text-#{$size}-overline {
+      font-family: $_fontregular !important;
+      font-size: $_font-12 !important;
+      color: $Hint-Text !important;
+      line-height: 19px !important;
+    }
+
+    /// Hintex
+    .text-#{$size}-hintext {
+      font-family: $_fontregular !important;
+      font-size: $_font-12 !important;
+      color: $Hint-Text !important;
+      line-height: 19px !important;
+    }
+  }

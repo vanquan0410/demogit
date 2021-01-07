@@ -1,0 +1,123 @@
+/// Cấu hình cho các button của vuetify
+/// Created by nvbinh2 25.12.2020
+/// --------------------------------------------------------------///
+// Modified: Thêm các cấu hình cho các tương ứng với các loại btn theo thiết kế
+// Modified by nvbinh2 30.12.2020
+
+@import "../variables.scss";
+@import "node_modules/vuetify/src/styles/styles.sass";
+.v-btn {
+  background-color: $B-Dark ;
+  font-family: $_fontmedium ;
+  font-size: $_font-14 ;
+  letter-spacing: normal;
+  font-weight: normal;
+  text-indent: 0;
+  height: 40px;
+  color: $BG-White ;
+  min-width: 100px;
+
+  .v-btn__content {
+    line-height: 20px ;
+  }
+
+}
+
+// Cấu hình cho màu mới: .b-primary
+.b-primary {
+  color: $BG-White !important;
+  background-color: $B-Dark !important;
+  text-transform: none;
+  &:hover {
+    background-color: $B-Light !important;
+  }
+
+  &:active {
+    background-color: $B-Primary !important;
+  }
+}
+
+// Cấu hình cho màu mới .b-info
+.b-info {
+  color: $Heading !important;
+  background-color: $BG-White !important;
+  text-transform: none;
+  border: 1px solid $Hint-Text;
+
+  &:hover {
+    border: 1px solid $BG-Dark;
+    background-color: $BG-Dark !important;
+  }
+
+  &:active {
+    background-color: $BG-Dark !important;
+    border: 1px solid $BG-Dark;
+  }
+}
+
+// CSS custom cho các nút chỉ có icon
+// Created by vdthang 04.01.2020
+.v-btn:not(.v-btn--round).v-size--default{
+  min-width: unset;
+  padding: 0 12px;
+}
+
+.v-btn:not(.v-btn--round).v-size--small{
+  min-width: unset;
+  padding: 0 10px;
+}
+
+.v-btn:not(.v-btn--round).v-size--x-small{
+  min-width: unset;
+  padding: 0 8px;
+}
+
+.v-btn:not(.v-btn--round).v-size--large{
+  min-width: unset;
+  padding: 0 10px;
+}
+
+.v-btn:not(.v-btn--round).v-size--x-large{
+  min-width: unset;
+  padding: 0 12px;
+}
+
+
+
+// Cấu hình cho button dropdown
+.v-menu__content {
+
+  .v-list[type="btn-list"] {
+    padding: 4px 4px;
+
+    .v-list-item {
+      padding-left: 12px;
+
+      &:hover {
+        background-color: $BG-Light;
+        cursor: pointer;
+      }
+
+      .v-list-item__content {
+        padding: 0px;
+        &::before {
+          content: none;
+        }
+      }
+    }
+
+    .v-list-item__icon:first-child{
+      margin: 16px 8px 16px 0px !important;
+      min-width: 16px;
+    }
+
+    .v-list-item--active {
+      .v-list-item__content {
+        padding: 0px;
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
+}

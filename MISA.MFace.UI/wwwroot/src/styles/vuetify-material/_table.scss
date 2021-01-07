@@ -1,0 +1,54 @@
+@import "../variables.scss";
+
+.v-data-table {
+  height: 100%;
+
+  .v-data-table__wrapper {
+    position: relative;
+    height: calc(100% - 50px);
+    border: solid 1px $BG-Dark;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+    overflow-y: overlay;
+
+    table {
+      thead {
+
+        tr {
+          &:last-child {
+            th {
+              border-bottom: none;
+            }
+          }
+
+          th {
+            font-family: $_fontbold !important;
+            font-size: $_font-14 !important;
+            color: $Heading !important;
+            padding: 0 10px !important;
+            z-index: 20 !important;
+
+            &:first-child {
+              width: 20px !important;
+            }
+          }
+          
+          [rowspan="2"] {
+            &:last-child {
+              border-right-width: 0px;
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:hover {
+            background-color: $BG-Light !important;
+          }
+        }
+      }
+    }
+  }
+}
